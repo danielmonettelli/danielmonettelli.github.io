@@ -1,7 +1,7 @@
 ---
 title: Xamarin.Forms UI/UX Challenges - Micuna Food - Part3
 author: Daniel Angel Monettelli L.
-date: 2021-05-10 19:00:00 -0500
+date: 2021-05-11 15:00:00 -0500
 categories: [XamarinForms, UIKIT, XAML]
 tags: [xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, imagefromxamarinui, xamarincommunitytoolkit, xamarinessentials, visualstatemanager]
 image:
@@ -135,7 +135,7 @@ The following code fragment we can see that the x:Name called **layoutMainParent
         <Grid x:Name="layoutMainParent">
 
         <!--  Rest of the code here...  -->
-        
+
         </Grid>
 
     </ScrollView>
