@@ -1,10 +1,10 @@
 #  License data
 
 license:
-  name: MIT License
-  link: "https://github.com/danielmonettelli/danielmonettelli.github.io/blob/master/LICENSE"
+  name: CC BY 4.0
+  link: "https://creativecommons.org/licenses/by/4.0/"
 
 brief: All rights reserved.
 
 verbose: >-
-  The MIT license requires that copyright be included in all copies, duplicate posts made of the Blog of Daniel Monettelli.
+  The Blog of Daniel Monettelli posts are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
