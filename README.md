@@ -6,7 +6,7 @@
 
 Original posts with interesting topics from the world of **Xamarin** and **.NET MAUI**.
 
-## All rights reserved
+# Licenses
 
 The ***Blog of Daniel Monettelli posts*** are licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** License by the author. [![CC BY 4.0][cc-by-shield]][cc-by]
 
@@ -20,4 +20,6 @@ The ***source code of the project*** is under the **MIT license**. [![CC BY 4.0]
 
 [MIT-by]: https://github.com/danielmonettelli/danielmonettelli.github.io/blob/main/LICENSE
 
-<a href="https://www.buymeacoffee.com/danielmonetelli" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+# Gratefulness
+
+Many thanks to the [Jekyll Theme Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy).
