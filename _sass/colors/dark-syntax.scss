@@ -3,6 +3,7 @@
  */
 
 @mixin dark-syntax {
+  --language-border-color: rgba(84, 83, 83, 0.27);
   --highlight-bg-color: #252525;
   --highlighter-rouge-color: #de6b18;
   --highlight-lineno-color: #6c6c6d;
@@ -13,10 +14,13 @@
   --clipboard-checked-color: #2bcc2b;
   --filepath-text-color: #bdbdbd;
 
-  pre { color: #bfbfbf; } /* override Bootstrap */
+  /* override Bootstrap */
+  pre {
+    color: #bfbfbf;
+  }
 
-  .highlight {
-    .gp { color: #818c96; }
+  .highlight .gp {
+    color: #818c96;
   }
 
   /* syntax highlight colors from https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css */

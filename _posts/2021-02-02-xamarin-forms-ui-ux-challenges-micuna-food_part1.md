@@ -2,12 +2,10 @@
 title: Xamarin.Forms UI/UX Challenges - Micuna Food - Part1
 author: danielmonettelli
 date: 2021-02-02 02:30:00 -0500
-categories: [Xamarin.Forms, Challenges]
+categories: [Xamarin.Forms, Xamarin.Forms Challenges]
 tags: [xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, visualstatemanager, flexlayout, pancakeview]
 image:
   path: 5_1_cover_publication.png
-  width: 1200
-  height: 630
   alt: Xamarin.Forms UI/UX Challenges - Micuna Food - Part1
 ---
 

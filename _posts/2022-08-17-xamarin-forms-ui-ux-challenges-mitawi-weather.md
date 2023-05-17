@@ -2,7 +2,7 @@
 title: Xamarin.Forms UI/UX Challenges - Mitawi Weather
 author: danielmonettelli
 date: 2022-08-17 20:30:00 -0500
-categories: [Xamarin.Forms, Challenges]
+categories: [Xamarin.Forms, Xamarin.Forms Challenges]
 tags: [xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, visualstatemanager, flexlayout, pancakeview]
 image:
   path: 6_1_cover_publication.png

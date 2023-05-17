@@ -2,7 +2,7 @@
 title: Building a ChatGPT in .NET MAUI Part 1
 author: danielmonettelli
 date: 2023-02-27 10:35:00 -0500
-categories: [.NET MAUI, Challenges]
+categories: [.NET MAUI, Maui Challenges]
 tags: [netmaui, openai, httpclient]
 image:
   path: 8_1_cover_publication.png

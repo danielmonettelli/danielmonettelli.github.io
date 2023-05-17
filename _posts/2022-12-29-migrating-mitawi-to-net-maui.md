@@ -2,7 +2,7 @@
 title: Migrating Mitawi to .NET MAUI
 author: danielmonettelli
 date: 2022-12-29 14:35:00 -0500
-categories: [.NET MAUI, Challenges]
+categories: [.NET MAUI, Maui Challenges]
 tags: [netmaui, xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, mauincommunitytoolkit, xamarincommunitytoolkit, materialdesign, border]
 image:
   path: 7_1_cover_publication.png

@@ -2,7 +2,7 @@
 title: Xamarin.Forms UI/UX Challenges - Micuna Food - Part3
 author: danielmonettelli
 date: 2021-05-11 15:00:00 -0500
-categories: [Xamarin.Forms, Challenges]
+categories: [Xamarin.Forms, Xamarin.Forms Challenges]
 tags: [xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, imagefromxamarinui, xamarincommunitytoolkit, xamarinessentials, visualstatemanager]
 image:
   path: 5_3_cover_publication.png
