@@ -6,6 +6,8 @@ categories: [Xamarin.Forms, Xamarin.Forms Challenges]
 tags: [xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, visualstatemanager, flexlayout, pancakeview]
 image:
   path: 5_1_cover_publication.png
+  width: 1200
+  height: 630
   alt: Xamarin.Forms UI/UX Challenges - Micuna Food - Part1
 ---
 
