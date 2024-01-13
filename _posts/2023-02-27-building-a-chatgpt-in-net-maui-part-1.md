@@ -189,7 +189,7 @@ public class OpenAIService : IOpenAIService
 
 The project is open source and you can see it by clicking on the following image. Don’t hesitate to take a look!
 
-[![8-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/img/images/8_x_github_repository.png)](https://github.com/danielmonettelli/dotnetmaui-chatgpt-oss){:target="_blank"}
+[![8-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/8_x_github_repository.png)](https://github.com/danielmonettelli/dotnetmaui-chatgpt-oss){:target="_blank"}
 
 ---
 

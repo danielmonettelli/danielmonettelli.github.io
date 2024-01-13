@@ -80,7 +80,7 @@ During the migration from Mitawi to .NET MAUI, I took steps to ensure that I hav
 
 The project is open source and you can see it by clicking on the following image. Don't hesitate to take a look!
 
-[![7-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/img/images/7_x_github_repository.png)](https://github.com/danielmonettelli/netmaui-mitawi-app-challenge){:target="_blank"}
+[![7-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/7_x_github_repository.png)](https://github.com/danielmonettelli/netmaui-mitawi-app-challenge){:target="_blank"}
 
 ---
 

@@ -2,7 +2,7 @@
 title: .NET MAUI UI/UX Challenge - Planetanaka - Part 1
 author: danielmonettelli
 date: 2023-07-31 16:30:00 -0500
-categories: [.NET MAUI, Retos]
+categories: [.NET MAUI, Maui Challenges]
 tags: [netmaui, animations]
 image:
   path: 9_1_cover_publication.png
@@ -189,7 +189,7 @@ partial void OnSelectedPlanetChanging(Planet oldValue, Planet newValue)
 
 The project is open source and you can see it by clicking on the following image. Don't hesitate to take a look!
 
-[![8-x-github-repository](https://raw.githubusercontent.com/blogdedanielmonettelli/blogdedanielmonettelli.github.io/main/assets/img/images/9_x_github_repository.png)](https://github.com/danielmonettelli/netmaui-planetanaka-app-challenge){:target="_blank"}
+[![8-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/9_x_github_repository.png)](https://github.com/danielmonettelli/netmaui-planetanaka-app-challenge){:target="_blank"}
 
 ---
 

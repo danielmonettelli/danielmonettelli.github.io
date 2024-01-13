@@ -294,7 +294,7 @@ The video by Daniel Luberda shows the importance of adding the **CacheType prope
 
 ## The Result
 
-<video width="99%" controls="" autoplay="" name="media"><source src="https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/img/images/5_3_result.mp4" type="video/mp4"></video>
+<video width="99%" controls="" autoplay="" name="media"><source src="https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/5_3_result.mp4" type="video/mp4"></video>
 
 ---
 
@@ -302,7 +302,7 @@ The video by Daniel Luberda shows the importance of adding the **CacheType prope
 
 All the code is open source, you can see it by clicking the following image:
 
-[![5-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/img/images/5_x_github_repository.png)](https://github.com/danielmonettelli/XF_MicunaFood/tree/XF_MicunaFood_Part3){:target="_blank"}
+[![5-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/5_x_github_repository.png)](https://github.com/danielmonettelli/XF_MicunaFood/tree/XF_MicunaFood_Part3){:target="_blank"}
 
 ---
 

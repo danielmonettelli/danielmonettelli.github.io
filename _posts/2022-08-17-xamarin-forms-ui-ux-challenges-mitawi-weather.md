@@ -969,7 +969,7 @@ _HomeDetailPage in mode landscape_
 
 All the code is open source, you can see it by clicking the following image:
 
-[![6-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/img/images/6_x_github_repository.png)](https://github.com/danielmonettelli/Mitawi){:target="_blank"}
+[![6-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/6_x_github_repository.png)](https://github.com/danielmonettelli/Mitawi){:target="_blank"}
 
 ---
 
