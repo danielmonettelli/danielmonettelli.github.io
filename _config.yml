@@ -46,7 +46,7 @@ social:
 
 # Site Verification Settings
 webmaster_verifications:
-  google: # fill in your Google verification code
+  google: "TeYzsLRqfADe2XETO1Gjub3g15Z9PuU6x71gXaaU-wo" # fill in your Google verification code
   bing: # fill in your Bing verification code
   alexa: # fill in your Alexa verification code
   yandex: # fill in your Yandex verification code
@@ -69,7 +69,7 @@ analytics:
     id: # fill in your Matomo ID
     domain: # fill in your Matomo domain
   cloudflare:
-    id: # fill in your Cloudflare Web Analytics token
+    id: "a5c519103107448faf2a841d7cc9fb9d" # fill in your Cloudflare Web Analytics token
   fathom:
     id: # fill in your Fathom Site ID
 
@@ -119,15 +119,15 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: danielmonettelli/danielmonettelli.github.io       # <gh-username>/<repo>
-    repo_id: R_kgDOHrjLgg                                   # <gh-repo-id>
-    category: Q&A                                           # <category>
-    category_id: DIC_kwDOHrjLgs4CQTYJ                       # <gh-category-id>
-    mapping: title                                          # optional, default to 'pathname'
-    strict:                                                 # optional, default to '0'
-    input_position:                                         # optional, default to 'bottom'
-    lang: en                                                # optional, default to the value of `site.lang`
-    reactions_enabled:                                      # optional, default to the value of `1`
+    repo: danielmonettelli/danielmonettelli.github.io # <gh-username>/<repo>
+    repo_id: R_kgDOHrjLgg # <gh-repo-id>
+    category: Q&A # <category>
+    category_id: DIC_kwDOHrjLgs4CQTYJ # <gh-category-id>
+    mapping: title # optional, default to 'pathname'
+    strict: # optional, default to '0'
+    input_position: # optional, default to 'bottom'
+    lang: en # optional, default to the value of `site.lang`
+    reactions_enabled: # optional, default to the value of `1`
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
