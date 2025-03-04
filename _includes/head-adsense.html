@@ -1,0 +1,12 @@
+{% if site.adsense.enabled %}
+  {% include adsense.html %}
+  
+  {% if site.adsense.auto_ads %}
+  <script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "{{ site.google_adsense }}",
+          enable_page_level_ads: true
+     });
+  </script>
+  {% endif %}
+{% endif %}

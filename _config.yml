@@ -11,6 +11,15 @@ lang: en
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: America/Lima
 
+# Google AdSense configuration
+google_adsense: "ca-pub-7596549899792751" # Tu ID de cliente de Google AdSense
+adsense:
+  enabled: true # Activar/desactivar globalmente AdSense
+  auto_ads: true # Habilitar anuncios automáticos
+  # Configuración para mostrar anuncios en distintos lugares
+  show_in_posts: true # Mostrar anuncios en posts
+  show_in_pages: false # No mostrar en páginas estáticas
+
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 

@@ -1,0 +1,37 @@
+{% if site.adsense.enabled and page.ads != false %}
+  {% if include.location == 'top' %}
+    <div class="post-ad-top ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="{{ site.google_adsense }}"
+           data-ad-format="horizontal"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  {% elsif include.location == 'bottom' %}
+    <div class="post-ad-bottom ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="{{ site.google_adsense }}"
+           data-ad-format="horizontal"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  {% elsif include.location == 'inline' %}
+    <div class="post-ad-inline ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="{{ site.google_adsense }}"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      <div class="ad-separator"></div>
+    </div>
+  {% endif %}
+{% endif %}

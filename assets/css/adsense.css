@@ -1,0 +1,23 @@
+/* Estilos para los contenedores de anuncios */
+.ad-container {
+  text-align: center;
+  margin: 2rem auto;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* Asegurarse de que los anuncios son responsivos */
+.ad-container ins.adsbygoogle {
+  margin: 0 auto;
+}
+
+/* Separador para anuncios en artículos */
+.ad-separator {
+  margin: 2rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Anuncios en la barra lateral */
+.ad-sidebar {
+  margin-bottom: 2rem;
+}
