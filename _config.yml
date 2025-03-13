@@ -107,7 +107,7 @@ theme_mode: # [light | dark]
 cdn: "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "Daniel_Monettelli.jpg"
+avatar: "Daniel_Monettelli.png"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
