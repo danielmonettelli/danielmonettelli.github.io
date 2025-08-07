@@ -1,5 +1,17 @@
-<!-- Inyección de Google AdSense en el head -->
+<!-- Google AdSense injection in head -->
 {% include head-adsense.html %}
 
-<!-- Estilos para anuncios -->
-<link rel="stylesheet" href="{{ '/assets/css/adsense.css' | relative_url }}">
+<!-- Configuration for AMP Auto Ads -->
+{% if site.adsense.enabled and site.adsense.amp_enabled %}
+<script>
+  window.adsenseConfig = {
+    enabled: {{ site.adsense.enabled }},
+    ampEnabled: {{ site.adsense.amp_enabled }},
+    clientId: "{{ site.google_adsense }}"
+  };
+</script>
+<script defer src="{{ '/assets/js/amp-auto-ads.js' | relative_url }}"></script>
+{% endif %}
+
+<!-- Styles for ads -->
+<link rel="stylesheet" href="{{ '/assets/css/adsense.css' | relative_url }}" />

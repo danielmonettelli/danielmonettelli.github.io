@@ -1,4 +1,4 @@
-/* Estilos para los contenedores de anuncios */
+/* Styles for ad containers */
 .ad-container {
   text-align: center;
   margin: 2rem auto;
@@ -6,18 +6,31 @@
   max-width: 100%;
 }
 
-/* Asegurarse de que los anuncios son responsivos */
+/* Ensure ads are responsive */
 .ad-container ins.adsbygoogle {
   margin: 0 auto;
 }
 
-/* Separador para anuncios en artículos */
+/* Separator for ads in articles */
 .ad-separator {
   margin: 2rem 0;
   border-bottom: 1px solid #f0f0f0;
 }
 
-/* Anuncios en la barra lateral */
+/* Sidebar ads */
 .ad-sidebar {
   margin-bottom: 2rem;
+}
+
+/* Specific styles for AMP Auto Ads */
+amp-auto-ads {
+  display: block;
+  width: 100%;
+}
+
+/* Hide AMP elements if not compatible */
+@media (max-width: 480px) {
+  amp-auto-ads {
+    max-width: 100%;
+  }
 }
