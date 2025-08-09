@@ -1,13 +1,5 @@
-{% if site.adsense.enabled %} {% include adsense.html %}
-
-<!-- AMP Auto Ads Script - Step 1 -->
-{% if site.adsense.amp_enabled %}
-<script
-  async
-  custom-element="amp-auto-ads"
-  src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
-></script>
-{% endif %} {% if site.adsense.auto_ads %}
+{% if site.adsense.enabled %} {% include adsense.html %} {% if
+site.adsense.auto_ads %}
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "{{ site.google_adsense }}",
