@@ -1,17 +1,9 @@
-<!-- Google AdSense injection in head -->
-{% include head-adsense.html %}
+<!-- Google AdSense Auto Ads -->
+<script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751"
+  crossorigin="anonymous"
+></script>
 
-<!-- Configuration for AMP Auto Ads -->
-{% if site.adsense.enabled and site.adsense.amp_enabled %}
-<script>
-  window.adsenseConfig = {
-    enabled: {{ site.adsense.enabled }},
-    ampEnabled: {{ site.adsense.amp_enabled }},
-    clientId: "{{ site.google_adsense }}"
-  };
-</script>
-<script defer src="{{ '/assets/js/amp-auto-ads.js' | relative_url }}"></script>
-{% endif %}
-
-<!-- Styles for ads -->
-<link rel="stylesheet" href="{{ '/assets/css/adsense.css' | relative_url }}" />
+<!-- Backup AdSense loader -->
+<script defer src="{{ '/assets/js/adsense-auto.js' | relative_url }}"></script>
