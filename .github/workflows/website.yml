@@ -52,8 +52,35 @@ jobs:
 
       - name: Inject AdSense into all HTML files
         run: |
-          find _site -name "*.html" -type f -exec sed -i 's|</head>|<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751" crossorigin="anonymous"></script>\n</head>|g' {} \;
-          echo "AdSense script injected into all HTML files"
+          python3 << 'EOF'
+          import os
+          import glob
+
+          adsense_script = '''<!-- Google AdSense Auto Ads -->
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751" crossorigin="anonymous"></script>
+          '''
+
+          html_files = glob.glob('_site/**/*.html', recursive=True)
+
+          for file_path in html_files:
+              try:
+                  with open(file_path, 'r', encoding='utf-8') as f:
+                      content = f.read()
+                  
+                  if '</head>' in content and 'adsbygoogle.js' not in content:
+                      content = content.replace('</head>', adsense_script + '\n</head>')
+                      
+                      with open(file_path, 'w', encoding='utf-8') as f:
+                          f.write(content)
+                      
+                      print(f"AdSense injected into: {file_path}")
+                  else:
+                      print(f"Skipped (no </head> or already has AdSense): {file_path}")
+              except Exception as e:
+                  print(f"Error processing {file_path}: {e}")
+
+          print("AdSense injection completed")
+          EOF
 
       - name: Test site
         run: |
