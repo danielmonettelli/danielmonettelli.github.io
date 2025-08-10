@@ -462,4 +462,4 @@ The animations also have their story. They're small details, but they help every
 
 If any of this catches your attention or you have any questions, write to me. It's always good to know what others think.
 
-Until next time!.
+Until next time.
