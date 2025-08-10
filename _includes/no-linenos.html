@@ -1,0 +1,12 @@
+{% comment %}
+  This include removes line number indicators from highlighted code blocks.
+  Used to clean up code content for display in post previews.
+{% endcomment %}
+
+{%- capture content -%}
+  {%- if include.content -%}
+    {{- include.content -}}
+  {%- endif -%}
+{%- endcapture -%}
+
+{{- content | remove: '<div class="nolineno"' | remove: '</div>' -}}
