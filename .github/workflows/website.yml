@@ -99,8 +99,9 @@ jobs:
                   print(f"❌ Error processing {file_path}: {e}")
 
           print("🎯 ADSENSE INJECTION COMPLETED!")
-          EOF      # - name: Test site
-      #   run: |
+          EOF
+
+      # - name: Test site
       #     bundle exec htmlproofer _site \
       #       \-\-disable-external \
       #       \-\-ignore-status-codes "999,403,404,500,502" \
