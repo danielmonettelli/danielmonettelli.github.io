@@ -1,0 +1,10 @@
+{%- comment -%} Custom head injection for Chirpy theme. This file is included by
+the theme inside
+<head>
+  on every page. We reuse our existing head-adsense include to load AdSense and
+  enable Auto Ads. {%- endcomment -%} {% include head-adsense.html %}
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/css/adsense.css' | relative_url }}"
+  />
+</head>
