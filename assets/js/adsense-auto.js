@@ -1,14 +1,35 @@
-// Google AdSense Auto Ads Injection
+// Google AdSense Auto Ads - FORZADO
 (function () {
-  // Create and inject AdSense script
-  var adsenseScript = document.createElement('script');
+  console.log('🔥 INICIANDO CARGA DE ADSENSE...');
+
+  // Verificar si ya existe el script
+  const existingScript = document.querySelector(
+    'script[src*="adsbygoogle.js"]'
+  );
+  if (existingScript) {
+    console.log('✅ AdSense ya está cargado');
+    return;
+  }
+
+  // Crear y añadir el script de AdSense
+  const adsenseScript = document.createElement('script');
   adsenseScript.async = true;
   adsenseScript.src =
     'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751';
   adsenseScript.crossOrigin = 'anonymous';
 
-  // Insert script into head
+  // Añadir al head
   document.head.appendChild(adsenseScript);
 
-  console.log('Google AdSense Auto Ads script loaded');
+  console.log('🎯 SCRIPT ADSENSE INYECTADO EXITOSAMENTE!');
+  console.log('💰 Client ID: ca-pub-7596549899792751');
+
+  // Verificar que se cargó
+  adsenseScript.onload = function () {
+    console.log('✅ ADSENSE CARGADO Y LISTO PARA MOSTRAR ANUNCIOS!');
+  };
+
+  adsenseScript.onerror = function () {
+    console.error('❌ ERROR CARGANDO ADSENSE');
+  };
 })();

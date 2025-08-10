@@ -50,14 +50,19 @@ jobs:
         env:
           JEKYLL_ENV: "production"
 
-      - name: Inject AdSense into all HTML files
+      - name: Inject AdSense into all HTML files (AGGRESSIVE)
         run: |
           python3 << 'EOF'
           import os
           import glob
 
-          adsense_script = '''<!-- Google AdSense Auto Ads -->
+          adsense_script = '''
+          <!-- Google AdSense Auto Ads - INJECTED BY GITHUB ACTIONS -->
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751" crossorigin="anonymous"></script>
+          <script>
+            console.log('💰 ADSENSE LOADED BY GITHUB ACTIONS!');
+            console.log('🎯 Client: ca-pub-7596549899792751');
+          </script>
           '''
 
           html_files = glob.glob('_site/**/*.html', recursive=True)
@@ -67,22 +72,34 @@ jobs:
                   with open(file_path, 'r', encoding='utf-8') as f:
                       content = f.read()
                   
-                  if '</head>' in content and 'adsbygoogle.js' not in content:
+                  # Inyectar TANTO en head como después del body
+                  modified = False
+                  
+                  if '</head>' in content and 'ca-pub-7596549899792751' not in content:
                       content = content.replace('</head>', adsense_script + '\n</head>')
+                      modified = True
                       
+                  if '<body' in content and 'ca-pub-7596549899792751' not in content:
+                      # Encontrar donde termina la etiqueta <body> y añadir el script ahí también
+                      body_start = content.find('<body')
+                      if body_start != -1:
+                          body_end = content.find('>', body_start)
+                          if body_end != -1:
+                              content = content[:body_end+1] + '\n' + adsense_script + content[body_end+1:]
+                              modified = True
+                  
+                  if modified:
                       with open(file_path, 'w', encoding='utf-8') as f:
                           f.write(content)
                       
-                      print(f"AdSense injected into: {file_path}")
+                      print(f"✅ AdSense injected into: {file_path}")
                   else:
-                      print(f"Skipped (no </head> or already has AdSense): {file_path}")
+                      print(f"⚠️  Skipped: {file_path}")
               except Exception as e:
-                  print(f"Error processing {file_path}: {e}")
+                  print(f"❌ Error processing {file_path}: {e}")
 
-          print("AdSense injection completed")
-          EOF
-
-      # - name: Test site
+          print("🎯 ADSENSE INJECTION COMPLETED!")
+          EOF      # - name: Test site
       #   run: |
       #     bundle exec htmlproofer _site \
       #       \-\-disable-external \

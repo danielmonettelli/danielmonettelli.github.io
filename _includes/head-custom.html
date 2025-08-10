@@ -1,6 +1,22 @@
-<!-- Google AdSense Auto Ads - Backup method -->
+<!-- Google AdSense Auto Ads - MÉTODO DIRECTO -->
 <script
   async
   src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751"
   crossorigin="anonymous"
 ></script>
+
+<!-- Backup JavaScript que fuerza la carga de AdSense -->
+<script>
+  console.log("🔥 CARGANDO ADSENSE DESDE HEAD-CUSTOM...");
+
+  // Verificar si ya existe el script
+  if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+    const adsenseScript = document.createElement("script");
+    adsenseScript.async = true;
+    adsenseScript.src =
+      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751";
+    adsenseScript.crossOrigin = "anonymous";
+    document.head.appendChild(adsenseScript);
+    console.log("💰 ADSENSE INYECTADO FORZADO!");
+  }
+</script>
