@@ -50,55 +50,75 @@ jobs:
         env:
           JEKYLL_ENV: "production"
 
-      - name: Inject AdSense into all HTML files (AGGRESSIVE)
+      - name: Inject Optimized AdSense into all HTML files
         run: |
           python3 << 'EOF'
           import os
           import glob
+          import re
 
-          adsense_script = '''
-          <!-- Google AdSense Auto Ads - INJECTED BY GITHUB ACTIONS -->
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751" crossorigin="anonymous"></script>
+          # Script AdSense optimizado para performance
+          optimized_adsense = '''
+          <!-- AdSense Performance Optimized - GitHub Actions -->
           <script>
-            console.log('💰 ADSENSE LOADED BY GITHUB ACTIONS!');
-            console.log('🎯 Client: ca-pub-7596549899792751');
+          (function() {
+            if (window.adsenseOptimized) return;
+            window.adsenseOptimized = true;
+            
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751';
+            script.crossOrigin = 'anonymous';
+            
+            script.onload = function() {
+              try {
+                (adsbygoogle = window.adsbygoogle || []).push({
+                  google_ad_client: "ca-pub-7596549899792751",
+                  enable_page_level_ads: true,
+                  overlays: {bottom: true}
+                });
+                console.log('💰 Production AdSense loaded!');
+              } catch(e) {}
+            };
+            
+            document.head.appendChild(script);
+          })();
           </script>
           '''
 
+          # Preload optimizations para el head
+          preload_optimization = '''
+          <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" as="script">
+          <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+          <link rel="dns-prefetch" href="//googleads.g.doubleclick.net">
+          '''
+
           html_files = glob.glob('_site/**/*.html', recursive=True)
+          processed_count = 0
 
           for file_path in html_files:
               try:
                   with open(file_path, 'r', encoding='utf-8') as f:
                       content = f.read()
                   
-                  # Inyectar TANTO en head como después del body
                   modified = False
                   
-                  if '</head>' in content and 'ca-pub-7596549899792751' not in content:
-                      content = content.replace('</head>', adsense_script + '\n</head>')
-                      modified = True
-                      
-                  if '<body' in content and 'ca-pub-7596549899792751' not in content:
-                      # Encontrar donde termina la etiqueta <body> y añadir el script ahí también
-                      body_start = content.find('<body')
-                      if body_start != -1:
-                          body_end = content.find('>', body_start)
-                          if body_end != -1:
-                              content = content[:body_end+1] + '\n' + adsense_script + content[body_end+1:]
-                              modified = True
+                  # Solo inyectar si no existe ya ca-pub-7596549899792751
+                  if 'ca-pub-7596549899792751' not in content:
+                      # Inyectar en head
+                      if '</head>' in content:
+                          content = content.replace('</head>', preload_optimization + optimized_adsense + '\n</head>')
+                          modified = True
+                          processed_count += 1
                   
                   if modified:
                       with open(file_path, 'w', encoding='utf-8') as f:
                           f.write(content)
-                      
-                      print(f"✅ AdSense injected into: {file_path}")
-                  else:
-                      print(f"⚠️  Skipped: {file_path}")
               except Exception as e:
-                  print(f"❌ Error processing {file_path}: {e}")
+                  print(f"❌ Error: {file_path}: {e}")
 
-          print("🎯 ADSENSE INJECTION COMPLETED!")
+          print(f"✅ Processed {processed_count} HTML files with optimized AdSense")
+          print("🚀 Performance optimizations applied!")
           EOF
 
       # - name: Test site

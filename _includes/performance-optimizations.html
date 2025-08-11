@@ -1,0 +1,72 @@
+<!-- Performance Optimizations for AdSense -->
+<style>
+  /* Prevent layout shift while ads load */
+  .adsbygoogle {
+    min-height: 200px;
+    display: block;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .adsbygoogle:before {
+    content: "Loading advertisement...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #6c757d;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      sans-serif;
+  }
+
+  /* Hide placeholder when ad loads */
+  .adsbygoogle[data-adsbygoogle-status] {
+    background: none !important;
+    border: none !important;
+    min-height: auto !important;
+  }
+
+  .adsbygoogle[data-adsbygoogle-status]:before {
+    display: none !important;
+  }
+
+  /* Responsive ad container */
+  .ad-container {
+    margin: 20px auto;
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* Performance: Reduce repaints */
+  .adsbygoogle {
+    will-change: transform;
+    contain: layout style paint;
+  }
+</style>
+
+<!-- Critical resource hints for faster loading -->
+<link
+  rel="preconnect"
+  href="https://pagead2.googlesyndication.com"
+  crossorigin
+/>
+<link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
+<link rel="preconnect" href="https://www.google.com" crossorigin />
+
+<!-- Optimize Core Web Vitals -->
+<script>
+  window.addEventListener("load", function () {
+    // Optimize for Largest Contentful Paint (LCP)
+    const ads = document.querySelectorAll(".adsbygoogle");
+    ads.forEach((ad) => {
+      // Ensure ads don't block LCP
+      ad.style.contentVisibility = "auto";
+      ad.style.containIntrinsicSize = "300px 250px";
+    });
+  });
+</script>

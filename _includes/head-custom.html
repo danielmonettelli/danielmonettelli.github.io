@@ -1,22 +1,57 @@
-<!-- Google AdSense Auto Ads - MÉTODO DIRECTO -->
-<script
-  async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751"
-  crossorigin="anonymous"
-></script>
+<!-- Performance Optimizations -->
+{% include performance-optimizations.html %}
 
-<!-- Backup JavaScript que fuerza la carga de AdSense -->
+<!-- Google AdSense Auto Ads - OPTIMIZADO PARA PERFORMANCE -->
 <script>
-  console.log("🔥 CARGANDO ADSENSE DESDE HEAD-CUSTOM...");
+  (function () {
+    "use strict";
 
-  // Verificar si ya existe el script
-  if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
-    const adsenseScript = document.createElement("script");
-    adsenseScript.async = true;
-    adsenseScript.src =
-      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751";
-    adsenseScript.crossOrigin = "anonymous";
-    document.head.appendChild(adsenseScript);
-    console.log("💰 ADSENSE INYECTADO FORZADO!");
-  }
+    // Verificar si AdSense ya está cargado para evitar duplicados
+    if (
+      window.adsbygoogle ||
+      document.querySelector('script[src*="adsbygoogle.js"]')
+    ) {
+      console.log("✅ AdSense ya está disponible");
+      return;
+    }
+
+    // Función optimizada para cargar AdSense
+    function loadAdSense() {
+      const script = document.createElement("script");
+      script.async = true;
+      script.src =
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751";
+      script.crossOrigin = "anonymous";
+
+      // Optimización: preload y prefetch para mejor performance
+      script.onload = function () {
+        console.log("💰 AdSense loaded successfully!");
+        // Inicializar auto ads inmediatamente
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7596549899792751",
+            enable_page_level_ads: true,
+            overlays: { bottom: true },
+          });
+        } catch (e) {
+          console.log("AdSense auto-init attempted");
+        }
+      };
+
+      script.onerror = function () {
+        console.warn("⚠️ AdSense failed to load, retrying...");
+        // Retry después de 3 segundos
+        setTimeout(loadAdSense, 3000);
+      };
+
+      document.head.appendChild(script);
+    }
+
+    // Cargar AdSense cuando el DOM esté listo
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", loadAdSense);
+    } else {
+      loadAdSense();
+    }
+  })();
 </script>
