@@ -687,8 +687,6 @@ body {
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 768px) { }
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
