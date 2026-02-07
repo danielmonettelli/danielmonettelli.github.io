@@ -31,6 +31,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="author" content="Daniel Monettelli" />
     <link rel="canonical" href={canonicalURL} />
 
+    <!-- Google AdSense domain verification (no ads displayed on portfolio) -->
+    <meta name="google-adsense-account" content="ca-pub-7596549899792751" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
