@@ -1,0 +1,294 @@
+---
+/**
+ * Skills Section — MUI brandingTheme.ts
+ * Interactive categorized tech stack with animated progress indicators.
+ */
+
+interface Skill {
+  name: string;
+  level: number; // 0-100
+  tag: string; // Avanzado, Intermedio, etc.
+}
+
+interface SkillCategory {
+  id: string;
+  label: string;
+  icon: string;
+  color: string;
+  skills: Skill[];
+}
+
+const categories: SkillCategory[] = [
+  {
+    id: "mobile",
+    label: "Móvil",
+    icon: "mobile",
+    color: "brand",
+    skills: [
+      { name: ".NET MAUI", level: 95, tag: "Avanzado" },
+      { name: "Xamarin.Forms", level: 90, tag: "Avanzado" },
+      { name: "Android Nativo (Kotlin/XML)", level: 60, tag: "Intermedio" },
+    ],
+  },
+  {
+    id: "backend",
+    label: "Backend",
+    icon: "backend",
+    color: "violet",
+    skills: [
+      { name: "ASP.NET Core Web API", level: 85, tag: "Avanzado" },
+      { name: "Java Spring Boot", level: 55, tag: "Básico-Intermedio" },
+    ],
+  },
+  {
+    id: "frontend",
+    label: "Frontend",
+    icon: "frontend",
+    color: "accent",
+    skills: [
+      { name: "Angular", level: 55, tag: "Básico-Intermedio" },
+      { name: "React", level: 55, tag: "Básico-Intermedio" },
+      { name: "ASP.NET Core MVC (Razor)", level: 70, tag: "Intermedio" },
+    ],
+  },
+  {
+    id: "databases",
+    label: "Bases de Datos",
+    icon: "databases",
+    color: "brand",
+    skills: [
+      { name: "SQL Server", level: 80, tag: "Avanzado" },
+      { name: "MySQL", level: 75, tag: "Intermedio" },
+      { name: "MongoDB", level: 60, tag: "Intermedio" },
+      { name: "SQLite", level: 70, tag: "Intermedio" },
+    ],
+  },
+  {
+    id: "architecture",
+    label: "Ingeniería / Arq.",
+    icon: "architecture",
+    color: "violet",
+    skills: [
+      { name: "Principios SOLID", level: 85, tag: "Avanzado" },
+      { name: "Clean Architecture", level: 85, tag: "Avanzado" },
+      { name: "MVVM", level: 90, tag: "Avanzado" },
+      { name: "Metodología RUP", level: 70, tag: "Intermedio" },
+    ],
+  },
+  {
+    id: "cloud",
+    label: "Cloud / DevOps",
+    icon: "cloud",
+    color: "accent",
+    skills: [
+      { name: "Microsoft Azure", level: 65, tag: "Intermedio" },
+      { name: "GitHub Actions", level: 75, tag: "Intermedio" },
+      { name: "Git", level: 85, tag: "Avanzado" },
+    ],
+  },
+  {
+    id: "tools",
+    label: "Herramientas",
+    icon: "tools",
+    color: "brand",
+    skills: [
+      { name: "Figma", level: 70, tag: "Intermedio" },
+      { name: "IBM Rhapsody", level: 50, tag: "Básico" },
+    ],
+  },
+];
+
+function getBarColor(color: string): string {
+  const colors: Record<string, string> = {
+    brand: "from-primary-500 to-primary-300",
+    violet: "from-primary-600 to-primary-400",
+    accent: "from-primary-400 to-primary-200",
+  };
+  return colors[color] || colors.brand;
+}
+
+function getTagColor(tag: string): string {
+  if (tag.includes("Avanzado")) return "text-emerald-400 bg-emerald-400/10";
+  if (tag.includes("Intermedio")) return "text-amber-400 bg-amber-400/10";
+  return "text-white/50 bg-white/5";
+}
+
+const iconSvgs: Record<string, string> = {
+  mobile: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
+  backend: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>',
+  frontend: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+  databases: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
+  architecture: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
+  cloud: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>',
+  tools: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+};
+---
+
+<section id="skills" class="relative py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal-up">
+      <p class="mui-overline">Habilidades Técnicas</p>
+      <h2 class="mui-h2">
+        Mi <span class="gradient-text">arsenal tecnológico</span>
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-base" style="color: var(--mui-text-muted);">
+        Herramientas y tecnologías que domino para construir soluciones
+        integrales, desde apps móviles hasta arquitecturas backend robustas.
+      </p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 mb-12 reveal-up" id="skill-tabs">
+      {categories.map((cat, i) => (
+        <button
+          data-tab={cat.id}
+          class:list={[
+            "skill-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer",
+            i === 0
+              ? "glass border-primary-500/30"
+              : "",
+          ]}
+        >
+          <span class="mr-1.5" set:html={iconSvgs[cat.icon]} />
+          {cat.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Skills Content -->
+    <div id="skills-content" class="max-w-3xl mx-auto">
+      {categories.map((cat, catIndex) => (
+        <div
+          data-panel={cat.id}
+          class:list={["skill-panel space-y-5", catIndex !== 0 && "hidden"]}
+        >
+          {cat.skills.map((skill) => (
+            <div class="group">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <span class="text-sm font-medium transition-colors" style="color: var(--mui-text-secondary);">
+                    {skill.name}
+                  </span>
+                  <span
+                    class:list={[
+                      "px-2 py-0.5 rounded-md text-[10px] font-semibold",
+                      getTagColor(skill.tag),
+                    ]}
+                  >
+                    {skill.tag}
+                  </span>
+                </div>
+                <span class="text-xs font-mono" style="color: var(--mui-text-disabled);">{skill.level}%</span>
+              </div>
+              <div class="h-2 rounded-full overflow-hidden" style="background: var(--mui-primary-bg);">
+                <div
+                  class:list={[
+                    "skill-bar-fill h-full rounded-full bg-linear-to-r",
+                    getBarColor(cat.color),
+                  ]}
+                  data-width={`${skill.level}%`}
+                  style="width: 0%;"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+
+    <!-- Quick Overview Grid -->
+    <div class="mt-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 stagger-children">
+      {[
+        ".NET MAUI", "ASP.NET Core", "Xamarin.Forms", "Kotlin",
+        "Angular", "React", "SQL Server", "MongoDB",
+        "Azure", "Git", "SOLID", "Clean Architecture",
+        "MVVM", "Spring Boot", "Figma", "GitHub Actions",
+      ].map((tech) => (
+        <div class="glass-subtle rounded-xl px-4 py-3 text-center text-xs sm:text-sm transition-all duration-300 cursor-default" style="color: var(--mui-text-muted);">
+          {tech}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tabs = document.querySelectorAll<HTMLElement>(".skill-tab");
+  const panels = document.querySelectorAll<HTMLElement>(".skill-panel");
+  let initialAnimationDone = false;
+
+  /**
+   * Animate skill bars inside a panel.
+   * Immediately snaps to 0% (no transition), then GSAP fills to target.
+   */
+  function animateBarsInPanel(panel: HTMLElement): void {
+    const bars = panel.querySelectorAll<HTMLElement>(".skill-bar-fill");
+
+    // Kill any in-flight tweens and snap to 0 instantly
+    bars.forEach((bar) => {
+      gsap.killTweensOf(bar);
+    });
+    gsap.set(bars, { width: "0%" });
+
+    // Single staggered tween — natural fill speed (1.2s)
+    gsap.to(bars, {
+      width: (i, el) => (el as HTMLElement).dataset.width || "0%",
+      duration: 1.2,
+      ease: "power2.out",
+      stagger: 0.1,
+      delay: 0.15,
+    });
+  }
+
+  // ── Tab switching ──
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const targetId = tab.dataset.tab;
+
+      // Update active tab styling
+      tabs.forEach((t) => t.classList.remove("glass", "border-primary-500/30"));
+      tab.classList.add("glass", "border-primary-500/30");
+
+      // Switch panels
+      panels.forEach((panel) => {
+        if (panel.dataset.panel === targetId) {
+          panel.classList.remove("hidden");
+
+          // Fade-in panel children
+          gsap.fromTo(
+            panel.children,
+            { y: 15, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.4, stagger: 0.06, ease: "power3.out" }
+          );
+
+          // Fill bars from 0
+          animateBarsInPanel(panel);
+        } else {
+          panel.classList.add("hidden");
+        }
+      });
+    });
+  });
+
+  // ── Initial scroll-triggered animation (fires once) ──
+  ScrollTrigger.create({
+    trigger: "#skills-content",
+    start: "top 80%",
+    once: true,
+    onEnter: () => {
+      if (initialAnimationDone) return;
+      initialAnimationDone = true;
+      const visiblePanel = document.querySelector<HTMLElement>(
+        ".skill-panel:not(.hidden)"
+      );
+      if (visiblePanel) {
+        animateBarsInPanel(visiblePanel);
+      }
+    },
+  });
+</script>

@@ -1,0 +1,55 @@
+---
+/**
+ * Footer Component — MUI brandingTheme.ts
+ * Clean, minimal footer with copyright, back-to-top, and divider border.
+ */
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative py-10" style="border-top: 1px solid var(--mui-border);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <!-- Left: Brand -->
+      <div class="flex items-center gap-3">
+        <div
+          class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xs font-display"
+          style="background: var(--mui-primary);"
+        >
+          DM
+        </div>
+        <div>
+          <p class="text-[0.875rem] font-semibold" style="color: var(--mui-text-secondary);">Daniel Monettelli</p>
+          <p class="text-[0.625rem]" style="color: var(--mui-text-disabled);">
+            Full Stack Developer | .NET & Mobile Specialist
+          </p>
+        </div>
+      </div>
+
+      <!-- Center: Copyright -->
+      <p class="text-[0.75rem] text-center" style="color: var(--mui-text-disabled);">
+        © {currentYear} Daniel Monettelli. Todos los derechos reservados.
+      </p>
+
+      <!-- Right: Back to top -->
+      <a
+        href="#hero"
+        class="magnetic-btn mui-btn-secondary mui-btn-sm"
+        aria-label="Volver arriba"
+      >
+        <svg
+          class="w-3.5 h-3.5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+        Inicio
+      </a>
+    </div>
+  </div>
+</footer>

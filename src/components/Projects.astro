@@ -1,0 +1,289 @@
+---
+/**
+ * Projects Section — MUI brandingTheme.ts
+ * Card grid with 3D tilt, tech tags, and links.
+ */
+
+interface Project {
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  tags: string[];
+  links: { label: string; url: string; icon: string }[];
+  featured: boolean;
+  status: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "MeowApp",
+    subtitle: "Aplicación Open Source — .NET MAUI",
+    description:
+      "Aplicación móvil publicada en Google Play Store que permite explorar razas de gatos mediante el consumo de APIs externas. Proyecto open source que fomenta buenas prácticas en la comunidad técnica.",
+    image: "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/posts/meow-dotnet-maui-the-art-of-connecting-with-thecatapi-part-1/cover.png",
+    tags: [".NET MAUI", "MVVM", "REST API", "SQLite", "Clean Architecture"],
+    links: [
+      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.danielmonettelli.meow", icon: "play" },
+      { label: "GitHub", url: "https://github.com/danielmonettelli/Meow", icon: "github" },
+    ],
+    featured: true,
+    status: "Publicado",
+  },
+  {
+    title: "Plataforma SAIP y Apelaciones TTAIP",
+    subtitle: "Proyecto de Innovación Académica",
+    description:
+      "Solución integral para modernizar el derecho al Acceso a la Información Pública, digitalizando el ciclo completo de solicitudes y apelaciones. Backend en Spring Boot, Frontend en Angular y módulo móvil en Android Nativo.",
+    image: "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
+    tags: ["Spring Boot", "Angular", "Kotlin", "Android", "SQL Server"],
+    links: [],
+    featured: true,
+    status: "En Desarrollo",
+  },
+  {
+    title: "Aloha Patitas",
+    subtitle: "Plataforma Turística Pet-Friendly",
+    description:
+      "Solución pionera para resolver la dificultad de encontrar servicios turísticos que acepten mascotas. Backend en ASP.NET Core, interfaz web con MVC Razor Views y módulo móvil en .NET MAUI.",
+    image: "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
+    tags: ["ASP.NET Core", "MVC Razor", ".NET MAUI", "MongoDB"],
+    links: [],
+    featured: false,
+    status: "En Desarrollo",
+  },
+  {
+    title: "MonettelliUIKIT",
+    subtitle: "Plantilla de Arquitectura — Clean UI",
+    description:
+      "Plantilla multiproyecto para iOS, Android y Windows basada en Clean UI Architecture, optimizando la mantenibilidad en Xamarin.Forms (ahora .NET MAUI).",
+    image: "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
+    tags: ["Xamarin.Forms", ".NET MAUI", "Clean Architecture", "MVVM"],
+    links: [
+      { label: "GitHub", url: "https://github.com/danielmonettelli/MonettelliUIKIT", icon: "github" },
+    ],
+    featured: false,
+    status: "Completado",
+  },
+  {
+    title: "MauiUX Guide",
+    subtitle: "Plataforma Educativa UI/UX — .NET MAUI",
+    description:
+      "Proyecto enfocado en el dominio de interfaces y experiencias de usuario de alto nivel dentro del ecosistema .NET MAUI.",
+    image: "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
+    tags: [".NET MAUI", "UI/UX", "Educación", "Community"],
+    links: [],
+    featured: false,
+    status: "En Desarrollo",
+  },
+];
+
+function getStatusColor(status: string): string {
+  if (status === "Publicado") return "text-emerald-400 bg-emerald-400/10";
+  if (status === "En Desarrollo") return "text-amber-400 bg-amber-400/10";
+  return "text-white/50 bg-white/5";
+}
+---
+
+<section id="projects" class="relative py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal-up">
+      <p class="mui-overline">Proyectos</p>
+      <h2 class="mui-h2">
+        Lo que he <span class="gradient-text">construido</span>
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-base" style="color: var(--mui-text-muted);">
+        Proyectos de ingeniería e innovación que reflejan mi compromiso
+        con el software ordenado, escalable y funcional.
+      </p>
+    </div>
+
+    <!-- Featured Projects -->
+    <div class="grid lg:grid-cols-2 gap-6 mb-8">
+      {projects
+        .filter((p) => p.featured)
+        .map((project) => (
+          <div class="tilt-card reveal-scale group">
+            <div class="tilt-card-inner mui-card rounded-3xl overflow-hidden transition-all duration-500">
+              {/* Image */}
+              <div class="relative h-48 sm:h-56 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="absolute inset-0" style="background: linear-gradient(to top, var(--mui-bg) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);" />
+                {/* Status badge */}
+                <div class="absolute top-4 right-4">
+                  <span
+                    class:list={[
+                      "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider",
+                      getStatusColor(project.status),
+                    ]}
+                  >
+                    {project.status}
+                  </span>
+                </div>
+                {/* Featured badge */}
+                <div class="absolute top-4 left-4">
+                  <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider" style="color: var(--mui-primary); background: var(--mui-primary-bg);">
+                    ⭐ Destacado
+                  </span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div class="p-6 sm:p-8">
+                <p class="text-xs uppercase tracking-wider mb-1" style="color: var(--mui-text-disabled);">
+                  {project.subtitle}
+                </p>
+                <h3 class="text-xl sm:text-2xl font-bold mb-3 transition-colors" style="color: var(--mui-text-primary);">
+                  {project.title}
+                </h3>
+                <p class="text-sm leading-relaxed mb-5" style="color: var(--mui-text-muted);">
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div class="flex flex-wrap gap-2 mb-5">
+                  {project.tags.map((tag) => (
+                    <span class="px-2.5 py-1 rounded-lg text-[10px] font-medium" style="color: var(--mui-primary); background: var(--mui-primary-bg); border: 1px solid var(--mui-border-subtle);">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Links */}
+                {project.links.length > 0 && (
+                  <div class="flex items-center gap-3">
+                    {project.links.map((link) => (
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mui-btn-secondary mui-btn-sm"
+                      >
+                        {link.icon === "github" ? (
+                          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                          </svg>
+                        ) : (
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        )}
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+    </div>
+
+    <!-- Other Projects Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
+      {projects
+        .filter((p) => !p.featured)
+        .map((project) => (
+          <div class="tilt-card group">
+            <div class="tilt-card-inner mui-paper rounded-2xl p-6 h-full transition-all duration-500 flex flex-col">
+              {/* Header */}
+              <div class="flex items-center justify-between mb-3">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: var(--mui-primary-bg);">
+                  <svg class="w-5 h-5" style="color: var(--mui-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                  </svg>
+                </div>
+                <span
+                  class:list={[
+                    "px-2.5 py-0.5 rounded-full text-[10px] font-semibold",
+                    getStatusColor(project.status),
+                  ]}
+                >
+                  {project.status}
+                </span>
+              </div>
+
+              <p class="text-[10px] uppercase tracking-wider mb-1" style="color: var(--mui-text-disabled);">
+                {project.subtitle}
+              </p>
+              <h3 class="text-lg font-bold mb-2 transition-colors" style="color: var(--mui-text-primary);">
+                {project.title}
+              </h3>
+              <p class="text-xs leading-relaxed mb-auto pb-4" style="color: var(--mui-text-muted);">
+                {project.description}
+              </p>
+
+              <div class="flex flex-wrap gap-1.5">
+                {project.tags.slice(0, 4).map((tag) => (
+                  <span class="px-2 py-0.5 rounded text-[9px] font-medium" style="color: var(--mui-text-disabled); background: var(--mui-bg-subtle);">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {project.links.length > 0 && (
+                <div class="flex items-center gap-2 mt-4 pt-4" style="border-top: 1px solid var(--mui-border-subtle);">
+                  {project.links.map((link) => (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-xs transition-colors"
+                      style="color: var(--mui-primary);"
+                    >
+                      {link.label} ↗
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import anime from "animejs";
+
+  // 3D Tilt effect on project cards
+  document.querySelectorAll<HTMLElement>(".tilt-card").forEach((card) => {
+    const inner = card.querySelector(".tilt-card-inner") as HTMLElement;
+    if (!inner) return;
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
+
+      anime({
+        targets: inner,
+        rotateX: rotateX,
+        rotateY: rotateY,
+        duration: 400,
+        easing: "easeOutQuad",
+      });
+    });
+
+    card.addEventListener("mouseleave", () => {
+      anime({
+        targets: inner,
+        rotateX: 0,
+        rotateY: 0,
+        duration: 600,
+        easing: "easeOutElastic(1, 0.6)",
+      });
+    });
+  });
+</script>

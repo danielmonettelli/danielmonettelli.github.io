@@ -1,0 +1,53 @@
+---
+/**
+ * Portfolio Homepage
+ * Main entry point — wires all sections together with global animation init.
+ */
+import Layout from "@layouts/Layout.astro";
+import Navbar from "@components/Navbar.astro";
+import Hero from "@components/Hero.astro";
+import About from "@components/About.astro";
+import Skills from "@components/Skills.astro";
+import Experience from "@components/Experience.astro";
+import Projects from "@components/Projects.astro";
+import BlogPreview from "@components/BlogPreview.astro";
+import Contact from "@components/Contact.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<Layout>
+  <Navbar />
+  <Hero />
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+  <About />
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+  <Skills />
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+  <Experience />
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+  <Projects />
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+  <BlogPreview />
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+  <Contact />
+
+  <Footer />
+</Layout>
+
+<script>
+  import { initAllAnimations } from "@scripts/animations";
+
+  // Initialize all GSAP scroll animations after DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    // Small delay to ensure all elements are painted
+    requestAnimationFrame(() => {
+      initAllAnimations();
+    });
+  });
+</script>

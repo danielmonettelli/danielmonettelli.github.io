@@ -1,0 +1,361 @@
+---
+/**
+ * Navbar Component — Exact MUI AppHeader.tsx style
+ * Sticky 60px header with backdrop-filter: blur(8px),
+ * border-bottom: 1px solid divider, transparent bg with blur.
+ * Source: docs/src/layouts/AppHeader.tsx
+ */
+const navLinks = [
+  { href: "#about", label: "Sobre Mí" },
+  { href: "#skills", label: "Habilidades" },
+  { href: "#experience", label: "Experiencia" },
+  { href: "#projects", label: "Proyectos" },
+  { href: "#contact", label: "Contacto" },
+];
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50"
+  style="height: 60px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); background-color: var(--mui-navbar-bg); border-bottom: 1px solid var(--mui-border); transition: background-color 0.3s ease;"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+    <div class="flex items-center justify-between h-full">
+      <!-- Logo — MUI LogoWithCopyMenu style -->
+      <a
+        href="#hero"
+        class="flex items-center gap-3 group"
+        aria-label="Ir al inicio"
+      >
+        <div
+          class="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-sm font-display transition-transform duration-200 group-hover:scale-105"
+          style="background: var(--mui-primary); color: #fff;"
+        >
+          DM
+        </div>
+        <span
+          class="hidden sm:block text-sm font-semibold transition-colors"
+          style="color: var(--mui-text-secondary);"
+        >
+          Daniel Monettelli
+        </span>
+      </a>
+
+      <!-- Desktop Nav — HeaderNavBar style (body2 typography) -->
+      <div class="hidden lg:flex items-center gap-1">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="nav-link relative px-3 py-1.5 text-[0.875rem] font-medium transition-colors duration-200 rounded-md"
+              style="color: var(--mui-text-muted);"
+            >
+              {link.label}
+              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full" style="background: var(--mui-primary); width: 60%; opacity: 0; transition: opacity 0.2s ease;" />
+            </a>
+          ))
+        }
+
+        <!-- Theme Toggle — ThemeModeToggle style (IconButton small) -->
+        <button
+          id="theme-toggle"
+          class="ml-2 w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer"
+          style="color: var(--mui-primary);"
+          aria-label="Cambiar tema"
+        >
+          <svg id="icon-sun" class="w-[20px] h-[20px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="icon-moon" class="w-[20px] h-[20px] hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- GitHub link — like AppHeader.tsx GitHub IconButton -->
+        <a
+          href="https://github.com/danielmonettelli"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-1 w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-200"
+          style="color: var(--mui-primary);"
+          aria-label="GitHub"
+        >
+          <svg class="w-[20px] h-[20px]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+
+        <a
+          href="/blog/"
+          class="ml-2 px-4 py-1.5 text-[0.8125rem] font-semibold rounded-lg transition-all duration-200"
+          style="background: var(--mui-primary); color: #fff;"
+        >
+          Blog
+        </a>
+      </div>
+
+      <!-- Mobile: Theme Toggle + Hamburger -->
+      <div class="lg:hidden flex items-center gap-1">
+        <button
+          id="theme-toggle-mobile"
+          class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-200 cursor-pointer"
+          style="color: var(--mui-primary);"
+          aria-label="Cambiar tema"
+        >
+          <svg class="icon-sun-m w-[20px] h-[20px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg class="icon-moon-m w-[20px] h-[20px] hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <button
+          id="menu-toggle"
+          class="relative w-9 h-9 flex items-center justify-center rounded-lg transition-colors"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <div class="w-5 flex flex-col gap-1.5" id="hamburger">
+            <span class="block h-0.5 rounded-full transition-all duration-300 origin-center" style="background: var(--mui-text-primary);"></span>
+            <span class="block h-0.5 rounded-full transition-all duration-300" style="background: var(--mui-text-primary);"></span>
+            <span class="block h-0.5 rounded-full transition-all duration-300 origin-center" style="background: var(--mui-text-primary);"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden overflow-hidden transition-all duration-500 max-h-0 opacity-0"
+    style="background-color: var(--mui-navbar-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--mui-border);"
+  >
+    <div class="px-4 pb-6 pt-2 mx-4">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-nav-link block px-4 py-3 text-[0.875rem] font-medium rounded-lg transition-all duration-200"
+            style="color: var(--mui-text-muted);"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <div class="mt-4 flex items-center gap-3 px-4">
+        <a
+          href="/blog/"
+          class="flex-1 text-center px-4 py-2.5 text-[0.8125rem] font-semibold rounded-lg transition-opacity"
+          style="background: var(--mui-primary); color: #fff;"
+        >
+          Blog
+        </a>
+        <a
+          href="https://github.com/danielmonettelli"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-10 h-10 rounded-lg flex items-center justify-center"
+          style="border: 1px solid var(--mui-border); color: var(--mui-text-muted);"
+          aria-label="GitHub"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // ── Theme Toggle ──
+  function updateThemeIcons(theme: string) {
+    const sunDesktop = document.getElementById("icon-sun");
+    const moonDesktop = document.getElementById("icon-moon");
+    const sunsMobile = document.querySelectorAll(".icon-sun-m");
+    const moonsMobile = document.querySelectorAll(".icon-moon-m");
+
+    if (theme === "dark") {
+      sunDesktop?.classList.remove("hidden");
+      moonDesktop?.classList.add("hidden");
+      sunsMobile.forEach(el => el.classList.remove("hidden"));
+      moonsMobile.forEach(el => el.classList.add("hidden"));
+    } else {
+      sunDesktop?.classList.add("hidden");
+      moonDesktop?.classList.remove("hidden");
+      sunsMobile.forEach(el => el.classList.add("hidden"));
+      moonsMobile.forEach(el => el.classList.remove("hidden"));
+    }
+  }
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute("data-theme") || "dark";
+    const next = current === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    updateThemeIcons(next);
+  }
+
+  // Initialize icons based on current theme
+  const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+  updateThemeIcons(currentTheme);
+
+  document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
+  document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
+
+  // ── Navbar — always visible with blur, no extra glass class needed ──
+  const navbar = document.getElementById("navbar");
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const hamburgerSpans = document.getElementById("hamburger")?.querySelectorAll("span");
+
+  let isMenuOpen = false;
+
+  // Mobile menu toggle
+  menuToggle?.addEventListener("click", () => {
+    isMenuOpen = !isMenuOpen;
+    menuToggle.setAttribute("aria-expanded", String(isMenuOpen));
+
+    if (mobileMenu) {
+      if (isMenuOpen) {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+        mobileMenu.style.opacity = "1";
+      } else {
+        mobileMenu.style.maxHeight = "0";
+        mobileMenu.style.opacity = "0";
+      }
+    }
+
+    if (hamburgerSpans) {
+      if (isMenuOpen) {
+        hamburgerSpans[0].style.transform = "rotate(45deg) translateY(7px)";
+        hamburgerSpans[1].style.opacity = "0";
+        hamburgerSpans[2].style.transform = "rotate(-45deg) translateY(-7px)";
+      } else {
+        hamburgerSpans[0].style.transform = "";
+        hamburgerSpans[1].style.opacity = "1";
+        hamburgerSpans[2].style.transform = "";
+      }
+    }
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      isMenuOpen = false;
+      if (mobileMenu) {
+        mobileMenu.style.maxHeight = "0";
+        mobileMenu.style.opacity = "0";
+      }
+      if (hamburgerSpans) {
+        hamburgerSpans[0].style.transform = "";
+        hamburgerSpans[1].style.opacity = "1";
+        hamburgerSpans[2].style.transform = "";
+      }
+    });
+  });
+
+  // ── Active section highlighting with click-navigation lock ──
+  const sections = document.querySelectorAll("section[id]");
+  const navLinksAll = document.querySelectorAll(".nav-link");
+  const mobileNavLinksAll = document.querySelectorAll(".mobile-nav-link");
+
+  let isClickNavigating = false;
+  let clickNavTimer: ReturnType<typeof setTimeout> | null = null;
+
+  // Set a specific link as active (both desktop & mobile)
+  function setActiveLink(targetHref: string) {
+    navLinksAll.forEach((link) => {
+      const el = link as HTMLElement;
+      const indicator = link.querySelector("span") as HTMLElement;
+      if (link.getAttribute("href") === targetHref) {
+        el.style.color = "var(--mui-primary)";
+        if (indicator) indicator.style.opacity = "1";
+      } else {
+        el.style.color = "var(--mui-text-muted)";
+        if (indicator) indicator.style.opacity = "0";
+      }
+    });
+
+    mobileNavLinksAll.forEach((link) => {
+      const el = link as HTMLElement;
+      if (link.getAttribute("href") === targetHref) {
+        el.style.color = "var(--mui-primary)";
+        el.style.background = "color-mix(in srgb, var(--mui-primary) 10%, transparent)";
+      } else {
+        el.style.color = "var(--mui-text-muted)";
+        el.style.background = "transparent";
+      }
+    });
+  }
+
+  // Scroll-based highlighting (only when NOT click-navigating)
+  function updateActiveLink() {
+    if (isClickNavigating) return;
+
+    const scrollY = window.scrollY + 100;
+    let currentId = "";
+
+    sections.forEach((section) => {
+      const sectionEl = section as HTMLElement;
+      const top = sectionEl.offsetTop;
+      const height = sectionEl.offsetHeight;
+      const id = sectionEl.getAttribute("id");
+
+      if (id && scrollY >= top && scrollY < top + height) {
+        currentId = id;
+      }
+    });
+
+    if (currentId) {
+      setActiveLink(`#${currentId}`);
+    }
+  }
+
+  // Lock scroll updates during click navigation
+  function lockForClickNav(targetHref: string) {
+    // Clear any previous timer
+    if (clickNavTimer) clearTimeout(clickNavTimer);
+
+    isClickNavigating = true;
+    // Immediately highlight only the target
+    setActiveLink(targetHref);
+
+    // Re-enable scroll-based highlighting after scroll settles
+    // Use scrollend event if supported, with timeout fallback
+    const unlock = () => {
+      if (clickNavTimer) clearTimeout(clickNavTimer);
+      isClickNavigating = false;
+      updateActiveLink(); // sync with final scroll position
+    };
+
+    // Fallback timeout (covers all browsers)
+    clickNavTimer = setTimeout(unlock, 800);
+
+    // Modern browsers: scrollend fires once smooth scroll is done
+    window.addEventListener("scrollend", () => {
+      unlock();
+    }, { once: true });
+  }
+
+  // Desktop nav link clicks
+  navLinksAll.forEach((link) => {
+    link.addEventListener("click", () => {
+      const href = link.getAttribute("href");
+      if (href) lockForClickNav(href);
+    });
+  });
+
+  // Mobile nav link clicks
+  mobileNavLinksAll.forEach((link) => {
+    link.addEventListener("click", () => {
+      const href = link.getAttribute("href");
+      if (href) lockForClickNav(href);
+    });
+  });
+
+  window.addEventListener("scroll", updateActiveLink, { passive: true });
+</script>

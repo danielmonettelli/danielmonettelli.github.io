@@ -1,19 +1,23 @@
-# Bundler cache
-.bundle
-vendor
-Gemfile.lock
+# Bundler cache (Jekyll blog)
+blog/.bundle
+blog/vendor
+blog/Gemfile.lock
 
-# Jekyll cache
-.jekyll-cache
-.jekyll-metadata
-_site
+# Jekyll cache & output
+blog/.jekyll-cache
+blog/.jekyll-metadata
+blog/_site
 
 # RubyGems
 *.gem
 
-# NPM dependencies
+# NPM / Astro dependencies & build
 node_modules
-package-lock.json
+dist
+.astro
+
+# Generated blog data (auto-created by scripts/generate-blog-data.mjs)
+src/data/blog-posts.json
 
 # IDE configurations
 .idea
@@ -23,7 +27,9 @@ package-lock.json
 !.vscode/tasks.json
 
 # Misc
-_sass/vendors
-assets/js/dist
+blog/_sass/vendors
+blog/assets/js/dist
 
 .github/copilot-instructions.md
+
+.github/skills/

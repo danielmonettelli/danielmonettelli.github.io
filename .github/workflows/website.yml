@@ -1,4 +1,5 @@
-name: "Daniel Monettelli Blog - CI"
+name: "Daniel Monettelli — Portfolio & Blog CI/CD"
+
 on:
   push:
     branches:
@@ -8,8 +9,9 @@ on:
       - .gitignore
       - README.md
       - LICENSE
+      - ".github/copilot-instructions.md"
+      - ".github/skills/**"
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
@@ -17,7 +19,6 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -31,112 +32,138 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # submodules: true
-          # If using the 'assets' git submodule from Chirpy Starter, uncomment above
-          # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
 
+      # ============================================
+      # 1. GENERATE BLOG DATA FOR ASTRO
+      #    Reads blog/_posts/ front matter → src/data/blog-posts.json
+      #    This auto-syncs new blog posts into the portfolio BlogPreview.
+      # ============================================
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Astro dependencies
+        run: npm ci
+
+      - name: Generate blog post data for portfolio
+        run: node scripts/generate-blog-data.mjs
+
+      # ============================================
+      # 2. BUILD ASTRO PORTFOLIO (root /)
+      # ============================================
+      - name: Build Astro portfolio
+        run: npm run build
+
+      # ============================================
+      # 3. BUILD JEKYLL BLOG (subfolder /blog/)
+      # ============================================
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: "3.3"
           bundler-cache: true
+          working-directory: blog
 
-      - name: Build site
-        run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
+      - name: Build Jekyll blog
+        working-directory: blog
+        run: bundle exec jekyll build -d "_site"
         env:
           JEKYLL_ENV: "production"
 
-      - name: Inject Optimized AdSense into all HTML files
+      # ============================================
+      # 4. MERGE OUTPUTS
+      #    Astro dist/   → deploy/       (portfolio at /)
+      #    Jekyll _site/  → deploy/blog/  (blog at /blog/)
+      # ============================================
+      - name: Merge outputs into final deploy directory
+        run: |
+          DEPLOY_DIR="deploy"
+          mkdir -p "$DEPLOY_DIR"
+
+          # Portfolio (Astro)
+          cp -rf dist/* "$DEPLOY_DIR/"
+          echo "✅ Astro portfolio → deploy/"
+
+          # Blog (Jekyll)
+          mkdir -p "$DEPLOY_DIR/blog"
+          cp -rf blog/_site/* "$DEPLOY_DIR/blog/"
+          echo "✅ Jekyll blog → deploy/blog/"
+
+          # Prevent GitHub Pages from running Jekyll on deploy
+          touch "$DEPLOY_DIR/.nojekyll"
+
+          echo ""
+          echo "=== Deploy structure ==="
+          echo "Root:"
+          ls -1 "$DEPLOY_DIR/" | head -20
+          echo "Blog:"
+          ls -1 "$DEPLOY_DIR/blog/" | head -20
+
+      # ============================================
+      # 5. ADSENSE INJECTION
+      # ============================================
+      - name: Inject AdSense into HTML files
         run: |
           python3 << 'EOF'
-          import os
           import glob
-          import re
 
-          # Script AdSense optimizado para performance
           optimized_adsense = '''
-          <!-- AdSense Performance Optimized - GitHub Actions -->
+          <!-- AdSense Performance Optimized -->
           <script>
           (function() {
             if (window.adsenseOptimized) return;
             window.adsenseOptimized = true;
-            
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751';
-            script.crossOrigin = 'anonymous';
-            
-            script.onload = function() {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751';
+            s.crossOrigin = 'anonymous';
+            s.onload = function() {
               try {
                 (adsbygoogle = window.adsbygoogle || []).push({
                   google_ad_client: "ca-pub-7596549899792751",
                   enable_page_level_ads: true,
                   overlays: {bottom: true}
                 });
-                console.log('💰 Production AdSense loaded!');
               } catch(e) {}
             };
-            
-            document.head.appendChild(script);
+            document.head.appendChild(s);
           })();
           </script>
           '''
 
-          # Preload optimizations para el head
-          preload_optimization = '''
-          <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" as="script">
+          preload = '''
           <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
           <link rel="dns-prefetch" href="//googleads.g.doubleclick.net">
           '''
 
-          html_files = glob.glob('_site/**/*.html', recursive=True)
-          processed_count = 0
+          html_files = glob.glob('deploy/**/*.html', recursive=True)
+          count = 0
 
-          for file_path in html_files:
+          for fp in html_files:
               try:
-                  with open(file_path, 'r', encoding='utf-8') as f:
+                  with open(fp, 'r', encoding='utf-8') as f:
                       content = f.read()
-                  
-                  modified = False
-                  
-                  # Solo inyectar si no existe ya ca-pub-7596549899792751
-                  if 'ca-pub-7596549899792751' not in content:
-                      # Inyectar en head
-                      if '</head>' in content:
-                          content = content.replace('</head>', preload_optimization + optimized_adsense + '\n</head>')
-                          modified = True
-                          processed_count += 1
-                  
-                  if modified:
-                      with open(file_path, 'w', encoding='utf-8') as f:
+                  if 'ca-pub-7596549899792751' not in content and '</head>' in content:
+                      content = content.replace('</head>', preload + optimized_adsense + '\n</head>')
+                      with open(fp, 'w', encoding='utf-8') as f:
                           f.write(content)
+                      count += 1
               except Exception as e:
-                  print(f"❌ Error: {file_path}: {e}")
+                  print(f"Error: {fp}: {e}")
 
-          print(f"✅ Processed {processed_count} HTML files with optimized AdSense")
-          print("🚀 Performance optimizations applied!")
+          print(f"✅ AdSense injected into {count} HTML files")
           EOF
-
-      # - name: Test site
-      #     bundle exec htmlproofer _site \
-      #       \-\-disable-external \
-      #       \-\-ignore-status-codes "999,403,404,500,502" \
-      #       \-\-ignore-files "/assets/,/vendor/" \
-      #       \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/" \
-      #       \-\-check-html \
-      #       \-\-check-img-http \
-      #       \-\-allow-missing-href \
-      #       \-\-empty-alt-ignore \
-      #       || echo "HTMLProofer found issues but continuing deployment"
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "_site${{ steps.pages.outputs.base_path }}"
+          path: "deploy"
 
   deploy:
     environment:

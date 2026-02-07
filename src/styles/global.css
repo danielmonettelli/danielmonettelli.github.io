@@ -1,0 +1,699 @@
+@import "tailwindcss";
+
+/* ============================================
+   DANIEL MONETTELLI PORTFOLIO — MUI DESIGN SYSTEM
+   Exact tokens from mui/material-ui brandingTheme.ts
+   Source: packages/mui-docs/src/branding/brandingTheme.ts
+   Tailwind CSS v4 — CSS-first configuration
+   ============================================ */
+
+@theme {
+  /* ── MUI Blue Palette (brandingTheme.ts L92-103) ── */
+  --color-primary-50: hsl(210, 100%, 96%);
+  --color-primary-100: hsl(210, 100%, 90%);
+  --color-primary-200: hsl(210, 100%, 80%);
+  --color-primary-300: hsl(210, 100%, 70%);
+  --color-primary-400: hsl(210, 100%, 60%);
+  --color-primary-500: hsl(210, 100%, 45%);
+  --color-primary-600: hsl(210, 100%, 42%);
+  --color-primary-700: hsl(210, 100%, 38%);
+  --color-primary-800: hsl(210, 100%, 30%);
+  --color-primary-900: hsl(210, 100%, 23%);
+
+  /* ── MUI Grey Palette (brandingTheme.ts L116-127) ── */
+  --color-grey-50: hsl(215, 15%, 97%);
+  --color-grey-100: hsl(215, 15%, 92%);
+  --color-grey-200: hsl(215, 15%, 89%);
+  --color-grey-300: hsl(215, 15%, 82%);
+  --color-grey-400: hsl(215, 15%, 75%);
+  --color-grey-500: hsl(215, 15%, 65%);
+  --color-grey-600: hsl(215, 15%, 50%);
+  --color-grey-700: hsl(215, 15%, 40%);
+  --color-grey-800: hsl(215, 15%, 22%);
+  --color-grey-900: hsl(215, 15%, 12%);
+
+  /* ── MUI BlueDark / PrimaryDark Palette (brandingTheme.ts L104-115) ── */
+  --color-bluedark-50: hsl(210, 14%, 92%);
+  --color-bluedark-100: hsl(210, 14%, 87%);
+  --color-bluedark-200: hsl(210, 14%, 72%);
+  --color-bluedark-300: hsl(210, 14%, 56%);
+  --color-bluedark-400: hsl(210, 14%, 36%);
+  --color-bluedark-500: hsl(210, 14%, 28%);
+  --color-bluedark-600: hsl(210, 14%, 22%);
+  --color-bluedark-700: hsl(210, 14%, 13%);
+  --color-bluedark-800: hsl(210, 14%, 9%);
+  --color-bluedark-900: hsl(210, 14%, 7%);
+
+  /* ── Status Colors (brandingTheme.ts) ── */
+  --color-success-50: hsl(144, 72%, 95%);
+  --color-success-100: hsl(144, 72%, 87%);
+  --color-success-400: hsl(144, 72%, 56%);
+  --color-success-500: hsl(144, 72%, 46%);
+  --color-success-600: hsl(144, 72%, 41%);
+  --color-success-700: hsl(144, 72%, 37%);
+  --color-warning-400: hsl(48, 100%, 48%);
+  --color-warning-500: hsl(48, 100%, 44%);
+  --color-error-400: hsl(355, 98%, 74%);
+  --color-error-500: hsl(355, 98%, 66%);
+  --color-error-600: hsl(355, 98%, 46%);
+
+  /* ── Fonts — exact from brandingTheme.ts L165-180 ── */
+  --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-mono: "Menlo", "Consolas", "Droid Sans Mono", monospace;
+  --font-display: "General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  /* ── Custom Animations ── */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 2s infinite;
+
+  /* ── Easing ── */
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-power3: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* ============================================
+   THEME VARIABLES — Exact from brandingTheme.ts
+   getDesignTokens('dark') & getDesignTokens('light')
+   Dark = default · Light = opt-in
+   ============================================ */
+
+:root,
+[data-theme="dark"] {
+  /* ── Backgrounds — blueDark palette ── */
+  --mui-bg: hsl(210, 14%, 7%);
+  --mui-bg-paper: hsla(210, 14%, 9%, 0.8);
+  --mui-bg-elevated: hsl(210, 14%, 13%);
+  --mui-bg-subtle: hsla(210, 14%, 13%, 0.5);
+  --mui-bg-card: hsla(210, 14%, 9%, 0.6);
+
+  /* ── Text — dark ── */
+  --mui-text-primary: #fff;
+  --mui-text-secondary: hsl(215, 15%, 75%);
+  --mui-text-tertiary: hsl(215, 15%, 65%);
+  --mui-text-muted: hsl(215, 15%, 65%);
+  --mui-text-disabled: hsl(215, 15%, 50%);
+
+  /* ── Primary ── */
+  --mui-primary: hsl(210, 100%, 60%);
+  --mui-primary-hover: hsl(210, 100%, 70%);
+  --mui-primary-main: hsl(210, 100%, 45%);
+  --mui-primary-dark: hsl(210, 100%, 42%);
+  --mui-primary-bg: hsla(210, 100%, 60%, 0.08);
+  --mui-primary-bg-hover: hsla(210, 100%, 60%, 0.16);
+
+  /* ── Borders ── */
+  --mui-border: hsla(210, 14%, 28%, 0.3);
+  --mui-border-subtle: hsla(210, 14%, 36%, 0.2);
+  --mui-border-hover: hsla(210, 100%, 60%, 0.3);
+
+  /* ── Navbar ── */
+  --mui-navbar-bg: hsla(210, 14%, 7%, 0.7);
+
+  /* ── Section gradient (Section.tsx dark) ── */
+  --mui-section-gradient: linear-gradient(hsl(210, 14%, 7%) 0%, hsla(210, 100%, 23%, 0.2) 100%);
+
+  /* ── Gradient patterns (brandingTheme.ts dark) ── */
+  --mui-gradient-linear-subtle: linear-gradient(0deg, hsla(210, 100%, 23%, 0.1), hsla(210, 14%, 7%, 0.5));
+  --mui-gradient-radial-subtle: radial-gradient(100% 100% at 100% 100%, transparent 0, hsla(210, 100%, 23%, 0.3) 300%);
+
+  /* ── Paper/Card (brandingTheme.ts dark) ── */
+  --mui-paper-border: hsl(210, 14%, 13%);
+  --mui-paper-shadow: hsla(210, 14%, 13%, 0.4) 0 2px 0 inset, hsl(200, 10%, 4%) 0 -2px 0 inset, hsl(200, 10%, 4%) 0 1px 2px 0;
+  --mui-paper-hover-border: hsla(210, 100%, 42%, 0.5);
+  --mui-paper-hover-shadow: 0px 2px 8px hsla(210, 100%, 23%, 0.6);
+  --mui-card-border: hsl(210, 14%, 13%);
+  --mui-card-shadow: hsl(200, 10%, 4%) 0 -1px 0 inset, hsl(200, 10%, 4%) 0 1px 8px 0;
+
+  /* ── Buttons contained primary ── */
+  --mui-btn-contained-bg: hsl(210, 100%, 45%);
+  --mui-btn-contained-border: hsl(210, 100%, 42%);
+  --mui-btn-contained-shadow: hsla(210, 100%, 60%, 0.5) 0 1px 0 inset, hsla(210, 100%, 30%, 0.4) 0 -1px 0 1px inset, hsla(200, 10%, 4%, 0.1) 0 2px 4px 0;
+  --mui-btn-contained-hover-bg: hsl(210, 100%, 38%);
+  --mui-btn-contained-hover-border: hsl(210, 100%, 30%);
+
+  /* ── Buttons outlined primary dark ── */
+  --mui-btn-outlined-color: hsl(210, 100%, 80%);
+  --mui-btn-outlined-border: hsla(210, 100%, 23%, 0.7);
+  --mui-btn-outlined-bg: hsla(210, 100%, 23%, 0.2);
+  --mui-btn-outlined-shadow: hsla(210, 100%, 23%, 0.2) 0 1px 0 1px inset, hsl(200, 10%, 4%) 0 -1px 0 1px inset, hsl(200, 10%, 4%) 0 1px 2px 0;
+
+  /* ── Buttons outlined secondary dark ── */
+  --mui-btn-sec-color: hsl(210, 14%, 87%);
+  --mui-btn-sec-border: hsla(210, 14%, 22%, 0.5);
+  --mui-btn-sec-bg: hsla(210, 14%, 13%, 0.2);
+  --mui-btn-sec-shadow: hsla(210, 14%, 13%, 0.3) 0 1px 0 1px inset, hsl(200, 10%, 4%) 0 -1px 0 1px inset, hsl(200, 10%, 4%) 0 1px 2px 0;
+
+  /* ── GradientText (GradientText.tsx) ── */
+  --mui-gradient-text: linear-gradient(90deg, hsl(210, 100%, 60%) 5%, hsl(210, 100%, 45%) 90%);
+
+  /* ── Typography colors dark ── */
+  --mui-h1-color: #fff;
+  --mui-h2-color: hsl(215, 15%, 92%);
+  --mui-h5-color: hsl(210, 100%, 70%);
+
+  /* ── Icon glow (GlowingIconContainer dark) ── */
+  --mui-icon-glow-border: hsla(210, 100%, 60%, 0.25);
+  --mui-icon-glow-bg: hsla(210, 100%, 23%, 0.2);
+  --mui-icon-glow-shadow: 0 0 0 2px hsla(210, 100%, 42%, 0.1), 0px 2px 12px 0px rgba(0, 0, 0, 0.25) inset;
+
+  /* ── Popover shadow dark ── */
+  --mui-popover-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+
+  /* Scrollbar */
+  --mui-scrollbar-track: hsl(210, 14%, 7%);
+  --mui-scrollbar-thumb: hsl(210, 14%, 22%);
+  --mui-scrollbar-thumb-hover: hsl(210, 14%, 28%);
+
+  /* Selection */
+  --mui-selection-bg: hsla(210, 100%, 60%, 0.25);
+
+  /* Shadows */
+  --mui-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --mui-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --mui-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --mui-shadow-glow: 0 0 24px hsla(210, 100%, 60%, 0.15);
+}
+
+[data-theme="light"] {
+  /* ── Backgrounds — light ── */
+  --mui-bg: #fff;
+  --mui-bg-paper: #fff;
+  --mui-bg-elevated: hsl(215, 15%, 97%);
+  --mui-bg-subtle: hsla(215, 15%, 97%, 0.6);
+  --mui-bg-card: #fff;
+
+  /* ── Text — light ── */
+  --mui-text-primary: hsl(215, 15%, 12%);
+  --mui-text-secondary: hsl(215, 15%, 22%);
+  --mui-text-tertiary: hsl(215, 15%, 40%);
+  --mui-text-muted: hsl(215, 15%, 40%);
+  --mui-text-disabled: hsl(215, 15%, 50%);
+
+  /* ── Primary — light ── */
+  --mui-primary: hsl(210, 100%, 45%);
+  --mui-primary-hover: hsl(210, 100%, 38%);
+  --mui-primary-main: hsl(210, 100%, 45%);
+  --mui-primary-dark: hsl(210, 100%, 42%);
+  --mui-primary-bg: hsla(210, 100%, 45%, 0.06);
+  --mui-primary-bg-hover: hsla(210, 100%, 45%, 0.12);
+
+  /* ── Borders — light ── */
+  --mui-border: hsl(215, 15%, 92%);
+  --mui-border-subtle: hsla(215, 15%, 92%, 0.6);
+  --mui-border-hover: hsla(210, 100%, 45%, 0.3);
+
+  /* ── Navbar — light ── */
+  --mui-navbar-bg: rgba(255, 255, 255, 0.8);
+
+  /* ── Section gradient (Section.tsx light) ── */
+  --mui-section-gradient: linear-gradient(#fff 0%, hsl(210, 100%, 96%) 100%);
+
+  /* ── Gradient patterns (brandingTheme.ts light) ── */
+  --mui-gradient-linear-subtle: linear-gradient(0deg, hsla(210, 100%, 96%, 0.4), hsla(215, 15%, 97%, 0.1));
+  --mui-gradient-radial-subtle: radial-gradient(100% 90% at 50% 0, transparent 0, hsla(210, 100%, 90%, 0.3) 300%);
+
+  /* ── Paper/Card — light ── */
+  --mui-paper-border: hsl(215, 15%, 92%);
+  --mui-paper-shadow: hsl(200, 0%, 100%) 0 2px 0 inset, hsla(215, 15%, 92%, 0.3) 0 -2px 0 inset, hsla(215, 15%, 89%, 0.5) 0 1px 2px 0;
+  --mui-paper-hover-border: hsl(210, 100%, 80%);
+  --mui-paper-hover-shadow: 0px 2px 8px hsl(210, 100%, 90%);
+  --mui-card-border: hsl(215, 15%, 92%);
+  --mui-card-shadow: hsla(215, 15%, 89%, 0.4) 0 -1px 0 inset, hsla(215, 15%, 82%, 0.5) 0 1px 8px 0;
+
+  /* ── Buttons contained primary — same both themes ── */
+  --mui-btn-contained-bg: hsl(210, 100%, 45%);
+  --mui-btn-contained-border: hsl(210, 100%, 42%);
+  --mui-btn-contained-shadow: hsla(210, 100%, 60%, 0.5) 0 1px 0 inset, hsla(210, 100%, 30%, 0.4) 0 -1px 0 1px inset, hsla(200, 10%, 4%, 0.1) 0 2px 4px 0;
+  --mui-btn-contained-hover-bg: hsl(210, 100%, 38%);
+  --mui-btn-contained-hover-border: hsl(210, 100%, 30%);
+
+  /* ── Buttons outlined primary light ── */
+  --mui-btn-outlined-color: hsl(210, 100%, 42%);
+  --mui-btn-outlined-border: hsl(210, 100%, 90%);
+  --mui-btn-outlined-bg: hsla(210, 100%, 96%, 0.2);
+  --mui-btn-outlined-shadow: hsla(210, 100%, 90%, 0.4) 0 -1px 0 1px inset, hsla(210, 100%, 90%, 0.5) 0 1px 2px 0;
+
+  /* ── Buttons outlined secondary light ── */
+  --mui-btn-sec-color: hsl(215, 15%, 12%);
+  --mui-btn-sec-border: hsl(210, 14%, 87%);
+  --mui-btn-sec-bg: hsla(210, 14%, 92%, 0.1);
+  --mui-btn-sec-shadow: #fff 0 1px 0 1px inset, hsla(215, 15%, 89%, 0.4) 0 -1px 0 1px inset, hsla(215, 15%, 89%, 0.5) 0 1px 2px 0;
+
+  /* ── GradientText — same both themes ── */
+  --mui-gradient-text: linear-gradient(90deg, hsl(210, 100%, 60%) 5%, hsl(210, 100%, 45%) 90%);
+
+  /* ── Typography colors light ── */
+  --mui-h1-color: hsl(210, 14%, 7%);
+  --mui-h2-color: hsl(210, 14%, 13%);
+  --mui-h5-color: hsl(210, 100%, 45%);
+
+  /* ── Icon glow light ── */
+  --mui-icon-glow-border: hsl(210, 100%, 80%);
+  --mui-icon-glow-bg: hsl(210, 100%, 96%);
+  --mui-icon-glow-shadow: 0 0 0 2px hsla(210, 100%, 45%, 0.1), 0px 2px 12px 0px rgba(234, 237, 241, 0.3) inset;
+
+  /* ── Popover shadow light ── */
+  --mui-popover-shadow: 0px 4px 20px rgba(170, 180, 190, 0.3);
+
+  /* Scrollbar */
+  --mui-scrollbar-track: hsl(215, 15%, 97%);
+  --mui-scrollbar-thumb: hsl(215, 15%, 82%);
+  --mui-scrollbar-thumb-hover: hsl(215, 15%, 75%);
+
+  /* Selection */
+  --mui-selection-bg: hsla(210, 100%, 45%, 0.2);
+
+  /* Shadows */
+  --mui-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --mui-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --mui-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --mui-shadow-glow: 0 0 24px hsla(210, 100%, 45%, 0.1);
+}
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes draw-line {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+/* ============================================
+   BASE STYLES — exact from brandingTheme.ts
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
+  overflow-y: scroll;
+}
+
+body {
+  background-color: var(--mui-bg);
+  color: var(--mui-text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: var(--mui-selection-bg);
+  color: var(--mui-text-primary);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--mui-scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--mui-scrollbar-thumb); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--mui-scrollbar-thumb-hover); }
+
+/* ============================================
+   MUI TYPOGRAPHY — exact from brandingTheme.ts L248-310
+   ============================================ */
+
+.mui-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1.125rem + 3.5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.114;
+  letter-spacing: -0.2px;
+  color: var(--mui-h1-color);
+}
+
+.mui-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.222;
+  letter-spacing: -0.2px;
+  color: var(--mui-h2-color);
+}
+
+.mui-h3 {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  line-height: 1.222;
+  letter-spacing: 0.2px;
+}
+
+.mui-h4 {
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
+.mui-h5 {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+  color: var(--mui-h5-color);
+}
+
+.mui-h6 {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.mui-subtitle1 {
+  font-size: 1.125rem;
+  line-height: 1.333;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.mui-body1 {
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.mui-body2 {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.mui-caption {
+  display: inline-block;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+/* SectionHeadline overline */
+.mui-overline {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--mui-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   MUI GRADIENT TEXT — exact from GradientText.tsx
+   linear-gradient(90deg, primary[400] 5%, primary.main 90%)
+   ============================================ */
+
+.gradient-text {
+  background: var(--mui-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.accent-text {
+  color: var(--mui-primary);
+}
+
+/* ============================================
+   MUI SECTION BACKGROUNDS — exact from Section.tsx
+   ============================================ */
+
+.section-bg-gradient {
+  background: var(--mui-section-gradient);
+}
+
+.section-bg-comfort {
+  background-color: var(--mui-bg-elevated);
+}
+
+/* ============================================
+   MUI CARD / PAPER — exact from brandingTheme.ts
+   ============================================ */
+
+.mui-paper {
+  background-color: var(--mui-bg-card);
+  border: 1px solid var(--mui-paper-border);
+  box-shadow: var(--mui-paper-shadow);
+  border-radius: 12px;
+  transition: border-color 150ms ease-in, box-shadow 150ms ease-in, background-color 0.3s ease;
+}
+
+.mui-paper:hover {
+  border-color: var(--mui-paper-hover-border);
+  box-shadow: var(--mui-paper-hover-shadow);
+}
+
+.mui-card {
+  background-color: var(--mui-bg-card);
+  border: 1px solid var(--mui-card-border);
+  box-shadow: var(--mui-card-shadow);
+  border-radius: 12px;
+  transition: border-color 150ms ease-in, box-shadow 150ms ease-in, background-color 0.3s ease;
+}
+
+.mui-infocard {
+  padding: 20px;
+  background: var(--mui-gradient-linear-subtle);
+  border: 1px solid var(--mui-paper-border);
+  border-radius: 12px;
+  transition: border-color 150ms ease-in, background 0.3s ease;
+}
+
+.mui-icon-glow {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--mui-icon-glow-border);
+  background-color: var(--mui-icon-glow-bg);
+  box-shadow: var(--mui-icon-glow-shadow);
+  transition: all 0.3s ease;
+}
+
+.glass {
+  background: var(--mui-bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--mui-paper-border);
+  box-shadow: var(--mui-card-shadow);
+  border-radius: 12px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-subtle {
+  background: var(--mui-bg-subtle);
+  border: 1px solid var(--mui-border-subtle);
+  border-radius: 12px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ============================================
+   MUI BUTTON STYLES — exact from brandingTheme.ts
+   ============================================ */
+
+.mui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 120ms ease-in;
+  text-decoration: none;
+}
+
+.mui-btn-contained {
+  color: #fff;
+  text-shadow: 0 1px 1px hsla(200, 10%, 4%, 0.6);
+  background-color: var(--mui-btn-contained-bg);
+  border: 1px solid var(--mui-btn-contained-border);
+  box-shadow: var(--mui-btn-contained-shadow);
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+  transition: all 120ms ease-in;
+  text-decoration: none;
+}
+
+.mui-btn-contained:hover {
+  background-color: var(--mui-btn-contained-hover-bg);
+  border-color: var(--mui-btn-contained-hover-border);
+}
+
+.mui-btn-contained:active {
+  background-color: hsl(210, 100%, 30%);
+}
+
+.mui-btn-outlined {
+  color: var(--mui-btn-outlined-color);
+  background-color: var(--mui-btn-outlined-bg);
+  border: 1px solid var(--mui-btn-outlined-border);
+  box-shadow: var(--mui-btn-outlined-shadow);
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+  transition: all 120ms ease-in;
+  text-decoration: none;
+}
+
+.mui-btn-outlined:hover {
+  border-color: var(--mui-paper-hover-border);
+  background-color: var(--mui-primary-bg-hover);
+}
+
+.mui-btn-secondary {
+  color: var(--mui-btn-sec-color);
+  background-color: var(--mui-btn-sec-bg);
+  border: 1px solid var(--mui-btn-sec-border);
+  box-shadow: var(--mui-btn-sec-shadow);
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+  transition: all 120ms ease-in;
+  text-decoration: none;
+}
+
+.mui-btn-secondary:hover {
+  background-color: var(--mui-bg-elevated);
+}
+
+/* Button sizes — exact from brandingTheme */
+.mui-btn-sm { padding: 6px 10px; font-size: 0.8125rem; }
+.mui-btn-md { padding: 8px 10px 10px 12px; font-size: 0.9375rem; }
+.mui-btn-lg { padding: 8px 12px 8px 14px; font-size: 1rem; line-height: 1.5; }
+
+/* ============================================
+   MUI CHIP — SectionHeadline overline style
+   ============================================ */
+
+.mui-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--mui-primary);
+  border: none;
+  background: transparent;
+  letter-spacing: 0;
+  transition: all 0.2s ease;
+}
+
+/* ============================================
+   DEV BACKGROUND
+   ============================================ */
+
+.dev-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  clip-path: inset(60px 0 0 0);
+}
+
+.dev-dot-grid {
+  position: absolute;
+  inset: -50px;
+  background-image:
+    linear-gradient(to right, var(--mui-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--mui-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+[data-theme="light"] .dev-dot-grid { opacity: 0.25; }
+
+.dev-floating-layer { position: absolute; inset: 0; }
+
+.dev-float-icon {
+  position: absolute;
+  stroke: var(--mui-primary);
+  opacity: 0;
+  fill: none;
+  will-change: transform;
+  transition: stroke 0.3s ease;
+}
+
+[data-theme="light"] .dev-float-icon { stroke: var(--mui-primary-dark); }
+
+/* ============================================
+   ANIMATION UTILITIES
+   ============================================ */
+
+.reveal-up { opacity: 0; transform: translateY(60px); }
+.reveal-left { opacity: 0; transform: translateX(-60px); }
+.reveal-right { opacity: 0; transform: translateX(60px); }
+.reveal-scale { opacity: 0; transform: scale(0.9); }
+
+.magnetic-btn { transition: transform 0.3s var(--ease-smooth); }
+
+.tilt-card { transform-style: preserve-3d; perspective: 1000px; }
+.tilt-card-inner { transition: transform 0.6s var(--ease-smooth); }
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 0;
+  background: var(--mui-border);
+  transform: translateX(-50%);
+}
+
+.skill-bar-fill { width: 0; }
+
+.section-divider { height: 1px; background: var(--mui-border); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) { }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

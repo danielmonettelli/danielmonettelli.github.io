@@ -98,7 +98,7 @@ theme_mode: # [light | dark]
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/"
+cdn: "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/blog/assets/images/"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "Daniel_Monettelli.png"
@@ -153,7 +153,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: ""
+baseurl: "/blog"
 
 # ------------ The following options are not recommended to be modified ------------------
 
@@ -220,8 +220,6 @@ exclude:
   - README.md
   - LICENSE
   - purgecss.js
-  - "*.config.js"
-  - "package*.json"
 
 jekyll-archives:
   enabled: [categories, tags]

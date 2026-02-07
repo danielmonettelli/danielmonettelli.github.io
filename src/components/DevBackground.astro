@@ -1,0 +1,243 @@
+---
+/**
+ * DevBackground — Animated developer-themed grid background
+ * Two layers:
+ * 1. Subtle SVG dot-grid pattern (always visible, very faint)
+ * 2. Floating individual dev icons that drift, rotate & respond to mouse
+ *
+ * Icons represent Daniel's full-stack expertise:
+ * Code brackets, Mobile, Database, Cloud, Terminal, Git, Globe, Architecture,
+ * Bug, Lock, Rocket, CPU
+ */
+
+// 12 dev-themed SVG paths (24x24 viewBox, stroke-only)
+const devIcons = [
+  // Code brackets </> 
+  `<path d="M8 4l-4 4 4 4" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4l4 4-4 4" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="14" y1="2" x2="10" y2="14" fill="none" stroke-width="1.5" stroke-linecap="round"/>`,
+  // Mobile (.NET MAUI)
+  `<rect x="5" y="2" width="14" height="20" rx="2" fill="none" stroke-width="1.5"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2" stroke-linecap="round"/>`,
+  // Database (SQL Server)
+  `<ellipse cx="12" cy="5" rx="9" ry="3" fill="none" stroke-width="1.5"/><path d="M21 5v14c0 1.66-4 3-9 3s-9-1.34-9-3V5" fill="none" stroke-width="1.5"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" fill="none" stroke-width="1.5"/>`,
+  // Cloud (Azure)
+  `<path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z" fill="none" stroke-width="1.5" stroke-linejoin="round"/>`,
+  // Terminal
+  `<rect x="2" y="3" width="20" height="18" rx="2" fill="none" stroke-width="1.5"/><polyline points="8,9 12,13 8,17" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="14" y1="17" x2="18" y2="17" fill="none" stroke-width="1.5" stroke-linecap="round"/>`,
+  // Git branch
+  `<circle cx="12" cy="6" r="2.5" fill="none" stroke-width="1.5"/><circle cx="6" cy="18" r="2.5" fill="none" stroke-width="1.5"/><circle cx="18" cy="18" r="2.5" fill="none" stroke-width="1.5"/><path d="M6 15.5V12a3 3 0 013-3h6a3 3 0 013 3v3.5" fill="none" stroke-width="1.5"/>`,
+  // Globe (ASP.NET)
+  `<circle cx="12" cy="12" r="10" fill="none" stroke-width="1.5"/><line x1="2" y1="12" x2="22" y2="12" fill="none" stroke-width="1.5"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" fill="none" stroke-width="1.5"/>`,
+  // Hexagon (Clean Architecture)
+  `<polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5" fill="none" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" fill="none" stroke-width="1.5"/>`,
+  // Bug (Testing)
+  `<rect x="8" y="6" width="8" height="12" rx="4" fill="none" stroke-width="1.5"/><line x1="12" y1="6" x2="12" y2="2" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="4" y1="9" x2="8" y2="9" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="9" x2="20" y2="9" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="4" y1="15" x2="8" y2="15" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="15" x2="20" y2="15" fill="none" stroke-width="1.5" stroke-linecap="round"/>`,
+  // Lock (Security)
+  `<rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke-width="1.5"/><path d="M8 11V7a4 4 0 018 0v4" fill="none" stroke-width="1.5" stroke-linecap="round"/>`,
+  // Rocket (Deploy)
+  `<path d="M12 2C6.5 2 2 6.5 2 12l4-1 1 4c5.5 0 10-4.5 10-10" fill="none" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10" cy="10" r="2" fill="none" stroke-width="1.5"/>`,
+  // CPU (Performance)
+  `<rect x="6" y="6" width="12" height="12" rx="1" fill="none" stroke-width="1.5"/><line x1="9" y1="3" x2="9" y2="6" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="3" x2="15" y2="6" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="9" y1="18" x2="9" y2="21" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="18" x2="15" y2="21" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="6" y2="9" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="15" x2="6" y2="15" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="9" x2="21" y2="9" fill="none" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="15" x2="21" y2="15" fill="none" stroke-width="1.5" stroke-linecap="round"/>`,
+];
+
+// Deterministic pseudo-random from seed
+function seededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+// Generate 40 floating icons spread across a large canvas
+const floatingIcons: Array<{
+  svg: string;
+  x: number;
+  y: number;
+  size: number;
+  rotation: number;
+  delay: number;
+  speed: number;
+}> = [];
+
+const cols = 10;
+const rows = 6;
+for (let i = 0; i < cols * rows; i++) {
+  const col = i % cols;
+  const row = Math.floor(i / cols);
+  const r1 = seededRandom(i * 7 + 3);
+  const r2 = seededRandom(i * 13 + 7);
+  const r3 = seededRandom(i * 19 + 11);
+
+  floatingIcons.push({
+    svg: devIcons[i % devIcons.length],
+    x: (col / cols) * 100 + r1 * (100 / cols) * 0.6,
+    y: (row / rows) * 100 + r2 * (100 / rows) * 0.6,
+    size: 18 + r3 * 14, // 18–32px
+    rotation: Math.floor(r1 * 360),
+    delay: r2 * 8,
+    speed: 10 + r3 * 15, // 10–25s per cycle
+  });
+}
+---
+
+<div id="dev-bg" class="dev-background" aria-hidden="true">
+  <!-- Layer 1: Subtle dot grid -->
+  <div class="dev-dot-grid"></div>
+
+  <!-- Layer 2: Floating dev icons -->
+  <div id="dev-floating-icons" class="dev-floating-layer">
+    {floatingIcons.map((icon, i) => (
+      <svg
+        class="dev-float-icon"
+        data-speed={icon.speed.toFixed(1)}
+        data-delay={icon.delay.toFixed(1)}
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        style={`left: ${icon.x.toFixed(1)}%; top: ${icon.y.toFixed(1)}%; width: ${icon.size}px; height: ${icon.size}px; transform: rotate(${icon.rotation}deg);`}
+        set:html={icon.svg}
+      />
+    ))}
+  </div>
+
+</div>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initDevBackground() {
+    const container = document.getElementById("dev-floating-icons");
+    const icons = document.querySelectorAll<SVGElement>(".dev-float-icon");
+    const dotGrid = document.querySelector<HTMLElement>(".dev-dot-grid");
+
+    if (!container || icons.length === 0) return;
+
+    // ── 1. Entrance: icons fade in with stagger to visible opacity ──
+    const isDark = document.documentElement.getAttribute("data-theme") !== "light";
+    const targetOpacity = isDark ? 0.18 : 0.12;
+
+    gsap.fromTo(
+      icons,
+      { opacity: 0, scale: 0.5 },
+      {
+        opacity: targetOpacity,
+        scale: 1,
+        duration: 2.5,
+        ease: "power2.out",
+        stagger: { amount: 3, from: "random" },
+        delay: 0.5,
+      }
+    );
+
+    // Update opacity when theme changes
+    const observer = new MutationObserver(() => {
+      const dark = document.documentElement.getAttribute("data-theme") !== "light";
+      const newOpacity = dark ? 0.18 : 0.12;
+      gsap.to(icons, { opacity: newOpacity, duration: 0.4, overwrite: "auto" });
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+    // ── 2. Continuous floating: each icon drifts in a unique path ──
+    icons.forEach((icon) => {
+      const speed = parseFloat(icon.dataset.speed || "15");
+      const delay = parseFloat(icon.dataset.delay || "0");
+      const currentRotation = gsap.getProperty(icon, "rotation") as number || 0;
+
+      // Gentle Y float
+      gsap.to(icon, {
+        y: "random(-20, 20)",
+        duration: speed,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay,
+      });
+
+      // Gentle X drift
+      gsap.to(icon, {
+        x: "random(-15, 15)",
+        duration: speed * 1.3,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: delay + 1,
+      });
+
+      // Slow rotation wobble
+      gsap.to(icon, {
+        rotation: currentRotation + (Math.random() > 0.5 ? 15 : -15),
+        duration: speed * 1.5,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: delay + 0.5,
+      });
+    });
+
+    // ── 3. Scroll parallax: dot grid and icons move at different speeds ──
+    if (dotGrid) {
+      gsap.to(dotGrid, {
+        backgroundPositionY: "-80px",
+        ease: "none",
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 2,
+        },
+      });
+    }
+
+    gsap.to(container, {
+      y: -50,
+      ease: "none",
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 3,
+      },
+    });
+
+    // ── 4. Mouse parallax: subtle depth response ──
+    let mouseX = 0;
+    let mouseY = 0;
+    let rafId: number | null = null;
+
+    document.addEventListener("mousemove", (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;  // -1 to 1
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2; // -1 to 1
+
+      if (!rafId) {
+        rafId = requestAnimationFrame(() => {
+          // Dot grid shifts opposite to mouse (parallax depth)
+          if (dotGrid) {
+            gsap.to(dotGrid, {
+              backgroundPositionX: `${-mouseX * 8}px`,
+              duration: 1.2,
+              ease: "power2.out",
+              overwrite: "auto",
+            });
+          }
+
+          // Floating icons layer shifts with mouse
+          gsap.to(container, {
+            x: mouseX * 12,
+            duration: 1.5,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+
+          rafId = null;
+        });
+      }
+    }, { passive: true });
+  }
+
+  // Init after layout settles
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      requestAnimationFrame(() => requestAnimationFrame(initDevBackground));
+    });
+  } else {
+    requestAnimationFrame(() => requestAnimationFrame(initDevBackground));
+  }
+</script>

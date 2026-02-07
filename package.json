@@ -1,0 +1,26 @@
+{
+  "name": "danielmonettelli-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate-blog-data": "node scripts/generate-blog-data.mjs",
+    "predev": "npm run generate-blog-data",
+    "dev": "astro dev",
+    "prebuild": "npm run generate-blog-data",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.7.0",
+    "@astrojs/sitemap": "^3.3.0",
+    "gsap": "^3.12.7",
+    "animejs": "^3.2.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.7.0"
+  }
+}

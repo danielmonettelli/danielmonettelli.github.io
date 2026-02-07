@@ -1,0 +1,211 @@
+---
+/**
+ * Experience Section — MUI brandingTheme.ts
+ * Vertical timeline with GSAP scroll-triggered drawing line and card reveals.
+ */
+
+interface TimelineItem {
+  period: string;
+  title: string;
+  company: string;
+  location: string;
+  type: string;
+  description: string[];
+  tags: string[];
+}
+
+const timeline: TimelineItem[] = [
+  {
+    period: "Nov 2021 – Presente",
+    title: "Desarrollador Full Stack Independiente",
+    company: "Freelance / Remoto",
+    location: "Arequipa, Perú",
+    type: "Tiempo Completo",
+    description: [
+      "Desarrollo autónomo de soluciones tecnológicas integrales, construyendo sistemas complejos con .NET, Spring Boot, Angular y React bajo estándares industriales.",
+      "Diseño de bases de datos relacionales mediante normalización y modelado de estructuras NoSQL, aplicando principios SOLID bajo metodología RUP.",
+      "Gestión del ciclo de vida completo del software en proyectos de alto impacto, demostrando madurez técnica en arquitecturas web, móviles y backend.",
+    ],
+    tags: [".NET", "Spring Boot", "Angular", "React", "SOLID", "Clean Architecture"],
+  },
+  {
+    period: "Feb 2021 – Presente",
+    title: "Creador de Contenido & Nominado Microsoft MVP",
+    company: "Daniel Monettelli's Blog / WeAreDotnet.io",
+    location: "Global",
+    type: "Comunidad",
+    description: [
+      "Participación como miembro seleccionado y contribuidor oficial en WeAreDotnet.io, impulsando conocimiento en la comunidad global .NET.",
+      "Divulgación de guías técnicas sobre arquitectura y .NET MAUI, promoviendo la transparencia en el desarrollo de software.",
+    ],
+    tags: ["Blogging", ".NET MAUI", "Community", "MVP Nominee"],
+  },
+  {
+    period: "Ene 2019 – Presente",
+    title: "Miembro Elite de Comunidad Móvil",
+    company: "Planet Xamarin (actualmente .NET MAUI)",
+    location: "Global",
+    type: "Comunidad",
+    description: [
+      "Integro la comunidad curada de desarrolladores con experiencia avanzada en el ecosistema móvil de Microsoft desde sus inicios.",
+    ],
+    tags: ["Xamarin", ".NET MAUI", "Open Source", "Community"],
+  },
+];
+---
+
+<section id="experience" class="relative py-24 lg:py-32">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-20 reveal-up">
+      <p class="mui-overline">Experiencia</p>
+      <h2 class="mui-h2">
+        Mi <span class="gradient-text">trayectoria profesional</span>
+      </h2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative" id="timeline-container">
+      <!-- Drawing line -->
+      <div class="timeline-line" aria-hidden="true"></div>
+
+      {timeline.map((item, i) => (
+        <div
+          class:list={[
+            "timeline-item relative mb-16 last:mb-0",
+            i % 2 === 0 ? "lg:pr-[52%]" : "lg:pl-[52%] lg:text-left",
+          ]}
+        >
+          {/* Center dot — starts invisible, GSAP reveals in sync with scroll */}
+          <div class="hidden lg:block absolute left-1/2 top-6 -translate-x-1/2 z-10">
+            <div class="timeline-dot w-4 h-4 rounded-full shadow-sm" style="background: var(--mui-primary); opacity: 0; transform: scale(0);" />
+          </div>
+
+          {/* Card — GSAP-managed reveal, no reveal-up to avoid conflicts */}
+          <div class="timeline-card glass rounded-2xl p-6 sm:p-8 hover:border-brand-500/20 transition-all duration-500 group" style="opacity: 0;">
+            {/* Header */}
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg text-[11px] font-semibold" style="color: var(--mui-primary); background: var(--mui-primary-bg);">
+                {item.period}
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-medium" style="color: var(--mui-text-muted); background: var(--mui-bg-subtle);">
+                {item.type}
+              </span>
+            </div>
+
+            <h3 class="text-lg sm:text-xl font-bold mb-1 transition-colors" style="color: var(--mui-text-primary);">
+              {item.title}
+            </h3>
+
+            <p class="text-sm mb-4" style="color: var(--mui-text-muted);">
+              {item.company}
+              <span class="mx-1" style="color: var(--mui-border);">·</span>
+              {item.location}
+            </p>
+
+            {/* Description */}
+            <div class="space-y-2 mb-5">
+              {item.description.map((desc) => (
+                <p class="text-sm leading-relaxed flex items-start gap-2" style="color: var(--mui-text-muted);">
+                  <span style="color: var(--mui-primary);" class="mt-1 shrink-0">▸</span>
+                  {desc}
+                </p>
+              ))}
+            </div>
+
+            {/* Tags */}
+            <div class="flex flex-wrap gap-2">
+              {item.tags.map((tag) => (
+                <span class="px-2.5 py-1 rounded-lg text-[10px] font-medium" style="color: var(--mui-text-muted); border: 1px solid var(--mui-border-subtle);">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  /**
+   * Strategy: One master scrubbed timeline drives EVERYTHING.
+   * - The line draws from 0 → 100 % as you scroll through the container.
+   * - Each dot + card is keyed to the exact progress where the line
+   *   physically reaches that dot, so the reveal feels causal:
+   *   "the line arrives → dot pops → card slides in".
+   * - Scrolling back up naturally reverses it all because scrub
+   *   plays the timeline in both directions.
+   */
+  function initTimelineAnimation(): void {
+    const container = document.getElementById("timeline-container");
+    const line = document.querySelector<HTMLElement>(".timeline-line");
+    const items = gsap.utils.toArray<HTMLElement>(".timeline-item");
+
+    if (!container || !line || items.length === 0) return;
+
+    const containerH = container.scrollHeight;
+
+    // ── Master scrubbed timeline ──
+    const master = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top 55%",
+        end: "bottom 45%",
+        scrub: 1.2,           // smooth 1.2 s lag → buttery follow
+        invalidateOnRefresh: true,
+      },
+    });
+
+    // Line draws continuously over the entire scroll range
+    master.fromTo(
+      line,
+      { height: "0%" },
+      { height: "100%", duration: 1, ease: "none" },
+      0
+    );
+
+    // Each item reveals when the line reaches its vertical position
+    items.forEach((item, i) => {
+      const dot  = item.querySelector<HTMLElement>(".timeline-dot");
+      const card = item.querySelector<HTMLElement>(".timeline-card");
+
+      // Dot is at `top-6` (1.5 rem ≈ 24 px) from the item's top edge.
+      // progress 0‑1 = how far down the container the dot sits.
+      const dotY     = item.offsetTop + 24;
+      const progress = Math.min(dotY / containerH, 0.92);
+
+      // 1) Dot pops with a subtle bounce when the line arrives
+      if (dot) {
+        master.fromTo(
+          dot,
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.06, ease: "back.out(2)" },
+          progress
+        );
+      }
+
+      // 2) Card slides in from the corresponding side right after the dot
+      if (card) {
+        master.fromTo(
+          card,
+          { opacity: 0, y: 25, x: i % 2 === 0 ? -20 : 20 },
+          { opacity: 1, y: 0, x: 0, duration: 0.12, ease: "power2.out" },
+          progress + 0.015
+        );
+      }
+    });
+  }
+
+  // Two rAFs ensure layout is fully stable before we measure offsets
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      initTimelineAnimation();
+    });
+  });
+</script>

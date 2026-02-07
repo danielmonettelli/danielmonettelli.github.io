@@ -1,26 +1,50 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Run Jekyll Server",
-      "type": "shell",
-      "command": "./tools/run.sh",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "problemMatcher": [],
-      "detail": "Runs the Jekyll server with live reload."
-    },
-    {
-      "label": "Build Jekyll Site",
-      "type": "shell",
-      "command": "./tools/test.sh",
-      "group": {
-        "kind": "build"
-      },
-      "problemMatcher": [],
-      "detail": "Build the Jekyll site for production."
-    }
-  ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Astro Dev Server",
+			"type": "shell",
+			"command": "npx astro dev",
+			"isBackground": true,
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"detail": "Runs the Astro portfolio dev server."
+		},
+		{
+			"label": "Astro Build",
+			"type": "shell",
+			"command": "npx astro build",
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "Build Astro portfolio for production."
+		},
+		{
+			"label": "Jekyll Blog Server",
+			"type": "shell",
+			"command": "cd blog && bundle exec jekyll serve --livereload --baseurl /blog",
+			"isBackground": true,
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "Runs the Jekyll blog dev server at /blog/."
+		},
+		{
+			"label": "Jekyll Blog Build",
+			"type": "shell",
+			"command": "cd blog && bundle exec jekyll build",
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "Build Jekyll blog for production."
+		},
+		{
+			"label": "Astro Dev Server",
+			"type": "shell",
+			"command": "npx astro dev",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
 }
