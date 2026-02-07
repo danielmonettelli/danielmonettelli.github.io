@@ -112,7 +112,7 @@ for (let i = 0; i < cols * rows; i++) {
 
     // ── 1. Entrance: icons fade in with stagger to visible opacity ──
     const isDark = document.documentElement.getAttribute("data-theme") !== "light";
-    const targetOpacity = isDark ? 0.18 : 0.12;
+    const targetOpacity = isDark ? 0.10 : 0.12;
 
     gsap.fromTo(
       icons,
@@ -130,7 +130,7 @@ for (let i = 0; i < cols * rows; i++) {
     // Update opacity when theme changes
     const observer = new MutationObserver(() => {
       const dark = document.documentElement.getAttribute("data-theme") !== "light";
-      const newOpacity = dark ? 0.18 : 0.12;
+      const newOpacity = dark ? 0.10 : 0.12;
       gsap.to(icons, { opacity: newOpacity, duration: 0.4, overwrite: "auto" });
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });

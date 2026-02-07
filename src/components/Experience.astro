@@ -58,9 +58,9 @@ const timeline: TimelineItem[] = [
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div class="text-center mb-20 reveal-up">
-      <p class="mui-overline">Experiencia</p>
-      <h2 class="mui-h2">
-        Mi <span class="gradient-text">trayectoria profesional</span>
+      <p class="mui-overline" data-i18n="experience.overline">Experience</p>
+      <h2 class="mui-h2" data-i18n-html="experience.titleHtml">
+        My <span class="gradient-text">professional journey</span>
       </h2>
     </div>
 
@@ -85,30 +85,30 @@ const timeline: TimelineItem[] = [
           <div class="timeline-card glass rounded-2xl p-6 sm:p-8 hover:border-brand-500/20 transition-all duration-500 group" style="opacity: 0;">
             {/* Header */}
             <div class="flex flex-wrap items-center gap-2 mb-3">
-              <span class="px-3 py-1 rounded-lg text-[11px] font-semibold" style="color: var(--mui-primary); background: var(--mui-primary-bg);">
+              <span class="px-3 py-1 rounded-lg text-[11px] font-semibold" style="color: var(--mui-primary); background: var(--mui-primary-bg);" data-i18n={`experience.${i}_period`}>
                 {item.period}
               </span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-medium" style="color: var(--mui-text-muted); background: var(--mui-bg-subtle);">
+              <span class="px-2 py-0.5 rounded text-[10px] font-medium" style="color: var(--mui-text-muted); background: var(--mui-bg-subtle);" data-i18n={`experience.${i}_type`}>
                 {item.type}
               </span>
             </div>
 
-            <h3 class="text-lg sm:text-xl font-bold mb-1 transition-colors" style="color: var(--mui-text-primary);">
+            <h3 class="text-lg sm:text-xl font-bold mb-1 transition-colors" style="color: var(--mui-text-primary);" data-i18n={`experience.${i}_title`}>
               {item.title}
             </h3>
 
             <p class="text-sm mb-4" style="color: var(--mui-text-muted);">
-              {item.company}
+              <span data-i18n={`experience.${i}_company`}>{item.company}</span>
               <span class="mx-1" style="color: var(--mui-border);">·</span>
-              {item.location}
+              <span data-i18n={`experience.${i}_location`}>{item.location}</span>
             </p>
 
             {/* Description */}
             <div class="space-y-2 mb-5">
-              {item.description.map((desc) => (
+              {item.description.map((desc, descIdx) => (
                 <p class="text-sm leading-relaxed flex items-start gap-2" style="color: var(--mui-text-muted);">
-                  <span style="color: var(--mui-primary);" class="mt-1 shrink-0">▸</span>
-                  {desc}
+                  <span style="color: var(--mui-primary);" class="mt-1 shrink-0" aria-hidden="true">▸</span>
+                  <span data-i18n={`experience.${i}_desc${descIdx}`}>{desc}</span>
                 </p>
               ))}
             </div>
@@ -149,15 +149,28 @@ const timeline: TimelineItem[] = [
 
     if (!container || !line || items.length === 0) return;
 
+    // Respect reduced motion: show everything immediately
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      line.style.height = "100%";
+      items.forEach((item) => {
+        const dot = item.querySelector<HTMLElement>(".timeline-dot");
+        const card = item.querySelector<HTMLElement>(".timeline-card");
+        if (dot) { dot.style.opacity = "1"; dot.style.transform = "scale(1)"; }
+        if (card) { card.style.opacity = "1"; card.style.transform = "none"; }
+      });
+      return;
+    }
+
     const containerH = container.scrollHeight;
 
     // ── Master scrubbed timeline ──
     const master = gsap.timeline({
       scrollTrigger: {
         trigger: container,
-        start: "top 55%",
-        end: "bottom 45%",
-        scrub: 1.2,           // smooth 1.2 s lag → buttery follow
+        start: "top 70%",
+        end: "bottom 60%",
+        scrub: 0.5,            // snappy 0.5 s lag → responsive feel
         invalidateOnRefresh: true,
       },
     });
@@ -185,18 +198,18 @@ const timeline: TimelineItem[] = [
         master.fromTo(
           dot,
           { scale: 0, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.06, ease: "back.out(2)" },
+          { scale: 1, opacity: 1, duration: 0.08, ease: "back.out(2.5)" },
           progress
         );
       }
 
-      // 2) Card slides in from the corresponding side right after the dot
+      // 2) Card slides in immediately with the dot — no delay gap
       if (card) {
         master.fromTo(
           card,
-          { opacity: 0, y: 25, x: i % 2 === 0 ? -20 : 20 },
-          { opacity: 1, y: 0, x: 0, duration: 0.12, ease: "power2.out" },
-          progress + 0.015
+          { opacity: 0, y: 20, x: i % 2 === 0 ? -15 : 15 },
+          { opacity: 1, y: 0, x: 0, duration: 0.15, ease: "power2.out" },
+          progress
         );
       }
     });

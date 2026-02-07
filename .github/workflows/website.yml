@@ -142,7 +142,7 @@ jobs:
           <link rel="dns-prefetch" href="//googleads.g.doubleclick.net">
           '''
 
-          html_files = glob.glob('deploy/**/*.html', recursive=True)
+          html_files = glob.glob('deploy/blog/**/*.html', recursive=True)
           count = 0
 
           for fp in html_files:

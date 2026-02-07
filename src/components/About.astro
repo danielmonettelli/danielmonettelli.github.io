@@ -5,17 +5,17 @@
  * Typography: h2 uses General Sans, 48px/1.2, letterSpacing: -0.2px
  */
 const stats = [
-  { value: 5, suffix: "+", label: "Años de Experiencia" },
-  { value: 6, suffix: "+", label: "Proyectos Clave" },
-  { value: 40, suffix: "+", label: "Artículos Publicados" },
-  { value: 1, suffix: "", label: "Nominación MVP" },
+  { value: 5, suffix: "+", label: "Years of Experience", i18nKey: "about.stat0" },
+  { value: 5, suffix: "", label: "Key Projects", i18nKey: "about.stat1" },
+  { value: 10, suffix: "+", label: "Published Articles", i18nKey: "about.stat2" },
+  { value: 1, suffix: "", label: "MVP Nomination", i18nKey: "about.stat3" },
 ];
 
 const highlights = [
-  "Nominado Microsoft MVP por contribuciones técnicas a la comunidad",
-  "Miembro de Planet Xamarin — comunidad curada de élite en el ecosistema móvil de Microsoft",
-  "Contribuidor oficial en WeAreDotnet.io",
-  "Autodidacta con enfoque en orden, sencillez y escalabilidad",
+  { text: "Microsoft MVP Nominee for technical contributions to the community", i18nKey: "about.highlight0" },
+  { text: "Planet Xamarin member \u2014 curated elite community in Microsoft's mobile ecosystem", i18nKey: "about.highlight1" },
+  { text: "Official contributor at WeAreDotnet.io", i18nKey: "about.highlight2" },
+  { text: "Self-taught with a focus on order, simplicity, and scalability", i18nKey: "about.highlight3" },
 ];
 ---
 
@@ -23,9 +23,9 @@ const highlights = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div class="text-center mb-16 reveal-up">
-      <p class="mui-overline">Sobre Mí</p>
-      <h2 class="mui-h2">
-        Quien soy y <span class="gradient-text">qué me mueve</span>
+      <p class="mui-overline" data-i18n="about.overline">About</p>
+      <h2 class="mui-h2" data-i18n-html="about.titleHtml">
+        Who I am and <span class="gradient-text">what drives me</span>
       </h2>
     </div>
 
@@ -39,7 +39,7 @@ const highlights = [
             style="border: 1px solid var(--mui-border);"
           >
             <img
-              src="https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png"
+              src="https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/refs/heads/main/blog/assets/images/Daniel_Monettelli.png"
               alt="Daniel Monettelli — Full Stack Developer"
               class="w-full h-full object-cover"
               width="448"
@@ -49,16 +49,16 @@ const highlights = [
             />
 
             <!-- Overlay -->
-            <div class="absolute inset-0" style="background: linear-gradient(to top, var(--mui-bg) 0%, transparent 40%);"></div>
+            <div class="absolute inset-0" style="background: linear-gradient(to top, var(--mui-bg) 0%, transparent 40%);" aria-hidden="true"></div>
 
             <!-- Floating badge on image -->
             <div
               class="absolute bottom-4 left-4 right-4 glass rounded-2xl px-4 py-3 flex items-center gap-3"
             >
-              <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+              <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></div>
               <div>
-                <p class="text-xs font-semibold" style="color: var(--mui-text-primary);">Full Stack Developer</p>
-                <p class="text-[10px]" style="color: var(--mui-text-muted);">Arequipa, Perú 🇵🇪</p>
+                <p class="text-xs font-semibold" style="color: var(--mui-text-primary);" data-i18n="about.badge">Full Stack Developer</p>
+                <p class="text-[10px]" style="color: var(--mui-text-muted);" data-i18n="about.location">Arequipa, Peru 🇵🇪</p>
               </div>
             </div>
           </div>
@@ -67,34 +67,34 @@ const highlights = [
 
       <!-- Right: Bio Text -->
       <div class="reveal-right">
-        <p class="text-base sm:text-lg leading-relaxed mb-6" style="color: var(--mui-text-secondary);">
-          Soy un <span class="font-medium" style="color: var(--mui-text-primary);">Desarrollador Full Stack</span>
-          con sólida experiencia en el ecosistema
-          <span class="accent-text font-medium">.NET</span> y desarrollo
-          <span class="accent-text font-medium">móvil multiplataforma</span>.
+        <p class="text-base sm:text-lg leading-relaxed mb-6" style="color: var(--mui-text-secondary);" data-i18n-html="about.bio1Html">
+          I'm a <span class="font-medium" style="color: var(--mui-text-primary);">Full Stack Developer</span>
+          with solid experience in the
+          <span class="accent-text font-medium">.NET</span> ecosystem and cross-platform
+          <span class="accent-text font-medium">mobile development</span>.
         </p>
 
-        <p class="text-base sm:text-lg leading-relaxed mb-6" style="color: var(--mui-text-secondary);">
-          Con una sólida base autodidacta, priorizo el
-          <span style="color: var(--mui-text-primary);">orden y la sencillez</span> en el desarrollo,
-          convencido de que el mejor código es aquel que escala con transparencia.
+        <p class="text-base sm:text-lg leading-relaxed mb-6" style="color: var(--mui-text-secondary);" data-i18n-html="about.bio2Html">
+          With a strong self-taught foundation, I prioritize
+          <span style="color: var(--mui-text-primary);">order and simplicity</span> in development,
+          convinced that the best code is that which scales with transparency.
         </p>
 
-        <p class="text-sm leading-relaxed mb-8" style="color: var(--mui-text-muted);">
-          Abordo cada desafío con la determinación de un especialista y la humildad de un
-          aprendiz constante, buscando siempre aportar valor tangible a través de software
-          ordenado, seguro, escalable y profundamente funcional.
+        <p class="text-sm leading-relaxed mb-8" style="color: var(--mui-text-muted);" data-i18n="about.bio3">
+          I approach each challenge with the determination of a specialist and the humility of a
+          constant learner, always seeking to add tangible value through clean, secure, scalable,
+          and deeply functional software.
         </p>
 
         <!-- Highlights -->
-        <div class="space-y-3 mb-10">
+        <ul class="space-y-3 mb-10">
           {highlights.map((h) => (
-            <div class="flex items-start gap-3">
-              <div class="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--mui-primary);" />
-              <p class="text-sm" style="color: var(--mui-text-muted);">{h}</p>
-            </div>
+            <li class="flex items-start gap-3">
+              <div class="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--mui-primary);" aria-hidden="true" />
+              <span class="text-sm" style="color: var(--mui-text-muted);" data-i18n={h.i18nKey}>{h.text}</span>
+            </li>
           ))}
-        </div>
+        </ul>
 
 
       </div>
@@ -109,7 +109,7 @@ const highlights = [
               0{stat.suffix}
             </span>
           </div>
-          <p class="text-xs sm:text-sm" style="color: var(--mui-text-muted);">
+          <p class="text-xs sm:text-sm" style="color: var(--mui-text-muted);" data-i18n={stat.i18nKey}>
             {stat.label}
           </p>
         </div>
@@ -123,10 +123,19 @@ const highlights = [
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   gsap.registerPlugin(ScrollTrigger);
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // Counters animation
   document.querySelectorAll<HTMLElement>(".stat-counter").forEach((el) => {
     const target = parseInt(el.dataset.target || "0");
     const suffix = el.dataset.suffix || "";
+
+    if (prefersReducedMotion) {
+      // Show final value immediately without animation
+      el.textContent = target + suffix;
+      return;
+    }
+
     const obj = { value: 0 };
 
     gsap.to(obj, {

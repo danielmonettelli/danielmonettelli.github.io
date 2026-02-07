@@ -15,7 +15,7 @@
   <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
     <!-- Main Title -->
     <h1 class="hero-title mui-h1 mb-4">
-      <span class="block opacity-0 hero-line">Hola, soy</span>
+      <span class="block opacity-0 hero-line" data-i18n="hero.greeting">Hi, I'm</span>
       <span class="block opacity-0 hero-line gradient-text">
         Daniel Monettelli
       </span>
@@ -27,16 +27,16 @@
         Full Stack Developer
       </p>
       <p class="text-sm sm:text-base md:text-lg font-mono mt-2 min-h-[1.5em]" style="color: var(--mui-primary);">
-        <span id="typewriter"></span><span class="animate-pulse">_</span>
+        <span id="typewriter" role="status"></span><span class="animate-pulse" aria-hidden="true">_</span>
       </p>
     </div>
 
     <!-- Description -->
-    <p class="hero-desc max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed mb-10 opacity-0" style="color: var(--mui-text-muted);">
-      Desarrollador con sólida experiencia en el ecosistema
-      <span class="accent-text font-medium">.NET</span> y desarrollo móvil multiplataforma.
-      Nominado <span class="accent-text font-medium">Microsoft MVP</span>.
-      Construyo software ordenado, seguro y profundamente funcional.
+    <p class="hero-desc max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed mb-10 opacity-0" style="color: var(--mui-text-muted);" data-i18n-html="hero.description">
+      Developer with solid experience in the
+      <span class="accent-text font-medium">.NET</span> ecosystem and cross-platform mobile development.
+      <span class="accent-text font-medium">Microsoft MVP</span> Nominee.
+      I build clean, secure, and deeply functional software.
     </p>
 
     <!-- CTA Buttons -->
@@ -45,8 +45,8 @@
         href="#projects"
         class="magnetic-btn mui-btn-contained mui-btn-lg group"
       >
-        Ver Proyectos
-        <svg class="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <span data-i18n="hero.ctaProjects">View Projects</span>
+        <svg class="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </a>
@@ -54,13 +54,13 @@
         href="#contact"
         class="magnetic-btn mui-btn-outlined mui-btn-lg"
       >
-        Contactar →
+        <span data-i18n="hero.ctaContact">Contact →</span>
       </a>
     </div>
 
     <!-- Tech Stack Quick View -->
     <div class="mt-16 hero-tech opacity-0">
-      <p class="text-xs uppercase tracking-widest mb-4" style="color: var(--mui-text-disabled);">Stack Principal</p>
+      <p class="text-xs uppercase tracking-widest mb-4" style="color: var(--mui-text-disabled);" data-i18n="hero.stackLabel">Main Stack</p>
       <div class="flex items-center justify-center flex-wrap gap-6">
         {[
           { name: ".NET MAUI", icon: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>' },
@@ -73,7 +73,7 @@
             class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs sm:text-sm transition-all duration-200"
             style="border: 1px solid var(--mui-border-subtle); color: var(--mui-text-muted);"
           >
-            <span set:html={tech.icon} />
+            <span set:html={tech.icon} aria-hidden="true" />
             <span>{tech.name}</span>
           </div>
         ))}
@@ -83,8 +83,8 @@
 
   <!-- Scroll Indicator -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hero-scroll opacity-0">
-    <a href="#about" class="flex flex-col items-center gap-2 transition-colors" style="color: var(--mui-text-disabled);" aria-label="Ir a la sección Sobre Mí">
-      <span class="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+    <a href="#about" class="flex flex-col items-center gap-2 transition-colors" style="color: var(--mui-text-disabled);" aria-label="Go to About section" data-i18n-aria="hero.scrollAria">
+      <span class="text-[10px] uppercase tracking-[0.3em]" data-i18n="hero.scrollLabel">Scroll</span>
       <div class="w-5 h-8 rounded-full flex justify-center pt-1.5" style="border: 1px solid var(--mui-border);">
         <div class="w-1 h-2 rounded-full animate-bounce" style="background: var(--mui-primary);"></div>
       </div>
@@ -171,6 +171,9 @@
   let isDeleting = false;
   const typewriterEl = document.getElementById("typewriter");
 
+  // Respect reduced motion preference: show first role immediately, skip animation
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   function typeWriter() {
     if (!typewriterEl) return;
 
@@ -199,6 +202,11 @@
     setTimeout(typeWriter, speed);
   }
 
-  // Start typewriter after hero-line animations complete (~1.5s)
-  setTimeout(typeWriter, 1500);
+  if (prefersReducedMotion) {
+    // Show the first role immediately without animation
+    if (typewriterEl) typewriterEl.textContent = roles[0];
+  } else {
+    // Start typewriter after hero-line animations complete (~1.5s)
+    setTimeout(typeWriter, 1500);
+  }
 </script>

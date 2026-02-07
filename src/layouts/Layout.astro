@@ -10,7 +10,7 @@ export interface Props {
 
 const {
   title = "Daniel Monettelli — Full Stack Developer | .NET & Mobile Specialist",
-  description = "Full Stack Developer especializado en .NET y desarrollo móvil multiplataforma. Nominado Microsoft MVP. Portfolio de proyectos, experiencia y habilidades técnicas.",
+  description = "Full Stack Developer specialized in .NET and cross-platform mobile development. Microsoft MVP Nominee. Portfolio of projects, experience, and technical skills.",
   image = "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
 } = Astro.props;
 
@@ -18,7 +18,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth" data-theme="dark">
+<html lang="en" class="scroll-smooth" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,11 +80,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Also set --MuiDocs-header-height CSS var like mui.com -->
     <script is:inline>
       (function() {
+        // Theme FOUC prevention
         var saved = localStorage.getItem('theme');
         var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var theme = saved || (prefersDark ? 'dark' : 'dark');
+        var theme = saved || (prefersDark ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
         document.documentElement.style.setProperty('--MuiDocs-header-height', '60px');
+        // Language FOUC prevention
+        var lang = localStorage.getItem('lang');
+        if (!lang) {
+          lang = (navigator.language || '').startsWith('es') ? 'es' : 'en';
+        }
+        document.documentElement.setAttribute('lang', lang);
       })();
     </script>
   </head>
@@ -92,6 +99,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     class="antialiased overflow-x-hidden relative"
     style="background-color: var(--mui-bg); color: var(--mui-text-primary);"
   >
+    <!-- Skip to main content — WCAG 2.4.1 -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold focus:shadow-lg"
+      style="background: var(--mui-primary); color: #fff;"
+    >
+      <span data-i18n="layout.skipLink">Skip to main content</span>
+    </a>
+
     <!-- Dev-themed animated background -->
     <DevBackground />
 
@@ -100,26 +116,98 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       id="scroll-progress"
       class="fixed top-0 left-0 h-0.5 z-[51] transition-none"
       style="width: 0%; background: var(--mui-primary);"
+      role="progressbar"
+      aria-label="Reading progress"
+      data-i18n-aria="layout.progressBar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
     >
     </div>
 
     <!-- Main Content -->
-    <main class="relative z-10">
+    <main id="main-content" class="relative z-10" tabindex="-1">
       <slot />
     </main>
+
+    <!-- Floating Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full flex items-center justify-center cursor-pointer shadow-lg opacity-0 translate-y-4 pointer-events-none"
+      style="background: var(--mui-primary); color: #fff; transition: opacity 0.3s ease, transform 0.3s ease;"
+      aria-label="Back to top"
+      data-i18n-aria="footer.backToTop"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
 
     <!-- Scroll Progress -->
     <script>
       // Scroll Progress Bar
       const progressBar = document.getElementById("scroll-progress");
-      if (progressBar) {
+      const backToTopBtn = document.getElementById("back-to-top");
+
+      if (progressBar || backToTopBtn) {
         window.addEventListener("scroll", () => {
           const scrollTop = window.scrollY;
           const docHeight = document.documentElement.scrollHeight - window.innerHeight;
           const scrollPercent = (scrollTop / docHeight) * 100;
-          progressBar.style.width = scrollPercent + "%";
+
+          if (progressBar) {
+            progressBar.style.width = scrollPercent + "%";
+            progressBar.setAttribute("aria-valuenow", String(Math.round(scrollPercent)));
+          }
+
+          // Show/hide back-to-top button after 400px scroll
+          // and lift it above the footer when near the bottom
+          if (backToTopBtn) {
+            if (scrollTop > 400) {
+              backToTopBtn.style.opacity = "1";
+              backToTopBtn.style.pointerEvents = "auto";
+
+              // Check if button would overlap the footer
+              const footer = document.querySelector("footer");
+              if (footer) {
+                const footerTop = footer.getBoundingClientRect().top;
+                const viewportHeight = window.innerHeight;
+                const btnBottom = 24; // bottom-6 = 1.5rem = 24px
+                const btnHeight = 44; // w-11 h-11
+                const btnTotalBottom = btnBottom + btnHeight + 12; // 12px extra gap
+
+                if (footerTop < viewportHeight) {
+                  // Footer is visible — lift button above it
+                  const offset = viewportHeight - footerTop + 12;
+                  backToTopBtn.style.transform = `translateY(-${offset}px)`;
+                } else {
+                  backToTopBtn.style.transform = "translateY(0)";
+                }
+              } else {
+                backToTopBtn.style.transform = "translateY(0)";
+              }
+            } else {
+              backToTopBtn.style.opacity = "0";
+              backToTopBtn.style.transform = "translateY(1rem)";
+              backToTopBtn.style.pointerEvents = "none";
+            }
+          }
         }, { passive: true });
       }
+
+      // Back to top click
+      backToTopBtn?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+
+    <!-- i18n initialization -->
+    <script>
+      import { initI18n } from "../i18n/i18n";
+      // Initialize language after DOM is ready
+      document.addEventListener("DOMContentLoaded", () => {
+        initI18n();
+      });
     </script>
   </body>
 </html>

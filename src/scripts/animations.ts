@@ -1,7 +1,7 @@
 /**
  * GSAP + ScrollTrigger Animation Initialization
  * Daniel Monettelli Portfolio
- * 
+ *
  * This module handles all scroll-based reveal animations
  * using GSAP ScrollTrigger for performant, GPU-accelerated animations.
  */
@@ -11,16 +11,34 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Check for reduced motion preference
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
+
 // Global GSAP defaults for consistent, natural feeling
 gsap.defaults({
   ease: "power3.out",
-  duration: 1,
+  duration: prefersReducedMotion ? 0 : 1,
 });
 
 /**
  * Initialize all reveal animations for elements with class .reveal-*
  */
 export function initRevealAnimations(): void {
+  if (prefersReducedMotion) {
+    // Immediately show all reveal elements without animation
+    document
+      .querySelectorAll<HTMLElement>(
+        ".reveal-up, .reveal-left, .reveal-right, .reveal-scale",
+      )
+      .forEach((el) => {
+        el.style.opacity = "1";
+        el.style.transform = "none";
+      });
+    return;
+  }
+
   // Reveal Up
   gsap.utils.toArray<HTMLElement>(".reveal-up").forEach((el) => {
     gsap.fromTo(
@@ -37,7 +55,7 @@ export function initRevealAnimations(): void {
           end: "top 50%",
           toggleActions: "play none none none",
         },
-      }
+      },
     );
   });
 
@@ -56,7 +74,7 @@ export function initRevealAnimations(): void {
           start: "top 85%",
           toggleActions: "play none none none",
         },
-      }
+      },
     );
   });
 
@@ -75,7 +93,7 @@ export function initRevealAnimations(): void {
           start: "top 85%",
           toggleActions: "play none none none",
         },
-      }
+      },
     );
   });
 
@@ -94,7 +112,7 @@ export function initRevealAnimations(): void {
           start: "top 85%",
           toggleActions: "play none none none",
         },
-      }
+      },
     );
   });
 }
@@ -103,6 +121,19 @@ export function initRevealAnimations(): void {
  * Staggered children reveal — animates direct children
  */
 export function initStaggeredReveals(): void {
+  if (prefersReducedMotion) {
+    // Show all stagger children immediately without animation
+    document
+      .querySelectorAll<HTMLElement>(".stagger-children")
+      .forEach((container) => {
+        Array.from(container.children).forEach((child) => {
+          (child as HTMLElement).style.opacity = "1";
+          (child as HTMLElement).style.transform = "none";
+        });
+      });
+    return;
+  }
+
   gsap.utils.toArray<HTMLElement>(".stagger-children").forEach((container) => {
     const children = container.children;
     gsap.fromTo(
@@ -119,7 +150,7 @@ export function initStaggeredReveals(): void {
           start: "top 80%",
           toggleActions: "play none none none",
         },
-      }
+      },
     );
   });
 }
@@ -131,7 +162,7 @@ export function animateCounter(
   element: HTMLElement,
   target: number,
   duration: number = 2,
-  suffix: string = ""
+  suffix: string = "",
 ): void {
   const obj = { value: 0 };
   gsap.to(obj, {
@@ -153,6 +184,8 @@ export function animateCounter(
  * Parallax effect for background elements
  */
 export function initParallax(): void {
+  if (prefersReducedMotion) return;
+
   gsap.utils.toArray<HTMLElement>(".parallax").forEach((el) => {
     const speed = parseFloat(el.dataset.speed || "0.5");
     gsap.to(el, {
@@ -210,6 +243,8 @@ export function initTimeline(): void {
  * Magnetic button hover effect
  */
 export function initMagneticButtons(): void {
+  if (prefersReducedMotion) return;
+
   document.querySelectorAll<HTMLElement>(".magnetic-btn").forEach((btn) => {
     btn.addEventListener("mousemove", (e) => {
       const rect = btn.getBoundingClientRect();

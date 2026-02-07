@@ -13,6 +13,7 @@ interface Skill {
 interface SkillCategory {
   id: string;
   label: string;
+  i18nKey: string;
   icon: string;
   color: string;
   skills: Skill[];
@@ -21,79 +22,86 @@ interface SkillCategory {
 const categories: SkillCategory[] = [
   {
     id: "mobile",
-    label: "Móvil",
+    label: "Mobile",
+    i18nKey: "skills.cat_mobile",
     icon: "mobile",
     color: "brand",
     skills: [
-      { name: ".NET MAUI", level: 95, tag: "Avanzado" },
-      { name: "Xamarin.Forms", level: 90, tag: "Avanzado" },
-      { name: "Android Nativo (Kotlin/XML)", level: 60, tag: "Intermedio" },
+      { name: ".NET MAUI", level: 95, tag: "Advanced" },
+      { name: "Xamarin.Forms", level: 90, tag: "Advanced" },
+      { name: "Android Nativo (Kotlin/XML)", level: 60, tag: "Intermediate" },
     ],
   },
   {
     id: "backend",
     label: "Backend",
+    i18nKey: "skills.cat_backend",
     icon: "backend",
     color: "violet",
     skills: [
-      { name: "ASP.NET Core Web API", level: 85, tag: "Avanzado" },
-      { name: "Java Spring Boot", level: 55, tag: "Básico-Intermedio" },
+      { name: "ASP.NET Core Web API", level: 85, tag: "Advanced" },
+      { name: "Java Spring Boot", level: 55, tag: "Basic-Intermediate" },
     ],
   },
   {
     id: "frontend",
     label: "Frontend",
+    i18nKey: "skills.cat_frontend",
     icon: "frontend",
     color: "accent",
     skills: [
-      { name: "Angular", level: 55, tag: "Básico-Intermedio" },
-      { name: "React", level: 55, tag: "Básico-Intermedio" },
-      { name: "ASP.NET Core MVC (Razor)", level: 70, tag: "Intermedio" },
+      { name: "Angular", level: 55, tag: "Basic-Intermediate" },
+      { name: "React", level: 55, tag: "Basic-Intermediate" },
+      { name: "ASP.NET Core MVC (Razor)", level: 70, tag: "Intermediate" },
     ],
   },
   {
     id: "databases",
-    label: "Bases de Datos",
+    label: "Databases",
+    i18nKey: "skills.cat_databases",
     icon: "databases",
     color: "brand",
     skills: [
-      { name: "SQL Server", level: 80, tag: "Avanzado" },
-      { name: "MySQL", level: 75, tag: "Intermedio" },
-      { name: "MongoDB", level: 60, tag: "Intermedio" },
-      { name: "SQLite", level: 70, tag: "Intermedio" },
+      { name: "SQL Server", level: 80, tag: "Advanced" },
+      { name: "MySQL", level: 75, tag: "Intermediate" },
+      { name: "MongoDB", level: 60, tag: "Intermediate" },
+      { name: "SQLite", level: 70, tag: "Intermediate" },
     ],
   },
   {
     id: "architecture",
-    label: "Ingeniería / Arq.",
+    label: "Engineering / Arch.",
+    i18nKey: "skills.cat_architecture",
     icon: "architecture",
     color: "violet",
     skills: [
-      { name: "Principios SOLID", level: 85, tag: "Avanzado" },
-      { name: "Clean Architecture", level: 85, tag: "Avanzado" },
-      { name: "MVVM", level: 90, tag: "Avanzado" },
-      { name: "Metodología RUP", level: 70, tag: "Intermedio" },
+      { name: "SOLID Principles", level: 85, tag: "Advanced" },
+      { name: "Clean Architecture", level: 85, tag: "Advanced" },
+      { name: "MVVM", level: 90, tag: "Advanced" },
+      { name: "RUP Methodology", level: 70, tag: "Intermediate" },
     ],
   },
   {
     id: "cloud",
     label: "Cloud / DevOps",
+    i18nKey: "skills.cat_cloud",
     icon: "cloud",
     color: "accent",
     skills: [
-      { name: "Microsoft Azure", level: 65, tag: "Intermedio" },
-      { name: "GitHub Actions", level: 75, tag: "Intermedio" },
-      { name: "Git", level: 85, tag: "Avanzado" },
+      { name: "Microsoft Azure", level: 65, tag: "Intermediate" },
+      { name: "GitHub Actions", level: 75, tag: "Intermediate" },
+      { name: "Git", level: 85, tag: "Advanced" },
     ],
   },
   {
     id: "tools",
-    label: "Herramientas",
+    label: "Tools",
+    i18nKey: "skills.cat_tools",
     icon: "tools",
     color: "brand",
     skills: [
-      { name: "Figma", level: 70, tag: "Intermedio" },
-      { name: "IBM Rhapsody", level: 50, tag: "Básico" },
+      { name: "Figma", level: 70, tag: "Intermediate" },
+      { name: "IBM Rhapsody", level: 50, tag: "Basic" },
     ],
   },
 ];
@@ -108,8 +116,8 @@ function getBarColor(color: string): string {
 }
 
 function getTagColor(tag: string): string {
-  if (tag.includes("Avanzado")) return "text-emerald-400 bg-emerald-400/10";
-  if (tag.includes("Intermedio")) return "text-amber-400 bg-amber-400/10";
+  if (tag.includes("Advanced") || tag.includes("Avanzado")) return "text-emerald-400 bg-emerald-400/10";
+  if (tag.includes("Intermediate") || tag.includes("Intermedio")) return "text-amber-400 bg-amber-400/10";
   return "text-white/50 bg-white/5";
 }
 
@@ -128,30 +136,36 @@ const iconSvgs: Record<string, string> = {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div class="text-center mb-16 reveal-up">
-      <p class="mui-overline">Habilidades Técnicas</p>
-      <h2 class="mui-h2">
-        Mi <span class="gradient-text">arsenal tecnológico</span>
+      <p class="mui-overline" data-i18n="skills.overline">Technical Skills</p>
+      <h2 class="mui-h2" data-i18n-html="skills.titleHtml">
+        My <span class="gradient-text">tech arsenal</span>
       </h2>
-      <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-base" style="color: var(--mui-text-muted);">
-        Herramientas y tecnologías que domino para construir soluciones
-        integrales, desde apps móviles hasta arquitecturas backend robustas.
+      <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-base" style="color: var(--mui-text-muted);" data-i18n="skills.description">
+        Tools and technologies I master to build end-to-end solutions,
+        from mobile apps to robust backend architectures.
       </p>
     </div>
 
     <!-- Category Tabs -->
-    <div class="flex flex-wrap justify-center gap-2 mb-12 reveal-up" id="skill-tabs">
+    <div class="flex flex-wrap justify-center gap-2 mb-12 reveal-up" id="skill-tabs" role="tablist" aria-label="Skill categories" data-i18n-aria="skills.tabsAria">
       {categories.map((cat, i) => (
         <button
           data-tab={cat.id}
+          role="tab"
+          aria-selected={i === 0 ? "true" : "false"}
+          aria-controls={`panel-${cat.id}`}
+          id={`tab-${cat.id}`}
+          tabindex={i === 0 ? "0" : "-1"}
           class:list={[
-            "skill-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer",
+            "skill-tab inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium cursor-pointer",
             i === 0
               ? "glass border-primary-500/30"
               : "",
           ]}
+          style="transition: none;"
         >
-          <span class="mr-1.5" set:html={iconSvgs[cat.icon]} />
-          {cat.label}
+          <span class="shrink-0 inline-flex" aria-hidden="true" set:html={iconSvgs[cat.icon]} />
+          <span data-i18n={cat.i18nKey}>{cat.label}</span>
         </button>
       ))}
     </div>
@@ -161,6 +175,10 @@ const iconSvgs: Record<string, string> = {
       {categories.map((cat, catIndex) => (
         <div
           data-panel={cat.id}
+          id={`panel-${cat.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${cat.id}`}
+          tabindex="0"
           class:list={["skill-panel space-y-5", catIndex !== 0 && "hidden"]}
         >
           {cat.skills.map((skill) => (
@@ -189,6 +207,11 @@ const iconSvgs: Record<string, string> = {
                   ]}
                   data-width={`${skill.level}%`}
                   style="width: 0%;"
+                  role="progressbar"
+                  aria-valuenow={skill.level}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-label={`${skill.name}: ${skill.level}%`}
                 />
               </div>
             </div>
@@ -250,29 +273,61 @@ const iconSvgs: Record<string, string> = {
     tab.addEventListener("click", () => {
       const targetId = tab.dataset.tab;
 
-      // Update active tab styling
-      tabs.forEach((t) => t.classList.remove("glass", "border-primary-500/30"));
+      // Update active tab styling & ARIA
+      tabs.forEach((t) => {
+        t.classList.remove("glass", "border-primary-500/30");
+        t.setAttribute("aria-selected", "false");
+        t.setAttribute("tabindex", "-1");
+      });
       tab.classList.add("glass", "border-primary-500/30");
+      tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("tabindex", "0");
 
-      // Switch panels
+      // Switch panels — hide all, show target, animate only the bars
       panels.forEach((panel) => {
-        if (panel.dataset.panel === targetId) {
-          panel.classList.remove("hidden");
-
-          // Fade-in panel children
-          gsap.fromTo(
-            panel.children,
-            { y: 15, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.4, stagger: 0.06, ease: "power3.out" }
-          );
-
-          // Fill bars from 0
-          animateBarsInPanel(panel);
-        } else {
+        if (panel.dataset.panel !== targetId) {
           panel.classList.add("hidden");
+          // Kill any running animations on hidden panels
+          gsap.killTweensOf(panel.children);
+          gsap.killTweensOf(panel.querySelectorAll(".skill-bar-fill"));
+          gsap.set(panel.children, { clearProps: "all" });
         }
       });
+
+      // Show target panel instantly (no opacity fade — prevents flicker)
+      const targetPanel = document.querySelector<HTMLElement>(`[data-panel="${targetId}"]`);
+      if (targetPanel) {
+        targetPanel.classList.remove("hidden");
+        // Ensure children are fully visible
+        gsap.set(targetPanel.children, { clearProps: "all" });
+        // Fill bars from 0
+        animateBarsInPanel(targetPanel);
+      }
     });
+  });
+
+  // ── Keyboard arrow navigation for tabs (WCAG) ──
+  const tabsArray = Array.from(tabs);
+  document.getElementById("skill-tabs")?.addEventListener("keydown", (e) => {
+    const key = e.key;
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(key)) return;
+
+    e.preventDefault();
+    const currentIndex = tabsArray.indexOf(document.activeElement as HTMLElement);
+    let nextIndex = currentIndex;
+
+    if (key === "ArrowRight") {
+      nextIndex = (currentIndex + 1) % tabsArray.length;
+    } else if (key === "ArrowLeft") {
+      nextIndex = (currentIndex - 1 + tabsArray.length) % tabsArray.length;
+    } else if (key === "Home") {
+      nextIndex = 0;
+    } else if (key === "End") {
+      nextIndex = tabsArray.length - 1;
+    }
+
+    tabsArray[nextIndex].focus();
+    tabsArray[nextIndex].click();
   });
 
   // ── Initial scroll-triggered animation (fires once) ──
