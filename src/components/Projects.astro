@@ -984,14 +984,16 @@ function getStatusColor(status: string): string {
       modalTopTitle.textContent = projectTitles[projectIndex] || "";
     }
 
-    // Scroll to top of modal content
-    if (modalScrollArea) {
-      modalScrollArea.scrollTop = 0;
-    }
-
-    // Show overlay
+    // Show overlay first so the scroll area has layout
     overlay.classList.remove("hidden");
     document.body.style.overflow = "hidden";
+
+    // Reset scroll to top after layout is computed
+    requestAnimationFrame(() => {
+      if (modalScrollArea) {
+        modalScrollArea.scrollTop = 0;
+      }
+    });
 
     // Animate in
     anime({
