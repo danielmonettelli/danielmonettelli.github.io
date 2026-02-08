@@ -1,0 +1,149 @@
+<!-- ============================================
+     Custom metadata hook for Chirpy v7.3.0
+     Includes: AdSense + Back to Portfolio button
+     ============================================ -->
+
+<!-- Performance Optimizations -->
+{% include performance-optimizations.html %}
+
+<!-- Google AdSense Auto Ads -->
+<script>
+  (function () {
+    "use strict";
+    if (
+      window.adsbygoogle ||
+      document.querySelector('script[src*="adsbygoogle.js"]')
+    ) {
+      return;
+    }
+    function loadAdSense() {
+      var script = document.createElement("script");
+      script.async = true;
+      script.src =
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751";
+      script.crossOrigin = "anonymous";
+      script.onload = function () {
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7596549899792751",
+            enable_page_level_ads: true,
+            overlays: { bottom: true },
+          });
+        } catch (e) {}
+      };
+      document.head.appendChild(script);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", loadAdSense);
+    } else {
+      loadAdSense();
+    }
+  })();
+</script>
+
+<!-- Google AdSense domain verification -->
+<meta name="google-adsense-account" content="ca-pub-7596549899792751" />
+
+<!-- Back to Portfolio — floating button (bottom-left) -->
+<style>
+  .back-to-portfolio {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 1050;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #fff;
+    background: linear-gradient(
+      135deg,
+      hsl(210, 100%, 48%) 0%,
+      hsl(210, 100%, 40%) 100%
+    );
+    border: none;
+    border-radius: 50px;
+    box-shadow:
+      0 2px 8px hsla(210, 100%, 40%, 0.35),
+      0 0 0 1px hsla(210, 100%, 60%, 0.15) inset;
+    text-decoration: none;
+    transition: all 200ms ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: portfolio-btn-in 0.5s ease forwards 1s;
+  }
+
+  .back-to-portfolio:hover,
+  .back-to-portfolio:focus-visible {
+    background: linear-gradient(
+      135deg,
+      hsl(210, 100%, 42%) 0%,
+      hsl(210, 100%, 34%) 100%
+    );
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 20px hsla(210, 100%, 40%, 0.4),
+      0 0 0 1px hsla(210, 100%, 60%, 0.2) inset;
+  }
+
+  .back-to-portfolio:focus-visible {
+    outline: 2px solid hsl(210, 100%, 60%);
+    outline-offset: 3px;
+  }
+
+  .back-to-portfolio svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  @keyframes portfolio-btn-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive: icon-only on very small screens */
+  @media (max-width: 480px) {
+    .back-to-portfolio {
+      padding: 10px 12px;
+      bottom: 16px;
+      left: 16px;
+      border-radius: 50%;
+    }
+    .back-to-portfolio .btn-label {
+      display: none;
+    }
+  }
+
+  /* Avoid overlap with Chirpy's back-to-top button */
+  @media (max-width: 849px) {
+    .back-to-portfolio {
+      bottom: 72px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (document.querySelector(".back-to-portfolio")) return;
+
+    var btn = document.createElement("a");
+    btn.href = "/";
+    btn.className = "back-to-portfolio";
+    btn.setAttribute("aria-label", "Back to portfolio");
+    btn.setAttribute("title", "Back to portfolio");
+    btn.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>' +
+      '<span class="btn-label">Portfolio</span>';
+    document.body.appendChild(btn);
+  });
+</script>

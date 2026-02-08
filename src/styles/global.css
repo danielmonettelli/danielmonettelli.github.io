@@ -798,6 +798,8 @@ body {
 .tilt-card {
   transform-style: preserve-3d;
   perspective: 1000px;
+  min-width: 0;
+  overflow: hidden;
 }
 .tilt-card-inner {
   transition: transform 0.6s var(--ease-smooth);
