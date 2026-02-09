@@ -272,7 +272,7 @@ const iconSvgs: Record<string, string> = {
             { name: "SQL Server", slug: "microsoftsqlserver", role: "Database", color: "hsl(355, 82%, 52%)" },
           ].map((tech) => (
             <div
-              class="tech-card-primary group"
+              class="tech-card-primary"
               style={`--tech-accent: ${tech.color};`}
             >
               <div class="tech-card-primary-glow" aria-hidden="true"></div>
@@ -321,7 +321,7 @@ const iconSvgs: Record<string, string> = {
             { name: "Figma", slug: "figma" },
             { name: "IBM Rhapsody", svg: customSkillIcons.rhapsody },
           ].map((tech) => (
-            <div class="tech-card-secondary group">
+            <div class="tech-card-secondary">
               <div class="flex flex-col items-center gap-1.5 py-3 px-2">
                 {tech.slug && (
                   <span class="skill-icon-badge">

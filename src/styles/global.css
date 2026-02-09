@@ -657,11 +657,7 @@ body {
   background: var(--mui-skill-badge-bg);
   border: 1px solid var(--mui-skill-badge-border);
   overflow: hidden;
-  cursor: default;
-  transition:
-    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  cursor: text;
 }
 
 .tech-card-primary::before {
@@ -677,31 +673,16 @@ body {
   transition: opacity 0.3s ease;
 }
 
-.tech-card-primary:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--tech-accent) 40%, transparent);
-  box-shadow: 0 8px 32px color-mix(in srgb, var(--tech-accent) 15%, transparent);
-}
-
-.tech-card-primary:hover::before {
-  opacity: 1;
-}
-
 .tech-card-primary-glow {
   position: absolute;
   inset: 0;
   background: radial-gradient(
     ellipse at 50% 0%,
-    color-mix(in srgb, var(--tech-accent) 8%, transparent) 0%,
+    color-mix(in srgb, var(--tech-accent) 6%, transparent) 0%,
     transparent 70%
   );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.tech-card-primary:hover .tech-card-primary-glow {
   opacity: 1;
+  pointer-events: none;
 }
 
 /* Primary tech icon — larger, with accent ring on hover */
@@ -714,16 +695,8 @@ body {
   padding: 6px;
   border-radius: 12px;
   background: var(--mui-bg-subtle);
-  border: 1.5px solid var(--mui-border-subtle);
-  transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    background-color 0.3s ease;
-}
-
-.tech-card-primary:hover .tech-icon-primary {
-  border-color: color-mix(in srgb, var(--tech-accent) 50%, transparent);
-  box-shadow: 0 0 16px color-mix(in srgb, var(--tech-accent) 20%, transparent);
+  border: 1.5px solid
+    color-mix(in srgb, var(--tech-accent) 25%, var(--mui-border-subtle));
 }
 
 .tech-icon-primary img {
@@ -731,13 +704,6 @@ body {
   height: 100%;
   object-fit: contain;
   filter: var(--mui-skill-icon-filter);
-  transition:
-    filter 0.3s ease,
-    transform 0.3s ease;
-}
-
-.tech-card-primary:hover .tech-icon-primary img {
-  transform: scale(1.08);
 }
 
 /* ── Secondary Tech Card — Complementary grid ── */
@@ -745,17 +711,7 @@ body {
   border-radius: 12px;
   background: var(--mui-bg-subtle);
   border: 1px solid var(--mui-border-subtle);
-  cursor: default;
-  transition:
-    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-    background-color 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.tech-card-secondary:hover {
-  transform: translateY(-2px);
-  background: var(--mui-skill-badge-bg);
-  border-color: var(--mui-skill-badge-border);
+  cursor: text;
 }
 
 /* ============================================
