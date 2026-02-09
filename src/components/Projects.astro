@@ -511,14 +511,14 @@ function getStatusColor(status: string): string {
        ═══════════════════════════════════════════════════════════════ -->
   <div id="project-modal-overlay" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="modal-top-title-text">
     {/* Backdrop */}
-    <div class="absolute inset-0 transition-opacity duration-300" id="modal-backdrop" style="background: hsla(210, 14%, 4%, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);" aria-hidden="true"></div>
+    <div class="absolute inset-0" id="modal-backdrop" style="background: hsla(210, 14%, 4%, 0.75); backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2); opacity: 0;" aria-hidden="true"></div>
 
     {/* Modal Container — centered with inset spacing */}
     <div class="relative flex items-center justify-center min-h-screen p-3 sm:p-4 lg:p-6">
       <div
         id="project-modal-content"
-        class="relative w-[95vw] max-w-[1400px] max-h-[92vh] rounded-3xl overflow-hidden flex flex-col transition-all duration-300"
-        style="background: var(--mui-bg-paper); border: 1px solid var(--mui-card-border); box-shadow: 0 25px 80px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.05);"
+        class="relative w-[95vw] max-w-[1400px] max-h-[92vh] rounded-3xl overflow-hidden flex flex-col"
+        style="background: var(--mui-bg-paper); border: 1px solid var(--mui-card-border); box-shadow: 0 25px 80px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.05); opacity: 0; transform: translateY(40px) scale(0.96);"
       >
         {/* ── Sticky top bar with close button ── */}
         <div class="sticky top-0 z-20 flex items-center justify-between px-6 sm:px-8 py-4 shrink-0" style="background: var(--mui-bg-paper); border-bottom: 1px solid var(--mui-border-subtle);">
@@ -940,6 +940,7 @@ function getStatusColor(status: string): string {
 
   // Focus management
   let previouslyFocusedElement: HTMLElement | null = null;
+  let isModalAnimating = false;
 
   function trapFocus(e: KeyboardEvent): void {
     if (e.key !== "Tab" || !modalContent) return;
@@ -966,7 +967,12 @@ function getStatusColor(status: string): string {
   }
 
   function openModal(projectIndex: number): void {
-    if (!overlay) return;
+    if (!overlay || !backdrop || !modalContent) return;
+
+    // Cancel any in-progress animations on modal elements
+    anime.remove(backdrop);
+    anime.remove(modalContent);
+    isModalAnimating = true;
 
     // Save the element that triggered the modal for focus restoration
     previouslyFocusedElement = document.activeElement as HTMLElement;
@@ -995,23 +1001,39 @@ function getStatusColor(status: string): string {
       }
     });
 
-    // Animate in
+    // Check for reduced motion preference
+    const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!motionOk) {
+      // Instant show for reduced motion
+      (backdrop as HTMLElement).style.opacity = "1";
+      (modalContent as HTMLElement).style.opacity = "1";
+      (modalContent as HTMLElement).style.transform = "translateY(0) scale(1)";
+      closeBtn?.focus();
+      document.addEventListener("keydown", trapFocus);
+      return;
+    }
+
+    // ── Orchestrated entrance choreography ──
+    // Phase 1: Backdrop fades in with a soft feel
     anime({
       targets: backdrop,
       opacity: [0, 1],
-      duration: 300,
-      easing: "easeOutQuad",
+      duration: 400,
+      easing: "easeOutQuart",
     });
 
+    // Phase 2: Modal content rises from below with spring-like deceleration
     anime({
       targets: modalContent,
       opacity: [0, 1],
-      translateY: [50, 0],
-      scale: [0.92, 1],
-      duration: 450,
-      easing: "easeOutCubic",
-      delay: 80,
+      translateY: [40, 0],
+      scale: [0.96, 1],
+      duration: 600,
+      delay: 100,
+      easing: "spring(1, 90, 12, 0)",
       complete: () => {
+        isModalAnimating = false;
         // Move focus to close button after animation
         closeBtn?.focus();
         // Enable focus trap
@@ -1021,27 +1043,53 @@ function getStatusColor(status: string): string {
   }
 
   function closeModal(): void {
-    if (!overlay) return;
+    if (!overlay || !backdrop || !modalContent) return;
+
+    // Cancel any in-progress animations on modal elements
+    anime.remove(backdrop);
+    anime.remove(modalContent);
+    isModalAnimating = true;
 
     // Remove focus trap
     document.removeEventListener("keydown", trapFocus);
 
+    const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!motionOk) {
+      // Instant hide for reduced motion
+      overlay.classList.add("hidden");
+      (backdrop as HTMLElement).style.opacity = "0";
+      (modalContent as HTMLElement).style.opacity = "0";
+      (modalContent as HTMLElement).style.transform = "translateY(40px) scale(0.96)";
+      document.body.style.overflow = "";
+      previouslyFocusedElement?.focus();
+      previouslyFocusedElement = null;
+      return;
+    }
+
+    // Phase 1: Content drops away quickly with fade
     anime({
       targets: modalContent,
-      opacity: [1, 0],
-      translateY: [0, 40],
-      scale: [1, 0.95],
-      duration: 250,
-      easing: "easeInQuad",
+      opacity: 0,
+      translateY: 24,
+      scale: 0.97,
+      duration: 280,
+      easing: "easeInQuart",
     });
 
+    // Phase 2: Backdrop fades out slightly behind content
     anime({
       targets: backdrop,
-      opacity: [1, 0],
-      duration: 300,
-      easing: "easeInQuad",
+      opacity: 0,
+      duration: 320,
+      delay: 60,
+      easing: "easeInQuart",
       complete: () => {
+        isModalAnimating = false;
         overlay.classList.add("hidden");
+        // Reset transforms for next open
+        (modalContent as HTMLElement).style.opacity = "0";
+        (modalContent as HTMLElement).style.transform = "translateY(40px) scale(0.96)";
         document.body.style.overflow = "";
         // Restore focus to the element that opened the modal
         previouslyFocusedElement?.focus();

@@ -8,7 +8,7 @@
 ---
 
 <section
-  id="hero"
+  id="home"
   class="relative min-h-screen flex items-center justify-center overflow-hidden pt-[60px]"
 >
   <!-- Content -->
@@ -57,37 +57,16 @@
         <span data-i18n="hero.ctaContact">Contact →</span>
       </a>
     </div>
-
-    <!-- Tech Stack Quick View -->
-    <div class="mt-16 hero-tech opacity-0">
-      <p class="text-xs uppercase tracking-widest mb-4" style="color: var(--mui-text-disabled);" data-i18n="hero.stackLabel">Main Stack</p>
-      <div class="flex items-center justify-center flex-wrap gap-6">
-        {[
-          { name: ".NET MAUI", icon: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>' },
-          { name: "ASP.NET Core", icon: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/></svg>' },
-          { name: "Kotlin", icon: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h10L2 12.5V2zm0 20l20-20h-10L2 12.5V22zm10-10L22 2v20L12 12z"/></svg>' },
-          { name: "Azure", icon: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9.2 19.5l5.5-15.5H11L5 17.1h2.8L5.2 21h12.6l2.2-1.5H9.2z"/></svg>' },
-          { name: "SQL Server", icon: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>' },
-        ].map((tech) => (
-          <div
-            class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs sm:text-sm transition-all duration-200"
-            style="border: 1px solid var(--mui-border-subtle); color: var(--mui-text-muted);"
-          >
-            <span set:html={tech.icon} aria-hidden="true" />
-            <span>{tech.name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
   </div>
 
   <!-- Scroll Indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hero-scroll opacity-0">
-    <a href="#about" class="flex flex-col items-center gap-2 transition-colors" style="color: var(--mui-text-disabled);" aria-label="Go to About section" data-i18n-aria="hero.scrollAria">
-      <span class="text-[10px] uppercase tracking-[0.3em]" data-i18n="hero.scrollLabel">Scroll</span>
-      <div class="w-5 h-8 rounded-full flex justify-center pt-1.5" style="border: 1px solid var(--mui-border);">
-        <div class="w-1 h-2 rounded-full animate-bounce" style="background: var(--mui-primary);"></div>
-      </div>
+  <div class="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 hero-scroll opacity-0 pointer-events-auto">
+    <a href="#about" class="scroll-indicator" aria-label="Go to About section" data-i18n-aria="hero.scrollAria">
+      <svg class="scroll-mouse" width="24" height="38" viewBox="0 0 24 38" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="22" height="36" rx="11" stroke="currentColor" stroke-width="1.5" />
+        <circle class="scroll-dot" cx="12" cy="10" r="2.5" fill="var(--mui-primary)" />
+      </svg>
+      <span class="scroll-label" data-i18n="hero.scrollLabel">Scroll</span>
     </a>
   </div>
 </section>
@@ -100,7 +79,7 @@
 
   // Set initial states
   gsap.set(
-    [".hero-line", ".hero-desc", ".hero-cta", ".hero-tech"],
+    [".hero-line", ".hero-desc", ".hero-cta"],
     { y: 20 }
   );
 
@@ -128,16 +107,6 @@
     )
     .to(
       ".hero-cta",
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power3.out",
-      },
-      "-=0.2"
-    )
-    .to(
-      ".hero-tech",
       {
         opacity: 1,
         y: 0,

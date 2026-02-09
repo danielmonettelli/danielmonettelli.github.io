@@ -6,7 +6,7 @@
  * Source: docs/src/layouts/AppHeader.tsx
  */
 const navLinks = [
-  { href: "#hero", label: "Home", i18nKey: "navbar.home" },
+  { href: "#home", label: "Home", i18nKey: "navbar.home" },
   { href: "#about", label: "About", i18nKey: "navbar.about" },
   { href: "#skills", label: "Skills", i18nKey: "navbar.skills" },
   { href: "#experience", label: "Experience", i18nKey: "navbar.experience" },
@@ -27,7 +27,7 @@ const navLinks = [
     <div class="flex items-center justify-between h-full">
       <!-- Logo — MUI LogoWithCopyMenu style -->
       <a
-        href="#hero"
+        href="#home"
         class="flex items-center gap-3 group"
         aria-label="Go to top"
         data-i18n-aria="navbar.goHome"
@@ -39,7 +39,7 @@ const navLinks = [
           loading="eager"
         />
         <span
-          class="hidden sm:block text-sm font-semibold transition-colors"
+          class="text-xs sm:text-sm font-semibold transition-colors"
           style="color: var(--mui-text-secondary);"
         >
           Daniel Monettelli

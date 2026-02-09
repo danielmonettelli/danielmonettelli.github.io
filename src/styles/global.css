@@ -206,6 +206,16 @@
   --mui-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --mui-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
   --mui-shadow-glow: 0 0 24px hsla(210, 100%, 60%, 0.15);
+
+  /* ── Skill icon badge — dark mode ── */
+  --mui-skill-badge-bg: hsl(210, 14%, 20%);
+  --mui-skill-badge-border: hsla(210, 14%, 50%, 0.35);
+  --mui-skill-badge-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+  /* ── Skill icon filters — dark mode: boost brightness & saturation ── */
+  --mui-skill-icon-filter: brightness(1.35) saturate(1.25)
+    drop-shadow(0 0 1px rgba(255, 255, 255, 0.1));
+  --mui-skill-custom-color: hsl(215, 15%, 85%);
 }
 
 [data-theme="light"] {
@@ -235,6 +245,15 @@
   --mui-border: hsl(215, 15%, 92%);
   --mui-border-subtle: hsla(215, 15%, 92%, 0.6);
   --mui-border-hover: hsla(210, 100%, 45%, 0.3);
+
+  /* ── Skill icon badge — light mode ── */
+  --mui-skill-badge-bg: hsl(215, 15%, 97%);
+  --mui-skill-badge-border: hsla(215, 15%, 82%, 0.5);
+  --mui-skill-badge-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+  /* ── Skill icon filters — light mode: no boost needed ── */
+  --mui-skill-icon-filter: none;
+  --mui-skill-custom-color: hsl(215, 15%, 22%);
 
   /* ── Navbar — light ── */
   --mui-navbar-bg: rgba(255, 255, 255, 0.8);
@@ -596,6 +615,149 @@ body {
     border-color 0.3s ease;
 }
 
+/* ── Skill icon badge — theme-adaptive container ── */
+.skill-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  border-radius: 7px;
+  background: var(--mui-skill-badge-bg);
+  border: 1px solid var(--mui-skill-badge-border);
+  box-shadow: var(--mui-skill-badge-shadow);
+  flex-shrink: 0;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.skill-icon-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: var(--mui-skill-icon-filter);
+  transition: filter 0.3s ease;
+}
+
+/* Custom SVG icons inside badge — inherit theme text color */
+.skill-icon-custom svg {
+  width: 100%;
+  height: 100%;
+  color: var(--mui-skill-custom-color);
+  transition: color 0.3s ease;
+}
+
+/* ── Primary Tech Card — Main Stack featured cards ── */
+.tech-card-primary {
+  position: relative;
+  border-radius: 16px;
+  background: var(--mui-skill-badge-bg);
+  border: 1px solid var(--mui-skill-badge-border);
+  overflow: hidden;
+  cursor: default;
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.tech-card-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--tech-accent, var(--mui-primary));
+  border-radius: 16px 0 0 16px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.tech-card-primary:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--tech-accent) 40%, transparent);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--tech-accent) 15%, transparent);
+}
+
+.tech-card-primary:hover::before {
+  opacity: 1;
+}
+
+.tech-card-primary-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    color-mix(in srgb, var(--tech-accent) 8%, transparent) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.tech-card-primary:hover .tech-card-primary-glow {
+  opacity: 1;
+}
+
+/* Primary tech icon — larger, with accent ring on hover */
+.tech-icon-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 6px;
+  border-radius: 12px;
+  background: var(--mui-bg-subtle);
+  border: 1.5px solid var(--mui-border-subtle);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.tech-card-primary:hover .tech-icon-primary {
+  border-color: color-mix(in srgb, var(--tech-accent) 50%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--tech-accent) 20%, transparent);
+}
+
+.tech-icon-primary img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: var(--mui-skill-icon-filter);
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
+}
+
+.tech-card-primary:hover .tech-icon-primary img {
+  transform: scale(1.08);
+}
+
+/* ── Secondary Tech Card — Complementary grid ── */
+.tech-card-secondary {
+  border-radius: 12px;
+  background: var(--mui-bg-subtle);
+  border: 1px solid var(--mui-border-subtle);
+  cursor: default;
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.tech-card-secondary:hover {
+  transform: translateY(-2px);
+  background: var(--mui-skill-badge-bg);
+  border-color: var(--mui-skill-badge-border);
+}
+
 /* ============================================
    MUI BUTTON STYLES — exact from brandingTheme.ts
    ============================================ */
@@ -855,6 +1017,14 @@ body {
   outline-offset: 2px;
 }
 
+/* Active skill tab — visible border + subtle bg */
+.skill-tab-active {
+  background: var(--mui-bg-card);
+  border-color: var(--mui-primary) !important;
+  box-shadow: 0 0 12px hsla(210, 100%, 50%, 0.15);
+  color: var(--mui-text-primary);
+}
+
 /* Focus styles for nav links */
 .nav-link:focus-visible,
 .mobile-nav-link:focus-visible {
@@ -873,6 +1043,53 @@ body {
 .social-link:focus-visible {
   outline: 2px solid var(--mui-primary);
   outline-offset: 3px;
+}
+
+/* ── Scroll Indicator — Mouse icon ── */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--mui-text-disabled);
+  transition: color 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  color: var(--mui-text-muted);
+}
+
+.scroll-mouse {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover .scroll-mouse {
+  opacity: 1;
+}
+
+.scroll-dot {
+  animation: scroll-dot-bounce 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scroll-dot-bounce {
+  0%,
+  100% {
+    cy: 10;
+    opacity: 1;
+  }
+  50% {
+    cy: 22;
+    opacity: 0.3;
+  }
+}
+
+.scroll-label {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 500;
 }
 
 /* ============================================
@@ -897,7 +1114,6 @@ body {
   .hero-line,
   .hero-desc,
   .hero-cta,
-  .hero-tech,
   .hero-scroll {
     opacity: 1 !important;
     transform: none !important;

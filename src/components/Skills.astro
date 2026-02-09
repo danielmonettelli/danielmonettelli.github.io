@@ -8,6 +8,8 @@ interface Skill {
   name: string;
   level: number; // 0-100
   tag: string; // Avanzado, Intermedio, etc.
+  devicon?: string; // Devicon icon slug (e.g., "react", "angular")
+  customIcon?: string; // Inline SVG for concepts without brand icons
 }
 
 interface SkillCategory {
@@ -19,6 +21,15 @@ interface SkillCategory {
   skills: Skill[];
 }
 
+/** Custom SVG icons for concepts without brand icons (use currentColor for theme adaptation) */
+const customSkillIcons: Record<string, string> = {
+  solid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>',
+  cleanarch: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="3"/></svg>',
+  mvvm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="1.5" width="18" height="4.5" rx="1.5"/><rect x="3" y="9.75" width="18" height="4.5" rx="1.5"/><rect x="3" y="18" width="18" height="4.5" rx="1.5"/><path d="M12 6v3.75M12 14.25v3.75"/></svg>',
+  rup: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 12a9.5 9.5 0 11-7-9"/><path d="M21.5 3v5h-5"/></svg>',
+  rhapsody: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="7" height="5" rx="1"/><rect x="14" y="2" width="7" height="5" rx="1"/><rect x="8.5" y="17" width="7" height="5" rx="1"/><path d="M6.5 7v4.5h11V7"/><path d="M12 11.5v5.5"/></svg>',
+};
+
 const categories: SkillCategory[] = [
   {
     id: "mobile",
@@ -27,9 +38,9 @@ const categories: SkillCategory[] = [
     icon: "mobile",
     color: "brand",
     skills: [
-      { name: ".NET MAUI", level: 95, tag: "Advanced" },
-      { name: "Xamarin.Forms", level: 90, tag: "Advanced" },
-      { name: "Android Nativo (Kotlin/XML)", level: 60, tag: "Intermediate" },
+      { name: ".NET MAUI", level: 95, tag: "Advanced", devicon: "dotnetcore" },
+      { name: "Xamarin.Forms", level: 90, tag: "Advanced", devicon: "xamarin" },
+      { name: "Android Nativo (Kotlin/XML)", level: 60, tag: "Intermediate", devicon: "kotlin" },
     ],
   },
   {
@@ -39,8 +50,8 @@ const categories: SkillCategory[] = [
     icon: "backend",
     color: "violet",
     skills: [
-      { name: "ASP.NET Core Web API", level: 85, tag: "Advanced" },
-      { name: "Java Spring Boot", level: 55, tag: "Basic-Intermediate" },
+      { name: "ASP.NET Core Web API", level: 85, tag: "Advanced", devicon: "dotnetcore" },
+      { name: "Java Spring Boot", level: 55, tag: "Basic-Intermediate", devicon: "spring" },
     ],
   },
   {
@@ -50,9 +61,9 @@ const categories: SkillCategory[] = [
     icon: "frontend",
     color: "accent",
     skills: [
-      { name: "Angular", level: 55, tag: "Basic-Intermediate" },
-      { name: "React", level: 55, tag: "Basic-Intermediate" },
-      { name: "ASP.NET Core MVC (Razor)", level: 70, tag: "Intermediate" },
+      { name: "Angular", level: 55, tag: "Basic-Intermediate", devicon: "angular" },
+      { name: "React", level: 55, tag: "Basic-Intermediate", devicon: "react" },
+      { name: "ASP.NET Core MVC (Razor)", level: 70, tag: "Intermediate", devicon: "dotnetcore" },
     ],
   },
   {
@@ -62,10 +73,10 @@ const categories: SkillCategory[] = [
     icon: "databases",
     color: "brand",
     skills: [
-      { name: "SQL Server", level: 80, tag: "Advanced" },
-      { name: "MySQL", level: 75, tag: "Intermediate" },
-      { name: "MongoDB", level: 60, tag: "Intermediate" },
-      { name: "SQLite", level: 70, tag: "Intermediate" },
+      { name: "SQL Server", level: 80, tag: "Advanced", devicon: "microsoftsqlserver" },
+      { name: "MySQL", level: 75, tag: "Intermediate", devicon: "mysql" },
+      { name: "MongoDB", level: 60, tag: "Intermediate", devicon: "mongodb" },
+      { name: "SQLite", level: 70, tag: "Intermediate", devicon: "sqlite" },
     ],
   },
   {
@@ -75,10 +86,10 @@ const categories: SkillCategory[] = [
     icon: "architecture",
     color: "violet",
     skills: [
-      { name: "SOLID Principles", level: 85, tag: "Advanced" },
-      { name: "Clean Architecture", level: 85, tag: "Advanced" },
-      { name: "MVVM", level: 90, tag: "Advanced" },
-      { name: "RUP Methodology", level: 70, tag: "Intermediate" },
+      { name: "SOLID Principles", level: 85, tag: "Advanced", customIcon: customSkillIcons.solid },
+      { name: "Clean Architecture", level: 85, tag: "Advanced", customIcon: customSkillIcons.cleanarch },
+      { name: "MVVM", level: 90, tag: "Advanced", customIcon: customSkillIcons.mvvm },
+      { name: "RUP Methodology", level: 70, tag: "Intermediate", customIcon: customSkillIcons.rup },
     ],
   },
   {
@@ -88,9 +99,9 @@ const categories: SkillCategory[] = [
     icon: "cloud",
     color: "accent",
     skills: [
-      { name: "Microsoft Azure", level: 65, tag: "Intermediate" },
-      { name: "GitHub Actions", level: 75, tag: "Intermediate" },
-      { name: "Git", level: 85, tag: "Advanced" },
+      { name: "Microsoft Azure", level: 65, tag: "Intermediate", devicon: "azure" },
+      { name: "GitHub Actions", level: 75, tag: "Intermediate", devicon: "githubactions" },
+      { name: "Git", level: 85, tag: "Advanced", devicon: "git" },
     ],
   },
   {
@@ -100,8 +111,8 @@ const categories: SkillCategory[] = [
     icon: "tools",
     color: "brand",
     skills: [
-      { name: "Figma", level: 70, tag: "Intermediate" },
-      { name: "IBM Rhapsody", level: 50, tag: "Basic" },
+      { name: "Figma", level: 70, tag: "Intermediate", devicon: "figma" },
+      { name: "IBM Rhapsody", level: 65, tag: "Intermediate", customIcon: customSkillIcons.rhapsody },
     ],
   },
 ];
@@ -121,13 +132,22 @@ function getTagColor(tag: string): string {
   return "text-white/50 bg-white/5";
 }
 
+/** Devicon CDN URL builder */
+function getDeviconUrl(slug: string): string {
+  const exceptions: Record<string, string> = {
+    microsoftsqlserver: "plain",
+  };
+  const variant = exceptions[slug] || "original";
+  return `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${slug}/${slug}-${variant}.svg`;
+}
+
 const iconSvgs: Record<string, string> = {
   mobile: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="1" width="14" height="22" rx="2.5"/><path d="M10 19h4"/><circle cx="12" cy="5" r="0.5" fill="currentColor"/></svg>',
   backend: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="7" rx="1.5"/><rect x="2" y="14" width="20" height="7" rx="1.5"/><circle cx="6" cy="6.5" r="1" fill="currentColor"/><circle cx="6" cy="17.5" r="1" fill="currentColor"/><line x1="10" y1="6.5" x2="18" y2="6.5"/><line x1="10" y1="17.5" x2="18" y2="17.5"/></svg>',
   frontend: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 7h20"/><path d="M8 21h8"/><path d="M12 17v4"/><circle cx="5" cy="5" r="0.5" fill="currentColor"/><circle cx="7.5" cy="5" r="0.5" fill="currentColor"/><circle cx="10" cy="5" r="0.5" fill="currentColor"/></svg>',
   databases: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
   architecture: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
-  cloud: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9.2 19.5l5.5-15.5H11L5 17.1h2.8L5.2 21h12.6l2.2-1.5H9.2z"/></svg>',
+  cloud: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>',
   tools: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
 };
 ---
@@ -158,11 +178,12 @@ const iconSvgs: Record<string, string> = {
           tabindex={i === 0 ? "0" : "-1"}
           class:list={[
             "skill-tab inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium cursor-pointer",
+            "border",
             i === 0
-              ? "glass border-primary-500/30"
-              : "",
+              ? "skill-tab-active"
+              : "border-transparent",
           ]}
-          style="transition: none;"
+          style="transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;"
         >
           <span class="shrink-0 inline-flex" aria-hidden="true" set:html={iconSvgs[cat.icon]} />
           <span data-i18n={cat.i18nKey}>{cat.label}</span>
@@ -185,6 +206,19 @@ const iconSvgs: Record<string, string> = {
             <div class="group">
               <div class="flex items-center justify-between mb-2">
                 <div class="flex items-center gap-3">
+                  {skill.devicon && (
+                    <span class="skill-icon-badge">
+                      <img
+                        src={getDeviconUrl(skill.devicon)}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                  )}
+                  {skill.customIcon && !skill.devicon && (
+                    <span class="skill-icon-badge skill-icon-custom" set:html={skill.customIcon} />
+                  )}
                   <span class="text-sm font-medium transition-colors" style="color: var(--mui-text-secondary);">
                     {skill.name}
                   </span>
@@ -220,18 +254,94 @@ const iconSvgs: Record<string, string> = {
       ))}
     </div>
 
-    <!-- Quick Overview Grid -->
-    <div class="mt-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 stagger-children">
-      {[
-        ".NET MAUI", "ASP.NET Core", "Xamarin.Forms", "Kotlin",
-        "Angular", "React", "SQL Server", "MongoDB",
-        "Azure", "Git", "SOLID", "Clean Architecture",
-        "MVVM", "Spring Boot", "Figma", "GitHub Actions",
-      ].map((tech) => (
-        <div class="glass-subtle rounded-xl px-4 py-3 text-center text-xs sm:text-sm transition-all duration-300 cursor-default" style="color: var(--mui-text-muted);">
-          {tech}
+    <!-- Technology Overview -->
+    <div class="mt-20" id="tech-overview">
+      <!-- Main Stack — Featured -->
+      <div class="mb-6 reveal-up">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="h-px flex-1" style="background: linear-gradient(90deg, var(--mui-primary), transparent);"></div>
+          <p class="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-semibold whitespace-nowrap" style="color: var(--mui-primary);" data-i18n="skills.mainStack">Main Stack</p>
+          <div class="h-px flex-1" style="background: linear-gradient(270deg, var(--mui-primary), transparent);"></div>
         </div>
-      ))}
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" id="main-stack-grid">
+          {[
+            { name: ".NET MAUI", slug: "dotnetcore", role: "Mobile", color: "hsl(267, 56%, 53%)" },
+            { name: "ASP.NET Core", slug: "dotnetcore", role: "Backend", color: "hsl(210, 100%, 45%)" },
+            { name: "ASP.NET MVC", slug: "dotnetcore", role: "Frontend", color: "hsl(150, 60%, 40%)" },
+            { name: "Azure", slug: "azure", role: "Cloud", color: "hsl(199, 91%, 49%)" },
+            { name: "SQL Server", slug: "microsoftsqlserver", role: "Database", color: "hsl(355, 82%, 52%)" },
+          ].map((tech) => (
+            <div
+              class="tech-card-primary group"
+              style={`--tech-accent: ${tech.color};`}
+            >
+              <div class="tech-card-primary-glow" aria-hidden="true"></div>
+              <div class="relative z-[1] flex flex-col items-center gap-2.5 py-5 px-3">
+                <span class="tech-icon-primary">
+                  <img
+                    src={getDeviconUrl(tech.slug)}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <div class="text-center">
+                  <span class="block text-sm font-semibold" style="color: var(--mui-text-primary);">{tech.name}</span>
+                  <span class="block text-[10px] uppercase tracking-[0.15em] font-medium mt-0.5" style="color: var(--tech-accent);" data-i18n={`skills.role_${tech.role.toLowerCase()}`}>{tech.role}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Complementary Technologies -->
+      <div class="reveal-up">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="h-px flex-1" style="background: linear-gradient(90deg, var(--mui-border-subtle), transparent);"></div>
+          <p class="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-medium whitespace-nowrap" style="color: var(--mui-text-disabled);" data-i18n="skills.complementary">Complementary</p>
+          <div class="h-px flex-1" style="background: linear-gradient(270deg, var(--mui-border-subtle), transparent);"></div>
+        </div>
+        <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2.5" id="complementary-grid">
+          {[
+            { name: "Xamarin.Forms", slug: "xamarin" },
+            { name: "Kotlin", slug: "kotlin" },
+            { name: "Angular", slug: "angular" },
+            { name: "React", slug: "react" },
+            { name: "Spring Boot", slug: "spring" },
+            { name: "MySQL", slug: "mysql" },
+            { name: "MongoDB", slug: "mongodb" },
+            { name: "SQLite", slug: "sqlite" },
+            { name: "SOLID", svg: customSkillIcons.solid },
+            { name: "Clean Arch.", svg: customSkillIcons.cleanarch },
+            { name: "MVVM", svg: customSkillIcons.mvvm },
+            { name: "RUP", svg: customSkillIcons.rup },
+            { name: "Git", slug: "git" },
+            { name: "GitHub Actions", slug: "githubactions" },
+            { name: "Figma", slug: "figma" },
+            { name: "IBM Rhapsody", svg: customSkillIcons.rhapsody },
+          ].map((tech) => (
+            <div class="tech-card-secondary group">
+              <div class="flex flex-col items-center gap-1.5 py-3 px-2">
+                {tech.slug && (
+                  <span class="skill-icon-badge">
+                    <img
+                      src={getDeviconUrl(tech.slug)}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </span>
+                )}
+                {tech.svg && !tech.slug && (
+                  <span class="skill-icon-badge skill-icon-custom" set:html={tech.svg} />
+                )}
+                <span class="text-[10px] sm:text-xs text-center leading-tight" style="color: var(--mui-text-muted);">{tech.name}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -275,11 +385,13 @@ const iconSvgs: Record<string, string> = {
 
       // Update active tab styling & ARIA
       tabs.forEach((t) => {
-        t.classList.remove("glass", "border-primary-500/30");
+        t.classList.remove("skill-tab-active");
+        t.classList.add("border-transparent");
         t.setAttribute("aria-selected", "false");
         t.setAttribute("tabindex", "-1");
       });
-      tab.classList.add("glass", "border-primary-500/30");
+      tab.classList.remove("border-transparent");
+      tab.classList.add("skill-tab-active");
       tab.setAttribute("aria-selected", "true");
       tab.setAttribute("tabindex", "0");
 
@@ -346,4 +458,48 @@ const iconSvgs: Record<string, string> = {
       }
     },
   });
+
+  // ── Tech Overview Grid animations ──
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMotion) {
+    // Main Stack — staggered entrance with scale + glow pulse
+    const mainCards = gsap.utils.toArray<HTMLElement>("#main-stack-grid .tech-card-primary");
+    gsap.set(mainCards, { opacity: 0, y: 30, scale: 0.92 });
+
+    ScrollTrigger.create({
+      trigger: "#tech-overview",
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        gsap.to(mainCards, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          ease: "back.out(1.4)",
+          stagger: 0.12,
+        });
+      },
+    });
+
+    // Complementary — faster cascade
+    const compCards = gsap.utils.toArray<HTMLElement>("#complementary-grid .tech-card-secondary");
+    gsap.set(compCards, { opacity: 0, y: 20 });
+
+    ScrollTrigger.create({
+      trigger: "#complementary-grid",
+      start: "top 85%",
+      once: true,
+      onEnter: () => {
+        gsap.to(compCards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          stagger: 0.06,
+        });
+      },
+    });
+  }
 </script>
