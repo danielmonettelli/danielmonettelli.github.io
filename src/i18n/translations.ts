@@ -427,6 +427,20 @@ export const translations: Translations = {
       topLabel: "Top",
       tagline: "Full Stack Developer | .NET & Mobile Specialist",
     },
+    maintenance: {
+      ariaLabel: "Site under maintenance",
+      toggleTheme: "Toggle theme",
+      badge: "Under Maintenance",
+      titleHtml:
+        'My portfolio is<br/><span class="gradient-text">being renovated</span>',
+      description:
+        'I\'m working on a new version with better experiences and a more refined design. In the meantime, you can visit my blog with articles about <strong style="color: var(--mui-text-secondary);">.NET MAUI</strong> and software development.',
+      cta: "Visit my Blog",
+      footer: "All rights reserved.",
+      langToggle: "English",
+      langToggleMobile: "EN",
+      langToggleAria: "Switch to Spanish",
+    },
   },
 
   // ═══════════════════════════════════════════
@@ -838,6 +852,20 @@ export const translations: Translations = {
       backToTop: "Volver arriba",
       topLabel: "Inicio",
       tagline: "Full Stack Developer | .NET & Mobile Specialist",
+    },
+    maintenance: {
+      ariaLabel: "Sitio en mantenimiento",
+      toggleTheme: "Cambiar tema",
+      badge: "En Mantenimiento",
+      titleHtml:
+        'Mi portafolio está<br/><span class="gradient-text">siendo renovado</span>',
+      description:
+        'Estoy trabajando en una nueva versión con mejores experiencias y un diseño más refinado. Mientras tanto, puedes visitar mi blog con artículos sobre <strong style="color: var(--mui-text-secondary);">.NET MAUI</strong> y desarrollo de software.',
+      cta: "Visitar mi Blog",
+      footer: "Todos los derechos reservados.",
+      langToggle: "Español",
+      langToggleMobile: "ES",
+      langToggleAria: "Cambiar a inglés",
     },
   },
 };
