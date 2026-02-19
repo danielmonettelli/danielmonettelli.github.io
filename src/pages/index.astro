@@ -2,6 +2,16 @@
 /**
  * Portfolio Homepage
  * Main entry point — wires all sections together with global animation init.
+ *
+ * Maintenance Mode (Production):
+ *   When isMaintenanceMode is true, shows a beautiful GSAP-animated maintenance
+ *   page with a CTA linking to the blog. Layout hides DevBackground, scroll
+ *   progress bar, and back-to-top button.
+ *
+ * Development Mode:
+ *   Shows the full portfolio with all sections and animations.
+ *
+ * To publish the portfolio, set isMaintenanceMode = false.
  */
 import Layout from "@layouts/Layout.astro";
 import Navbar from "@components/Navbar.astro";
@@ -13,31 +23,49 @@ import Projects from "@components/Projects.astro";
 import BlogPreview from "@components/BlogPreview.astro";
 import Contact from "@components/Contact.astro";
 import Footer from "@components/Footer.astro";
+import Maintenance from "@components/Maintenance.astro";
+
+const isMaintenanceMode = import.meta.env.PROD;
+
+const layoutProps = isMaintenanceMode
+  ? {
+      title: "Daniel Monettelli — Portfolio en Mantenimiento",
+      description:
+        "Mi portafolio está en mantenimiento. Mientras tanto, visita mi blog con artículos sobre .NET MAUI y desarrollo de software.",
+      maintenance: true,
+    }
+  : {};
 ---
 
-<Layout>
-  <Navbar />
-  <Hero />
+<Layout {...layoutProps}>
+  {isMaintenanceMode ? (
+    <Maintenance />
+  ) : (
+    <>
+      <Navbar />
+      <Hero />
 
-  <div class="section-divider max-w-6xl mx-auto"></div>
-  <About />
+      <div class="section-divider max-w-6xl mx-auto"></div>
+      <About />
 
-  <div class="section-divider max-w-6xl mx-auto"></div>
-  <Skills />
+      <div class="section-divider max-w-6xl mx-auto"></div>
+      <Skills />
 
-  <div class="section-divider max-w-6xl mx-auto"></div>
-  <Experience />
+      <div class="section-divider max-w-6xl mx-auto"></div>
+      <Experience />
 
-  <div class="section-divider max-w-6xl mx-auto"></div>
-  <Projects />
+      <div class="section-divider max-w-6xl mx-auto"></div>
+      <Projects />
 
-  <div class="section-divider max-w-6xl mx-auto"></div>
-  <BlogPreview />
+      <div class="section-divider max-w-6xl mx-auto"></div>
+      <BlogPreview />
 
-  <div class="section-divider max-w-6xl mx-auto"></div>
-  <Contact />
+      <div class="section-divider max-w-6xl mx-auto"></div>
+      <Contact />
 
-  <Footer />
+      <Footer />
+    </>
+  )}
 </Layout>
 
 <script>

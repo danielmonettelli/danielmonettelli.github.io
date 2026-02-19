@@ -1,0 +1,448 @@
+---
+/**
+ * Maintenance Page — Body-content component shown in production while portfolio is rebuilt.
+ * Uses existing MUI design tokens from global.css. Features GSAP-driven animations and a CTA to the blog.
+ * Rendered inside Layout.astro with maintenance={true} (no DevBackground, scroll bar, etc.).
+ */
+---
+
+<!-- Full-viewport wrapper — centers content and prevents scroll -->
+<div class="mt-page" aria-label="Sitio en mantenimiento">
+  <!-- Dot grid background -->
+  <div class="mt-dot-grid" aria-hidden="true"></div>
+
+  <!-- Floating orbs -->
+  <div class="mt-orb mt-orb-1" aria-hidden="true"></div>
+  <div class="mt-orb mt-orb-2" aria-hidden="true"></div>
+  <div class="mt-orb mt-orb-3" aria-hidden="true"></div>
+
+  <!-- Theme Toggle -->
+  <button class="mt-theme-toggle" id="mtThemeToggle" aria-label="Cambiar tema">
+    <svg class="mt-sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+      <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+    <svg class="mt-moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
+
+  <!-- Content -->
+  <div class="mt-container">
+    <!-- Animated gear icon -->
+    <div class="mt-gear-wrapper" id="mtGearWrapper">
+      <svg class="mt-gear-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </div>
+
+    <!-- Status badge -->
+    <div class="mt-status-badge" id="mtStatusBadge">
+      <span class="mt-status-dot"></span>
+      En Mantenimiento
+    </div>
+
+    <!-- Title -->
+    <h1 class="mt-title" id="mtTitle">
+      Mi portafolio está<br/>
+      <span class="gradient-text">siendo renovado</span>
+    </h1>
+
+    <!-- Description -->
+    <p class="mt-description" id="mtDesc">
+      Estoy trabajando en una nueva versión con mejores experiencias
+      y un diseño más refinado. Mientras tanto, puedes visitar mi blog
+      con artículos sobre <strong style="color: var(--mui-text-secondary);">.NET MAUI</strong> y desarrollo de software.
+    </p>
+
+    <!-- CTA -->
+    <a href="/blog/" class="mt-cta" id="mtCta">
+      Visitar mi Blog
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+
+    <!-- Footer -->
+    <p class="mt-footer" id="mtFooter">
+      &copy; 2025 Daniel Monettelli &mdash;
+      <a href="https://twitter.com/DaniMonettelli" target="_blank" rel="noopener">@DaniMonettelli</a>
+    </p>
+  </div>
+</div>
+
+<style>
+  /* ── Full-viewport wrapper ── */
+  .mt-page {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 20;
+    background: var(--mui-bg);
+  }
+
+  /* ── Dot grid background ── */
+  .mt-dot-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--mui-border-subtle) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.6;
+    z-index: 0;
+  }
+
+  /* ── Floating orbs ── */
+  .mt-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .mt-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: hsla(210, 100%, 50%, 0.08);
+    top: -100px;
+    right: -100px;
+  }
+
+  .mt-orb-2 {
+    width: 300px;
+    height: 300px;
+    background: hsla(267, 56%, 53%, 0.06);
+    bottom: -80px;
+    left: -80px;
+  }
+
+  .mt-orb-3 {
+    width: 200px;
+    height: 200px;
+    background: hsla(199, 91%, 49%, 0.06);
+    top: 50%;
+    left: 60%;
+  }
+
+  /* ── Main container ── */
+  .mt-container {
+    position: relative;
+    z-index: 10;
+    max-width: 620px;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  /* ── Gear icon ── */
+  .mt-gear-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    opacity: 0;
+  }
+
+  .mt-gear-icon {
+    width: 72px;
+    height: 72px;
+    color: var(--mui-primary);
+    filter: drop-shadow(0 0 20px hsla(210, 100%, 50%, 0.3));
+  }
+
+  /* ── Status badge ── */
+  .mt-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 1rem;
+    border-radius: 100px;
+    border: 1px solid var(--mui-border-subtle);
+    background: var(--mui-bg-card);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mui-text-disabled);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+  }
+
+  .mt-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: hsl(48, 100%, 50%);
+    animation: mt-pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes mt-pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ── Typography ── */
+  .mt-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    opacity: 0;
+  }
+
+  .mt-description {
+    font-family: var(--font-sans);
+    font-size: clamp(0.875rem, 2.5vw, 1.0625rem);
+    line-height: 1.7;
+    color: var(--mui-text-muted);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+  }
+
+  /* ── CTA Button ── */
+  .mt-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.875rem 2rem;
+    border-radius: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    background: var(--mui-primary);
+    border: 1px solid var(--mui-primary-dark);
+    box-shadow:
+      inset 0 1px 0 hsla(210, 100%, 90%, 0.2),
+      0 2px 8px hsla(210, 100%, 50%, 0.3);
+    transition: all 150ms ease;
+    opacity: 0;
+  }
+
+  .mt-cta:hover {
+    background: var(--mui-primary-dark);
+    box-shadow:
+      inset 0 1px 0 hsla(210, 100%, 80%, 0.15),
+      0 4px 16px hsla(210, 100%, 50%, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .mt-cta:active {
+    transform: translateY(0);
+  }
+
+  .mt-cta svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
+  }
+
+  .mt-cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ── Footer note ── */
+  .mt-footer {
+    margin-top: 3rem;
+    font-size: 0.75rem;
+    color: var(--mui-text-disabled);
+    opacity: 0;
+  }
+
+  .mt-footer a {
+    color: var(--mui-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .mt-footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Theme toggle ── */
+  .mt-theme-toggle {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 50;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--mui-border-subtle);
+    background: var(--mui-bg-card);
+    color: var(--mui-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    opacity: 0;
+  }
+
+  .mt-theme-toggle:hover {
+    border-color: var(--mui-primary);
+    color: var(--mui-primary);
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .mt-gear-wrapper,
+    .mt-status-badge,
+    .mt-title,
+    .mt-description,
+    .mt-cta,
+    .mt-footer,
+    .mt-theme-toggle,
+    .mt-orb {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+
+  // Only run if maintenance elements exist
+  const mtPage = document.querySelector(".mt-page");
+  if (mtPage) {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!prefersReducedMotion) {
+      const tl = gsap.timeline({ delay: 0.2 });
+
+      // Orbs — fade in with slow drift
+      gsap.set(".mt-orb", { opacity: 0, scale: 0.8 });
+      tl.to(".mt-orb", {
+        opacity: 1,
+        scale: 1,
+        duration: 2,
+        ease: "power2.out",
+        stagger: 0.3,
+      }, 0);
+
+      // Continuous orb floating
+      gsap.to(".mt-orb-1", {
+        x: 30, y: 20,
+        duration: 8,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+      gsap.to(".mt-orb-2", {
+        x: -20, y: -30,
+        duration: 10,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+      gsap.to(".mt-orb-3", {
+        x: 25, y: -15,
+        duration: 7,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      // Gear — appear + slow continuous rotation
+      gsap.set("#mtGearWrapper", { opacity: 0, scale: 0.5, y: 20 });
+      tl.to("#mtGearWrapper", {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+      }, 0.3);
+
+      gsap.to(".mt-gear-icon", {
+        rotation: 360,
+        duration: 20,
+        ease: "none",
+        repeat: -1,
+      });
+
+      // Status badge
+      gsap.set("#mtStatusBadge", { opacity: 0, y: 12 });
+      tl.to("#mtStatusBadge", {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power3.out",
+      }, 0.6);
+
+      // Title
+      gsap.set("#mtTitle", { opacity: 0, y: 20 });
+      tl.to("#mtTitle", {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: "power3.out",
+      }, 0.8);
+
+      // Description
+      gsap.set("#mtDesc", { opacity: 0, y: 16 });
+      tl.to("#mtDesc", {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power3.out",
+      }, 1.0);
+
+      // CTA button
+      gsap.set("#mtCta", { opacity: 0, y: 16, scale: 0.95 });
+      tl.to("#mtCta", {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        ease: "back.out(1.4)",
+      }, 1.2);
+
+      // Footer
+      gsap.set("#mtFooter", { opacity: 0 });
+      tl.to("#mtFooter", {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out",
+      }, 1.5);
+
+      // Theme toggle
+      gsap.set(".mt-theme-toggle", { opacity: 0 });
+      tl.to(".mt-theme-toggle", {
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      }, 1.6);
+    }
+
+    // Theme toggle logic
+    const toggle = document.getElementById("mtThemeToggle");
+    const sunIcon = toggle?.querySelector(".mt-sun-icon") as HTMLElement;
+    const moonIcon = toggle?.querySelector(".mt-moon-icon") as HTMLElement;
+
+    function updateIcons() {
+      const isDark = document.documentElement.getAttribute("data-theme") !== "light";
+      if (sunIcon && moonIcon) {
+        sunIcon.style.display = isDark ? "none" : "block";
+        moonIcon.style.display = isDark ? "block" : "none";
+      }
+    }
+
+    updateIcons();
+
+    toggle?.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      updateIcons();
+    });
+  }
+</script>
