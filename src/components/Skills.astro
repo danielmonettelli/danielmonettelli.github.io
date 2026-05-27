@@ -30,6 +30,7 @@ const customSkillIcons: Record<string, string> = {
   rhapsody: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="7" height="5" rx="1"/><rect x="14" y="2" width="7" height="5" rx="1"/><rect x="8.5" y="17" width="7" height="5" rx="1"/><path d="M6.5 7v4.5h11V7"/><path d="M12 11.5v5.5"/></svg>',
   owasp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>',
   mobsf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/><path d="M8 6h8"/><path d="M10 10h4"/></svg>',
+  cicd: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6l3 5 3-10 3 5h5"/><circle cx="5" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>',
 };
 
 const categories: SkillCategory[] = [
@@ -103,7 +104,7 @@ const categories: SkillCategory[] = [
       { name: "SOLID Principles", level: 85, tag: "Architecture-Ready", customIcon: customSkillIcons.solid },
       { name: "Clean Architecture", level: 85, tag: "Architecture-Ready", customIcon: customSkillIcons.cleanarch },
       { name: "MVVM", level: 90, tag: "Architecture-Ready", customIcon: customSkillIcons.mvvm },
-      { name: "Hybrid RUP-Scrum", level: 70, tag: "Applied in Projects", customIcon: customSkillIcons.rup },
+      { name: "Hybrid RUP-Scrum", level: 70, tag: "Applied in Projects", customIcon: customSkillIcons.rupscrum },
     ],
   },
   {
@@ -323,21 +324,25 @@ const iconSvgs: Record<string, string> = {
         <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2.5" id="complementary-grid">
           {[
             { name: "Xamarin.Forms", slug: "xamarin" },
-            { name: "Kotlin", slug: "kotlin" },
+            { name: "Android Native (Jetpack Compose)", slug: "kotlin" },
             { name: "React", slug: "react" },
-            { name: "ASP.NET Core MVC", slug: "dotnetcore" },
-            { name: "Spring Boot", slug: "spring" },
+            { name: "ASP.NET Core Web API", slug: "dotnetcore" },
+            { name: "ASP.NET Core MVC (Razor Views)", slug: "dotnetcore" },
+            { name: "Java Spring Boot", slug: "spring" },
             { name: "MySQL", slug: "mysql" },
             { name: "MongoDB", slug: "mongodb" },
             { name: "SQLite", slug: "sqlite" },
-            { name: "SOLID", svg: customSkillIcons.solid },
-            { name: "Clean Arch.", svg: customSkillIcons.cleanarch },
-            { name: "MVVM", svg: customSkillIcons.mvvm },
-            { name: "RUP", svg: customSkillIcons.rup },
-            { name: "Git", slug: "git" },
-            { name: "GitHub Actions", slug: "githubactions" },
+            { name: "OWASP ZAP", svg: customSkillIcons.owasp },
+            { name: "MobSF", svg: customSkillIcons.mobsf },
             { name: "Figma", slug: "figma" },
-            { name: "IBM Rhapsody", svg: customSkillIcons.rhapsody },
+            { name: "IBM Engineering Rhapsody", svg: customSkillIcons.rhapsody },
+            { name: "Clean Architecture", svg: customSkillIcons.cleanarch },
+            { name: "SOLID", svg: customSkillIcons.solid },
+            { name: "MVVM", svg: customSkillIcons.mvvm },
+            { name: "Hybrid RUP-Scrum", svg: customSkillIcons.rup },
+            { name: "GitHub Actions", slug: "githubactions" },
+            { name: "CI/CD Pipelines", svg: customSkillIcons.cicd },
+            { name: "Git", slug: "git" },
           ].map((tech) => (
             <div class="tech-card-secondary">
               <div class="flex flex-col items-center gap-1.5 py-3 px-2">
