@@ -42,10 +42,99 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "MeowApp",
-    subtitle: "Open Source App — .NET MAUI",
+    title: "SAIP Platform & TTAIP Appeals",
+    subtitle: "Government Transparency Platform",
     description:
-      "Mobile app published on Google Play Store that allows exploring cat breeds through external API consumption.",
+      "Comprehensive solution to modernize the right to Public Information Access, digitizing the complete cycle of requests and appeals.",
+    image:
+      "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
+    tags: ["Spring Boot", "Angular", "Kotlin", "Android", "SQL Server", "RUP", "IBM Rhapsody"],
+    links: [],
+    featured: true,
+    status: "Consolidated Solution",
+    projectType: "Government Web + Mobile Platform",
+    role: "Full Stack Developer and architect of the comprehensive solution",
+    screenshots: [],
+    problemSolved:
+      "In Peru, the Public Information Access (SAIP) process and its appeals before the TTAIP are bureaucratic procedures managed manually, causing delays, document loss, and lack of transparency. There was no digital platform covering the complete process cycle.",
+    myContribution:
+      "I led the design and implementation of the entire solution: modeled processes with professional UML (IBM Rhapsody), designed the database normalized to 3NF, built the RESTful API with Spring Boot, developed the SPA frontend with Angular, and created the native mobile app in Kotlin. Applied a hybrid RUP-Scrum methodology to combine structured analysis with iterative agility.",
+    fullDescription:
+      "Digital platform that digitizes the constitutional right to Public Information Access in Peru. It covers the complete SAIP process cycle: from citizen request to appeal resolution before the TTAIP, with three interconnected modules — web management platform (Angular), RESTful backend (Spring Boot), and native mobile application (Kotlin for Android) — all integrated on a SQL Server database normalized to 3NF.",
+    keyFeatures: [
+      "Robust RESTful backend with Spring Boot (Java), secure authentication, and role management",
+      "Complete SPA frontend with Angular, responsive design, and state management",
+      "Native Android application in Kotlin with XML Layouts and Material Design",
+      "SQL Server database normalized to 3NF with complete referential integrity",
+      "Professional UML modeling with IBM Rhapsody: use cases, class and sequence diagrams",
+      "Hybrid RUP-Scrum methodology with structured planning and iterative deliveries",
+    ],
+    achievements: [
+      "Complete digitization of a real constitutional government process",
+      "Successful integration of 3 heterogeneous platforms (web + API + mobile)",
+      "Database normalized to 3NF with 20+ interrelated tables",
+      "Exhaustive technical documentation following RUP standard with artifacts from each phase",
+    ],
+    architecture:
+      "Service architecture with central RESTful API, SPA frontend, and native mobile module.",
+    architectureLayers: [
+      { layer: "Backend (Spring Boot)", detail: "REST API, JWT authentication, business logic, data validation" },
+      { layer: "Frontend (Angular)", detail: "SPA with reusable components, HTTP services, route guards" },
+      { layer: "Mobile (Kotlin)", detail: "Native Android app with Retrofit, Room, and MVVM pattern" },
+      { layer: "Database (SQL Server)", detail: "3NF normalized schema, stored procedures, triggers" },
+    ],
+    impact:
+      "Solution that modernizes a real government process, potentially benefiting millions of Peruvian citizens in their constitutional right to public information access.",
+  },
+  {
+    title: "Alójate Patitas",
+    subtitle: "Pet-Friendly Tourism Platform",
+    description:
+      "Cross-platform tourism platform focused on pet-friendly lodging experiences, built with ASP.NET Core Web API, React SPA, .NET MAUI, and geospatial MongoDB.",
+    image:
+      "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
+    tags: ["ASP.NET Core", "React SPA", ".NET MAUI", "MongoDB", "Geospatial MongoDB"],
+    links: [],
+    featured: true,
+    status: "Consolidated Platform",
+    projectType: "Distributed Cross-Platform Platform",
+    role: "Full Stack Developer and solution architect",
+    screenshots: [],
+    problemSolved:
+      "Pet owners in Peru face great difficulty when planning trips: there is no centralized platform to find hotels, restaurants, and tourism services that accept pets. Information is scattered and unreliable.",
+    myContribution:
+      "I designed the complete distributed architecture and developed all three modules: REST API with ASP.NET Core, Single Page Application with React, and cross-platform mobile app with .NET MAUI. Implemented geospatial 2dsphere queries in MongoDB for proximity-based establishment searches.",
+    fullDescription:
+      "Cross-platform tourism platform focused on pet-friendly lodging experiences, built with ASP.NET Core Web API, React SPA, .NET MAUI, and geospatial MongoDB. Highlighted as an outstanding Hackathon project, this consolidated platform solves a real market problem in Peru by centralizing hotel, restaurant, and travel service searches for pet owners.",
+    keyFeatures: [
+      "RESTful API with ASP.NET Core and token-based authentication (JWT)",
+      "Highly responsive and interactive Single Page Application frontend built with React and custom UI styling",
+      "Cross-platform mobile app with .NET MAUI for iOS and Android",
+      "MongoDB with geospatial indexes (2dsphere) for proximity search",
+      "Pet profile management with personalized travel preferences",
+      "Review and rating system for pet-friendly establishments",
+    ],
+    achievements: [
+      "Solution to a real unsolved problem in the Peruvian tourism market",
+      "Functional implementation of geospatial queries with MongoDB",
+      "Complete Full Stack architecture with 3 distinct presentation layers",
+    ],
+    architecture:
+      "Distributed cross-platform architecture with ASP.NET Core API as the central gateway.",
+    architectureLayers: [
+      { layer: "API (ASP.NET Core)", detail: "REST API controllers, secure JWT authentication, and dependency injection" },
+      { layer: "Web (React SPA)", detail: "SPA with reusable components, robust state management, and tailwind/custom UI styling" },
+      { layer: "Mobile (.NET MAUI)", detail: "HTTP client, MVVM, Shell navigation, and platform-specific UI" },
+      { layer: "Data (MongoDB)", detail: "Collections with flexible schemas, geospatial 2dsphere indexes, and aggregation pipelines" },
+    ],
+    impact:
+      "First project to address the digital gap in pet-friendly tourism in Peru, with potential for regional expansion.",
+  },
+  {
+    title: "MeowApp",
+    subtitle: "Production Open Source Mobile Application",
+    description:
+      "Open-source mobile application published on Google Play Store demonstrating mobile lifecycle, Clean Architecture, SQLite local caching, and robust REST API consumption.",
     image:
       "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/posts/meow-dotnet-maui-the-art-of-connecting-with-thecatapi-part-1/cover.png",
     tags: [".NET MAUI", "MVVM", "REST API", "SQLite", "Clean Architecture", "GitHub Actions"],
@@ -61,7 +150,7 @@ const projects: Project[] = [
         icon: "github",
       },
     ],
-    featured: true,
+    featured: false,
     status: "Published",
     projectType: "Open Source Mobile App",
     role: "Lead developer and software architect",
@@ -115,99 +204,10 @@ const projects: Project[] = [
       "Technical reference for .NET MAUI community developers who need a real example of how to take an app from idea to Google Play Store with professional standards.",
   },
   {
-    title: "SAIP Platform & TTAIP Appeals",
-    subtitle: "Academic Innovation Project",
-    description:
-      "Comprehensive solution to modernize the right to Public Information Access, digitizing the complete cycle of requests and appeals.",
-    image:
-      "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
-    tags: ["Spring Boot", "Angular", "Kotlin", "Android", "SQL Server", "RUP", "IBM Rhapsody"],
-    links: [],
-    featured: true,
-    status: "In Development",
-    projectType: "Government Web + Mobile Platform",
-    role: "Full Stack Developer and architect of the comprehensive solution",
-    screenshots: [],
-    problemSolved:
-      "In Peru, the Public Information Access (SAIP) process and its appeals before the TTAIP are bureaucratic procedures managed manually, causing delays, document loss, and lack of transparency. There was no digital platform covering the complete process cycle.",
-    myContribution:
-      "I led the design and implementation of the entire solution: modeled processes with professional UML (IBM Rhapsody), designed the database normalized to 3NF, built the RESTful API with Spring Boot, developed the SPA frontend with Angular, and created the native mobile app in Kotlin. Applied RUP methodology across all development phases.",
-    fullDescription:
-      "Academic innovation project that digitizes the constitutional right to Public Information Access in Peru. It covers the complete SAIP process cycle: from citizen request to appeal resolution before the TTAIP, with three interconnected modules — web management platform (Angular), RESTful backend (Spring Boot), and native mobile application (Kotlin for Android) — all integrated on a SQL Server database normalized to 3NF.",
-    keyFeatures: [
-      "Robust RESTful backend with Spring Boot (Java), secure authentication, and role management",
-      "Complete SPA frontend with Angular, responsive design, and state management",
-      "Native Android application in Kotlin with XML Layouts and Material Design",
-      "SQL Server database normalized to 3NF with complete referential integrity",
-      "Professional UML modeling with IBM Rhapsody: use cases, class and sequence diagrams",
-      "Complete RUP methodology: inception, elaboration, construction, and transition",
-    ],
-    achievements: [
-      "Complete digitization of a real constitutional government process",
-      "Successful integration of 3 heterogeneous platforms (web + API + mobile)",
-      "Database normalized to 3NF with 20+ interrelated tables",
-      "Exhaustive technical documentation following RUP standard with artifacts from each phase",
-    ],
-    architecture:
-      "Service architecture with central RESTful API, SPA frontend, and native mobile module.",
-    architectureLayers: [
-      { layer: "Backend (Spring Boot)", detail: "REST API, JWT authentication, business logic, data validation" },
-      { layer: "Frontend (Angular)", detail: "SPA with reusable components, HTTP services, route guards" },
-      { layer: "Mobile (Kotlin)", detail: "Native Android app with Retrofit, Room, and MVVM pattern" },
-      { layer: "Database (SQL Server)", detail: "3NF normalized schema, stored procedures, triggers" },
-    ],
-    impact:
-      "Solution that modernizes a real government process, potentially benefiting millions of Peruvian citizens in their constitutional right to public information access.",
-  },
-  {
-    title: "Aloha Patitas",
-    subtitle: "Pet-Friendly Tourism Platform",
-    description:
-      "Pioneer solution for finding pet-friendly tourism services. ASP.NET Core backend, MVC Razor Views web, and .NET MAUI mobile.",
-    image:
-      "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
-    tags: ["ASP.NET Core", "MVC Razor", ".NET MAUI", "MongoDB", "Geolocalización"],
-    links: [],
-    featured: false,
-    status: "In Development",
-    projectType: "Full Stack Web + Mobile Platform",
-    role: "Full Stack Developer and solution designer",
-    screenshots: [],
-    problemSolved:
-      "Pet owners in Peru face great difficulty when planning trips: there is no centralized platform to find hotels, restaurants, and tourism services that accept pets. Information is scattered and unreliable.",
-    myContribution:
-      "I designed the complete system architecture and developed all three modules: REST API with ASP.NET Core, web interface with MVC Razor Views, and cross-platform mobile app with .NET MAUI. Implemented geospatial queries in MongoDB for proximity-based establishment search.",
-    fullDescription:
-      "Pioneer platform that solves a real problem in the Peruvian tourism market: the difficulty of finding establishments and services that accept pets. Combines a robust ASP.NET Core backend with a MVC Razor Views web interface and a cross-platform .NET MAUI mobile application, using MongoDB for flexible geospatial data management.",
-    keyFeatures: [
-      "RESTful API with ASP.NET Core and token-based authentication (JWT)",
-      "Responsive web interface with MVC Razor Views, Bootstrap, and server-side validation",
-      "Cross-platform mobile app with .NET MAUI for iOS and Android",
-      "MongoDB with geospatial indexes (2dsphere) for proximity search",
-      "Pet profile management with personalized travel preferences",
-      "Review and rating system for pet-friendly establishments",
-    ],
-    achievements: [
-      "Solution to a real unsolved problem in the Peruvian tourism market",
-      "Functional implementation of geospatial queries with MongoDB",
-      "Complete Full Stack architecture with 3 distinct presentation layers",
-    ],
-    architecture:
-      "Modular monolithic architecture with ASP.NET Core as the central core.",
-    architectureLayers: [
-      { layer: "API (ASP.NET Core)", detail: "REST controllers, authentication middleware, dependency injection" },
-      { layer: "Web (MVC Razor)", detail: "Compiled Razor views, Tag Helpers, form validation" },
-      { layer: "Mobile (.NET MAUI)", detail: "HTTP client, MVVM, Shell navigation, and platform-specific UI" },
-      { layer: "Data (MongoDB)", detail: "Collections with flexible schemas, geospatial indexes, aggregations" },
-    ],
-    impact:
-      "First project to address the digital gap in pet-friendly tourism in Peru, with potential for regional expansion.",
-  },
-  {
     title: "MonettelliUIKIT",
-    subtitle: "Architecture Template — Clean UI",
+    subtitle: "Clean UI Architecture Template",
     description:
-      "Multi-project template for iOS, Android, and Windows based on Clean UI Architecture, optimizing maintainability in Xamarin.Forms.",
+      "Enterprise-grade multi-project architectural template for Xamarin.Forms and .NET MAUI designed to accelerate development, ensure visual consistency, and enforce Clean UI Architecture.",
     image:
       "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
     tags: ["Xamarin.Forms", ".NET MAUI", "Clean Architecture", "MVVM", "NuGet"],
@@ -255,24 +255,24 @@ const projects: Project[] = [
   },
   {
     title: "MauiUX Guide",
-    subtitle: "Educational UI/UX Platform — .NET MAUI",
+    subtitle: "Technical UI/UX Reference & Guide",
     description:
-      "Educational project focused on mastering high-level user interfaces and experiences in .NET MAUI.",
+      "Technical reference and guides focused on mastering advanced user interfaces, fluid animations, and mobile experiences in .NET MAUI.",
     image:
       "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
     tags: [".NET MAUI", "UI/UX", "XAML", "Handlers", "Community Toolkit"],
     links: [],
     featured: false,
-    status: "In Development",
-    projectType: "Open Source Educational Project",
-    role: "Creator, technical educator, and content author",
+    status: "Continuous Evolution",
+    projectType: "Technical Writing & Reference Platform",
+    role: "Creator and technical writing author",
     screenshots: [],
     problemSolved:
       "Most .NET MAUI resources focus on functionality, leaving a gap in professional UI/UX. Developers lack specific guides for creating interfaces that compete with native apps designed by professional design teams.",
     myContribution:
       "I am creating a collection of guides, functional examples, and design patterns that demonstrate how to achieve professional-level UI/UX in .NET MAUI without relying on third-party libraries, using the framework's native capabilities.",
     fullDescription:
-      "Educational project focused on raising the UI/UX standard within the .NET MAUI ecosystem. Documents advanced design patterns, reference implementations with fluid animations, and accessibility best practices for creating professional interfaces and memorable user experiences in cross-platform applications.",
+      "Technical writing and reference platform focused on raising the mobile UI/UX standard within the .NET MAUI ecosystem. Documents advanced design patterns, reference implementations with fluid animations, and mobile accessibility best practices for cross-platform applications.",
     keyFeatures: [
       "Detailed UI/UX guides specific to .NET MAUI with functional code",
       "Reference implementations of fluid animations and transitions",
@@ -282,7 +282,7 @@ const projects: Project[] = [
       "Integration with Community Toolkit for extended components",
     ],
     achievements: [
-      "Reference educational resource for the .NET MAUI community",
+      "Reference technical guide for the .NET MAUI community",
       "Promotion of professional quality standards in mobile UI/UX",
       "Active contribution to the growth of the .NET MAUI ecosystem",
     ],
@@ -300,9 +300,13 @@ const projects: Project[] = [
 ];
 
 function getStatusColor(status: string): string {
-  if (status === "Published" || status === "Publicado") return "text-emerald-400 bg-emerald-400/10";
-  if (status === "In Development" || status === "En Desarrollo") return "text-amber-400 bg-amber-400/10";
-  if (status === "Completed" || status === "Completado") return "text-emerald-400 bg-emerald-400/10";
+  const s = status.toLowerCase();
+  if (s.includes("published") || s.includes("publicado") || s.includes("completed") || s.includes("completado") || s.includes("consolidated") || s.includes("consolidada")) {
+    return "text-emerald-400 bg-emerald-400/10";
+  }
+  if (s.includes("development") || s.includes("desarrollo")) {
+    return "text-amber-400 bg-amber-400/10";
+  }
   return "text-white/50 bg-white/5";
 }
 ---
