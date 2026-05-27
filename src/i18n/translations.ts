@@ -54,19 +54,20 @@ export const translations: Translations = {
     about: {
       overline: "About",
       titleHtml:
-        'Who I am and <span class="gradient-text">what drives me</span>',
+        'Who I am and <span class="gradient-text">the value I deliver</span>',
       bio1Html:
-        'I\'m a <span class="font-medium" style="color: var(--mui-text-primary);">Full Stack Developer</span> with solid experience in the <span class="accent-text font-medium">.NET</span> ecosystem and cross-platform <span class="accent-text font-medium">mobile development</span>.',
+        "As a Full Stack Developer, I build end-to-end solutions from analysis and architecture to backend, frontend, and mobile development. I work with .NET, Spring Boot, Angular, React, and mobile technologies to turn complex processes into clear, traceable, and maintainable systems.",
       bio2Html:
-        'With a strong self-taught foundation, I prioritize <span style="color: var(--mui-text-primary);">order and simplicity</span> in development, convinced that the best code is that which scales with transparency.',
-      bio3: "I approach each challenge with the determination of a specialist and the humility of a constant learner, always seeking to add tangible value through clean, secure, scalable, and deeply functional software.",
+        "I bring value by combining technical judgment, architecture best practices, documentation, and applied security, ensuring each solution can evolve with quality.",
+      identityNote:
+        "I use Daniel Monettelli as my professional name. Monettelli comes from my grandmother’s family name, and I chose to preserve it as part of my identity across my networks, projects, and technical community.",
       highlight0:
         "Microsoft MVP Nominee for technical contributions to the community",
       highlight1:
         "Planet Xamarin member — curated elite community in Microsoft's mobile ecosystem",
       highlight2: "Official contributor at WeAreDotnet.io",
       highlight3:
-        "Self-taught with a focus on order, simplicity, and scalability",
+        "Focus on architectural order, simplicity, and high-value solutions",
       stat0: "Years of Experience",
       stat1: "Key Projects",
       stat2: "Published Articles",
@@ -479,18 +480,19 @@ export const translations: Translations = {
     },
     about: {
       overline: "Sobre Mí",
-      titleHtml: 'Quien soy y <span class="gradient-text">qué me mueve</span>',
+      titleHtml: 'Quién soy y <span class="gradient-text">el valor que aporto</span>',
       bio1Html:
-        'Soy un <span class="font-medium" style="color: var(--mui-text-primary);">Desarrollador Full Stack</span> con sólida experiencia en el ecosistema <span class="accent-text font-medium">.NET</span> y desarrollo <span class="accent-text font-medium">móvil multiplataforma</span>.',
+        "Como Full Stack Developer, construyo soluciones completas desde el análisis y la arquitectura hasta backend, frontend y mobile. Trabajo con .NET, Spring Boot, Angular, React y desarrollo móvil para convertir procesos complejos en sistemas claros, trazables y mantenibles.",
       bio2Html:
-        'Con una sólida base autodidacta, priorizo el <span style="color: var(--mui-text-primary);">orden y la sencillez</span> en el desarrollo, convencido de que el mejor código es aquel que escala con transparencia.',
-      bio3: "Abordo cada desafío con la determinación de un especialista y la humildad de un aprendiz constante, buscando siempre aportar valor tangible a través de software ordenado, seguro, escalable y profundamente funcional.",
+        "Aporto valor uniendo criterio técnico, buenas prácticas de arquitectura, documentación y seguridad aplicada, cuidando que cada solución pueda evolucionar con calidad.",
+      identityNote:
+        "Uso Daniel Monettelli como nombre profesional. Monettelli es el apellido de mi abuelita y decidí conservarlo como parte de mi identidad en redes, proyectos y comunidad técnica.",
       highlight0:
         "Nominado Microsoft MVP por contribuciones técnicas a la comunidad",
       highlight1:
         "Miembro de Planet Xamarin — comunidad curada de élite en el ecosistema móvil de Microsoft",
       highlight2: "Contribuidor oficial en WeAreDotnet.io",
-      highlight3: "Autodidacta con enfoque en orden, sencillez y escalabilidad",
+      highlight3: "Enfoque en orden arquitectónico, simplicidad y soluciones de valor real",
       stat0: "Años de Experiencia",
       stat1: "Proyectos Clave",
       stat2: "Artículos Publicados",
