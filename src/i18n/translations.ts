@@ -133,271 +133,152 @@ export const translations: Translations = {
         "Part of the curated community of developers with advanced experience in Microsoft's mobile ecosystem since its inception.",
     },
     projects: {
-      overline: "Projects",
-      titleHtml: 'What I\'ve <span class="gradient-text">built</span>',
-      description:
-        "Engineering and innovation projects that reflect my commitment to clean, scalable, and functional software.",
-      viewDetails: "View details",
-      viewDetailsAria: "View details of",
-      closeModal: "Close modal",
-      featured: "⭐ Featured",
-      // ── Status labels ──
-      statusPublished: "Published",
-      statusInDev: "In Development",
-      statusCompleted: "Completed",
-      // ── Modal section headings ──
-      screenshots: "Project Screenshots",
-      screenshotsHint: "— Click an image to enlarge",
-      overview: "Overview",
-      problemSolved: "Problem Solved",
-      myContribution: "My Contribution",
-      keyFeatures: "Key Features",
-      impact: "Impact",
-      architecture: "Architecture",
-      techStack: "Tech Stack",
-      achievements: "Key Achievements",
-      closeExpandedAria: "Close expanded view",
-      prevImageAria: "Previous image",
-      nextImageAria: "Next image",
-      enlargeAria: "Enlarge:",
-      // ── Project 0: MeowApp ──
-      "0_title": "MeowApp",
-      "0_subtitle": "Open Source App — .NET MAUI",
-      "0_description":
-        "Mobile app published on Google Play Store that allows exploring cat breeds through external API consumption.",
-      "0_status": "Published",
-      "0_projectType": "Open Source Mobile App",
-      "0_role": "Lead developer and software architect",
-      "0_screenshot0": "Main screen — exploring random cat images",
-      "0_screenshot1": "Breed catalog — browsing and searching cat breeds",
-      "0_screenshot2": "Add to favorites — managing user's favorite cats",
-      "0_screenshot3": "Favorites list — offline persistence with SQLite",
-      "0_problemSolved":
-        "The .NET MAUI ecosystem needed a real reference project — published in production — demonstrating how to build a complete app with best practices: Clean Architecture, REST API consumption, offline persistence, and automated CI/CD. Not a demo, but a real product.",
-      "0_myContribution":
-        "I designed and developed the app from scratch autonomously: defined the 4-layer architecture, implemented the entire data flow (HTTP → Cache → UI), configured the CI/CD pipeline with GitHub Actions, and published the app on Google Play Store. Additionally, I documented the entire process in a series of technical blog articles.",
-      "0_fullDescription":
-        "MeowApp is a mobile application successfully published on Google Play Store that demonstrates complete mastery of the mobile development lifecycle — from architectural design to production deployment. The app consumes TheCatAPI to offer a rich cat breed exploration experience, implementing local caching with SQLite for offline functionality, advanced state management, and professional UI/UX following Material Design guidelines adapted to the .NET MAUI ecosystem.",
-      "0_feature0":
-        "Professional TheCatAPI (REST) consumption with robust error handling, retries, and timeout",
-      "0_feature1":
-        "Offline caching with SQLite for data persistence and no-connection experience",
-      "0_feature2":
-        "MVVM architecture with 4-layer Clean Architecture strictly separated",
-      "0_feature3": "Smooth tab navigation with correct lifecycle management",
-      "0_feature4":
-        "Automated CI/CD with GitHub Actions for building, testing, and deployment",
-      "0_feature5":
-        "Series of technical articles documenting every architecture and development decision",
-      "0_achievement0":
-        "App published and available on Google Play Store with active users",
-      "0_achievement1":
-        "Open source project referenced by the .NET MAUI community on GitHub",
-      "0_achievement2":
-        "Complete series of technical blog posts documenting the process",
-      "0_achievement3":
-        "Demonstrates end-to-end mastery: design → architecture → development → testing → deployment",
-      "0_arch":
-        "4-layer Clean Architecture with strict MVVM pattern, dependency injection, and absolute separation of concerns.",
-      "0_layer0": "Domain",
-      "0_layer0_detail":
-        "Business entities, repository interfaces, and service contracts",
-      "0_layer1": "Application",
-      "0_layer1_detail":
-        "Use cases, DTOs, orchestration logic, and validations",
-      "0_layer2": "Infrastructure",
-      "0_layer2_detail":
-        "HTTP implementations (HttpClient), SQLite, platform services",
-      "0_layer3": "Presentation",
-      "0_layer3_detail":
-        "XAML Views, ViewModels, Converters, navigation, and DI container",
-      "0_impact":
-        "Technical reference for .NET MAUI community developers who need a real example of how to take an app from idea to Google Play Store with professional standards.",
-      // ── Project 1: SAIP ──
-      "1_title": "SAIP Platform & TTAIP Appeals",
-      "1_subtitle": "Academic Innovation Project",
-      "1_description":
-        "Comprehensive solution to modernize the right to Public Information Access, digitizing the complete cycle of requests and appeals.",
-      "1_status": "In Development",
-      "1_projectType": "Government Web + Mobile Platform",
-      "1_role":
-        "Full Stack Developer and architect of the comprehensive solution",
-      "1_problemSolved":
-        "In Peru, the Public Information Access (SAIP) process and its appeals before the TTAIP are bureaucratic procedures managed manually, generating delays, documentation loss, and lack of transparency. No digital platform existed covering the complete process cycle.",
-      "1_myContribution":
-        "I led the design and implementation of the entire solution: modeled processes with professional UML (IBM Rhapsody), designed the normalized database up to 3NF, built the RESTful API with Spring Boot, developed the frontend SPA with Angular, and created the native mobile app in Kotlin. Applied RUP methodology in all development phases.",
-      "1_fullDescription":
-        "Academic innovation project that digitizes the constitutional right to Public Information Access in Peru. It covers the complete SAIP process cycle: from citizen request to appeal resolution before the TTAIP, with three interconnected modules — web management platform (Angular), RESTful backend (Spring Boot), and native mobile app (Kotlin for Android) — all integrated over a SQL Server database normalized up to 3NF.",
-      "1_feature0":
-        "Robust RESTful backend with Spring Boot (Java), secure authentication, and role management",
-      "1_feature1":
-        "Complete SPA frontend with Angular, responsive design, and state management",
-      "1_feature2":
-        "Native Android app in Kotlin with XML Layouts and Material Design",
-      "1_feature3":
-        "SQL Server database normalized up to 3NF with complete referential integrity",
-      "1_feature4":
-        "Professional UML modeling with IBM Rhapsody: use case, class, and sequence diagrams",
-      "1_feature5":
-        "Complete RUP methodology: inception, elaboration, construction, and transition",
-      "1_achievement0":
-        "Complete digitization of a real constitutional government process",
-      "1_achievement1":
-        "Successful integration of 3 heterogeneous platforms (web + API + mobile)",
-      "1_achievement2":
-        "Database normalized up to 3NF with 20+ interrelated tables",
-      "1_achievement3":
-        "Exhaustive technical documentation following RUP standard with artifacts from each phase",
-      "1_arch":
-        "Service architecture with central RESTful API, SPA frontend, and native mobile module.",
-      "1_layer0": "Backend (Spring Boot)",
-      "1_layer0_detail":
-        "REST API, JWT authentication, business logic, data validation",
-      "1_layer1": "Frontend (Angular)",
-      "1_layer1_detail":
-        "SPA with reusable components, HTTP services, route guards",
-      "1_layer2": "Mobile (Kotlin)",
-      "1_layer2_detail":
-        "Native Android app with Retrofit, Room, and MVVM pattern",
-      "1_layer3": "Database (SQL Server)",
-      "1_layer3_detail": "3NF normalized schema, stored procedures, triggers",
-      "1_impact":
-        "Solution that modernizes a real government process, potentially benefiting millions of Peruvian citizens in their constitutional right to public information access.",
-      // ── Project 2: Aloha Patitas ──
-      "2_title": "Aloha Patitas",
-      "2_subtitle": "Pet-Friendly Tourism Platform",
-      "2_description":
-        "Pioneer solution for finding pet-friendly tourism services. ASP.NET Core backend, MVC Razor Views web, and .NET MAUI mobile.",
-      "2_status": "In Development",
-      "2_projectType": "Full Stack Web + Mobile Platform",
-      "2_role": "Full Stack Developer and solution designer",
-      "2_problemSolved":
-        "Pet owners in Peru face great difficulty when planning trips: there is no centralized platform to find hotels, restaurants, and tourism services that accept pets. Information is scattered and unreliable.",
-      "2_myContribution":
-        "I designed the complete system architecture and developed all three modules: REST API with ASP.NET Core, web interface with MVC Razor Views, and cross-platform mobile app with .NET MAUI. Implemented geospatial queries in MongoDB for proximity-based establishment search.",
-      "2_fullDescription":
-        "Pioneer platform that solves a real problem in the Peruvian tourism market: the difficulty of finding establishments and services that accept pets. It combines a robust ASP.NET Core backend with a web interface in MVC Razor Views and a cross-platform mobile app in .NET MAUI, using MongoDB for flexible geospatial data management.",
-      "2_feature0":
-        "RESTful API with ASP.NET Core and token-based authentication (JWT)",
-      "2_feature1":
-        "Responsive web interface with MVC Razor Views, Bootstrap, and server-side validation",
-      "2_feature2":
-        "Cross-platform mobile app with .NET MAUI for iOS and Android",
-      "2_feature3":
-        "MongoDB with geospatial indexes (2dsphere) for proximity search",
-      "2_feature4":
-        "Pet profile management with personalized travel preferences",
-      "2_feature5": "Review and rating system for pet-friendly establishments",
-      "2_achievement0":
-        "Solution to a real unsolved problem in the Peruvian tourism market",
-      "2_achievement1":
-        "Functional implementation of geospatial queries with MongoDB",
-      "2_achievement2":
-        "Complete Full Stack architecture with 3 different presentation layers",
-      "2_arch":
-        "Modular monolithic architecture with ASP.NET Core as the central core.",
-      "2_layer0": "API (ASP.NET Core)",
-      "2_layer0_detail":
-        "REST controllers, authentication middleware, dependency injection",
-      "2_layer1": "Web (MVC Razor)",
-      "2_layer1_detail": "Compiled Razor views, Tag Helpers, form validation",
-      "2_layer2": "Mobile (.NET MAUI)",
-      "2_layer2_detail":
-        "HTTP client, MVVM, Shell navigation, and platform-specific UI",
-      "2_layer3": "Data (MongoDB)",
-      "2_layer3_detail":
-        "Collections with flexible schemas, geospatial indexes, aggregations",
-      "2_impact":
-        "First project to address the digital gap in pet-friendly tourism in Peru, with potential for regional expansion.",
-      // ── Project 3: MonettelliUIKIT ──
-      "3_title": "MonettelliUIKIT",
-      "3_subtitle": "Architecture Template — Clean UI",
-      "3_description":
-        "Multi-project template for iOS, Android, and Windows based on Clean UI Architecture, optimizing maintainability in Xamarin.Forms.",
-      "3_status": "Completed",
-      "3_projectType": "Open Source Architecture Template",
-      "3_role": "Creator and open source project maintainer",
-      "3_problemSolved":
-        "When starting Xamarin.Forms projects, developers faced repetitive setups, inconsistent folder structure, and messy mixing of styles, controls, and behaviors. No template existed with a clear UI layer architecture.",
-      "3_myContribution":
-        "I designed and published Clean UI Architecture: a proprietary methodology that separates UI responsibilities into 4 pillars — Themes, Controls, Converters, and Behaviors. Created the complete multi-project template, wrote usage documentation, and maintained the repository as a community reference.",
-      "3_fullDescription":
-        "Multi-project architectural template designed to accelerate Xamarin.Forms application development (now migrable to .NET MAUI). It implements Clean UI Architecture, a proprietary methodology that separates UI responsibilities into maintainable and reusable layers, allowing developers to start projects with a solid and well-organized foundation.",
-      "3_feature0":
-        "Complete cross-platform support: iOS, Android, and Windows from a single project",
-      "3_feature1":
-        "Clean UI Architecture: Themes, Controls, Converters, and Behaviors as separate pillars",
-      "3_feature2": "Reusable, extensible, and documented UI components",
-      "3_feature3":
-        "Ready-to-use project templates with professional structure",
-      "3_feature4": "Verified compatibility with .NET MAUI migration",
-      "3_feature5":
-        "Complete documentation with step-by-step implementation guide",
-      "3_achievement0":
-        "Open source project adopted by Xamarin community developers",
-      "3_achievement1":
-        "Clean UI Architecture methodology referenced in technical forums",
-      "3_achievement2": "~60% reduction in initial setup time for new projects",
-      "3_arch":
-        "Proprietary Clean UI Architecture with 4 vertical separation pillars.",
-      "3_layer0": "Themes",
-      "3_layer0_detail":
-        "Global XAML resources, color palettes, typographic styles",
-      "3_layer1": "Controls",
-      "3_layer1_detail":
-        "Custom reusable UI components with bindable properties",
-      "3_layer2": "Converters",
-      "3_layer2_detail":
-        "IValueConverter implementations for data transformations in binding",
-      "3_layer3": "Behaviors",
-      "3_layer3_detail":
-        "Reusable behaviors for validation, animations, and interactions",
-      "3_impact":
-        "Established an architectural standard for the UI layer in Xamarin.Forms projects, adopted by developers seeking professional structure.",
-      // ── Project 4: MauiUX Guide ──
-      "4_title": "MauiUX Guide",
-      "4_subtitle": "Educational UI/UX Platform — .NET MAUI",
-      "4_description":
-        "Educational project focused on mastering high-level user interfaces and experiences in .NET MAUI.",
-      "4_status": "In Development",
-      "4_projectType": "Open Source Educational Project",
-      "4_role": "Creator, technical educator, and content author",
-      "4_problemSolved":
-        "Most .NET MAUI resources focus on functionality, leaving a gap in professional UI/UX. Developers lack specific guides for creating interfaces that compete with native apps designed by professional design teams.",
-      "4_myContribution":
-        "I'm creating a collection of guides, functional examples, and design patterns that demonstrate how to achieve professional-level UI/UX in .NET MAUI without relying on third-party libraries, using the framework's native capabilities.",
-      "4_fullDescription":
-        "Educational project focused on raising the UI/UX standard within the .NET MAUI ecosystem. It documents advanced design patterns, reference implementations with fluid animations, and accessibility best practices for creating professional interfaces and memorable user experiences in cross-platform applications.",
-      "4_feature0":
-        "Detailed UI/UX guides specific to .NET MAUI with functional code",
-      "4_feature1":
-        "Reference implementations of fluid animations and transitions",
-      "4_feature2":
-        "Advanced mobile design patterns adapted to the .NET ecosystem",
-      "4_feature3":
-        "Accessibility and responsive cross-platform design best practices",
-      "4_feature4": "Advanced techniques with Handlers and Custom Renderers",
-      "4_feature5": "Community Toolkit integration for extended components",
-      "4_achievement0":
-        "Reference educational resource for the .NET MAUI community",
-      "4_achievement1":
-        "Promotion of professional quality standards in mobile UI/UX",
-      "4_achievement2":
-        "Active contribution to the growth of the .NET MAUI ecosystem",
-      "4_arch": "Example projects with MVVM, focus on the presentation layer.",
-      "4_layer0": "Presentation",
-      "4_layer0_detail":
-        "Advanced XAML Views with animations, gradients, and complex layouts",
-      "4_layer1": "Custom Handlers",
-      "4_layer1_detail": "Native per-platform handlers for custom controls",
-      "4_layer2": "Community Toolkit",
-      "4_layer2_detail":
-        "Integration with CommunityToolkit.Maui for extensions",
-      "4_layer3": "Accessibility",
-      "4_layer3_detail":
-        "SemanticProperties, AutomationProperties, and accessibility testing",
-      "4_impact":
-        "Fills the gap of professional UI/UX resources in the .NET MAUI ecosystem, raising the community's quality standard.",
+      "alojate_patitas_achievement0": "Solution to a real unsolved problem in the Peruvian tourism market",
+      "alojate_patitas_achievement1": "Functional implementation of geospatial queries with MongoDB",
+      "alojate_patitas_achievement2": "Complete Full Stack architecture with 3 distinct presentation layers",
+      "alojate_patitas_arch": "Distributed cross-platform architecture with ASP.NET Core API as the central gateway.",
+      "alojate_patitas_description": "Cross-platform tourism platform focused on pet-friendly lodging experiences, built with ASP.NET Core Web API, React SPA, .NET MAUI, and geospatial MongoDB.",
+      "alojate_patitas_feature0": "RESTful API with ASP.NET Core and token-based authentication (JWT)",
+      "alojate_patitas_feature1": "Highly responsive and interactive Single Page Application frontend built with React and custom UI styling",
+      "alojate_patitas_feature2": "Cross-platform mobile app with .NET MAUI for iOS and Android",
+      "alojate_patitas_feature3": "MongoDB with geospatial indexes (2dsphere) for proximity search",
+      "alojate_patitas_feature4": "Pet profile management with personalized travel preferences",
+      "alojate_patitas_feature5": "Review and rating system for pet-friendly establishments",
+      "alojate_patitas_fullDescription": "Cross-platform tourism platform focused on pet-friendly lodging experiences, built with ASP.NET Core Web API, React SPA, .NET MAUI, and geospatial MongoDB. Highlighted as an outstanding Hackathon project, this consolidated platform solves a real market problem in Peru by centralizing hotel, restaurant, and travel service searches for pet owners.",
+      "alojate_patitas_impact": "First project to address the digital gap in pet-friendly tourism in Peru, with potential for regional expansion.",
+      "alojate_patitas_layer0": "API (ASP.NET Core)",
+      "alojate_patitas_layer0_detail": "REST API controllers, secure JWT authentication, and dependency injection",
+      "alojate_patitas_layer1": "Web (React SPA)",
+      "alojate_patitas_layer1_detail": "SPA with reusable components, robust state management, and tailwind/custom UI styling",
+      "alojate_patitas_layer2": "Mobile (.NET MAUI)",
+      "alojate_patitas_layer2_detail": "HTTP client, MVVM, Shell navigation, and platform-specific UI",
+      "alojate_patitas_layer3": "Data (MongoDB)",
+      "alojate_patitas_layer3_detail": "Collections with flexible schemas, geospatial 2dsphere indexes, and aggregation pipelines",
+      "alojate_patitas_myContribution": "I designed the complete distributed architecture and developed all three modules: REST API with ASP.NET Core, Single Page Application with React, and cross-platform mobile app with .NET MAUI. Implemented geospatial 2dsphere queries in MongoDB for proximity-based establishment searches.",
+      "alojate_patitas_problemSolved": "Pet owners in Peru face great difficulty when planning trips: there is no centralized platform to find hotels, restaurants, and tourism services that accept pets. Information is scattered and unreliable.",
+      "alojate_patitas_projectType": "Distributed Cross-Platform Platform",
+      "alojate_patitas_role": "Full Stack Developer and solution architect",
+      "alojate_patitas_status": "Consolidated Platform",
+      "alojate_patitas_subtitle": "Pet-Friendly Tourism Platform",
+      "alojate_patitas_title": "Alójate Patitas",
+      "mauiux_guide_achievement0": "Reference educational resource for the .NET MAUI community",
+      "mauiux_guide_achievement1": "Promotion of professional quality standards in mobile UI/UX",
+      "mauiux_guide_achievement2": "Active contribution to the growth of the .NET MAUI ecosystem",
+      "mauiux_guide_arch": "Example projects with MVVM, focus on the presentation layer.",
+      "mauiux_guide_description": "Technical reference and guides focused on mastering advanced user interfaces, fluid animations, and mobile experiences in .NET MAUI.",
+      "mauiux_guide_feature0": "Detailed UI/UX guides specific to .NET MAUI with functional code",
+      "mauiux_guide_feature1": "Reference implementations of fluid animations and transitions",
+      "mauiux_guide_feature2": "Advanced mobile design patterns adapted to the .NET ecosystem",
+      "mauiux_guide_feature3": "Accessibility and responsive cross-platform design best practices",
+      "mauiux_guide_feature4": "Advanced techniques with Handlers and Custom Renderers",
+      "mauiux_guide_feature5": "Community Toolkit integration for extended components",
+      "mauiux_guide_fullDescription": "Technical writing and reference platform focused on raising the mobile UI/UX standard within the .NET MAUI ecosystem. Documents advanced design patterns, reference implementations with fluid animations, and mobile accessibility best practices for cross-platform applications.",
+      "mauiux_guide_impact": "Fills the gap of professional UI/UX resources in the .NET MAUI ecosystem, raising the community's quality standard.",
+      "mauiux_guide_layer0": "Presentation",
+      "mauiux_guide_layer0_detail": "Advanced XAML Views with animations, gradients, and complex layouts",
+      "mauiux_guide_layer1": "Custom Handlers",
+      "mauiux_guide_layer1_detail": "Native per-platform handlers for custom controls",
+      "mauiux_guide_layer2": "Community Toolkit",
+      "mauiux_guide_layer2_detail": "Integration with CommunityToolkit.Maui for extensions",
+      "mauiux_guide_layer3": "Accessibility",
+      "mauiux_guide_layer3_detail": "SemanticProperties, AutomationProperties, and accessibility testing",
+      "mauiux_guide_myContribution": "I'm creating a collection of guides, functional examples, and design patterns that demonstrate how to achieve professional-level UI/UX in .NET MAUI without relying on third-party libraries, using the framework's native capabilities.",
+      "mauiux_guide_problemSolved": "Most .NET MAUI resources focus on functionality, leaving a gap in professional UI/UX. Developers lack specific guides for creating interfaces that compete with native apps designed by professional design teams.",
+      "mauiux_guide_projectType": "Technical Writing & Reference Platform",
+      "mauiux_guide_role": "Creator and technical writing author",
+      "mauiux_guide_status": "Continuous Evolution",
+      "mauiux_guide_subtitle": "Technical UI/UX Reference & Guides",
+      "mauiux_guide_title": "MauiUX Guide",
+      "meow_app_achievement0": "App published and available on Google Play Store with active users",
+      "meow_app_achievement1": "Open source project referenced by the .NET MAUI community on GitHub",
+      "meow_app_achievement2": "Complete series of technical blog posts documenting the process",
+      "meow_app_achievement3": "Demonstrates end-to-end mastery: design → architecture → development → testing → deployment",
+      "meow_app_arch": "4-layer Clean Architecture with strict MVVM pattern, dependency injection, and absolute separation of concerns.",
+      "meow_app_description": "Open-source mobile application published on Google Play Store demonstrating mobile lifecycle, Clean Architecture, SQLite local caching, and robust REST API consumption.",
+      "meow_app_feature0": "Professional TheCatAPI (REST) consumption with robust error handling, retries, and timeout",
+      "meow_app_feature1": "Offline caching with SQLite for data persistence and no-connection experience",
+      "meow_app_feature2": "MVVM architecture with 4-layer Clean Architecture strictly separated",
+      "meow_app_feature3": "Smooth tab navigation with correct lifecycle management",
+      "meow_app_feature4": "Automated CI/CD with GitHub Actions for building, testing, and deployment",
+      "meow_app_feature5": "Series of technical articles documenting every architecture and development decision",
+      "meow_app_fullDescription": "MeowApp is a mobile application successfully published on Google Play Store that demonstrates complete mastery of the mobile development lifecycle — from architectural design to production deployment. The app consumes TheCatAPI to offer a rich cat breed exploration experience, implementing local caching with SQLite for offline functionality, advanced state management, and professional UI/UX following Material Design guidelines adapted to the .NET MAUI ecosystem.",
+      "meow_app_impact": "Technical reference for .NET MAUI community developers who need a real example of how to take an app from idea to Google Play Store with professional standards.",
+      "meow_app_layer0": "Domain",
+      "meow_app_layer0_detail": "Business entities, repository interfaces, and service contracts",
+      "meow_app_layer1": "Application",
+      "meow_app_layer1_detail": "Use cases, DTOs, orchestration logic, and validations",
+      "meow_app_layer2": "Infrastructure",
+      "meow_app_layer2_detail": "HTTP implementations (HttpClient), SQLite, platform services",
+      "meow_app_layer3": "Presentation",
+      "meow_app_layer3_detail": "XAML Views, ViewModels, Converters, navigation, and DI container",
+      "meow_app_myContribution": "I designed and developed the app from scratch autonomously: defined the 4-layer architecture, implemented the entire data flow (HTTP → Cache → UI), configured the CI/CD pipeline with GitHub Actions, and published the app on Google Play Store. Additionally, I documented the entire process in a series of technical blog articles.",
+      "meow_app_problemSolved": "The .NET MAUI ecosystem needed a real reference project — published in production — demonstrating how to build a complete app with best practices: Clean Architecture, REST API consumption, offline persistence, and automated CI/CD. Not a demo, but a real product.",
+      "meow_app_projectType": "Open Source Mobile App",
+      "meow_app_role": "Lead developer and software architect",
+      "meow_app_screenshot0": "Main screen — exploring random cat images",
+      "meow_app_screenshot1": "Breed catalog — browsing and searching cat breeds",
+      "meow_app_screenshot2": "Add to favorites — managing user's favorite cats",
+      "meow_app_screenshot3": "Favorites list — offline persistence with SQLite",
+      "meow_app_status": "Published",
+      "meow_app_subtitle": "Production Open Source Mobile Application",
+      "meow_app_title": "MeowApp",
+      "monettelli_uikit_achievement0": "Open source project adopted by Xamarin community developers",
+      "monettelli_uikit_achievement1": "Clean UI Architecture methodology referenced in technical forums",
+      "monettelli_uikit_achievement2": "~60% reduction in initial setup time for new projects",
+      "monettelli_uikit_arch": "Proprietary Clean UI Architecture with 4 vertical separation pillars.",
+      "monettelli_uikit_description": "Enterprise-grade multi-project architectural template for Xamarin.Forms and .NET MAUI designed to accelerate development, ensure visual consistency, and enforce Clean UI Architecture.",
+      "monettelli_uikit_feature0": "Complete cross-platform support: iOS, Android, and Windows from a single project",
+      "monettelli_uikit_feature1": "Clean UI Architecture: Themes, Controls, Converters, and Behaviors as separate pillars",
+      "monettelli_uikit_feature2": "Reusable, extensible, and documented UI components",
+      "monettelli_uikit_feature3": "Ready-to-use project templates with professional structure",
+      "monettelli_uikit_feature4": "Verified compatibility with .NET MAUI migration",
+      "monettelli_uikit_feature5": "Complete documentation with step-by-step implementation guide",
+      "monettelli_uikit_fullDescription": "Multi-project architectural template designed to accelerate Xamarin.Forms application development (now migratable to .NET MAUI). Implements Clean UI Architecture, a proprietary methodology that separates UI responsibilities into maintainable and reusable layers, allowing developers to start projects with a solid and well-organized foundation.",
+      "monettelli_uikit_impact": "Established an architectural standard for the UI layer in Xamarin.Forms projects, adopted by developers seeking professional structure.",
+      "monettelli_uikit_layer0": "Themes",
+      "monettelli_uikit_layer0_detail": "Global XAML resources, color palettes, typographic styles",
+      "monettelli_uikit_layer1": "Controls",
+      "monettelli_uikit_layer1_detail": "Custom reusable UI components with bindable properties",
+      "monettelli_uikit_layer2": "Converters",
+      "monettelli_uikit_layer2_detail": "IValueConverter implementations for data transformations in binding",
+      "monettelli_uikit_layer3": "Behaviors",
+      "monettelli_uikit_layer3_detail": "Reusable behaviors for validation, animations, and interactions",
+      "monettelli_uikit_myContribution": "I designed and published Clean UI Architecture: a proprietary methodology that separates UI responsibilities into 4 pillars — Themes, Controls, Converters, and Behaviors. Created the complete multi-project template, wrote usage documentation, and maintained the repository as a community reference.",
+      "monettelli_uikit_problemSolved": "When starting Xamarin.Forms projects, developers faced repetitive setups, inconsistent folder structure, and messy mixing of styles, controls, and behaviors. No template existed with a clear UI layer architecture.",
+      "monettelli_uikit_projectType": "Open Source Architecture Template",
+      "monettelli_uikit_role": "Creator and open source project maintainer",
+      "monettelli_uikit_status": "Completed",
+      "monettelli_uikit_subtitle": "Clean UI Architecture Template",
+      "monettelli_uikit_title": "MonettelliUIKIT",
+      "saip_achievement0": "Complete digitization of a real constitutional government process",
+      "saip_achievement1": "Successful integration of 3 heterogeneous platforms (web + API + mobile)",
+      "saip_achievement2": "Database normalized up to 3NF with 20+ interrelated tables",
+      "saip_achievement3": "Exhaustive technical documentation following RUP standard with artifacts from each phase",
+      "saip_arch": "Service architecture with central RESTful API, SPA frontend, and native mobile module.",
+      "saip_description": "Comprehensive solution to modernize the right to Public Information Access, digitizing the complete cycle of requests and appeals.",
+      "saip_feature0": "Robust RESTful backend with Spring Boot (Java), secure authentication, and role management",
+      "saip_feature1": "Complete SPA frontend with Angular, responsive design, and state management",
+      "saip_feature2": "Native Android app in Kotlin with XML Layouts and Material Design",
+      "saip_feature3": "SQL Server database normalized up to 3NF with complete referential integrity",
+      "saip_feature4": "Professional UML modeling with IBM Rhapsody: use case, class, and sequence diagrams",
+      "saip_feature5": "Hybrid RUP-Scrum methodology with structured planning and iterative deliveries",
+      "saip_fullDescription": "Digital platform that digitizes the constitutional right to Public Information Access in Peru. It covers the complete SAIP process cycle: from citizen request to appeal resolution before the TTAIP, with three interconnected modules — web management platform (Angular), RESTful backend (Spring Boot), and native mobile application (Kotlin for Android) — all integrated on a SQL Server database normalized to 3NF.",
+      "saip_impact": "Solution that modernizes a real government process, potentially benefiting millions of Peruvian citizens in their constitutional right to public information access.",
+      "saip_layer0": "Backend (Spring Boot)",
+      "saip_layer0_detail": "REST API, JWT authentication, business logic, data validation",
+      "saip_layer1": "Frontend (Angular)",
+      "saip_layer1_detail": "SPA with reusable components, HTTP services, route guards",
+      "saip_layer2": "Mobile (Kotlin)",
+      "saip_layer2_detail": "Native Android app with Retrofit, Room, and MVVM pattern",
+      "saip_layer3": "Database (SQL Server)",
+      "saip_layer3_detail": "3NF normalized schema, stored procedures, triggers",
+      "saip_myContribution": "I led the design and implementation of the entire solution: modeled processes with professional UML (IBM Rhapsody), designed the database normalized to 3NF, built the RESTful API with Spring Boot, developed the SPA frontend with Angular, and created the native mobile app in Kotlin. Applied a hybrid RUP-Scrum methodology to combine structured analysis with iterative agility.",
+      "saip_problemSolved": "In Peru, the Public Information Access (SAIP) process and its appeals before the TTAIP are bureaucratic procedures managed manually, generating delays, documentation loss, and lack of transparency. No digital platform existed covering the complete process cycle.",
+      "saip_projectType": "Government Web + Mobile Platform",
+      "saip_role": "Full Stack Developer and architect of the comprehensive solution",
+      "saip_status": "Consolidated Solution",
+      "saip_subtitle": "Government Transparency Platform",
+      "saip_title": "SAIP Platform & TTAIP Appeals",
     },
     blog: {
       overline: "Blog",
@@ -558,273 +439,152 @@ export const translations: Translations = {
         "Integro la comunidad curada de desarrolladores con experiencia avanzada en el ecosistema móvil de Microsoft desde sus inicios.",
     },
     projects: {
-      overline: "Proyectos",
-      titleHtml: 'Lo que he <span class="gradient-text">construido</span>',
-      description:
-        "Proyectos de ingeniería e innovación que reflejan mi compromiso con el software ordenado, escalable y funcional.",
-      viewDetails: "Ver detalles",
-      viewDetailsAria: "Ver detalles de",
-      closeModal: "Cerrar modal",
-      featured: "⭐ Destacado",
-      statusPublished: "Publicado",
-      statusInDev: "En Desarrollo",
-      statusCompleted: "Completado",
-      screenshots: "Capturas del Proyecto",
-      screenshotsHint: "— Click en una imagen para ampliar",
-      overview: "Visión General",
-      problemSolved: "El Problema que Resuelve",
-      myContribution: "Mi Contribución",
-      keyFeatures: "Características Clave",
-      impact: "Impacto",
-      architecture: "Arquitectura",
-      techStack: "Stack Técnico",
-      achievements: "Logros Destacados",
-      closeExpandedAria: "Cerrar vista ampliada",
-      prevImageAria: "Imagen anterior",
-      nextImageAria: "Imagen siguiente",
-      enlargeAria: "Ampliar:",
-      "0_title": "MeowApp",
-      "0_subtitle": "Aplicación Open Source — .NET MAUI",
-      "0_description":
-        "Aplicación móvil publicada en Google Play Store que permite explorar razas de gatos mediante el consumo de APIs externas.",
-      "0_status": "Publicado",
-      "0_projectType": "Aplicación Móvil Open Source",
-      "0_role": "Desarrollador principal y arquitecto de software",
-      "0_screenshot0":
-        "Pantalla principal — exploración de imágenes aleatorias de gatos",
-      "0_screenshot1":
-        "Catálogo de razas — navegación y búsqueda de razas felinas",
-      "0_screenshot2":
-        "Agregar a favoritos — gestión de gatos favoritos del usuario",
-      "0_screenshot3": "Lista de favoritos — persistencia offline con SQLite",
-      "0_problemSolved":
-        "El ecosistema .NET MAUI necesitaba un proyecto de referencia real — publicado en producción — que demostrara cómo construir una app completa con buenas prácticas: Clean Architecture, consumo de APIs REST, persistencia offline y CI/CD automatizado. No un demo, sino un producto real.",
-      "0_myContribution":
-        "Diseñé y desarrollé la aplicación de principio a fin de forma autónoma: definí la arquitectura de 4 capas, implementé todo el flujo de datos (HTTP → Cache → UI), configuré el pipeline CI/CD con GitHub Actions, y publiqué la app en Google Play Store. Además, documenté todo el proceso en una serie de artículos técnicos en mi blog.",
-      "0_fullDescription":
-        "MeowApp es una aplicación móvil publicada exitosamente en Google Play Store que demuestra dominio completo del ciclo de vida del desarrollo móvil — desde el diseño arquitectónico hasta el despliegue en producción. La app consume TheCatAPI para ofrecer una experiencia rica de exploración de razas felinas, implementando caché local con SQLite para funcionamiento offline, gestión avanzada de estados y una UI/UX profesional siguiendo las directrices de Material Design adaptadas al ecosistema .NET MAUI.",
-      "0_feature0":
-        "Consumo profesional de TheCatAPI (REST) con manejo robusto de errores, reintentos y timeout",
-      "0_feature1":
-        "Caché offline con SQLite para persistencia de datos y experiencia sin conexión",
-      "0_feature2":
-        "Arquitectura MVVM con Clean Architecture de 4 capas estrictamente separadas",
-      "0_feature3":
-        "Navegación fluida por pestañas con gestión correcta del ciclo de vida",
-      "0_feature4":
-        "CI/CD automatizado con GitHub Actions para compilación, testing y despliegue",
-      "0_feature5":
-        "Serie de artículos técnicos documentando cada decisión de arquitectura y desarrollo",
-      "0_achievement0":
-        "App publicada y disponible en Google Play Store con usuarios activos",
-      "0_achievement1":
-        "Proyecto open source referenciado por la comunidad .NET MAUI en GitHub",
-      "0_achievement2":
-        "Serie completa de blog posts técnicos documentando el proceso",
-      "0_achievement3":
-        "Demuestra dominio end-to-end: diseño → arquitectura → desarrollo → testing → despliegue",
-      "0_arch":
-        "Clean Architecture de 4 capas con patrón MVVM estricto, inyección de dependencias y separación absoluta de responsabilidades.",
-      "0_layer0": "Domain",
-      "0_layer0_detail":
-        "Entidades de negocio, interfaces de repositorios y contratos de servicios",
-      "0_layer1": "Application",
-      "0_layer1_detail":
-        "Casos de uso, DTOs, lógica de orquestación y validaciones",
-      "0_layer2": "Infrastructure",
-      "0_layer2_detail":
-        "Implementaciones HTTP (HttpClient), SQLite, servicios de plataforma",
-      "0_layer3": "Presentation",
-      "0_layer3_detail":
-        "Views XAML, ViewModels, Converters, navegación y DI container",
-      "0_impact":
-        "Referencia técnica para desarrolladores de la comunidad .NET MAUI que necesitan un ejemplo real de cómo llevar una app desde la idea hasta Google Play Store con estándares profesionales.",
-      "1_title": "Plataforma SAIP y Apelaciones TTAIP",
-      "1_subtitle": "Proyecto de Innovación Académica",
-      "1_description":
-        "Solución integral para modernizar el derecho al Acceso a la Información Pública, digitalizando el ciclo completo de solicitudes y apelaciones.",
-      "1_status": "En Desarrollo",
-      "1_projectType": "Plataforma Web + Móvil Gubernamental",
-      "1_role": "Desarrollador Full Stack y arquitecto de la solución integral",
-      "1_problemSolved":
-        "En Perú, el proceso de Acceso a la Información Pública (SAIP) y sus apelaciones ante el TTAIP son procedimientos burocráticos que se gestionan de forma manual, generando demoras, pérdida de documentación y falta de transparencia. No existía una plataforma digital que abarcara el ciclo completo del proceso.",
-      "1_myContribution":
-        "Lideré el diseño e implementación de toda la solución: modelé los procesos con UML profesional (IBM Rhapsody), diseñé la base de datos normalizada hasta 3FN, construí la API RESTful con Spring Boot, desarrollé el frontend SPA con Angular, y creé la app móvil nativa en Kotlin. Apliqué metodología RUP en todas las fases del desarrollo.",
-      "1_fullDescription":
-        "Proyecto de innovación académica que digitaliza el derecho constitucional al Acceso a la Información Pública en Perú. Abarca el ciclo completo del proceso SAIP: desde la solicitud ciudadana hasta la resolución de apelaciones ante el TTAIP, con tres módulos interconectados — plataforma web de gestión (Angular), backend RESTful (Spring Boot) y aplicación móvil nativa (Kotlin para Android) — todos integrados sobre una base de datos SQL Server normalizada hasta 3FN.",
-      "1_feature0":
-        "Backend RESTful robusto con Spring Boot (Java), autenticación segura y manejo de roles",
-      "1_feature1":
-        "Frontend SPA completo con Angular, diseño responsivo y gestión de estado",
-      "1_feature2":
-        "Aplicación Android nativa en Kotlin con XML Layouts y Material Design",
-      "1_feature3":
-        "Base de datos SQL Server normalizada hasta 3FN con integridad referencial completa",
-      "1_feature4":
-        "Modelado UML profesional con IBM Rhapsody: casos de uso, diagramas de clases y secuencia",
-      "1_feature5":
-        "Metodología RUP completa: inception, elaboración, construcción y transición",
-      "1_achievement0":
-        "Digitalización completa de un proceso gubernamental constitucional real",
-      "1_achievement1":
-        "Integración exitosa de 3 plataformas heterogéneas (web + API + móvil)",
-      "1_achievement2":
-        "Base de datos normalizada hasta 3FN con 20+ tablas interrelacionadas",
-      "1_achievement3":
-        "Documentación técnica exhaustiva siguiendo estándar RUP con artefactos de cada fase",
-      "1_arch":
-        "Arquitectura de servicios con API RESTful central, frontend SPA y módulo móvil nativo.",
-      "1_layer0": "Backend (Spring Boot)",
-      "1_layer0_detail":
-        "API REST, autenticación JWT, lógica de negocio, validación de datos",
-      "1_layer1": "Frontend (Angular)",
-      "1_layer1_detail":
-        "SPA con componentes reutilizables, servicios HTTP, guards de ruta",
-      "1_layer2": "Móvil (Kotlin)",
-      "1_layer2_detail": "App Android nativa con Retrofit, Room y patrón MVVM",
-      "1_layer3": "Base de datos (SQL Server)",
-      "1_layer3_detail":
-        "Esquema normalizado 3FN, procedimientos almacenados, triggers",
-      "1_impact":
-        "Solución que moderniza un proceso gubernamental real, beneficiando potencialmente a millones de ciudadanos peruanos en su derecho constitucional de acceso a la información pública.",
-      "2_title": "Aloha Patitas",
-      "2_subtitle": "Plataforma Turística Pet-Friendly",
-      "2_description":
-        "Solución pionera para encontrar servicios turísticos pet-friendly. Backend ASP.NET Core, web MVC Razor Views y móvil .NET MAUI.",
-      "2_status": "En Desarrollo",
-      "2_projectType": "Plataforma Web + Móvil Full Stack",
-      "2_role": "Desarrollador Full Stack y diseñador de la solución",
-      "2_problemSolved":
-        "Los dueños de mascotas en Perú enfrentan una gran dificultad al planificar viajes: no existe una plataforma centralizada para encontrar hoteles, restaurantes y servicios turísticos que acepten mascotas. La información está dispersa y es poco confiable.",
-      "2_myContribution":
-        "Diseñé la arquitectura completa del sistema y desarrollé los tres módulos: API REST con ASP.NET Core, interfaz web con MVC Razor Views, y app móvil multiplataforma con .NET MAUI. Implementé las consultas geoespaciales en MongoDB para búsqueda por proximidad de establecimientos.",
-      "2_fullDescription":
-        "Plataforma pionera que resuelve un problema real del mercado turístico peruano: la dificultad de encontrar establecimientos y servicios que acepten mascotas. Combina un backend robusto en ASP.NET Core con una interfaz web en MVC Razor Views y una aplicación móvil multiplataforma en .NET MAUI, utilizando MongoDB para la gestión flexible de datos geoespaciales.",
-      "2_feature0":
-        "API RESTful con ASP.NET Core y autenticación basada en tokens (JWT)",
-      "2_feature1":
-        "Interfaz web responsiva con MVC Razor Views, Bootstrap y validación server-side",
-      "2_feature2":
-        "App móvil multiplataforma con .NET MAUI para iOS y Android",
-      "2_feature3":
-        "MongoDB con índices geoespaciales (2dsphere) para búsqueda por proximidad",
-      "2_feature4":
-        "Gestión de perfiles de mascotas con preferencias de viaje personalizadas",
-      "2_feature5":
-        "Sistema de reseñas y calificaciones de establecimientos pet-friendly",
-      "2_achievement0":
-        "Solución a un problema real no resuelto en el mercado turístico peruano",
-      "2_achievement1":
-        "Implementación funcional de consultas geoespaciales con MongoDB",
-      "2_achievement2":
-        "Arquitectura Full Stack completa con 3 capas de presentación distintas",
-      "2_arch":
-        "Arquitectura monolítica modular con ASP.NET Core como núcleo central.",
-      "2_layer0": "API (ASP.NET Core)",
-      "2_layer0_detail":
-        "Controladores REST, middleware de autenticación, inyección de dependencias",
-      "2_layer1": "Web (MVC Razor)",
-      "2_layer1_detail":
-        "Vistas Razor compiladas, Tag Helpers, validación de formularios",
-      "2_layer2": "Móvil (.NET MAUI)",
-      "2_layer2_detail":
-        "Client HTTP, MVVM, navegación Shell y UI platform-specific",
-      "2_layer3": "Datos (MongoDB)",
-      "2_layer3_detail":
-        "Colecciones con esquemas flexibles, índices geoespaciales, agregaciones",
-      "2_impact":
-        "Primer proyecto en abordar la brecha digital del turismo pet-friendly en Perú, con potencial de expansión a nivel regional.",
-      "3_title": "MonettelliUIKIT",
-      "3_subtitle": "Plantilla de Arquitectura — Clean UI",
-      "3_description":
-        "Plantilla multiproyecto para iOS, Android y Windows basada en Clean UI Architecture, optimizando la mantenibilidad en Xamarin.Forms.",
-      "3_status": "Completado",
-      "3_projectType": "Plantilla Arquitectónica Open Source",
-      "3_role": "Creador y mantenedor del proyecto open source",
-      "3_problemSolved":
-        "Al iniciar proyectos Xamarin.Forms, los desarrolladores enfrentaban configuraciones repetitivas, estructura de carpetas inconsistente y mezcla desordenada de estilos, controles y comportamientos. No existía una plantilla con arquitectura clara para la capa de UI.",
-      "3_myContribution":
-        "Diseñé y publiqué Clean UI Architecture: una metodología propia que separa las responsabilidades de UI en 4 pilares — Themes, Controls, Converters y Behaviors. Creé la plantilla multiproyecto completa, escribí la documentación de uso y mantuve el repositorio como referencia comunitaria.",
-      "3_fullDescription":
-        "Plantilla arquitectónica multiproyecto diseñada para acelerar el desarrollo de aplicaciones Xamarin.Forms (ahora migrable a .NET MAUI). Implementa Clean UI Architecture, una metodología propia que separa las responsabilidades de UI en capas mantenibles y reutilizables, permitiendo a los desarrolladores iniciar proyectos con una base sólida y bien organizada.",
-      "3_feature0":
-        "Soporte multiplataforma completo: iOS, Android y Windows desde un solo proyecto",
-      "3_feature1":
-        "Clean UI Architecture: Themes, Controls, Converters y Behaviors como pilares separados",
-      "3_feature2": "Componentes UI reutilizables, extensibles y documentados",
-      "3_feature3":
-        "Templates de proyecto listos para usar con estructura profesional",
-      "3_feature4": "Compatibilidad verificada con migración a .NET MAUI",
-      "3_feature5":
-        "Documentación completa con guía de implementación paso a paso",
-      "3_achievement0":
-        "Proyecto open source adoptado por desarrolladores de la comunidad Xamarin",
-      "3_achievement1":
-        "Metodología Clean UI Architecture referenciada en foros técnicos",
-      "3_achievement2":
-        "Reducción de ~60% del tiempo de configuración inicial en nuevos proyectos",
-      "3_arch":
-        "Clean UI Architecture propia con 4 pilares verticales de separación.",
-      "3_layer0": "Themes",
-      "3_layer0_detail":
-        "Recursos XAML globales, paletas de color, estilos tipográficos",
-      "3_layer1": "Controls",
-      "3_layer1_detail":
-        "Componentes UI customizados y reutilizables con bindable properties",
-      "3_layer2": "Converters",
-      "3_layer2_detail":
-        "IValueConverter implementations para transformaciones de datos en binding",
-      "3_layer3": "Behaviors",
-      "3_layer3_detail":
-        "Comportamientos reutilizables para validación, animaciones e interacciones",
-      "3_impact":
-        "Estableció un estándar arquitectónico para la capa de UI en proyectos Xamarin.Forms, adoptado por desarrolladores que buscaban estructura profesional.",
-      "4_title": "MauiUX Guide",
-      "4_subtitle": "Plataforma Educativa UI/UX — .NET MAUI",
-      "4_description":
-        "Proyecto educativo enfocado en dominar interfaces y experiencias de usuario de alto nivel en .NET MAUI.",
-      "4_status": "En Desarrollo",
-      "4_projectType": "Proyecto Educativo Open Source",
-      "4_role": "Creador, educador técnico y autor de contenido",
-      "4_problemSolved":
-        "La mayoría de recursos de .NET MAUI se centran en funcionalidad, dejando un vacío en UI/UX profesional. Los desarrolladores carecen de guías específicas para crear interfaces que compitan con apps nativas diseñadas por equipos de diseño profesional.",
-      "4_myContribution":
-        "Estoy creando una colección de guías, ejemplos funcionales y patrones de diseño que demuestran cómo lograr UI/UX de nivel profesional en .NET MAUI sin depender de librerías de terceros, usando capacidades nativas del framework.",
-      "4_fullDescription":
-        "Proyecto educativo enfocado en elevar el estándar de UI/UX dentro del ecosistema .NET MAUI. Documenta patrones de diseño avanzados, implementaciones de referencia con animaciones fluidas, y mejores prácticas de accesibilidad para crear interfaces profesionales y experiencias de usuario memorables en aplicaciones multiplataforma.",
-      "4_feature0":
-        "Guías detalladas de UI/UX específicas para .NET MAUI con código funcional",
-      "4_feature1":
-        "Implementaciones de referencia de animaciones fluidas y transiciones",
-      "4_feature2":
-        "Patrones avanzados de diseño móvil adaptados al ecosistema .NET",
-      "4_feature3":
-        "Mejores prácticas de accesibilidad y diseño responsivo multiplataforma",
-      "4_feature4": "Técnicas avanzadas con Handlers y Custom Renderers",
-      "4_feature5":
-        "Integración con Community Toolkit para componentes extendidos",
-      "4_achievement0":
-        "Recurso educativo de referencia para la comunidad .NET MAUI",
-      "4_achievement1":
-        "Promoción del estándar de calidad profesional en UI/UX móvil",
-      "4_achievement2":
-        "Contribución activa al crecimiento del ecosistema .NET MAUI",
-      "4_arch":
-        "Proyectos de ejemplo con MVVM, enfoque en la capa de presentación.",
-      "4_layer0": "Presentation",
-      "4_layer0_detail":
-        "Views XAML avanzadas con animaciones, gradientes y layouts complejos",
-      "4_layer1": "Custom Handlers",
-      "4_layer1_detail":
-        "Handlers nativos por plataforma para controles personalizados",
-      "4_layer2": "Community Toolkit",
-      "4_layer2_detail":
-        "Integración con CommunityToolkit.Maui para extensiones",
-      "4_layer3": "Accessibility",
-      "4_layer3_detail":
-        "SemanticProperties, AutomationProperties y testing de accesibilidad",
-      "4_impact":
-        "Llena el vacío de recursos de UI/UX profesional en el ecosistema .NET MAUI, elevando el estándar de calidad de la comunidad.",
+      "alojate_patitas_achievement0": "Solución a un problema real no resuelto en el mercado turístico peruano",
+      "alojate_patitas_achievement1": "Implementación funcional de consultas geoespaciales con MongoDB",
+      "alojate_patitas_achievement2": "Arquitectura Full Stack completa con 3 capas de presentación distintas",
+      "alojate_patitas_arch": "Arquitectura distribuida multiplataforma con ASP.NET Core API como gateway central.",
+      "alojate_patitas_description": "Plataforma turística multiplataforma enfocada en experiencias de alojamiento pet-friendly, construida con ASP.NET Core Web API, React SPA, .NET MAUI y MongoDB geoespacial.",
+      "alojate_patitas_feature0": "API RESTful con ASP.NET Core y autenticación basada en tokens (JWT)",
+      "alojate_patitas_feature1": "Interfaz web responsiva con React SPA, Tailwind y estilos personalizados",
+      "alojate_patitas_feature2": "App móvil multiplataforma con .NET MAUI para iOS y Android",
+      "alojate_patitas_feature3": "MongoDB con índices geoespaciales (2dsphere) para búsqueda por proximidad",
+      "alojate_patitas_feature4": "Gestión de perfiles de mascotas con preferencias de viaje personalizadas",
+      "alojate_patitas_feature5": "Sistema de reseñas y calificaciones de establecimientos pet-friendly",
+      "alojate_patitas_fullDescription": "Plataforma turística multiplataforma enfocada en experiencias de alojamiento pet-friendly, construida con ASP.NET Core Web API, React SPA, .NET MAUI y MongoDB geoespacial. Destacada como un proyecto de Hackathon sobresaliente, esta plataforma consolidada resuelve un problema real en el mercado peruano al centralizar las búsquedas de hoteles, restaurantes y servicios de viaje para dueños de mascotas.",
+      "alojate_patitas_impact": "Primer proyecto en abordar la brecha digital en el turismo pet-friendly en Perú, con potencial de expansión regional.",
+      "alojate_patitas_layer0": "API (ASP.NET Core)",
+      "alojate_patitas_layer0_detail": "Controladores de API REST, autenticación JWT segura e inyección de dependencias",
+      "alojate_patitas_layer1": "Web (React SPA)",
+      "alojate_patitas_layer1_detail": "SPA con componentes reutilizables, gestión robusta de estado y estilos UI personalizados",
+      "alojate_patitas_layer2": "Móvil (.NET MAUI)",
+      "alojate_patitas_layer2_detail": "Cliente HTTP, MVVM, navegación Shell y UI específica de plataforma",
+      "alojate_patitas_layer3": "Datos (MongoDB)",
+      "alojate_patitas_layer3_detail": "Colecciones con esquemas flexibles, índices geoespaciales 2dsphere y tuberías de agregación",
+      "alojate_patitas_myContribution": "Diseñé la arquitectura distribuida completa y desarrollé los tres módulos: API REST con ASP.NET Core, Single Page Application con React, y app móvil multiplataforma con .NET MAUI. Implementé consultas geoespaciales 2dsphere en MongoDB para búsquedas de establecimientos por proximidad.",
+      "alojate_patitas_problemSolved": "Los dueños de mascotas en Perú enfrentan una gran dificultad al planificar viajes: no existe una plataforma centralizada para encontrar hoteles, restaurantes y servicios turísticos que acepten mascotas. La información está dispersa y es poco confiable.",
+      "alojate_patitas_projectType": "Plataforma Distribuida Multiplataforma",
+      "alojate_patitas_role": "Desarrollador Full Stack y arquitecto de la solución",
+      "alojate_patitas_status": "Plataforma consolidada",
+      "alojate_patitas_subtitle": "Plataforma Turística Pet-Friendly",
+      "alojate_patitas_title": "Alójate Patitas",
+      "mauiux_guide_achievement0": "Recurso educativo de referencia para la comunidad .NET MAUI",
+      "mauiux_guide_achievement1": "Promoción del estándar de calidad profesional en UI/UX móvil",
+      "mauiux_guide_achievement2": "Contribución activa al crecimiento del ecosistema .NET MAUI",
+      "mauiux_guide_arch": "Proyectos de ejemplo con MVVM, enfoque en la capa de presentación.",
+      "mauiux_guide_description": "Referencia técnica y guías enfocadas en dominar interfaces de usuario avanzadas, animaciones fluidas y experiencias móviles en .NET MAUI.",
+      "mauiux_guide_feature0": "Guías detalladas de UI/UX específicas para .NET MAUI con código funcional",
+      "mauiux_guide_feature1": "Implementaciones de referencia de animaciones fluidas y transiciones",
+      "mauiux_guide_feature2": "Patrones avanzados de diseño móvil adaptados al ecosistema .NET",
+      "mauiux_guide_feature3": "Mejores prácticas de accesibilidad y diseño responsivo multiplataforma",
+      "mauiux_guide_feature4": "Técnicas avanzadas con Handlers y Custom Renderers",
+      "mauiux_guide_feature5": "Integración con Community Toolkit para componentes extendidos",
+      "mauiux_guide_fullDescription": "Plataforma de escritura técnica y referencia enfocada en elevar el estándar de UI/UX móvil dentro del ecosistema .NET MAUI. Documenta patrones de diseño avanzados, implementaciones de referencia con animaciones fluidas y mejores prácticas de accesibilidad para aplicaciones multiplataforma.",
+      "mauiux_guide_impact": "Llena el vacío de recursos de UI/UX profesional en el ecosistema .NET MAUI, elevando el estándar de calidad de la comunidad.",
+      "mauiux_guide_layer0": "Presentation",
+      "mauiux_guide_layer0_detail": "Views XAML avanzadas con animaciones, gradientes y layouts complejos",
+      "mauiux_guide_layer1": "Custom Handlers",
+      "mauiux_guide_layer1_detail": "Handlers nativos por plataforma para controles personalizados",
+      "mauiux_guide_layer2": "Community Toolkit",
+      "mauiux_guide_layer2_detail": "Integración con CommunityToolkit.Maui para extensiones",
+      "mauiux_guide_layer3": "Accessibility",
+      "mauiux_guide_layer3_detail": "SemanticProperties, AutomationProperties y testing de accesibilidad",
+      "mauiux_guide_myContribution": "Estoy creando una colección de guías, ejemplos funcionales y patrones de diseño que demuestran cómo lograr UI/UX de nivel profesional en .NET MAUI sin depender de librerías de terceros, usando capacidades nativas del framework.",
+      "mauiux_guide_problemSolved": "La mayoría de recursos de .NET MAUI se centran en funcionalidad, dejando un vacío en UI/UX profesional. Los desarrolladores carecen de guías específicas para crear interfaces que compitan con apps nativas diseñadas por equipos de diseño profesional.",
+      "mauiux_guide_projectType": "Plataforma de Escritura Técnica y Referencia",
+      "mauiux_guide_role": "Creador y autor de escritura técnica",
+      "mauiux_guide_status": "En evolución continua",
+      "mauiux_guide_subtitle": "Guía Técnica y Referencia de UI/UX",
+      "mauiux_guide_title": "MauiUX Guide",
+      "meow_app_achievement0": "App publicada y disponible en Google Play Store con usuarios activos",
+      "meow_app_achievement1": "Proyecto open source referenciado por la comunidad .NET MAUI en GitHub",
+      "meow_app_achievement2": "Serie completa de blog posts técnicos documentando el proceso",
+      "meow_app_achievement3": "Demuestra dominio end-to-end: diseño → arquitectura → desarrollo → testing → despliegue",
+      "meow_app_arch": "Clean Architecture de 4 capas con patrón MVVM estricto, inyección de dependencias y separación absoluta de responsabilidades.",
+      "meow_app_description": "Aplicación móvil de código abierto publicada en Google Play Store que demuestra ciclo de vida móvil, Clean Architecture, caché local SQLite y consumo robusto de APIs REST.",
+      "meow_app_feature0": "Consumo profesional de TheCatAPI (REST) con manejo robusto de errores, reintentos y timeout",
+      "meow_app_feature1": "Caché offline con SQLite para persistencia de datos y experiencia sin conexión",
+      "meow_app_feature2": "Arquitectura MVVM con Clean Architecture de 4 capas estrictamente separadas",
+      "meow_app_feature3": "Navegación fluida por pestañas con gestión correcta del ciclo de vida",
+      "meow_app_feature4": "CI/CD automatizado con GitHub Actions para compilación, testing y despliegue",
+      "meow_app_feature5": "Serie de artículos técnicos documentando cada decisión de arquitectura y desarrollo",
+      "meow_app_fullDescription": "MeowApp es una aplicación móvil publicada exitosamente en Google Play Store que demuestra dominio completo del ciclo de vida del desarrollo móvil — desde el diseño arquitectónico hasta el despliegue en producción. La app consume TheCatAPI para ofrecer una experiencia rica de exploración de razas felinas, implementando caché local con SQLite para funcionamiento offline, gestión avanzada de estados y una UI/UX profesional siguiendo las directrices de Material Design adaptadas al ecosistema .NET MAUI.",
+      "meow_app_impact": "Referencia técnica para desarrolladores de la comunidad .NET MAUI que necesitan un ejemplo real de cómo llevar una app desde la idea hasta Google Play Store con estándares profesionales.",
+      "meow_app_layer0": "Domain",
+      "meow_app_layer0_detail": "Entidades de negocio, interfaces de repositorios y contratos de servicios",
+      "meow_app_layer1": "Application",
+      "meow_app_layer1_detail": "Casos de uso, DTOs, lógica de orquestación y validaciones",
+      "meow_app_layer2": "Infrastructure",
+      "meow_app_layer2_detail": "Implementaciones HTTP (HttpClient), SQLite, servicios de plataforma",
+      "meow_app_layer3": "Presentation",
+      "meow_app_layer3_detail": "Views XAML, ViewModels, Converters, navegación y DI container",
+      "meow_app_myContribution": "Diseñé y desarrollé la aplicación de principio a fin de forma autónoma: definí la arquitectura de 4 capas, implementé todo el flujo de datos (HTTP → Cache → UI), configuré el pipeline CI/CD con GitHub Actions, y publiqué la app en Google Play Store. Además, documenté todo el proceso en una serie de artículos técnicos en mi blog.",
+      "meow_app_problemSolved": "El ecosistema .NET MAUI necesitaba un proyecto de referencia real — publicado en producción — que demostrara cómo construir una app completa con buenas prácticas: Clean Architecture, consumo de APIs REST, persistencia offline y CI/CD automatizado. No un demo, sino un producto real.",
+      "meow_app_projectType": "Aplicación Móvil Open Source",
+      "meow_app_role": "Desarrollador principal y arquitecto de software",
+      "meow_app_screenshot0": "Pantalla principal — exploración de imágenes aleatorias de gatos",
+      "meow_app_screenshot1": "Catálogo de razas — navegación y búsqueda de razas felinas",
+      "meow_app_screenshot2": "Agregar a favoritos — gestión de gatos favoritos del usuario",
+      "meow_app_screenshot3": "Lista de favoritos — persistencia offline con SQLite",
+      "meow_app_status": "Publicado",
+      "meow_app_subtitle": "Aplicación Móvil Open Source en Producción",
+      "meow_app_title": "MeowApp",
+      "monettelli_uikit_achievement0": "Proyecto open source adoptado por desarrolladores de la comunidad Xamarin",
+      "monettelli_uikit_achievement1": "Metodología Clean UI Architecture referenciada en foros técnicos",
+      "monettelli_uikit_achievement2": "Reducción de ~60% del tiempo de configuración inicial en nuevos proyectos",
+      "monettelli_uikit_arch": "Clean UI Architecture propia con 4 pilares verticales de separación.",
+      "monettelli_uikit_description": "Plantilla arquitectónica multiproyecto de nivel empresarial para Xamarin.Forms y .NET MAUI diseñada para acelerar el desarrollo, garantizar la consistencia visual y aplicar Clean UI Architecture.",
+      "monettelli_uikit_feature0": "Soporte multiplataforma completo: iOS, Android y Windows desde un solo proyecto",
+      "monettelli_uikit_feature1": "Clean UI Architecture: Themes, Controls, Converters y Behaviors como pilares separados",
+      "monettelli_uikit_feature2": "Componentes UI reutilizables, extensibles y documentados",
+      "monettelli_uikit_feature3": "Templates de proyecto listos para usar con estructura profesional",
+      "monettelli_uikit_feature4": "Compatibilidad verificada con migración a .NET MAUI",
+      "monettelli_uikit_feature5": "Documentación completa con guía de implementación paso a paso",
+      "monettelli_uikit_fullDescription": "Plantilla arquitectónica multiproyecto diseñada para acelerar el desarrollo de aplicaciones Xamarin.Forms (ahora migrable a .NET MAUI). Implementa Clean UI Architecture, una metodología propia que separa las responsabilidades de UI en capas mantenibles y reutilizables, permitiendo a los desarrolladores iniciar proyectos con una base sólida y bien organizada.",
+      "monettelli_uikit_impact": "Estableció un estándar arquitectónico para la capa de UI en proyectos Xamarin.Forms, adoptado por desarrolladores que buscaban estructura profesional.",
+      "monettelli_uikit_layer0": "Themes",
+      "monettelli_uikit_layer0_detail": "Recursos XAML globales, paletas de color, estilos tipográficos",
+      "monettelli_uikit_layer1": "Controls",
+      "monettelli_uikit_layer1_detail": "Componentes UI customizados y reutilizables con bindable properties",
+      "monettelli_uikit_layer2": "Converters",
+      "monettelli_uikit_layer2_detail": "IValueConverter implementations para transformaciones de datos en binding",
+      "monettelli_uikit_layer3": "Behaviors",
+      "monettelli_uikit_layer3_detail": "Comportamientos reutilizables para validación, animaciones e interacciones",
+      "monettelli_uikit_myContribution": "Diseñé y publiqué Clean UI Architecture: una metodología propia que separa las responsabilidades de UI en 4 pilares — Themes, Controls, Converters y Behaviors. Creé la plantilla multiproyecto completa, escribí la documentación de uso y mantuve el repositorio como referencia comunitaria.",
+      "monettelli_uikit_problemSolved": "Al iniciar proyectos Xamarin.Forms, los desarrolladores enfrentaban configuraciones repetitivas, estructura de carpetas inconsistente y mezcla desordenada de estilos, controles y comportamientos. No existía una plantilla con arquitectura clara para la capa de UI.",
+      "monettelli_uikit_projectType": "Plantilla Arquitectónica Open Source",
+      "monettelli_uikit_role": "Creador y mantenedor del proyecto open source",
+      "monettelli_uikit_status": "Completado",
+      "monettelli_uikit_subtitle": "Plantilla de Arquitectura Clean UI",
+      "monettelli_uikit_title": "MonettelliUIKIT",
+      "saip_achievement0": "Digitalización completa de un proceso gubernamental constitucional real",
+      "saip_achievement1": "Integración exitosa de 3 plataformas heterogéneas (web + API + móvil)",
+      "saip_achievement2": "Base de datos normalizada hasta 3FN con 20+ tablas interrelacionadas",
+      "saip_achievement3": "Documentación técnica exhaustiva siguiendo estándar RUP con artefactos de cada fase",
+      "saip_arch": "Arquitectura de servicios con API RESTful central, frontend SPA y módulo móvil nativo.",
+      "saip_description": "Solución integral para modernizar el derecho al Acceso a la Información Pública, digitalizando el ciclo completo de solicitudes y apelaciones.",
+      "saip_feature0": "Backend RESTful robusto con Spring Boot (Java), autenticación segura y manejo de roles",
+      "saip_feature1": "Frontend SPA completo con Angular, diseño responsivo y gestión de estado",
+      "saip_feature2": "Aplicación Android nativa en Kotlin con XML Layouts y Material Design",
+      "saip_feature3": "Base de datos SQL Server normalizada hasta 3FN con integridad referencial completa",
+      "saip_feature4": "Modelado UML profesional con IBM Rhapsody: casos de uso, diagramas de clases y secuencia",
+      "saip_feature5": "Metodología híbrida RUP-Scrum con planificación estructurada y entregas iterativas",
+      "saip_fullDescription": "Plataforma digital que digitaliza el derecho constitucional al Acceso a la Información Pública en Perú. Abarca el ciclo completo del proceso SAIP: desde la solicitud ciudadana hasta la resolución de apelaciones ante el TTAIP, con tres módulos interconectados — plataforma web de gestión (Angular), backend RESTful (Spring Boot) y aplicación móvil nativa (Kotlin para Android) — todos integrados sobre una base de datos SQL Server normalizada hasta 3FN.",
+      "saip_impact": "Solución que moderniza un proceso gubernamental real, beneficiando potencialmente a millones de ciudadanos peruanos en su derecho constitucional de acceso a la información pública.",
+      "saip_layer0": "Backend (Spring Boot)",
+      "saip_layer0_detail": "API REST, autenticación JWT, lógica de negocio, validación de datos",
+      "saip_layer1": "Frontend (Angular)",
+      "saip_layer1_detail": "SPA con componentes reutilizables, servicios HTTP, guards de ruta",
+      "saip_layer2": "Móvil (Kotlin)",
+      "saip_layer2_detail": "App Android nativa con Retrofit, Room y patrón MVVM",
+      "saip_layer3": "Base de datos (SQL Server)",
+      "saip_layer3_detail": "Esquema normalizado 3FN, procedimientos almacenados, triggers",
+      "saip_myContribution": "Lideré el diseño e implementación de toda la solución: modelé los procesos con UML profesional (IBM Rhapsody), diseñé la base de datos normalizada hasta 3FN, construí la API RESTful con Spring Boot, desarrollé el frontend SPA con Angular, y creé la app móvil nativa en Kotlin. Apliqué una metodología híbrida RUP-Scrum para combinar análisis estructurado con agilidad iterativa.",
+      "saip_problemSolved": "En Perú, el proceso de Acceso a la Información Pública (SAIP) y sus apelaciones ante el TTAIP son procedimientos burocráticos que se gestionan de forma manual, generando demoras, pérdida de documentación y falta de transparencia. No existía una plataforma digital que abarcara el ciclo completo del proceso.",
+      "saip_projectType": "Plataforma Web + Móvil Gubernamental",
+      "saip_role": "Desarrollador Full Stack y arquitecto de la solución integral",
+      "saip_status": "Solución consolidada",
+      "saip_subtitle": "Plataforma de Transparencia Gubernamental",
+      "saip_title": "Plataforma SAIP y Apelaciones TTAIP",
     },
     blog: {
       overline: "Blog",

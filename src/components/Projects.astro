@@ -27,6 +27,7 @@ interface Project {
   featured: boolean;
   status: string;
   projectType: string;
+  i18nKey: string;
   // ── Recruiter-grade detail fields ──
   role: string;
   problemSolved: string;
@@ -43,6 +44,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: "SAIP Platform & TTAIP Appeals",
+    i18nKey: "saip",
     subtitle: "Government Transparency Platform",
     description:
       "Comprehensive solution to modernize the right to Public Information Access, digitizing the complete cycle of requests and appeals.",
@@ -88,6 +90,7 @@ const projects: Project[] = [
   },
   {
     title: "Alójate Patitas",
+    i18nKey: "alojate_patitas",
     subtitle: "Pet-Friendly Tourism Platform",
     description:
       "Cross-platform tourism platform focused on pet-friendly lodging experiences, built with ASP.NET Core Web API, React SPA, .NET MAUI, and geospatial MongoDB.",
@@ -132,6 +135,7 @@ const projects: Project[] = [
   },
   {
     title: "MeowApp",
+    i18nKey: "meow_app",
     subtitle: "Production Open Source Mobile Application",
     description:
       "Open-source mobile application published on Google Play Store demonstrating mobile lifecycle, Clean Architecture, SQLite local caching, and robust REST API consumption.",
@@ -205,6 +209,7 @@ const projects: Project[] = [
   },
   {
     title: "MonettelliUIKIT",
+    i18nKey: "monettelli_uikit",
     subtitle: "Clean UI Architecture Template",
     description:
       "Enterprise-grade multi-project architectural template for Xamarin.Forms and .NET MAUI designed to accelerate development, ensure visual consistency, and enforce Clean UI Architecture.",
@@ -255,6 +260,7 @@ const projects: Project[] = [
   },
   {
     title: "MauiUX Guide",
+    i18nKey: "mauiux_guide",
     subtitle: "Technical UI/UX Reference & Guide",
     description:
       "Technical reference and guides focused on mastering advanced user interfaces, fluid animations, and mobile experiences in .NET MAUI.",
@@ -330,11 +336,11 @@ function getStatusColor(status: string): string {
       {projects
         .filter((p) => p.featured)
         .map((project) => {
-          const projectIndex = projects.indexOf(project);
+
           return (
           <div
             class="tilt-card reveal-scale group cursor-pointer"
-            data-project-index={projectIndex}
+            data-project-key={project.i18nKey}
             role="button"
             tabindex="0"
             aria-label={`View details of ${project.title}`}
@@ -359,7 +365,7 @@ function getStatusColor(status: string): string {
                       "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider",
                       getStatusColor(project.status),
                     ]}
-                    data-i18n={`projects.${projectIndex}_status`}
+                    data-i18n={`projects.${project.i18nKey}_status`}
                   >
                     {project.status}
                   </span>
@@ -373,13 +379,13 @@ function getStatusColor(status: string): string {
               </div>
 
               <div class="p-6 sm:p-8">
-                <p class="text-xs uppercase tracking-wider mb-1" style="color: var(--mui-text-disabled);" data-i18n={`projects.${projectIndex}_subtitle`}>
+                <p class="text-xs uppercase tracking-wider mb-1" style="color: var(--mui-text-disabled);" data-i18n={`projects.${project.i18nKey}_subtitle`}>
                   {project.subtitle}
                 </p>
                 <h3 class="text-xl sm:text-2xl font-bold mb-3 transition-colors" style="color: var(--mui-text-primary);">
                   {project.title}
                 </h3>
-                <p class="text-sm leading-relaxed mb-5" style="color: var(--mui-text-secondary);" data-i18n={`projects.${projectIndex}_description`}>
+                <p class="text-sm leading-relaxed mb-5" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_description`}>
                   {project.description}
                 </p>
 
@@ -435,11 +441,11 @@ function getStatusColor(status: string): string {
       {projects
         .filter((p) => !p.featured)
         .map((project) => {
-          const projectIndex = projects.indexOf(project);
+
           return (
           <div
             class="tilt-card group cursor-pointer"
-            data-project-index={projectIndex}
+            data-project-key={project.i18nKey}
             role="button"
             tabindex="0"
             aria-label={`View details of ${project.title}`}
@@ -457,19 +463,19 @@ function getStatusColor(status: string): string {
                     "px-2.5 py-0.5 rounded-full text-[10px] font-semibold",
                     getStatusColor(project.status),
                   ]}
-                  data-i18n={`projects.${projectIndex}_status`}
+                  data-i18n={`projects.${project.i18nKey}_status`}
                 >
                   {project.status}
                 </span>
               </div>
 
-              <p class="text-[10px] uppercase tracking-wider mb-1" style="color: var(--mui-text-disabled);" data-i18n={`projects.${projectIndex}_subtitle`}>
+              <p class="text-[10px] uppercase tracking-wider mb-1" style="color: var(--mui-text-disabled);" data-i18n={`projects.${project.i18nKey}_subtitle`}>
                 {project.subtitle}
               </p>
               <h3 class="text-lg font-bold mb-2 transition-colors" style="color: var(--mui-text-primary);">
                 {project.title}
               </h3>
-              <p class="text-xs leading-relaxed mb-auto pb-4" style="color: var(--mui-text-secondary);" data-i18n={`projects.${projectIndex}_description`}>
+              <p class="text-xs leading-relaxed mb-auto pb-4" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_description`}>
                 {project.description}
               </p>
 
@@ -550,7 +556,7 @@ function getStatusColor(status: string): string {
         {/* ── Scrollable content area ── */}
         <div id="modal-scroll-area" class="flex-1 overflow-y-auto overscroll-contain">
           {projects.map((project, index) => (
-            <div data-modal-project={index} class="hidden">
+            <div data-modal-project={project.i18nKey} class="hidden">
 
               {/* ═══ HERO BANNER ═══ */}
               <div class="relative h-56 sm:h-72 lg:h-80 overflow-hidden">
@@ -571,7 +577,7 @@ function getStatusColor(status: string): string {
                       "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider",
                       getStatusColor(project.status),
                     ]}
-                    data-i18n={`projects.${index}_status`}
+                    data-i18n={`projects.${project.i18nKey}_status`}
                   >
                     {project.status}
                   </span>
@@ -588,13 +594,13 @@ function getStatusColor(status: string): string {
 
                 {/* ── Title block ── */}
                 <div class="mb-8 lg:mb-10">
-                  <p class="text-xs uppercase tracking-wider mb-1.5" style="color: var(--mui-text-disabled);" data-i18n={`projects.${index}_subtitle`}>
+                  <p class="text-xs uppercase tracking-wider mb-1.5" style="color: var(--mui-text-disabled);" data-i18n={`projects.${project.i18nKey}_subtitle`}>
                     {project.subtitle}
                   </p>
-                  <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-display mb-2" style="color: var(--mui-text-primary);" data-i18n={`projects.${index}_title`}>
+                  <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-display mb-2" style="color: var(--mui-text-primary);" data-i18n={`projects.${project.i18nKey}_title`}>
                     {project.title}
                   </h3>
-                  <p class="text-sm sm:text-base font-semibold" style="color: var(--mui-primary);" data-i18n={`projects.${index}_projectType`}>
+                  <p class="text-sm sm:text-base font-semibold" style="color: var(--mui-primary);" data-i18n={`projects.${project.i18nKey}_projectType`}>
                     {project.projectType}
                   </p>
                 </div>
@@ -709,7 +715,7 @@ function getStatusColor(status: string): string {
                         </svg>
                         <span data-i18n="projects.overview">Overview</span>
                       </h4>
-                      <p class="text-sm sm:text-base leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${index}_fullDescription`}>
+                      <p class="text-sm sm:text-base leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_fullDescription`}>
                         {project.fullDescription}
                       </p>
                     </div>
@@ -722,7 +728,7 @@ function getStatusColor(status: string): string {
                         </svg>
                         <span data-i18n="projects.problemSolved">Problem Solved</span>
                       </h4>
-                      <p class="text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${index}_problemSolved`}>
+                      <p class="text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_problemSolved`}>
                         {project.problemSolved}
                       </p>
                     </div>
@@ -735,7 +741,7 @@ function getStatusColor(status: string): string {
                         </svg>
                         <span data-i18n="projects.myContribution">My Contribution</span>
                       </h4>
-                      <p class="text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${index}_myContribution`}>
+                      <p class="text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_myContribution`}>
                         {project.myContribution}
                       </p>
                     </div>
@@ -752,7 +758,7 @@ function getStatusColor(status: string): string {
                         {project.keyFeatures.map((feature, featureIdx) => (
                           <div class="flex items-start gap-3 p-3 rounded-xl" style="background: var(--mui-bg-subtle);">
                             <div class="mt-1 w-2 h-2 rounded-full shrink-0" style="background: var(--mui-primary);" />
-                            <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${index}_feature${featureIdx}`}>
+                            <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_feature${featureIdx}`}>
                               {feature}
                             </p>
                           </div>
@@ -768,7 +774,7 @@ function getStatusColor(status: string): string {
                         </svg>
                         <span data-i18n="projects.impact">Impact</span>
                       </h4>
-                      <p class="text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${index}_impact`}>
+                      <p class="text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_impact`}>
                         {project.impact}
                       </p>
                     </div>
@@ -787,7 +793,7 @@ function getStatusColor(status: string): string {
                         </svg>
                         <span data-i18n="projects.architecture">Architecture</span>
                       </h4>
-                      <p class="text-xs leading-relaxed mb-4" style="color: var(--mui-text-secondary);" data-i18n={`projects.${index}_arch`}>
+                      <p class="text-xs leading-relaxed mb-4" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_arch`}>
                         {project.architecture}
                       </p>
                       {/* Layer diagram */}
@@ -798,11 +804,11 @@ function getStatusColor(status: string): string {
                               <div class="w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold shrink-0" style="background: var(--mui-primary); color: white;">
                                 {layerIdx + 1}
                               </div>
-                              <span class="text-xs font-bold" style="color: var(--mui-text-primary);" data-i18n={`projects.${index}_layer${layerIdx}`}>
+                              <span class="text-xs font-bold" style="color: var(--mui-text-primary);" data-i18n={`projects.${project.i18nKey}_layer${layerIdx}`}>
                                 {item.layer}
                               </span>
                             </div>
-                            <p class="text-[11px] leading-relaxed pl-7" style="color: var(--mui-text-muted);" data-i18n={`projects.${index}_layer${layerIdx}_detail`}>
+                            <p class="text-[11px] leading-relaxed pl-7" style="color: var(--mui-text-muted);" data-i18n={`projects.${project.i18nKey}_layer${layerIdx}_detail`}>
                               {item.detail}
                             </p>
                           </div>
@@ -841,7 +847,7 @@ function getStatusColor(status: string): string {
                             <svg class="w-4 h-4 mt-0.5 shrink-0" style="color: var(--color-emerald-400);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${index}_achievement${achIdx}`}>
+                            <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_achievement${achIdx}`}>
                               {achievement}
                             </p>
                           </div>
@@ -938,9 +944,14 @@ function getStatusColor(status: string): string {
   const modalPanels = document.querySelectorAll<HTMLElement>("[data-modal-project]");
 
   // Project titles for the sticky header
-  const projectTitles = Array.from(
-    document.querySelectorAll<HTMLElement>("[data-modal-project] h3")
-  ).map((h3) => h3.textContent || "");
+  const projectTitles: Record<string, string> = {};
+  document.querySelectorAll<HTMLElement>("[data-modal-project]").forEach((panel) => {
+    const key = panel.dataset.modalProject || "";
+    const h3 = panel.querySelector("h3");
+    if (key && h3) {
+      projectTitles[key] = h3.textContent || "";
+    }
+  });
 
   // Focus management
   let previouslyFocusedElement: HTMLElement | null = null;
@@ -970,7 +981,7 @@ function getStatusColor(status: string): string {
     }
   }
 
-  function openModal(projectIndex: number): void {
+  function openModal(projectKey: string): void {
     if (!overlay || !backdrop || !modalContent) return;
 
     // Cancel any in-progress animations on modal elements
@@ -984,14 +995,14 @@ function getStatusColor(status: string): string {
     // Hide all panels, show the target
     modalPanels.forEach((panel) => {
       panel.classList.add("hidden");
-      if (panel.dataset.modalProject === String(projectIndex)) {
+      if (panel.dataset.modalProject === projectKey) {
         panel.classList.remove("hidden");
       }
     });
 
     // Update sticky header title
     if (modalTopTitle) {
-      modalTopTitle.textContent = projectTitles[projectIndex] || "";
+      modalTopTitle.textContent = projectTitles[projectKey] || "";
     }
 
     // Show overlay first so the scroll area has layout
@@ -1103,23 +1114,23 @@ function getStatusColor(status: string): string {
   }
 
   // ── Attach click handlers to ALL tilt-cards (entire card is clickable) ──
-  document.querySelectorAll<HTMLElement>(".tilt-card[data-project-index]").forEach((card) => {
+  document.querySelectorAll<HTMLElement>(".tilt-card[data-project-key]").forEach((card) => {
     card.addEventListener("click", (e) => {
       // Don't open modal if clicking an external link
       const target = e.target as HTMLElement;
       if (target.closest(".project-external-link")) return;
 
       e.preventDefault();
-      const index = parseInt(card.dataset.projectIndex || "0", 10);
-      openModal(index);
+      const key = card.dataset.projectKey || "";
+      openModal(key);
     });
 
     // Also open on Enter/Space for keyboard accessibility
     card.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        const index = parseInt(card.dataset.projectIndex || "0", 10);
-        openModal(index);
+        const key = card.dataset.projectKey || "";
+        openModal(key);
       }
     });
   });
