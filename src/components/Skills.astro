@@ -28,6 +28,8 @@ const customSkillIcons: Record<string, string> = {
   mvvm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="1.5" width="18" height="4.5" rx="1.5"/><rect x="3" y="9.75" width="18" height="4.5" rx="1.5"/><rect x="3" y="18" width="18" height="4.5" rx="1.5"/><path d="M12 6v3.75M12 14.25v3.75"/></svg>',
   rup: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 12a9.5 9.5 0 11-7-9"/><path d="M21.5 3v5h-5"/></svg>',
   rhapsody: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="7" height="5" rx="1"/><rect x="14" y="2" width="7" height="5" rx="1"/><rect x="8.5" y="17" width="7" height="5" rx="1"/><path d="M6.5 7v4.5h11V7"/><path d="M12 11.5v5.5"/></svg>',
+  owasp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>',
+  mobsf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/><path d="M8 6h8"/><path d="M10 10h4"/></svg>',
 };
 
 const categories: SkillCategory[] = [
@@ -38,9 +40,9 @@ const categories: SkillCategory[] = [
     icon: "mobile",
     color: "brand",
     skills: [
-      { name: ".NET MAUI", level: 95, tag: "Advanced", devicon: "dotnetcore" },
-      { name: "Xamarin.Forms", level: 90, tag: "Advanced", devicon: "xamarin" },
-      { name: "Android Nativo (Kotlin/XML)", level: 60, tag: "Intermediate", devicon: "kotlin" },
+      { name: ".NET MAUI", level: 95, tag: "Specialized", devicon: "dotnetcore" },
+      { name: "Xamarin.Forms", level: 90, tag: "Professional Use", devicon: "xamarin" },
+      { name: "Android Native (Jetpack Compose)", level: 75, tag: "Mobile Specialist", devicon: "kotlin" },
     ],
   },
   {
@@ -50,8 +52,8 @@ const categories: SkillCategory[] = [
     icon: "backend",
     color: "violet",
     skills: [
-      { name: "ASP.NET Core Web API", level: 85, tag: "Advanced", devicon: "dotnetcore" },
-      { name: "Java Spring Boot", level: 55, tag: "Basic-Intermediate", devicon: "spring" },
+      { name: "ASP.NET Core Web API", level: 85, tag: "Core Stack", devicon: "dotnetcore" },
+      { name: "Java Spring Boot", level: 75, tag: "Backend Specialist", devicon: "spring" },
     ],
   },
   {
@@ -61,9 +63,9 @@ const categories: SkillCategory[] = [
     icon: "frontend",
     color: "accent",
     skills: [
-      { name: "Angular", level: 55, tag: "Basic-Intermediate", devicon: "angular" },
-      { name: "React", level: 55, tag: "Basic-Intermediate", devicon: "react" },
-      { name: "ASP.NET Core MVC (Razor)", level: 70, tag: "Intermediate", devicon: "dotnetcore" },
+      { name: "Angular", level: 85, tag: "Frontend Specialist", devicon: "angular" },
+      { name: "React", level: 70, tag: "Applied in Projects", devicon: "react" },
+      { name: "ASP.NET Core MVC (Razor)", level: 75, tag: "Production Experience", devicon: "dotnetcore" },
     ],
   },
   {
@@ -73,10 +75,22 @@ const categories: SkillCategory[] = [
     icon: "databases",
     color: "brand",
     skills: [
-      { name: "SQL Server", level: 80, tag: "Advanced", devicon: "microsoftsqlserver" },
-      { name: "MySQL", level: 75, tag: "Intermediate", devicon: "mysql" },
-      { name: "MongoDB", level: 60, tag: "Intermediate", devicon: "mongodb" },
-      { name: "SQLite", level: 70, tag: "Intermediate", devicon: "sqlite" },
+      { name: "SQL Server", level: 85, tag: "Strong Focus", devicon: "microsoftsqlserver" },
+      { name: "MySQL", level: 75, tag: "Applied in Projects", devicon: "mysql" },
+      { name: "MongoDB", level: 70, tag: "Applied in Projects", devicon: "mongodb" },
+      { name: "SQLite", level: 75, tag: "Applied in Projects", devicon: "sqlite" },
+    ],
+  },
+  {
+    id: "security",
+    label: "Applied Security",
+    i18nKey: "skills.cat_security",
+    icon: "security",
+    color: "violet",
+    skills: [
+      { name: "OWASP ZAP", level: 80, tag: "Applied Security", customIcon: customSkillIcons.owasp },
+      { name: "MobSF", level: 75, tag: "Mobile Security", customIcon: customSkillIcons.mobsf },
+      { name: "Security Validation", level: 80, tag: "Secure Development" },
     ],
   },
   {
@@ -86,10 +100,10 @@ const categories: SkillCategory[] = [
     icon: "architecture",
     color: "violet",
     skills: [
-      { name: "SOLID Principles", level: 85, tag: "Advanced", customIcon: customSkillIcons.solid },
-      { name: "Clean Architecture", level: 85, tag: "Advanced", customIcon: customSkillIcons.cleanarch },
-      { name: "MVVM", level: 90, tag: "Advanced", customIcon: customSkillIcons.mvvm },
-      { name: "RUP Methodology", level: 70, tag: "Intermediate", customIcon: customSkillIcons.rup },
+      { name: "SOLID Principles", level: 85, tag: "Architecture-Ready", customIcon: customSkillIcons.solid },
+      { name: "Clean Architecture", level: 85, tag: "Architecture-Ready", customIcon: customSkillIcons.cleanarch },
+      { name: "MVVM", level: 90, tag: "Architecture-Ready", customIcon: customSkillIcons.mvvm },
+      { name: "Hybrid RUP-Scrum", level: 70, tag: "Applied in Projects", customIcon: customSkillIcons.rup },
     ],
   },
   {
@@ -99,9 +113,9 @@ const categories: SkillCategory[] = [
     icon: "cloud",
     color: "accent",
     skills: [
-      { name: "Microsoft Azure", level: 65, tag: "Intermediate", devicon: "azure" },
-      { name: "GitHub Actions", level: 75, tag: "Intermediate", devicon: "githubactions" },
-      { name: "Git", level: 85, tag: "Advanced", devicon: "git" },
+      { name: "Microsoft Azure", level: 70, tag: "Applied in Projects", devicon: "azure" },
+      { name: "GitHub Actions", level: 75, tag: "Applied in Projects", devicon: "githubactions" },
+      { name: "Git", level: 85, tag: "Strong Focus", devicon: "git" },
     ],
   },
   {
@@ -111,8 +125,8 @@ const categories: SkillCategory[] = [
     icon: "tools",
     color: "brand",
     skills: [
-      { name: "Figma", level: 70, tag: "Intermediate", devicon: "figma" },
-      { name: "IBM Rhapsody", level: 65, tag: "Intermediate", customIcon: customSkillIcons.rhapsody },
+      { name: "Figma", level: 75, tag: "Applied in Projects", devicon: "figma" },
+      { name: "IBM Rhapsody", level: 70, tag: "Applied in Projects", customIcon: customSkillIcons.rhapsody },
     ],
   },
 ];
@@ -127,9 +141,11 @@ function getBarColor(color: string): string {
 }
 
 function getTagColor(tag: string): string {
-  if (tag.includes("Advanced") || tag.includes("Avanzado")) return "text-emerald-400 bg-emerald-400/10";
-  if (tag.includes("Intermediate") || tag.includes("Intermedio")) return "text-amber-400 bg-amber-400/10";
-  return "text-white/50 bg-white/5";
+  const t = tag.toLowerCase();
+  if (t.includes("specialist") || t.includes("specialized") || t.includes("core") || t.includes("ready") || t.includes("focus")) {
+    return "text-emerald-400 bg-emerald-400/10";
+  }
+  return "text-amber-400 bg-amber-400/10";
 }
 
 /** Devicon CDN URL builder */
@@ -146,6 +162,7 @@ const iconSvgs: Record<string, string> = {
   backend: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="7" rx="1.5"/><rect x="2" y="14" width="20" height="7" rx="1.5"/><circle cx="6" cy="6.5" r="1" fill="currentColor"/><circle cx="6" cy="17.5" r="1" fill="currentColor"/><line x1="10" y1="6.5" x2="18" y2="6.5"/><line x1="10" y1="17.5" x2="18" y2="17.5"/></svg>',
   frontend: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 7h20"/><path d="M8 21h8"/><path d="M12 17v4"/><circle cx="5" cy="5" r="0.5" fill="currentColor"/><circle cx="7.5" cy="5" r="0.5" fill="currentColor"/><circle cx="10" cy="5" r="0.5" fill="currentColor"/></svg>',
   databases: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
+  security: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
   architecture: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
   cloud: '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>',
   tools: '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
@@ -227,6 +244,7 @@ const iconSvgs: Record<string, string> = {
                       "px-2 py-0.5 rounded-md text-[10px] font-semibold",
                       getTagColor(skill.tag),
                     ]}
+                    data-i18n={`skills.tag_${skill.tag.toLowerCase().replace(/[^a-z0-9]/g, '_')}`}
                   >
                     {skill.tag}
                   </span>
@@ -267,7 +285,7 @@ const iconSvgs: Record<string, string> = {
           {[
             { name: ".NET MAUI", slug: "dotnetcore", role: "Mobile", color: "hsl(267, 56%, 53%)" },
             { name: "ASP.NET Core", slug: "dotnetcore", role: "Backend", color: "hsl(210, 100%, 45%)" },
-            { name: "ASP.NET MVC", slug: "dotnetcore", role: "Frontend", color: "hsl(150, 60%, 40%)" },
+            { name: "Angular", slug: "angular", role: "Frontend", color: "hsl(354, 85%, 44%)" },
             { name: "Azure", slug: "azure", role: "Cloud", color: "hsl(199, 91%, 49%)" },
             { name: "SQL Server", slug: "microsoftsqlserver", role: "Database", color: "hsl(355, 82%, 52%)" },
           ].map((tech) => (
@@ -306,8 +324,8 @@ const iconSvgs: Record<string, string> = {
           {[
             { name: "Xamarin.Forms", slug: "xamarin" },
             { name: "Kotlin", slug: "kotlin" },
-            { name: "Angular", slug: "angular" },
             { name: "React", slug: "react" },
+            { name: "ASP.NET Core MVC", slug: "dotnetcore" },
             { name: "Spring Boot", slug: "spring" },
             { name: "MySQL", slug: "mysql" },
             { name: "MongoDB", slug: "mongodb" },
