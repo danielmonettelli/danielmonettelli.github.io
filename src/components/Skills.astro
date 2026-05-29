@@ -31,6 +31,7 @@ const customSkillIcons: Record<string, string> = {
   owasp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>',
   mobsf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/><path d="M8 6h8"/><path d="M10 10h4"/></svg>',
   cicd: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6l3 5 3-10 3 5h5"/><circle cx="5" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>',
+  securityValidation: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 11l3 3 5-5"/></svg>',
 };
 
 const categories: SkillCategory[] = [
@@ -78,7 +79,7 @@ const categories: SkillCategory[] = [
     skills: [
       { name: "SQL Server", level: 85, tag: "Strong Focus", devicon: "microsoftsqlserver" },
       { name: "MySQL", level: 75, tag: "Applied in Projects", devicon: "mysql" },
-      { name: "MongoDB", level: 70, tag: "Applied in Projects", devicon: "mongodb" },
+      { name: "MongoDB", level: 70, tag: "Professional Use", devicon: "mongodb" },
       { name: "SQLite", level: 75, tag: "Applied in Projects", devicon: "sqlite" },
     ],
   },
@@ -91,7 +92,7 @@ const categories: SkillCategory[] = [
     skills: [
       { name: "OWASP ZAP", level: 80, tag: "Applied Security", customIcon: customSkillIcons.owasp },
       { name: "MobSF", level: 75, tag: "Mobile Security", customIcon: customSkillIcons.mobsf },
-      { name: "Security Validation", level: 80, tag: "Secure Development" },
+      { name: "Security Validation", level: 80, tag: "Secure Development", customIcon: customSkillIcons.securityValidation },
     ],
   },
   {
@@ -104,7 +105,7 @@ const categories: SkillCategory[] = [
       { name: "SOLID Principles", level: 85, tag: "Architecture-Ready", customIcon: customSkillIcons.solid },
       { name: "Clean Architecture", level: 85, tag: "Architecture-Ready", customIcon: customSkillIcons.cleanarch },
       { name: "MVVM", level: 90, tag: "Architecture-Ready", customIcon: customSkillIcons.mvvm },
-      { name: "Hybrid RUP-Scrum", level: 70, tag: "Applied in Projects", customIcon: customSkillIcons.rupscrum },
+      { name: "Hybrid RUP-Scrum", level: 70, tag: "Applied in Projects", customIcon: customSkillIcons.rup },
     ],
   },
   {
@@ -114,7 +115,7 @@ const categories: SkillCategory[] = [
     icon: "cloud",
     color: "accent",
     skills: [
-      { name: "Microsoft Azure", level: 70, tag: "Applied in Projects", devicon: "azure" },
+      { name: "Microsoft Azure", level: 70, tag: "Professional Use", devicon: "azure" },
       { name: "GitHub Actions", level: 75, tag: "Applied in Projects", devicon: "githubactions" },
       { name: "Git", level: 85, tag: "Strong Focus", devicon: "git" },
     ],
@@ -127,7 +128,7 @@ const categories: SkillCategory[] = [
     color: "brand",
     skills: [
       { name: "Figma", level: 75, tag: "Applied in Projects", devicon: "figma" },
-      { name: "IBM Rhapsody", level: 70, tag: "Applied in Projects", customIcon: customSkillIcons.rhapsody },
+      { name: "IBM Engineering Rhapsody", level: 70, tag: "Applied in Projects", customIcon: customSkillIcons.rhapsody },
     ],
   },
 ];
