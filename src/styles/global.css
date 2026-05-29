@@ -1176,3 +1176,12 @@ body {
     animation: none !important;
   }
 }
+
+/* ============================================
+   LANGUAGE HYDRATION FOUC GUARD
+   ============================================ */
+html.i18n-pending [data-i18n],
+html.i18n-pending [data-i18n-html],
+html.i18n-pending [data-lang-toggle] {
+  visibility: hidden !important;
+}

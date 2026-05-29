@@ -96,6 +96,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           lang = (navigator.language || '').startsWith('es') ? 'es' : 'en';
         }
         document.documentElement.setAttribute('lang', lang);
+        if (lang === 'es') {
+          document.documentElement.classList.add('i18n-pending');
+        }
       })();
     </script>
   </head>

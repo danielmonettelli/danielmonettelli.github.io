@@ -108,6 +108,10 @@ export function initI18n(): void {
 
   // Update the toggle button text
   updateToggleButton(lang);
+
+  // Remove pending class and mark as ready
+  document.documentElement.classList.remove("i18n-pending");
+  document.documentElement.classList.add("i18n-ready");
 }
 
 /**
