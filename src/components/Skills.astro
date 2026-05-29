@@ -144,10 +144,19 @@ function getBarColor(color: string): string {
 
 function getTagColor(tag: string): string {
   const t = tag.toLowerCase();
-  if (t.includes("specialist") || t.includes("specialized") || t.includes("core") || t.includes("ready") || t.includes("focus")) {
-    return "text-emerald-400 bg-emerald-400/10";
+  if (
+    t.includes("specialist") ||
+    t.includes("specialized") ||
+    t.includes("core") ||
+    t.includes("ready") ||
+    t.includes("focus")
+  ) {
+    return "skill-tag skill-tag-strong";
   }
-  return "text-amber-400 bg-amber-400/10";
+  if (t.includes("security") || t.includes("secure")) {
+    return "skill-tag skill-tag-security";
+  }
+  return "skill-tag skill-tag-project";
 }
 
 /** Devicon CDN URL builder */
@@ -243,7 +252,6 @@ const iconSvgs: Record<string, string> = {
                   </span>
                   <span
                     class:list={[
-                      "px-2 py-0.5 rounded-md text-[10px] font-semibold",
                       getTagColor(skill.tag),
                     ]}
                     data-i18n={`skills.tag_${skill.tag.toLowerCase().replace(/[^a-z0-9]/g, '_')}`}
@@ -405,6 +413,10 @@ const iconSvgs: Record<string, string> = {
   // ── Tab switching ──
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
+      const isAlreadyActive = tab.getAttribute("aria-selected") === "true";
+      if (isAlreadyActive) {
+        return;
+      }
       const targetId = tab.dataset.tab;
 
       // Update active tab styling & ARIA
