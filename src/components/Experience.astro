@@ -85,10 +85,10 @@ const timeline: TimelineItem[] = [
           <div class="timeline-card glass rounded-2xl p-6 sm:p-8 hover:border-brand-500/20 transition-all duration-500 group" style="opacity: 0;">
             {/* Header */}
             <div class="flex flex-wrap items-center gap-2 mb-3">
-              <span class="px-3 py-1 rounded-lg text-[11px] font-semibold" style="color: var(--mui-primary); background: var(--mui-primary-bg);" data-i18n={`experience.${i}_period`}>
+              <span class="badge-base badge-primary" data-i18n={`experience.${i}_period`}>
                 {item.period}
               </span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-medium" style="color: var(--mui-text-muted); background: var(--mui-bg-subtle);" data-i18n={`experience.${i}_type`}>
+              <span class="badge-base badge-neutral" data-i18n={`experience.${i}_type`}>
                 {item.type}
               </span>
             </div>
@@ -116,7 +116,7 @@ const timeline: TimelineItem[] = [
             {/* Tags */}
             <div class="flex flex-wrap gap-2">
               {item.tags.map((tag) => (
-                <span class="px-2.5 py-1 rounded-lg text-[10px] font-medium" style="color: var(--mui-text-muted); border: 1px solid var(--mui-border-subtle);">
+                <span class="badge-base badge-neutral">
                   {tag}
                 </span>
               ))}
