@@ -74,56 +74,65 @@
 <script>
   import gsap from "gsap";
 
-  // GSAP Hero Timeline — clean entrance
-  const heroTL = gsap.timeline({ delay: 0.3 });
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Set initial states
-  gsap.set(
-    [".hero-line", ".hero-desc", ".hero-cta"],
-    { y: 20 }
-  );
-
-  heroTL
-    .to(
-      ".hero-line",
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power3.out",
-      },
-      "-=0.3"
-    )
-    .to(
-      ".hero-desc",
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power3.out",
-      },
-      "-=0.2"
-    )
-    .to(
-      ".hero-cta",
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power3.out",
-      },
-      "-=0.2"
-    )
-    .to(
-      ".hero-scroll",
-      {
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-      },
-      "-=0.1"
+  if (prefersReducedMotion) {
+    gsap.set(
+      [".hero-line", ".hero-desc", ".hero-cta", ".hero-scroll"],
+      { opacity: 1, y: 0 }
     );
+  } else {
+    // GSAP Hero Timeline — clean entrance
+    const heroTL = gsap.timeline({ delay: 0.3 });
+
+    // Set initial states
+    gsap.set(
+      [".hero-line", ".hero-desc", ".hero-cta"],
+      { y: 16, opacity: 0 }
+    );
+
+    heroTL
+      .to(
+        ".hero-line",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power2.out",
+        },
+        "-=0.1"
+      )
+      .to(
+        ".hero-desc",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.6"
+      )
+      .to(
+        ".hero-cta",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.6"
+      )
+      .to(
+        ".hero-scroll",
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      );
+  }
 
   // Typewriter effect for roles (only the changing text after "Full Stack Developer |")
   const roles = [
@@ -141,7 +150,6 @@
   const typewriterEl = document.getElementById("typewriter");
 
   // Respect reduced motion preference: show first role immediately, skip animation
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function typeWriter() {
     if (!typewriterEl) return;
