@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import DevBackground from "@components/DevBackground.astro";
 
 export interface Props {
   title?: string;
@@ -114,9 +113,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <span data-i18n="layout.skipLink">Skip to main content</span>
       </a>
     )}
-
-    <!-- Dev-themed animated background -->
-    {!maintenance && <DevBackground />}
 
     {!maintenance && (
       <!-- Scroll Progress Bar (below navbar z-50, above background) -->
