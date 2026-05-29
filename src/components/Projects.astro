@@ -307,13 +307,16 @@ const projects: Project[] = [
 
 function getStatusColor(status: string): string {
   const s = status.toLowerCase();
-  if (s.includes("published") || s.includes("publicado") || s.includes("completed") || s.includes("completado") || s.includes("consolidated") || s.includes("consolidada")) {
-    return "text-emerald-400 bg-emerald-400/10";
+  if (s.includes("published") || s.includes("publicado") || s.includes("consolidated") || s.includes("consolidada")) {
+    return "badge-base badge-success";
+  }
+  if (s.includes("completed") || s.includes("completado")) {
+    return "badge-base badge-info";
   }
   if (s.includes("development") || s.includes("desarrollo")) {
-    return "text-amber-400 bg-amber-400/10";
+    return "badge-base badge-warning";
   }
-  return "text-white/50 bg-white/5";
+  return "badge-base badge-neutral";
 }
 ---
 
@@ -362,7 +365,6 @@ function getStatusColor(status: string): string {
                 <div class="absolute top-4 right-4">
                   <span
                     class:list={[
-                      "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider",
                       getStatusColor(project.status),
                     ]}
                     data-i18n={`projects.${project.i18nKey}_status`}
@@ -372,7 +374,7 @@ function getStatusColor(status: string): string {
                 </div>
                 {/* Featured badge */}
                 <div class="absolute top-4 left-4">
-                  <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider" style="color: var(--mui-primary); background: var(--mui-primary-bg);" data-i18n="projects.featured">
+                  <span class="badge-base badge-primary" data-i18n="projects.featured">
                     ⭐ Featured
                   </span>
                 </div>
@@ -392,7 +394,7 @@ function getStatusColor(status: string): string {
                 {/* Tags */}
                 <div class="flex flex-wrap gap-2 mb-5">
                   {project.tags.map((tag) => (
-                    <span class="px-2.5 py-1 rounded-lg text-[10px] font-medium" style="color: var(--mui-primary); background: var(--mui-primary-bg); border: 1px solid var(--mui-border-subtle);">
+                    <span class="badge-base badge-primary">
                       {tag}
                     </span>
                   ))}
@@ -460,7 +462,6 @@ function getStatusColor(status: string): string {
                 </div>
                 <span
                   class:list={[
-                    "px-2.5 py-0.5 rounded-full text-[10px] font-semibold",
                     getStatusColor(project.status),
                   ]}
                   data-i18n={`projects.${project.i18nKey}_status`}
@@ -481,7 +482,7 @@ function getStatusColor(status: string): string {
 
               <div class="flex flex-wrap gap-1.5 mb-4">
                 {project.tags.slice(0, 4).map((tag) => (
-                  <span class="px-2 py-0.5 rounded text-[9px] font-medium" style="color: var(--mui-text-disabled); background: var(--mui-bg-subtle);">
+                  <span class="badge-base badge-neutral">
                     {tag}
                   </span>
                 ))}
@@ -574,7 +575,6 @@ function getStatusColor(status: string): string {
                 <div class="absolute top-5 left-6 flex gap-2">
                   <span
                     class:list={[
-                      "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider",
                       getStatusColor(project.status),
                     ]}
                     data-i18n={`projects.${project.i18nKey}_status`}
@@ -582,7 +582,7 @@ function getStatusColor(status: string): string {
                     {project.status}
                   </span>
                   {project.featured && (
-                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider" style="color: var(--mui-primary); background: var(--mui-primary-bg);" data-i18n="projects.featured">
+                    <span class="badge-base badge-primary" data-i18n="projects.featured">
                       ⭐ Featured
                     </span>
                   )}
@@ -769,7 +769,7 @@ function getStatusColor(status: string): string {
                     {/* Impacto */}
                     <div class="p-5 rounded-2xl" style="border: 2px solid var(--mui-border-subtle);">
                       <h4 class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--mui-text-primary);">
-                        <svg class="w-4 h-4" style="color: var(--color-emerald-400);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4" style="color: var(--status-success);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                         <span data-i18n="projects.impact">Impact</span>
@@ -826,7 +826,7 @@ function getStatusColor(status: string): string {
                       </h4>
                       <div class="flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
-                          <span class="px-3 py-1.5 rounded-lg text-xs font-semibold" style="color: var(--mui-primary); background: var(--mui-primary-bg); border: 1px solid var(--mui-border-subtle);">
+                          <span class="badge-base badge-primary">
                             {tag}
                           </span>
                         ))}
@@ -844,7 +844,7 @@ function getStatusColor(status: string): string {
                       <div class="space-y-2.5">
                         {project.achievements.map((achievement, achIdx) => (
                           <div class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 mt-0.5 shrink-0" style="color: var(--color-emerald-400);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4 mt-0.5 shrink-0" style="color: var(--status-success);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
                             <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_achievement${achIdx}`}>
