@@ -229,6 +229,7 @@ const iconSvgs: Record<string, string> = {
           aria-labelledby={`tab-${cat.id}`}
           tabindex="0"
           class:list={["skill-panel space-y-5", catIndex !== 0 && "hidden"]}
+          style={catIndex === 0 ? "visibility: hidden;" : ""}
         >
           {cat.skills.map((skill) => (
             <div class="group">
@@ -385,7 +386,19 @@ const iconSvgs: Record<string, string> = {
 
   const tabs = document.querySelectorAll<HTMLElement>(".skill-tab");
   const panels = document.querySelectorAll<HTMLElement>(".skill-panel");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let initialAnimationDone = false;
+
+  /**
+   * Snaps skill bars inside a panel directly to their target widths.
+   */
+  function setBarsToTarget(panel: HTMLElement): void {
+    const bars = panel.querySelectorAll<HTMLElement>(".skill-bar-fill");
+    bars.forEach((bar) => {
+      gsap.killTweensOf(bar);
+      bar.style.width = bar.dataset.width || "0%";
+    });
+  }
 
   /**
    * Animate skill bars inside a panel.
@@ -393,6 +406,9 @@ const iconSvgs: Record<string, string> = {
    */
   function animateBarsInPanel(panel: HTMLElement): void {
     const bars = panel.querySelectorAll<HTMLElement>(".skill-bar-fill");
+
+    // Mark as animated immediately
+    panel.dataset.animated = "true";
 
     // Kill any in-flight tweens and snap to 0 instantly
     bars.forEach((bar) => {
@@ -446,10 +462,20 @@ const iconSvgs: Record<string, string> = {
       const targetPanel = document.querySelector<HTMLElement>(`[data-panel="${targetId}"]`);
       if (targetPanel) {
         targetPanel.classList.remove("hidden");
+        targetPanel.style.visibility = "visible";
         // Ensure children are fully visible
         gsap.set(targetPanel.children, { clearProps: "all" });
-        // Fill bars from 0
-        animateBarsInPanel(targetPanel);
+        
+        if (prefersReducedMotion) {
+          setBarsToTarget(targetPanel);
+        } else {
+          // If already animated once, set immediately without re-animating
+          if (targetPanel.dataset.animated === "true") {
+            setBarsToTarget(targetPanel);
+          } else {
+            animateBarsInPanel(targetPanel);
+          }
+        }
       }
     });
   });
@@ -479,25 +505,31 @@ const iconSvgs: Record<string, string> = {
   });
 
   // ── Initial scroll-triggered animation (fires once) ──
-  ScrollTrigger.create({
-    trigger: "#skills-content",
-    start: "top 80%",
-    once: true,
-    onEnter: () => {
-      if (initialAnimationDone) return;
-      initialAnimationDone = true;
-      const visiblePanel = document.querySelector<HTMLElement>(
-        ".skill-panel:not(.hidden)"
-      );
-      if (visiblePanel) {
-        animateBarsInPanel(visiblePanel);
-      }
-    },
-  });
+  if (prefersReducedMotion) {
+    panels.forEach((panel) => {
+      setBarsToTarget(panel);
+      panel.style.visibility = "visible";
+    });
+  } else {
+    ScrollTrigger.create({
+      trigger: "#skills-content",
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        if (initialAnimationDone) return;
+        initialAnimationDone = true;
+        const visiblePanel = document.querySelector<HTMLElement>(
+          ".skill-panel:not(.hidden)"
+        );
+        if (visiblePanel) {
+          visiblePanel.style.visibility = "visible";
+          animateBarsInPanel(visiblePanel);
+        }
+      },
+    });
+  }
 
   // ── Tech Overview Grid animations ──
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   if (!prefersReducedMotion) {
     // Main Stack — staggered entrance with scale + glow pulse
     const mainCards = gsap.utils.toArray<HTMLElement>("#main-stack-grid .tech-card-primary");
