@@ -123,12 +123,12 @@ const projects: Project[] = [
       "Complete Full Stack architecture with 3 distinct presentation layers",
     ],
     architecture:
-      "Distributed cross-platform architecture organized into backend, frontend, mobile, and data layers. The backend is implemented with ASP.NET Core Web API, the frontend with React SPA, the mobile application with .NET MAUI, and persistence with SQL Server.",
+      "Cross-platform architecture organized into backend, frontend, mobile, and database layers, integrating ASP.NET Core Web API, React SPA, .NET MAUI, and SQL Server.",
     architectureLayers: [
       { layer: "Backend (ASP.NET Core Web API)", detail: "REST API, authentication, business logic, and service orchestration." },
       { layer: "Frontend (React SPA)", detail: "React single-page application with reusable components and responsive web experience." },
       { layer: "Mobile (.NET MAUI)", detail: "Cross-platform mobile app with Shell navigation, MVVM pattern, and HTTP service consumption." },
-      { layer: "Data (SQL Server)", detail: "Relational database structure, normalized tables, data integrity, and transactional persistence." },
+      { layer: "Database (SQL Server)", detail: "Relational database structure, normalized tables, data integrity, and transactional persistence." },
     ],
     impact:
       "First project to address the digital gap in pet-friendly tourism in Peru, with potential for regional expansion.",
@@ -269,7 +269,7 @@ const projects: Project[] = [
     tags: [".NET MAUI", "UI/UX", "XAML", "Handlers", "Community Toolkit"],
     links: [],
     featured: false,
-    status: "Continuous Evolution",
+    status: "In Development",
     projectType: "Technical Writing & Reference Platform",
     role: "Creator and technical writing author",
     screenshots: [],
@@ -752,7 +752,7 @@ function getStatusColor(status: string): string {
                         <svg class="w-4 h-4" style="color: var(--mui-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                         </svg>
-                        <span data-i18n="projects.keyFeatures">Key Features</span>
+                        <span data-i18n="projects.features">Features</span>
                       </h4>
                       <div class="grid sm:grid-cols-2 gap-3">
                         {project.keyFeatures.map((feature, featureIdx) => (
