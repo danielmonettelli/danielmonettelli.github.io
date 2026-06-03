@@ -335,19 +335,47 @@ const navLinks = [
   function updateActiveLink() {
     if (isClickNavigating) return;
 
-    const scrollY = window.scrollY + 100;
+    // Force contact section at the bottom of page
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
+      setActiveLink("#contact");
+      return;
+    }
+
+    const activationLine = window.innerHeight * 0.38;
     let currentId = "";
 
     sections.forEach((section) => {
       const sectionEl = section as HTMLElement;
-      const top = sectionEl.offsetTop;
-      const height = sectionEl.offsetHeight;
+      const rect = sectionEl.getBoundingClientRect();
       const id = sectionEl.getAttribute("id");
 
-      if (id && scrollY >= top && scrollY < top + height) {
+      if (!id) return;
+
+      // Select section crossing the activation line
+      if (rect.top <= activationLine && rect.bottom >= activationLine) {
         currentId = id;
       }
     });
+
+    // Fallback: select section closest to the activation line (prevents gaps)
+    if (!currentId) {
+      let minDistance = Infinity;
+      sections.forEach((section) => {
+        const sectionEl = section as HTMLElement;
+        const rect = sectionEl.getBoundingClientRect();
+        const id = sectionEl.getAttribute("id");
+        if (!id) return;
+
+        const distanceToTop = Math.abs(rect.top - activationLine);
+        const distanceToBottom = Math.abs(rect.bottom - activationLine);
+        const distance = Math.min(distanceToTop, distanceToBottom);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          currentId = id;
+        }
+      });
+    }
 
     if (currentId) {
       setActiveLink(`#${currentId}`);
