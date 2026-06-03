@@ -48,8 +48,7 @@ const projects: Project[] = [
     subtitle: "Government Transparency Platform",
     description:
       "Comprehensive solution to modernize the right to Public Information Access, digitizing the complete cycle of requests and appeals.",
-    image:
-      "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
+    image: "/assets/images/projects/saip/cover.webp",
     tags: ["Spring Boot", "Angular", "Jetpack Compose", "IBM Rhapsody", "RUP-Scrum", "Agile", "Traceability"],
     links: [],
     featured: true,
@@ -350,11 +349,11 @@ function getStatusColor(status: string): string {
           >
             <div class="tilt-card-inner mui-card rounded-3xl overflow-hidden transition-all duration-500">
               {/* Image */}
-              <div class="relative h-48 sm:h-56 overflow-hidden">
+              <div class="relative aspect-[16/9] overflow-hidden flex items-center justify-center" style="background: var(--mui-bg-subtle);">
                 <img
                   src={project.image}
                   alt={project.title}
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
                   width="640"
                   height="224"
                   loading="lazy"
@@ -366,6 +365,7 @@ function getStatusColor(status: string): string {
                   <span
                     class:list={[
                       getStatusColor(project.status),
+                      "project-floating-badge"
                     ]}
                     data-i18n={`projects.${project.i18nKey}_status`}
                   >
@@ -374,7 +374,7 @@ function getStatusColor(status: string): string {
                 </div>
                 {/* Featured badge */}
                 <div class="absolute top-4 left-4">
-                  <span class="badge-base badge-primary" data-i18n="projects.featured">
+                  <span class="badge-base badge-primary project-floating-badge" data-i18n="projects.featured">
                     ⭐ Featured
                   </span>
                 </div>
@@ -559,146 +559,114 @@ function getStatusColor(status: string): string {
           {projects.map((project, index) => (
             <div data-modal-project={project.i18nKey} class="hidden">
 
-              {/* ═══ HERO BANNER ═══ */}
-              <div class="relative h-56 sm:h-72 lg:h-80 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  class="w-full h-full object-cover"
-                  width="1400"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="absolute inset-0" style="background: linear-gradient(to top, var(--mui-bg-paper) 0%, rgba(0,0,0,0.15) 40%, transparent 100%);" />
-                {/* Badges over image */}
-                <div class="absolute top-5 left-6 flex gap-2">
-                  <span
-                    class:list={[
-                      getStatusColor(project.status),
-                    ]}
-                    data-i18n={`projects.${project.i18nKey}_status`}
-                  >
-                    {project.status}
-                  </span>
-                  {project.featured && (
-                    <span class="badge-base badge-primary" data-i18n="projects.featured">
-                      ⭐ Featured
-                    </span>
-                  )}
-                </div>
-              </div>
+              {/* ═══ PROJECT INTRO LAYOUT ═══ */}
+              <div class="px-6 sm:px-10 lg:px-14 pt-8 pb-10 lg:pb-14 relative">
+                <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(360px,520px)] gap-8 lg:gap-10 items-start mb-10">
 
-              {/* ═══ MAIN CONTENT ═══ */}
-              <div class="px-6 sm:px-10 lg:px-14 pb-10 lg:pb-14 -mt-8 relative">
-
-                {/* ── Title block ── */}
-                <div class="mb-8 lg:mb-10">
-                  <p class="text-xs uppercase tracking-wider mb-1.5" style="color: var(--mui-text-disabled);" data-i18n={`projects.${project.i18nKey}_subtitle`}>
-                    {project.subtitle}
-                  </p>
-                  <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-display mb-2" style="color: var(--mui-text-primary);" data-i18n={`projects.${project.i18nKey}_title`}>
-                    {project.title}
-                  </h3>
-                  <p class="text-sm sm:text-base font-semibold" style="color: var(--mui-primary);" data-i18n={`projects.${project.i18nKey}_projectType`}>
-                    {project.projectType}
-                  </p>
-                </div>
-
-                {/* ── SCREENSHOT GALLERY — visual showcase for recruiters ── */}
-                {project.screenshots.length > 0 && (
-                  <div class="mb-10">
-                    <h4 class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-4" style="color: var(--mui-text-primary);">
-                      <svg class="w-4 h-4" style="color: var(--mui-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <span data-i18n="projects.screenshots">Project Screenshots</span>
-                      <span class="text-[10px] font-normal ml-1" style="color: var(--mui-text-muted);" data-i18n="projects.screenshotsHint">
-                        — Click an image to enlarge
+                  {/* Left: Project intro content */}
+                  <div class="space-y-4">
+                    <div class="flex gap-2 flex-wrap">
+                      <span
+                        class:list={[
+                          getStatusColor(project.status),
+                        ]}
+                        data-i18n={`projects.${project.i18nKey}_status`}
+                      >
+                        {project.status}
                       </span>
-                    </h4>
-                    {/* Filmstrip — horizontal scroll */}
-                    <div class="flex gap-3 overflow-x-auto pb-3 -mx-2 px-2 snap-x snap-mandatory gallery-strip" style="scrollbar-width: thin; scrollbar-color: var(--mui-border-subtle) transparent;">
-                      {project.screenshots.map((shot, shotIdx) => (
-                        <button
-                          class="gallery-thumb relative shrink-0 w-56 sm:w-64 lg:w-72 aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group/thumb transition-all duration-300 snap-start"
-                          style="border: 2px solid var(--mui-border-subtle);"
-                          data-gallery-idx={shotIdx}
-                          aria-label={`Enlarge: ${shot.alt}`}
-                        >
-                          <img
-                            src={shot.src}
-                            alt={shot.alt}
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover/thumb:scale-105"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                          {/* Hover overlay */}
-                          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300" style="background: hsla(210, 14%, 4%, 0.5);">
-                            <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--mui-primary); color: white;">
-                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                              </svg>
-                            </div>
-                          </div>
-                          {/* Caption */}
-                          <div class="absolute bottom-0 left-0 right-0 px-3 py-2" style="background: linear-gradient(to top, hsla(210, 14%, 4%, 0.85), transparent);">
-                            <p class="text-[10px] sm:text-[11px] leading-snug text-white/90 line-clamp-2">
-                              {shot.alt}
-                            </p>
-                          </div>
-                        </button>
-                      ))}
+                      {project.featured && (
+                        <span class="badge-base badge-primary" data-i18n="projects.featured">
+                          ⭐ Featured
+                        </span>
+                      )}
                     </div>
 
-                    {/* ── Expanded image viewer (hidden by default) ── */}
-                    <div class="gallery-expanded hidden mt-4 rounded-2xl overflow-hidden relative" style="border: 1px solid var(--mui-border-subtle); background: var(--mui-bg-subtle);">
-                      <div class="relative">
+                    <p class="text-xs uppercase tracking-wider" style="color: var(--mui-text-disabled);" data-i18n={`projects.${project.i18nKey}_subtitle`}>
+                      {project.subtitle}
+                    </p>
+
+                    <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-display" style="color: var(--mui-text-primary);" data-i18n={`projects.${project.i18nKey}_title`}>
+                      {project.title}
+                    </h3>
+
+                    <p class="text-sm sm:text-base font-semibold" style="color: var(--mui-primary);" data-i18n={`projects.${project.i18nKey}_projectType`}>
+                      {project.projectType}
+                    </p>
+
+                    <p class="text-sm sm:text-base leading-relaxed max-w-2xl" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_description`}>
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Right: Premium project image frame & screenshot previews */}
+                  <div class="space-y-3">
+                    <div class="w-full rounded-2xl p-2 sm:p-3" style="background: var(--mui-bg-subtle); border: 1px solid var(--mui-border-subtle); box-shadow: 0 18px 60px -32px rgba(0,0,0,.55);">
+                      <button
+                        type="button"
+                        class="project-image-preview relative w-full rounded-xl overflow-hidden block cursor-zoom-in group"
+                        data-project-gallery={JSON.stringify([{ src: project.image, alt: project.title }, ...project.screenshots])}
+                        data-start-index="0"
+                        aria-label={`Open full image preview: ${project.title}`}
+                      >
                         <img
-                          class="gallery-expanded-img w-full max-h-[60vh] object-contain"
-                          src=""
-                          alt=""
+                          src={project.image}
+                          alt={project.title}
+                          class="block w-full h-auto object-contain rounded-lg transition-transform duration-500 group-hover:scale-[1.015]"
+                          width="1672"
+                          height="941"
                           loading="lazy"
                           decoding="async"
                         />
-                        {/* Close expanded */}
-                        <button
-                          class="gallery-expanded-close absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110"
-                          style="background: hsla(210, 14%, 4%, 0.7); color: white; backdrop-filter: blur(4px);"
-                          aria-label="Close expanded view"
-                        >
-                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                          </svg>
-                        </button>
-                        {/* Navigation arrows */}
-                        <button
-                          class="gallery-prev absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110"
-                          style="background: hsla(210, 14%, 4%, 0.7); color: white; backdrop-filter: blur(4px);"
-                          aria-label="Previous image"
-                        >
-                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                          </svg>
-                        </button>
-                        <button
-                          class="gallery-next absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110"
-                          style="background: hsla(210, 14%, 4%, 0.7); color: white; backdrop-filter: blur(4px);"
-                          aria-label="Next image"
-                        >
-                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                          </svg>
-                        </button>
-                      </div>
-                      {/* Caption bar */}
-                      <div class="px-4 py-3 flex items-center justify-between" style="border-top: 1px solid var(--mui-border-subtle);">
-                        <p class="gallery-expanded-caption text-xs sm:text-sm" style="color: var(--mui-text-secondary);"></p>
-                        <span class="gallery-expanded-counter text-[10px] font-bold shrink-0 ml-3" style="color: var(--mui-text-disabled);"></span>
-                      </div>
+
+                        {/* Dark overlay on hover showing magnifying glass icon */}
+                        <div class="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                          <div class="w-12 h-12 rounded-full flex items-center justify-center text-white" style="background: var(--mui-primary);">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </button>
+
+                      {project.screenshots.length > 0 && (
+                        <div class="grid grid-cols-4 gap-2 mt-3">
+                          {project.screenshots.slice(0, 4).map((shot, shotIndex) => {
+                            const isLastAndMore = shotIndex === 3 && project.screenshots.length > 4;
+                            const remainingCount = project.screenshots.length - 4;
+                            return (
+                              <button
+                                type="button"
+                                class="project-screenshot-preview group relative aspect-[16/9] overflow-hidden rounded-lg cursor-zoom-in transition-all duration-200"
+                                data-project-gallery={JSON.stringify([{ src: project.image, alt: project.title }, ...project.screenshots])}
+                                data-start-index={shotIndex + 1}
+                                aria-label={`Open screenshot ${shotIndex + 1}: ${shot.alt}`}
+                              >
+                                <img
+                                  src={shot.src}
+                                  alt={shot.alt}
+                                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                  loading="lazy"
+                                  decoding="async"
+                                />
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                  <svg class="w-4 h-4 text-white drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                  </svg>
+                                </div>
+                                {isLastAndMore && (
+                                  <div class="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-[2px]">
+                                    <span class="text-white text-xs font-bold font-mono">+{remainingCount}</span>
+                                  </div>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                   </div>
-                )}
+
+                </div>
 
                 {/* ── TWO-COLUMN STRATEGIC LAYOUT (lg+) ── */}
                 <div class="grid lg:grid-cols-5 gap-8 lg:gap-12">
@@ -892,6 +860,75 @@ function getStatusColor(status: string): string {
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  </div>
+
+  {/* ── Premium Image Viewer Overlay with Fit / 100% zoom & Carousel ── */}
+  <div id="project-image-viewer" class="fixed inset-0 z-[70] hidden" aria-hidden="true" role="dialog">
+    <div id="project-image-viewer-backdrop" class="absolute inset-0 cursor-pointer transition-opacity duration-240 ease-out project-image-viewer-backdrop" style="opacity: 0;"></div>
+
+    <div class="relative h-full w-full flex flex-col p-4 sm:p-6 z-10 pointer-events-none">
+      {/* Viewer Header */}
+      <div class="flex items-center justify-between gap-3 mb-4 shrink-0 pointer-events-auto">
+        <div class="min-w-0">
+          <div class="flex items-center gap-3">
+            <p id="project-image-viewer-title" class="text-sm sm:text-base font-semibold truncate project-image-viewer-title"></p>
+            <span id="project-image-viewer-counter" class="text-xs px-2 py-0.5 rounded-full shrink-0 font-medium font-mono project-image-viewer-counter"></span>
+          </div>
+          <p class="text-xs project-image-viewer-subtitle">Fit / 100% zoom</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="project-image-fit-btn" type="button" class="mui-btn-secondary mui-btn-sm project-image-viewer-btn">Fit</button>
+          <button id="project-image-zoom-btn" type="button" class="mui-btn-secondary mui-btn-sm project-image-viewer-btn">100%</button>
+          <button id="project-image-close-btn" type="button" class="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 cursor-pointer project-image-viewer-btn" aria-label="Close image viewer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Viewer Stage / Scroll container */}
+      <div class="relative flex-1 min-h-0 pointer-events-auto">
+        <div id="project-image-viewer-scroll" class="w-full h-full overflow-auto rounded-2xl transition-all duration-240 ease-out project-image-viewer-scroll" style="opacity: 0; transform: scale(0.985);">
+          <div id="project-image-viewer-stage" class="min-h-full flex items-center justify-center p-4">
+            <div id="project-image-viewer-canvas" class="flex items-center justify-center max-w-full max-h-[78vh]">
+              <img
+                id="project-image-viewer-img"
+                src=""
+                alt=""
+                class="max-w-full max-h-[78vh] object-contain select-none transition-all duration-300"
+                draggable="false"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Carousel Prev Button */}
+        <button
+          id="project-image-prev-btn"
+          type="button"
+          class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full hidden items-center justify-center transition-all duration-200 cursor-pointer select-none z-20 shadow-lg project-image-viewer-nav-btn"
+          aria-label="Previous image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        {/* Carousel Next Button */}
+        <button
+          id="project-image-next-btn"
+          type="button"
+          class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full hidden items-center justify-center transition-all duration-200 cursor-pointer select-none z-20 shadow-lg project-image-viewer-nav-btn"
+          aria-label="Next image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
     </div>
   </div>
@@ -1147,6 +1184,11 @@ function getStatusColor(status: string): string {
   // Close on Escape key
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && overlay && !overlay.classList.contains("hidden")) {
+      // ONLY close the modal if the image viewer is hidden
+      const imgViewer = document.getElementById("project-image-viewer");
+      if (imgViewer && !imgViewer.classList.contains("hidden")) {
+        return;
+      }
       closeModal();
     }
   });
@@ -1156,102 +1198,486 @@ function getStatusColor(status: string): string {
     e.stopPropagation();
   });
 
-  // ── Screenshot Gallery — lightbox within modal ──
-  document.querySelectorAll<HTMLElement>("[data-modal-project]").forEach((panel) => {
-    const thumbs = panel.querySelectorAll<HTMLElement>(".gallery-thumb");
-    const expanded = panel.querySelector<HTMLElement>(".gallery-expanded");
-    const expandedImg = panel.querySelector<HTMLImageElement>(".gallery-expanded-img");
-    const expandedCaption = panel.querySelector<HTMLElement>(".gallery-expanded-caption");
-    const expandedCounter = panel.querySelector<HTMLElement>(".gallery-expanded-counter");
-    const closeExpanded = panel.querySelector<HTMLElement>(".gallery-expanded-close");
-    const prevBtn = panel.querySelector<HTMLElement>(".gallery-prev");
-    const nextBtn = panel.querySelector<HTMLElement>(".gallery-next");
+  // ── Premium Image Viewer Overlay with Fit / 100% zoom & Carousel ──
+  const imageViewer = document.getElementById("project-image-viewer");
+  const imageViewerImg = document.getElementById("project-image-viewer-img") as HTMLImageElement | null;
+  const imageViewerTitle = document.getElementById("project-image-viewer-title");
+  const imageViewerScroll = document.getElementById("project-image-viewer-scroll") as HTMLElement | null;
+  const imageViewerFitBtn = document.getElementById("project-image-fit-btn");
+  const imageViewerZoomBtn = document.getElementById("project-image-zoom-btn");
+  const imageViewerCloseBtn = document.getElementById("project-image-close-btn");
+  const imageViewerBackdrop = document.getElementById("project-image-viewer-backdrop");
+  const imageViewerStage = document.getElementById("project-image-viewer-stage");
+  const imageViewerCounter = document.getElementById("project-image-viewer-counter");
+  const imageViewerPrevBtn = document.getElementById("project-image-prev-btn");
+  const imageViewerNextBtn = document.getElementById("project-image-next-btn");
+  const imageViewerCanvas = document.getElementById("project-image-viewer-canvas");
 
-    if (!thumbs.length || !expanded || !expandedImg) return;
+  let imageViewerItems: { src: string; alt: string }[] = [];
+  let imageViewerIndex = 0;
+  let imageViewerMode = "fit";
+  let zoomScale = 1;
+  let isPanning = false;
+  let startX = 0;
+  let startY = 0;
+  let scrollLeft = 0;
+  let scrollTop = 0;
+  let dragDistance = 0;
 
-    // Build screenshots array from thumbs
-    const shots: { src: string; alt: string }[] = [];
-    thumbs.forEach((t) => {
-      const img = t.querySelector("img");
-      if (img) shots.push({ src: img.src, alt: img.alt });
+  function openImageViewer(items: { src: string; alt: string }[], startIndex: number): void {
+    if (!imageViewer || !imageViewerImg || !imageViewerTitle || !imageViewerBackdrop || !imageViewerScroll) return;
+    imageViewerItems = items || [];
+    imageViewerIndex = startIndex >= 0 && startIndex < imageViewerItems.length ? startIndex : 0;
+    
+    // Reset layout opacity/scale before showing
+    imageViewerBackdrop.style.opacity = "0";
+    imageViewerScroll.style.opacity = "0";
+    imageViewerScroll.style.transform = "scale(0.985)";
+
+    imageViewer.classList.remove("hidden");
+    imageViewer.setAttribute("aria-hidden", "false");
+    
+    // Load first item
+    renderImageViewerItem(true); // pass true to skip transition when opening first time
+
+    // Trigger smooth fade-in and scale-in transition
+    requestAnimationFrame(() => {
+      if (imageViewerBackdrop) imageViewerBackdrop.style.opacity = "1";
+      if (imageViewerScroll) {
+        imageViewerScroll.style.opacity = "1";
+        imageViewerScroll.style.transform = "scale(1)";
+      }
     });
+  }
 
-    let currentIdx = 0;
+  function renderImageViewerItem(skipTransition: boolean = false): void {
+    if (!imageViewerImg || !imageViewerTitle || !imageViewerItems.length) return;
+    const currentItem = imageViewerItems[imageViewerIndex];
 
-    function showExpanded(idx: number): void {
-      if (idx < 0 || idx >= shots.length) return;
-      currentIdx = idx;
-      expandedImg!.src = shots[idx].src;
-      expandedImg!.alt = shots[idx].alt;
-      if (expandedCaption) expandedCaption.textContent = shots[idx].alt;
-      if (expandedCounter)
-        expandedCounter.textContent = `${idx + 1} / ${shots.length}`;
+    const updateContent = () => {
+      if (!imageViewerImg) return;
+      imageViewerImg.src = currentItem.src;
+      imageViewerImg.alt = currentItem.alt;
+      imageViewerTitle.textContent = currentItem.alt;
 
-      expanded!.classList.remove("hidden");
+      // Update counter
+      if (imageViewerCounter) {
+        imageViewerCounter.textContent = `${imageViewerIndex + 1} / ${imageViewerItems.length}`;
+      }
 
-      // Highlight active thumb
-      thumbs.forEach((t, i) => {
-        (t as HTMLElement).style.borderColor =
-          i === idx ? "var(--mui-primary)" : "var(--mui-border-subtle)";
-        (t as HTMLElement).style.opacity = i === idx ? "1" : "0.6";
-      });
+      // Toggle navigation arrows visibility
+      if (imageViewerItems.length > 1) {
+        imageViewerPrevBtn?.classList.remove("hidden");
+        imageViewerPrevBtn?.classList.add("flex");
+        imageViewerNextBtn?.classList.remove("hidden");
+        imageViewerNextBtn?.classList.add("flex");
+      } else {
+        imageViewerPrevBtn?.classList.add("hidden");
+        imageViewerPrevBtn?.classList.remove("flex");
+        imageViewerNextBtn?.classList.add("hidden");
+        imageViewerNextBtn?.classList.remove("flex");
+      }
 
-      // Animate in
-      animate(expanded, {
-        opacity: [0, 1],
-        translateY: [12, 0],
-        duration: 300,
-        ease: "outQuad",
-      });
+      // Wait until image loads dimensions before layout calculations
+      const onImageReady = () => {
+        // Always reset to Fit mode on image change
+        setImageFit();
+
+        if (!skipTransition) {
+          // Fade in new image
+          requestAnimationFrame(() => {
+            if (imageViewerImg) {
+              imageViewerImg.style.opacity = "1";
+              imageViewerImg.style.transform = "scale(1)";
+            }
+          });
+        }
+      };
+
+      if (imageViewerImg.complete && imageViewerImg.naturalWidth) {
+        onImageReady();
+      } else {
+        imageViewerImg.onload = onImageReady;
+      }
+    };
+
+    if (skipTransition) {
+      updateContent();
+      imageViewerImg.style.opacity = "1";
+      imageViewerImg.style.transform = "scale(1)";
+    } else {
+      // Outward transition: opacity and scale
+      imageViewerImg.style.transition = "opacity 120ms ease-out, transform 120ms ease-out";
+      imageViewerImg.style.opacity = "0";
+      imageViewerImg.style.transform = "scale(0.985)";
+
+      setTimeout(updateContent, 120);
+    }
+  }
+
+  function goToNextImage(): void {
+    if (imageViewerItems.length <= 1) return;
+    imageViewerIndex = (imageViewerIndex + 1) % imageViewerItems.length;
+    renderImageViewerItem();
+  }
+
+  function goToPrevImage(): void {
+    if (imageViewerItems.length <= 1) return;
+    imageViewerIndex = (imageViewerIndex - 1 + imageViewerItems.length) % imageViewerItems.length;
+    renderImageViewerItem();
+  }
+
+  function closeImageViewer(): void {
+    if (!imageViewer || !imageViewerBackdrop || !imageViewerScroll) return;
+    
+    // Outward transition for the whole viewer
+    imageViewerBackdrop.style.opacity = "0";
+    imageViewerScroll.style.opacity = "0";
+    imageViewerScroll.style.transform = "scale(0.985)";
+
+    isPanning = false;
+    dragDistance = 0;
+
+    setTimeout(() => {
+      imageViewer.classList.add("hidden");
+      imageViewer.setAttribute("aria-hidden", "true");
+      if (imageViewerImg) imageViewerImg.src = "";
+      imageViewerItems = [];
+      imageViewerIndex = 0;
+      setImageFit();
+    }, 240);
+  }
+
+  function resetImageInlineStyles() {
+    if (imageViewerStage) {
+      imageViewerStage.style.width = "";
+      imageViewerStage.style.height = "";
+      imageViewerStage.style.padding = "";
+      imageViewerStage.style.boxSizing = "";
+    }
+    if (imageViewerCanvas) {
+      imageViewerCanvas.style.width = "";
+      imageViewerCanvas.style.height = "";
+      imageViewerCanvas.style.margin = "";
+    }
+    if (imageViewerImg) {
+      imageViewerImg.style.width = "";
+      imageViewerImg.style.height = "";
+    }
+  }
+
+  function setImageFit() {
+    imageViewerMode = "fit";
+    zoomScale = 0;
+
+    resetImageInlineStyles();
+
+    if (imageViewerStage) {
+      imageViewerStage.className =
+        "min-h-full flex items-center justify-center p-4 cursor-zoom-in";
     }
 
-    function hideExpanded(): void {
-      expanded!.classList.add("hidden");
-      thumbs.forEach((t) => {
-        (t as HTMLElement).style.borderColor = "var(--mui-border-subtle)";
-        (t as HTMLElement).style.opacity = "1";
-      });
+    if (imageViewerCanvas) {
+      imageViewerCanvas.className =
+        "flex items-center justify-center max-w-full max-h-[78vh]";
     }
 
-    // Thumb clicks
-    thumbs.forEach((thumb, idx) => {
-      thumb.addEventListener("click", (e) => {
-        e.stopPropagation();
-        showExpanded(idx);
-      });
+    if (imageViewerImg) {
+      imageViewerImg.className =
+        "max-w-full max-h-[78vh] object-contain select-none cursor-zoom-in transition-transform duration-300 ease-out";
+    }
+
+    if (imageViewerScroll) {
+      imageViewerScroll.className = "w-full h-full overflow-auto rounded-2xl pointer-events-auto transition-all duration-240 ease-out";
+      imageViewerScroll.style.touchAction = "";
+      imageViewerScroll.scrollLeft = 0;
+      imageViewerScroll.scrollTop = 0;
+    }
+
+    // Update active button styles
+    imageViewerFitBtn?.classList.add("bg-white/10");
+    imageViewerZoomBtn?.classList.remove("bg-white/10");
+  }
+
+  function setImageZoom(scale = 1) {
+    if (!imageViewerImg || !imageViewerScroll) return;
+    imageViewerMode = "zoom";
+    zoomScale = scale;
+
+    resetImageInlineStyles();
+
+    const naturalWidth = imageViewerImg.naturalWidth;
+    const naturalHeight = imageViewerImg.naturalHeight;
+
+    if (!naturalWidth || !naturalHeight) return;
+
+    const canvasWidth = Math.round(naturalWidth * scale);
+    const canvasHeight = Math.round(naturalHeight * scale);
+
+    const paddingLeft = 24;
+    const paddingRight = 24;
+    const paddingTop = 24;
+    const paddingBottom = 32;
+
+    if (imageViewerStage) {
+      imageViewerStage.className =
+        "flex items-start justify-start cursor-grab";
+      imageViewerStage.style.width = `${canvasWidth + paddingLeft + paddingRight}px`;
+      imageViewerStage.style.height = `${canvasHeight + paddingTop + paddingBottom}px`;
+      imageViewerStage.style.padding = `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`;
+      imageViewerStage.style.boxSizing = "border-box";
+    }
+
+    if (imageViewerCanvas) {
+      imageViewerCanvas.className =
+        "block shrink-0 max-w-none max-h-none";
+      imageViewerCanvas.style.width = `${canvasWidth}px`;
+      imageViewerCanvas.style.height = `${canvasHeight}px`;
+      imageViewerCanvas.style.margin = "0";
+    }
+
+    imageViewerImg.className =
+      "block w-full h-full object-contain select-none cursor-grab transition-none max-w-none max-h-none";
+
+    imageViewerImg.style.width = "100%";
+    imageViewerImg.style.height = "100%";
+
+    imageViewerScroll.className = "w-full h-full overflow-auto rounded-2xl pointer-events-auto transition-all duration-240 ease-out cursor-grab";
+    imageViewerScroll.style.touchAction = "none";
+
+    requestAnimationFrame(() => {
+      imageViewerScroll.scrollLeft =
+        Math.max(0, (imageViewerScroll.scrollWidth - imageViewerScroll.clientWidth) / 2);
+
+      imageViewerScroll.scrollTop =
+        Math.max(0, (imageViewerScroll.scrollHeight - imageViewerScroll.clientHeight) / 2);
     });
 
-    // Close expanded
-    closeExpanded?.addEventListener("click", (e) => {
+    // Update active button styles
+    imageViewerZoomBtn?.classList.add("bg-white/10");
+    imageViewerFitBtn?.classList.remove("bg-white/10");
+  }
+
+  function setImageZoom100() {
+    setImageZoom(1);
+  }
+
+  function toggleImageZoom() {
+    if (imageViewerMode === "fit") {
+      setImageZoom100();
+    } else {
+      setImageFit();
+    }
+  }
+
+  // Single click zoom toggler on image and stage
+  imageViewerImg?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (dragDistance > 6 || isPanning) return;
+    toggleImageZoom();
+  });
+
+  imageViewerStage?.addEventListener("click", (e) => {
+    if (e.target !== imageViewerStage) return;
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (dragDistance > 6 || isPanning) return;
+    toggleImageZoom();
+  });
+
+  // Drag / Pan functionality inside zoom mode (Pointer events)
+  if (imageViewerScroll) {
+    imageViewerScroll.addEventListener("pointerdown", (event) => {
+      if (imageViewerMode !== "zoom") return;
+
+      // Only drag with left click / touch / pen
+      if (event.button !== 0 && event.pointerType === "mouse") return;
+
+      isPanning = true;
+      imageViewerScroll.setPointerCapture(event.pointerId);
+      startX = event.clientX;
+      startY = event.clientY;
+      scrollLeft = imageViewerScroll.scrollLeft;
+      scrollTop = imageViewerScroll.scrollTop;
+      dragDistance = 0;
+
+      // Update cursor to grabbing
+      imageViewerScroll.classList.remove("cursor-grab");
+      imageViewerScroll.classList.add("cursor-grabbing");
+      if (imageViewerImg) {
+        imageViewerImg.classList.remove("cursor-grab");
+        imageViewerImg.classList.add("cursor-grabbing");
+      }
+      if (imageViewerStage) {
+        imageViewerStage.classList.remove("cursor-grab");
+        imageViewerStage.classList.add("cursor-grabbing");
+      }
+    });
+
+    imageViewerScroll.addEventListener("pointermove", (event) => {
+      if (!isPanning || imageViewerMode !== "zoom") return;
+
+      event.preventDefault();
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      dragDistance = Math.max(dragDistance, Math.sqrt(dx * dx + dy * dy));
+
+      imageViewerScroll.scrollLeft = scrollLeft - dx;
+      imageViewerScroll.scrollTop = scrollTop - dy;
+    });
+
+    const stopPanning = (event: PointerEvent) => {
+      if (!isPanning) return;
+
+      isPanning = false;
+
+      // Restore grab cursors
+      imageViewerScroll.classList.remove("cursor-grabbing");
+      imageViewerScroll.classList.add("cursor-grab");
+      if (imageViewerImg) {
+        imageViewerImg.classList.remove("cursor-grabbing");
+        imageViewerImg.classList.add("cursor-grab");
+      }
+      if (imageViewerStage) {
+        imageViewerStage.classList.remove("cursor-grabbing");
+        imageViewerStage.classList.add("cursor-grab");
+      }
+
+      try {
+        imageViewerScroll.releasePointerCapture(event.pointerId);
+      } catch {}
+    };
+
+    imageViewerScroll.addEventListener("pointerup", stopPanning);
+    imageViewerScroll.addEventListener("pointercancel", stopPanning);
+    imageViewerScroll.addEventListener("pointerleave", stopPanning);
+  }
+
+  // Hook project cover click & screenshot mini previews clicks
+  document.querySelectorAll<HTMLElement>(".project-image-preview, .project-screenshot-preview").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
       e.stopPropagation();
-      hideExpanded();
-    });
-
-    // Navigation
-    prevBtn?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      showExpanded(currentIdx > 0 ? currentIdx - 1 : shots.length - 1);
-    });
-
-    nextBtn?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      showExpanded(currentIdx < shots.length - 1 ? currentIdx + 1 : 0);
-    });
-
-    // Keyboard navigation for gallery
-    panel.addEventListener("keydown", (e) => {
-      if (expanded.classList.contains("hidden")) return;
-      if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        showExpanded(currentIdx > 0 ? currentIdx - 1 : shots.length - 1);
-      } else if (e.key === "ArrowRight") {
-        e.preventDefault();
-        showExpanded(currentIdx < shots.length - 1 ? currentIdx + 1 : 0);
-      } else if (e.key === "Escape") {
-        e.preventDefault();
-        e.stopPropagation();
-        hideExpanded();
+      const galleryDataStr = btn.getAttribute("data-project-gallery");
+      const startIndexStr = btn.getAttribute("data-start-index") || "0";
+      if (galleryDataStr) {
+        try {
+          const items = JSON.parse(galleryDataStr);
+          const startIndex = parseInt(startIndexStr, 10);
+          openImageViewer(items, startIndex);
+        } catch (err) {
+          console.error("Error parsing project gallery data:", err);
+        }
       }
     });
   });
+
+  // Viewer controls
+  imageViewerFitBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setImageFit();
+  });
+
+  imageViewerZoomBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setImageZoom100();
+  });
+
+  imageViewerCloseBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    closeImageViewer();
+  });
+
+  imageViewerBackdrop?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    closeImageViewer();
+  });
+
+  // Prev / Next button clicks
+  imageViewerPrevBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    goToPrevImage();
+  });
+
+  imageViewerNextBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    goToNextImage();
+  });
+
+  // Prevent closing when clicking inner viewer parts (stage/scroll)
+  imageViewerScroll?.addEventListener("click", (e) => {
+    // If they dragged the image, prevent closing trigger
+    if (dragDistance > 6) {
+      e.stopPropagation();
+      return;
+    }
+
+    if (e.target === imageViewerScroll || e.target === document.getElementById("project-image-viewer-stage")) {
+      closeImageViewer();
+    } else {
+      e.stopPropagation();
+    }
+  });
+
+  // Close viewer on Escape / Keyboard arrow navigation
+  document.addEventListener("keydown", (e) => {
+    if (!imageViewer || imageViewer.classList.contains("hidden")) return;
+
+    if (e.key === "Escape") {
+      e.preventDefault();
+      e.stopPropagation();
+      closeImageViewer();
+    } else if (e.key === "ArrowRight" && !isPanning) {
+      e.preventDefault();
+      e.stopPropagation();
+      goToNextImage();
+    } else if (e.key === "ArrowLeft" && !isPanning) {
+      e.preventDefault();
+      e.stopPropagation();
+      goToPrevImage();
+    }
+  });
+
+  // Debounced window resize & orientation change handler
+  let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
+  
+  function handleResize() {
+    if (!imageViewer || imageViewer.classList.contains("hidden")) return;
+    
+    isPanning = false;
+    dragDistance = 0;
+    
+    // Clean up grab cursor styling if running
+    imageViewerScroll?.classList.remove("cursor-grabbing");
+    imageViewerScroll?.classList.add("cursor-grab");
+    if (imageViewerImg) {
+      imageViewerImg.classList.remove("cursor-grabbing");
+      imageViewerImg.classList.add("cursor-grab");
+    }
+    if (imageViewerStage) {
+      imageViewerStage.classList.remove("cursor-grabbing");
+      imageViewerStage.classList.add("cursor-grab");
+    }
+    
+    setImageFit();
+  }
+
+  window.addEventListener("resize", () => {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleResize, 150);
+  });
+
+  window.addEventListener("orientationchange", () => {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleResize, 150);
+  });
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", () => {
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleResize, 150);
+    });
+  }
 </script>
