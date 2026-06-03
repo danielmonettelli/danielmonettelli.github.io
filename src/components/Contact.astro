@@ -162,35 +162,32 @@ const contactInfo = [
 </section>
 
 <script>
-  import anime from "animejs";
+  import { animate } from "animejs";
 
   // Social link hover and focus animations
   document.querySelectorAll<HTMLElement>(".social-link").forEach((link) => {
     function animateIn() {
-      anime({
-        targets: link,
+      animate(link, {
         scale: 1.05,
         duration: 300,
-        easing: "easeOutQuad",
+        ease: "outQuad",
       });
 
       const icon = link.querySelector("svg");
       if (icon) {
-        anime({
-          targets: icon,
+        animate(icon, {
           rotate: [0, -10, 10, -5, 0],
           duration: 600,
-          easing: "easeOutElastic(1, 0.5)",
+          ease: "outElastic(1, 0.5)",
         });
       }
     }
 
     function animateOut() {
-      anime({
-        targets: link,
+      animate(link, {
         scale: 1,
         duration: 400,
-        easing: "easeOutElastic(1, 0.5)",
+        ease: "outElastic(1, 0.5)",
       });
     }
 

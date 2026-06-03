@@ -898,7 +898,7 @@ function getStatusColor(status: string): string {
 </section>
 
 <script>
-  import anime from "animejs";
+  import { animate, utils, spring } from "animejs";
 
   // 3D Tilt effect on project cards
   document.querySelectorAll<HTMLElement>(".tilt-card").forEach((card) => {
@@ -914,22 +914,20 @@ function getStatusColor(status: string): string {
       const rotateX = ((y - centerY) / centerY) * -5;
       const rotateY = ((x - centerX) / centerX) * 5;
 
-      anime({
-        targets: inner,
+      animate(inner, {
         rotateX: rotateX,
         rotateY: rotateY,
         duration: 400,
-        easing: "easeOutQuad",
+        ease: "outQuad",
       });
     });
 
     card.addEventListener("mouseleave", () => {
-      anime({
-        targets: inner,
+      animate(inner, {
         rotateX: 0,
         rotateY: 0,
         duration: 600,
-        easing: "easeOutElastic(1, 0.6)",
+        ease: "outElastic(1, 0.6)",
       });
     });
   });
@@ -985,8 +983,8 @@ function getStatusColor(status: string): string {
     if (!overlay || !backdrop || !modalContent) return;
 
     // Cancel any in-progress animations on modal elements
-    anime.remove(backdrop);
-    anime.remove(modalContent);
+    utils.remove(backdrop);
+    utils.remove(modalContent);
     isModalAnimating = true;
 
     // Save the element that triggered the modal for focus restoration
@@ -1034,23 +1032,20 @@ function getStatusColor(status: string): string {
 
     // ── Orchestrated entrance choreography ──
     // Phase 1: Backdrop fades in with a soft feel
-    anime({
-      targets: backdrop,
+    animate(backdrop, {
       opacity: [0, 1],
       duration: 400,
-      easing: "easeOutQuart",
+      ease: "outQuart",
     });
 
     // Phase 2: Modal content rises from below with spring-like deceleration
-    anime({
-      targets: modalContent,
+    animate(modalContent, {
       opacity: [0, 1],
       translateY: [40, 0],
       scale: [0.96, 1],
-      duration: 600,
       delay: 100,
-      easing: "spring(1, 90, 12, 0)",
-      complete: () => {
+      ease: spring({ stiffness: 90, damping: 12 }),
+      onComplete: () => {
         isModalAnimating = false;
         // Move focus to close button after animation
         closeBtn?.focus();
@@ -1064,8 +1059,8 @@ function getStatusColor(status: string): string {
     if (!overlay || !backdrop || !modalContent) return;
 
     // Cancel any in-progress animations on modal elements
-    anime.remove(backdrop);
-    anime.remove(modalContent);
+    utils.remove(backdrop);
+    utils.remove(modalContent);
     isModalAnimating = true;
 
     // Remove focus trap
@@ -1086,23 +1081,21 @@ function getStatusColor(status: string): string {
     }
 
     // Phase 1: Content drops away quickly with fade
-    anime({
-      targets: modalContent,
+    animate(modalContent, {
       opacity: 0,
       translateY: 24,
       scale: 0.97,
       duration: 280,
-      easing: "easeInQuart",
+      ease: "inQuart",
     });
 
     // Phase 2: Backdrop fades out slightly behind content
-    anime({
-      targets: backdrop,
+    animate(backdrop, {
       opacity: 0,
       duration: 320,
       delay: 60,
-      easing: "easeInQuart",
-      complete: () => {
+      ease: "inQuart",
+      onComplete: () => {
         isModalAnimating = false;
         overlay.classList.add("hidden");
         // Reset transforms for next open
@@ -1204,12 +1197,11 @@ function getStatusColor(status: string): string {
       });
 
       // Animate in
-      anime({
-        targets: expanded,
+      animate(expanded, {
         opacity: [0, 1],
         translateY: [12, 0],
         duration: 300,
-        easing: "easeOutQuad",
+        ease: "outQuad",
       });
     }
 
