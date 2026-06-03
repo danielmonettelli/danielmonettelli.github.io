@@ -79,7 +79,7 @@ export const translations: Translations = {
       overline: "Technical Skills",
       titleHtml: 'My <span class="gradient-text">tech arsenal</span>',
       description:
-        "Tools and technologies I master to build end-to-end solutions, from mobile apps to robust backend architectures.",
+        "Technical stack focused on building complete solutions: from analysis and architecture to backend, frontend, mobile, applied security, and deployment.",
       tabsAria: "Skill categories",
       mainStack: "Main Stack",
       complementary: "Complementary",
@@ -414,7 +414,7 @@ export const translations: Translations = {
       overline: "Habilidades Técnicas",
       titleHtml: 'Mi <span class="gradient-text">arsenal tecnológico</span>',
       description:
-        "Herramientas y tecnologías que domino para construir soluciones integrales, desde apps móviles hasta arquitecturas backend robustas.",
+        "Stack técnico orientado a construir soluciones completas: desde análisis y arquitectura hasta backend, frontend, mobile, seguridad aplicada y despliegue.",
       tabsAria: "Categorías de habilidades",
       mainStack: "Stack Principal",
       complementary: "Complementario",
