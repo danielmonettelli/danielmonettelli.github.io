@@ -25,7 +25,7 @@ import Contact from "@components/Contact.astro";
 import Footer from "@components/Footer.astro";
 import Maintenance from "@components/Maintenance.astro";
 
-const isMaintenanceMode = import.meta.env.PROD;
+const isMaintenanceMode = false;
 
 const layoutProps = isMaintenanceMode
   ? {
