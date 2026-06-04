@@ -1343,3 +1343,51 @@ html.i18n-pending [data-lang-toggle] {
   outline-offset: 2px !important;
 }
 
+/* ============================================
+   PROJECT COVER FALLBACK PREMIUM DESIGN
+   ============================================ */
+
+.project-cover-fallback {
+  background: radial-gradient(circle at 50% 50%, var(--mui-bg-card) 0%, var(--mui-bg-subtle) 100%) !important;
+  border: 1px solid var(--mui-border-subtle) !important;
+}
+
+[data-theme="dark"] .project-cover-fallback {
+  background: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.45) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
+}
+
+[data-theme="light"] .project-cover-fallback {
+  background: radial-gradient(circle at 50% 50%, rgba(241, 245, 249, 0.6) 0%, rgba(226, 232, 240, 0.9) 100%) !important;
+}
+
+/* Fallback icons shadows based on context */
+.project-cover-fallback[data-fallback="meowapp"] > div:first-of-type {
+  box-shadow: 0 8px 24px -6px rgba(26, 115, 232, 0.25) !important;
+}
+
+.project-cover-fallback[data-fallback="uikit"] > div:first-of-type {
+  box-shadow: 0 8px 24px -6px rgba(138, 43, 226, 0.25) !important;
+}
+
+.project-cover-fallback[data-fallback="guide"] > div:first-of-type {
+  box-shadow: 0 8px 24px -6px rgba(16, 185, 129, 0.25) !important;
+}
+
+/* Fallback tech chips styling */
+.project-cover-fallback span {
+  border: 1px solid var(--mui-border-subtle) !important;
+}
+
+[data-theme="dark"] .project-cover-fallback span {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  color: rgb(148, 163, 184) !important;
+}
+
+[data-theme="light"] .project-cover-fallback span {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+  border-color: rgba(15, 23, 42, 0.06) !important;
+  color: rgb(71, 85, 105) !important;
+}
+
+

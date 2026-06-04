@@ -21,7 +21,8 @@ interface Project {
   title: string;
   subtitle: string;
   description: string;
-  image: string;
+  image: string | null;
+  visualFallback?: "meowapp" | "uikit" | "guide";
   tags: string[];
   links: ProjectLink[];
   featured: boolean;
@@ -138,8 +139,8 @@ const projects: Project[] = [
     subtitle: "Production Open Source Mobile Application",
     description:
       "Open-source mobile application published on Google Play Store demonstrating mobile lifecycle, Clean Architecture, SQLite local caching, and robust REST API consumption.",
-    image:
-      "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/posts/meow-dotnet-maui-the-art-of-connecting-with-thecatapi-part-1/cover.png",
+    image: null,
+    visualFallback: "meowapp",
     tags: [".NET MAUI", "MVVM", "Clean UI", "SQLite", "GitHub Actions"],
     links: [
       {
@@ -212,8 +213,8 @@ const projects: Project[] = [
     subtitle: "Clean UI Architecture Template",
     description:
       "Enterprise-grade multi-project architectural template for Xamarin.Forms and .NET MAUI designed to accelerate development, ensure visual consistency, and enforce Clean UI Architecture.",
-    image:
-      "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
+    image: null,
+    visualFallback: "uikit",
     tags: ["Xamarin.Forms", ".NET MAUI", "Clean UI", "MVVM", "NuGet"],
     links: [
       {
@@ -263,8 +264,8 @@ const projects: Project[] = [
     subtitle: "Technical UI/UX Reference & Guide",
     description:
       "Technical reference and guides focused on mastering advanced user interfaces, fluid animations, and mobile experiences in .NET MAUI.",
-    image:
-      "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
+    image: null,
+    visualFallback: "guide",
     tags: [".NET MAUI", "UI/UX", "XAML", "Handlers", "Community Toolkit"],
     links: [],
     featured: false,
@@ -349,17 +350,73 @@ function getStatusColor(status: string): string {
           >
             <div class="tilt-card-inner mui-card rounded-3xl overflow-hidden transition-all duration-500">
               {/* Image */}
-              <div class="relative aspect-[16/9] overflow-hidden flex items-center justify-center" style="background: var(--mui-bg-subtle);">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
-                  width="640"
-                  height="224"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="absolute inset-x-0 bottom-0 h-1/2" style="background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.08) 50%, transparent 100%);" />
+              <div class="relative aspect-[16/9] overflow-hidden flex items-center justify-center w-full" style="background: var(--mui-bg-subtle);">
+                {project.image ? (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                      width="640"
+                      height="224"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div class="absolute inset-x-0 bottom-0 h-1/2" style="background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.08) 50%, transparent 100%);" />
+                  </>
+                ) : (
+                  <div class="project-cover-fallback flex flex-col items-center justify-center w-full h-full p-5 relative overflow-hidden select-none" data-fallback={project.visualFallback}>
+                    <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] pointer-events-none" aria-hidden="true">
+                      <svg width="100%" height="100%">
+                        <defs>
+                          <pattern id={`grid-${project.i18nKey}`} width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="1"/>
+                          </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill={`url(#grid-${project.i18nKey})`} />
+                      </svg>
+                    </div>
+                    <div class="absolute w-40 h-40 rounded-full blur-3xl opacity-20 dark:opacity-30 pointer-events-none" style="background: radial-gradient(circle, var(--mui-primary) 0%, transparent 70%);"></div>
+                    
+                    <div class="relative z-10 w-12 h-12 rounded-2xl flex items-center justify-center shadow-md border border-white/10 mb-2 transition-transform duration-500 group-hover:scale-105" style="background: var(--mui-primary-bg); color: var(--mui-primary);">
+                      {project.visualFallback === "meowapp" && (
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                          <rect x="5" y="2" width="14" height="20" rx="2" />
+                          <path d="M12 18h.01" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8 8c0-1 1-1.5 2-1.5s2 .5 2 1.5M12 8c0-1 1-1.5 2-1.5s2 .5 2 1.5" />
+                        </svg>
+                      )}
+                      {project.visualFallback === "uikit" && (
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                          <rect x="3" y="3" width="7" height="9" rx="1" />
+                          <rect x="14" y="3" width="7" height="5" rx="1" />
+                          <rect x="3" y="16" width="7" height="5" rx="1" />
+                          <rect x="14" y="12" width="7" height="9" rx="1" />
+                        </svg>
+                      )}
+                      {project.visualFallback === "guide" && (
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" />
+                        </svg>
+                      )}
+                    </div>
+
+                    <div class="relative z-10 text-center px-4">
+                      <span class="block text-sm font-bold tracking-tight" style="color: var(--mui-text-primary);">{project.title}</span>
+                      <span class="block text-[9px] uppercase tracking-wider font-semibold mt-0.5" style="color: var(--mui-primary);">{project.projectType}</span>
+                    </div>
+
+                    <div class="relative z-10 flex flex-wrap justify-center gap-1 mt-2.5">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span class="px-2 py-0.5 text-[8px] font-bold rounded border border-white/5 uppercase tracking-wide" style="background: rgba(255,255,255,0.05); color: var(--mui-text-secondary);">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {/* Status badge */}
                 <div class="absolute top-4 right-4">
                   <span
@@ -601,44 +658,102 @@ function getStatusColor(status: string): string {
                   {/* Right: Premium project image frame & screenshot previews */}
                   <div class="space-y-3">
                     <div class="w-full rounded-2xl p-2 sm:p-3" style="background: var(--mui-bg-subtle); border: 1px solid var(--mui-border-subtle); box-shadow: 0 18px 60px -32px rgba(0,0,0,.55);">
-                      <button
-                        type="button"
-                        class="project-image-preview relative w-full rounded-xl overflow-hidden block cursor-zoom-in group"
-                        data-project-gallery={JSON.stringify([{ src: project.image, alt: project.title }, ...project.screenshots])}
-                        data-start-index="0"
-                        aria-label={`Open full image preview: ${project.title}`}
-                      >
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          class="block w-full h-auto object-contain rounded-lg transition-transform duration-500 group-hover:scale-[1.015]"
-                          width="1672"
-                          height="941"
-                          loading="lazy"
-                          decoding="async"
-                        />
+                      {project.image ? (
+                        <button
+                          type="button"
+                          class="project-image-preview relative w-full rounded-xl overflow-hidden block cursor-zoom-in group"
+                          data-project-gallery={JSON.stringify([{ src: project.image, alt: project.title }, ...project.screenshots])}
+                          data-start-index="0"
+                          aria-label={`Open full image preview: ${project.title}`}
+                        >
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            class="block w-full h-auto object-contain rounded-lg transition-transform duration-500 group-hover:scale-[1.015]"
+                            width="1672"
+                            height="941"
+                            loading="lazy"
+                            decoding="async"
+                          />
 
-                        {/* Dark overlay on hover showing magnifying glass icon */}
-                        <div class="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                          <div class="w-12 h-12 rounded-full flex items-center justify-center text-white" style="background: var(--mui-primary);">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
+                          {/* Dark overlay on hover showing magnifying glass icon */}
+                          <div class="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-white" style="background: var(--mui-primary);">
+                              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                              </svg>
+                            </div>
+                          </div>
+                        </button>
+                      ) : (
+                        <div class="relative w-full rounded-xl overflow-hidden block aspect-[16/9] select-none" style="background: var(--mui-bg-subtle);">
+                          <div class="project-cover-fallback flex flex-col items-center justify-center w-full h-full p-6 relative overflow-hidden" data-fallback={project.visualFallback}>
+                            <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] pointer-events-none" aria-hidden="true">
+                              <svg width="100%" height="100%">
+                                <defs>
+                                  <pattern id={`modal-grid-${project.i18nKey}`} width="24" height="24" patternUnits="userSpaceOnUse">
+                                    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" stroke-width="1"/>
+                                  </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill={`url(#modal-grid-${project.i18nKey})`} />
+                              </svg>
+                            </div>
+                            <div class="absolute w-56 h-56 rounded-full blur-3xl opacity-20 dark:opacity-30 pointer-events-none" style="background: radial-gradient(circle, var(--mui-primary) 0%, transparent 70%);"></div>
+                            
+                            <div class="relative z-10 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg border border-white/10 mb-3" style="background: var(--mui-primary-bg); color: var(--mui-primary);">
+                              {project.visualFallback === "meowapp" && (
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                  <rect x="5" y="2" width="14" height="20" rx="2" />
+                                  <path d="M12 18h.01" />
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 8c0-1 1-1.5 2-1.5s2 .5 2 1.5M12 8c0-1 1-1.5 2-1.5s2 .5 2 1.5" />
+                                </svg>
+                              )}
+                              {project.visualFallback === "uikit" && (
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                  <rect x="3" y="3" width="7" height="9" rx="1" />
+                                  <rect x="14" y="3" width="7" height="5" rx="1" />
+                                  <rect x="3" y="16" width="7" height="5" rx="1" />
+                                  <rect x="14" y="12" width="7" height="9" rx="1" />
+                                </svg>
+                              )}
+                              {project.visualFallback === "guide" && (
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" />
+                                </svg>
+                              )}
+                            </div>
+
+                            <div class="relative z-10 text-center px-6">
+                              <span class="block text-lg font-bold tracking-tight" style="color: var(--mui-text-primary);">{project.title}</span>
+                              <span class="block text-[11px] uppercase tracking-wider font-semibold mt-1" style="color: var(--mui-primary);">{project.projectType}</span>
+                            </div>
+
+                            <div class="relative z-10 flex flex-wrap justify-center gap-1.5 mt-3.5">
+                              {project.tags.slice(0, 4).map((tag) => (
+                                <span class="px-2.5 py-0.5 text-[9px] font-bold rounded-md border border-white/5 uppercase tracking-wide" style="background: rgba(255,255,255,0.05); color: var(--mui-text-secondary);">
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </button>
+                      )}
 
                       {project.screenshots.length > 0 && (
                         <div class="grid grid-cols-4 gap-2 mt-3">
                           {project.screenshots.slice(0, 4).map((shot, shotIndex) => {
                             const isLastAndMore = shotIndex === 3 && project.screenshots.length > 4;
                             const remainingCount = project.screenshots.length - 4;
+                            const galleryItems = project.image ? [{ src: project.image, alt: project.title }, ...project.screenshots] : project.screenshots;
+                            const startIndex = project.image ? shotIndex + 1 : shotIndex;
                             return (
                               <button
                                 type="button"
                                 class="project-screenshot-preview group relative aspect-[16/9] overflow-hidden rounded-lg cursor-zoom-in transition-all duration-200"
-                                data-project-gallery={JSON.stringify([{ src: project.image, alt: project.title }, ...project.screenshots])}
-                                data-start-index={shotIndex + 1}
+                                data-project-gallery={JSON.stringify(galleryItems)}
+                                data-start-index={startIndex}
                                 aria-label={`Open screenshot ${shotIndex + 1}: ${shot.alt}`}
                               >
                                 <img
