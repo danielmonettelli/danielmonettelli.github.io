@@ -51,16 +51,6 @@ const highlights = [
             <!-- Overlay -->
             <div class="absolute inset-0" style="background: linear-gradient(to top, var(--mui-bg) 0%, transparent 40%);" aria-hidden="true"></div>
 
-            <!-- Floating badge on image -->
-            <div
-              class="absolute bottom-4 left-4 right-4 glass rounded-2xl px-4 py-3 flex items-center gap-3"
-            >
-              <div class="w-3 h-3 rounded-full animate-pulse" style="background-color: var(--status-success);" aria-hidden="true"></div>
-              <div>
-                <p class="text-xs font-semibold" style="color: var(--mui-text-primary);" data-i18n="about.badge">Full Stack Developer</p>
-                <p class="text-[10px]" style="color: var(--mui-text-muted);" data-i18n="about.location">Arequipa, Peru 🇵🇪</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -96,7 +86,7 @@ const highlights = [
     <!-- Stats -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 stagger-children">
       {stats.map((stat) => (
-        <div class="mui-paper rounded-2xl p-6 text-center transition-colors group">
+        <div class="about-stat-card p-6 text-center transition-colors">
           <div class="text-3xl sm:text-4xl font-bold font-display mb-1">
             <span class="gradient-text stat-counter" data-target={stat.value} data-suffix={stat.suffix}>
               0{stat.suffix}

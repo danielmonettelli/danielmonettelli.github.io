@@ -1381,4 +1381,25 @@ html.i18n-pending [data-lang-toggle] {
   color: rgb(71, 85, 105) !important;
 }
 
+/* ============================================
+   ABOUT SECTION STAT CARDS
+   ============================================ */
+
+.about-stat-card {
+  cursor: default;
+  background: var(--mui-bg-card);
+  border: 1px solid var(--mui-border-subtle);
+  border-radius: 16px;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+.about-stat-card:hover {
+  background: var(--mui-bg-card);
+  border-color: var(--mui-border-subtle);
+  box-shadow: none;
+  transform: none;
+}
+
 
