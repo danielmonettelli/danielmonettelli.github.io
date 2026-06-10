@@ -17,6 +17,13 @@ interface ProjectScreenshot {
   alt: string;
 }
 
+interface ProjectMetric {
+  value: string;
+  title: string;
+  description: string;
+  type: "projected" | "functional" | "historical" | "validation";
+}
+
 interface Project {
   title: string;
   subtitle: string;
@@ -40,6 +47,7 @@ interface Project {
   architectureLayers: { layer: string; detail: string }[];
   impact: string;
   screenshots: ProjectScreenshot[];
+  metrics?: ProjectMetric[];
 }
 
 const projects: Project[] = [
@@ -86,7 +94,13 @@ const projects: Project[] = [
       { layer: "Data (SQL Server)", detail: "3NF normalized schema, stored procedures, and triggers." },
     ],
     impact:
-      "Solution that modernizes a real government process, potentially benefiting millions of Peruvian citizens in their constitutional right to public information access.",
+      "Integrated platform designed with SMART objectives to centralize SAIP requests, TTAIP appeals, notifications, traceability, and digital case files. Its measurable impact targets a 60% reduction in administrative operational time and a 60% reduction in institutional reporting preparation time, validated through comparative testing between manual/fragmented and automated workflows.",
+    metrics: [
+      { value: "60%", title: "Administrative Ops", description: "Reduction target in administrative operational time.", type: "projected" },
+      { value: "60%", title: "Institutional Reports", description: "Reduction target in reporting preparation time.", type: "projected" },
+      { value: "8 weeks", title: "Implementation Time", description: "Target project timeframe for full system rollout.", type: "projected" },
+      { value: "Comparative flow", title: "Workflow Validation", description: "Comparison between manual process and automated platform.", type: "validation" },
+    ],
   },
   {
     title: "Alójate Patitas",
@@ -131,7 +145,13 @@ const projects: Project[] = [
       { layer: "Database (SQL Server)", detail: "Relational database structure, normalized tables, data integrity, and transactional persistence." },
     ],
     impact:
-      "First project to address the digital gap in pet-friendly tourism in Peru, with potential for regional expansion.",
+      "Pet-friendly marketplace focused on the Peruvian market, designed to reduce fragmentation between travelers with pets and providers. Its measurable impact targets a 50% reduction in search time compared with scattered manual processes and a 40% reduction in booking coordination friction through centralized workflows, panels, favorites, reviews, and chat.",
+    metrics: [
+      { value: "50%", title: "Pet-friendly Search", description: "Reduction target in pet-friendly search time.", type: "projected" },
+      { value: "40%", title: "Booking Friction", description: "Reduction target in booking and coordination friction.", type: "projected" },
+      { value: "6 flows", title: "Marketplace Flows", description: "Search, bookings, favorites, reviews, chat, and panels.", type: "functional" },
+      { value: "3 roles", title: "Operational Roles", description: "Traveler, provider, and administrator.", type: "functional" },
+    ],
   },
   {
     title: "MeowApp",
@@ -205,7 +225,13 @@ const projects: Project[] = [
       { layer: "Presentation", detail: "XAML Views, ViewModels, Converters, navigation, and DI container" },
     ],
     impact:
-      "Technical reference for .NET MAUI community developers who need a real example of how to take an app from idea to Google Play Store with professional standards.",
+      "Open-source mobile app published on Google Play, designed as a practical reference for .NET MAUI developers. Its measurable impact is demonstrated through a complete mobile publishing lifecycle, 4 functional flows, local favorites persistence with SQLite, and real TheCatAPI consumption within a distributed mobile app.",
+    metrics: [
+      { value: "1 release", title: "Google Play Release", description: "Real publication on Google Play.", type: "historical" },
+      { value: "4 flows", title: "Core Mobile Flows", description: "Exploration, breeds, favorites, and offline persistence.", type: "functional" },
+      { value: "100%", title: "Offline Favorites", description: "Favorites available offline with SQLite.", type: "functional" },
+      { value: "API REST", title: "TheCatAPI Integration", description: "Consumption of TheCatAPI in published app.", type: "validation" },
+    ],
   },
   {
     title: "MonettelliUIKIT",
@@ -256,7 +282,13 @@ const projects: Project[] = [
       { layer: "Behaviors", detail: "Reusable behaviors for validation, animations, and interactions" },
     ],
     impact:
-      "Established an architectural standard for the UI layer in Xamarin.Forms projects, adopted by developers seeking professional structure.",
+      "Visual toolkit focused on accelerating the creation of consistent mobile interfaces in Xamarin/.NET MAUI. Its measurable impact combines reported historical adoption — 1000+ installs during its distribution stage — with a projected 60% reduction in initial visual setup time through reusable components and a 4-pillar Clean UI structure.",
+    metrics: [
+      { value: "1000+", title: "Active Installs", description: "Historical installations reported.", type: "historical" },
+      { value: "60%", title: "Visual Setup Time", description: "Reduction target in initial visual setup.", type: "projected" },
+      { value: "4 pillars", title: "Clean UI Architecture", description: "Themes, Controls, Converters, and Behaviors.", type: "functional" },
+      { value: "2 stacks", title: "Multiplatform Base", description: "Xamarin.Forms and .NET MAUI.", type: "functional" },
+    ],
   },
   {
     title: "MauiUX Guide",
@@ -301,7 +333,13 @@ const projects: Project[] = [
       { layer: "Accessibility", detail: "SemanticProperties, AutomationProperties, and accessibility testing" },
     ],
     impact:
-      "Fills the gap in professional UI/UX resources in the .NET MAUI ecosystem, raising the community's quality standard.",
+      "Technical guide in development aimed at reducing UI/UX learning friction for .NET MAUI developers. Its measurable impact targets a 30% reduction in the time required to find and understand visual patterns through curated documentation covering layouts, animations, visual patterns, and mobile experience.",
+    metrics: [
+      { value: "30%", title: "Pattern Search", description: "Reduction target in UI/UX pattern search.", type: "projected" },
+      { value: "4 areas", title: "Thematic Areas", description: "Layouts, animations, visual patterns, and mobile UX.", type: "functional" },
+      { value: "v1", title: "Documentation Scope", description: "First version of practical documentation.", type: "projected" },
+      { value: "Checklist", title: "Quality Evaluation", description: "Validation by clarity, applicability, and reuse.", type: "validation" },
+    ],
   },
 ];
 
@@ -861,6 +899,38 @@ function getStatusColor(status: string): string {
                         {project.impact}
                       </p>
                     </div>
+
+                    {/* Evidencia Técnica / Impacto Medible */}
+                    {project.metrics && project.metrics.length > 0 && (
+                      <div class="space-y-4">
+                        <h4 class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider" style="color: var(--mui-text-primary);">
+                          <svg class="w-4 h-4" style="color: var(--mui-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2" />
+                          </svg>
+                          <span data-i18n="projects.measurableImpact">
+                            Measurable Impact
+                          </span>
+                        </h4>
+                        <div class="project-kpi-grid">
+                          {project.metrics.map((metric, metricIdx) => (
+                            <div class="project-metric-card select-none">
+                              <div 
+                                class:list={["project-metric-value", (metric.value.length > 10 || metric.value.includes(" ")) ? "is-text" : ""]} 
+                                data-i18n={`projects.${project.i18nKey}_metric${metricIdx}_value`}
+                              >
+                                {metric.value}
+                              </div>
+                              <div 
+                                class="project-metric-desc" 
+                                data-i18n={`projects.${project.i18nKey}_metric${metricIdx}_desc`}
+                              >
+                                {metric.description}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* RIGHT COLUMN — 2/5 width: structured data */}
