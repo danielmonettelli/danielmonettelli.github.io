@@ -146,6 +146,9 @@ export const translations: Translations = {
         "Part of the curated community of developers with advanced experience in Microsoft's mobile ecosystem since its inception.",
     },
     projects: {
+      // General UI Action Labels
+      "viewExtension": "View extension",
+      "openMarketplace": "Open in Visual Studio Marketplace",
 
       // Metric Types
       "metricType_projected": "SMART Target",
@@ -562,6 +565,9 @@ export const translations: Translations = {
         "Integro la comunidad curada de desarrolladores con experiencia avanzada en el ecosistema móvil de Microsoft desde sus inicios.",
     },
     projects: {
+      // General UI Action Labels
+      "viewExtension": "Ver extensión",
+      "openMarketplace": "Abrir en Visual Studio Marketplace",
 
       // Tipos de Métricas
       "metricType_projected": "Meta SMART",

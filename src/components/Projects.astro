@@ -10,6 +10,8 @@ interface ProjectLink {
   label: string;
   url: string;
   icon: string; // "github" | "play" | "external"
+  i18nKey?: string;
+  i18nAria?: string;
 }
 
 interface ProjectScreenshot {
@@ -250,6 +252,13 @@ const projects: Project[] = [
         label: "GitHub",
         url: "https://github.com/danielmonettelli/MonettelliUIKIT",
         icon: "github",
+      },
+      {
+        label: "View extension",
+        url: "https://marketplace.visualstudio.com/items?itemName=DanielMonettelli.monettelli-forms-templates",
+        icon: "external",
+        i18nKey: "projects.viewExtension",
+        i18nAria: "projects.openMarketplace",
       },
     ],
     featured: false,
@@ -516,6 +525,7 @@ function getStatusColor(status: string): string {
                         target="_blank"
                         rel="noopener noreferrer"
                         class="mui-btn-secondary mui-btn-sm project-external-link"
+                        data-i18n-aria={link.i18nAria || undefined}
                       >
                         {link.icon === "github" ? (
                           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -526,7 +536,7 @@ function getStatusColor(status: string): string {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                           </svg>
                         )}
-                        {link.label}
+                        <span data-i18n={link.i18nKey || undefined}>{link.label}</span>
                       </a>
                     ))
                   )}
@@ -613,8 +623,9 @@ function getStatusColor(status: string): string {
                       rel="noopener noreferrer"
                       class="text-xs transition-colors project-external-link"
                       style="color: var(--mui-primary);"
+                      data-i18n-aria={link.i18nAria || undefined}
                     >
-                      {link.label} ↗
+                      <span data-i18n={link.i18nKey || undefined}>{link.label}</span> ↗
                     </a>
                   ))
                 )}
