@@ -36,6 +36,7 @@ interface Project {
   status: string;
   projectType: string;
   i18nKey: string;
+  isPrivateRepository?: boolean;
   // ── Recruiter-grade detail fields ──
   role: string;
   problemSolved: string;
@@ -61,6 +62,7 @@ const projects: Project[] = [
     tags: ["Spring Boot", "Angular", "Jetpack Compose", "IBM Rhapsody", "RUP-Scrum", "Agile", "Traceability"],
     links: [],
     featured: true,
+    isPrivateRepository: true,
     status: "Consolidated Platform",
     projectType: "Government Web + Mobile Platform",
     role: "As co-author within a two-person team, I contributed to functional analysis, process modeling, business rules definition, architecture design, and technical implementation.",
@@ -113,6 +115,7 @@ const projects: Project[] = [
     tags: ["ASP.NET Core", "React SPA", ".NET MAUI", "SQL Server"],
     links: [],
     featured: true,
+    isPrivateRepository: true,
     status: "Consolidated Platform",
     projectType: "Distributed Cross-Platform Platform",
     role: "Full Stack Developer and solution architect",
@@ -497,6 +500,15 @@ function getStatusColor(status: string): string {
 
                 {/* Links row — stop propagation so link clicks don't open modal */}
                 <div class="flex items-center gap-3 flex-wrap project-links-row">
+                  {project.isPrivateRepository && (
+                    <span class="badge-base badge-neutral inline-flex items-center gap-1.5 select-none">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                      </svg>
+                      <span data-i18n="projects.privateRepository">Private repository</span>
+                    </span>
+                  )}
                   {project.links.length > 0 && (
                     project.links.map((link) => (
                       <a
@@ -584,6 +596,15 @@ function getStatusColor(status: string): string {
               </div>
 
               <div class="flex items-center gap-2 pt-4 flex-wrap project-links-row" style="border-top: 1px solid var(--mui-border-subtle);">
+                {project.isPrivateRepository && (
+                  <span class="badge-base badge-neutral inline-flex items-center gap-1.5 select-none">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    <span data-i18n="projects.privateRepository">Private repository</span>
+                  </span>
+                )}
                 {project.links.length > 0 && (
                   project.links.map((link) => (
                     <a
@@ -1009,15 +1030,19 @@ function getStatusColor(status: string): string {
                     </div>
 
                     {/* Links / CTAs */}
-                    {project.links.length > 0 && (
+                    {project.links.length > 0 ? (
                       <div class="pt-4" style="border-top: 1px solid var(--mui-border-subtle);">
                         <div class="flex flex-col gap-2">
-                          {project.links.map((link) => (
+                          {project.links.map((link, linkIdx) => (
                             <a
                               href={link.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              class="mui-btn-contained mui-btn-md w-full justify-center"
+                              class:list={[
+                                linkIdx === 0 ? "mui-btn-contained" : "mui-btn-outlined",
+                                "mui-btn-md w-full justify-center"
+                              ]}
+                              data-i18n-aria={link.i18nAria || undefined}
                             >
                               {link.icon === "github" ? (
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -1033,9 +1058,26 @@ function getStatusColor(status: string): string {
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
                               )}
-                              {link.label}
+                              <span data-i18n={link.i18nKey || undefined}>{link.label}</span>
                             </a>
                           ))}
+                        </div>
+                      </div>
+                    ) : project.isPrivateRepository && (
+                      <div class="pt-4" style="border-top: 1px solid var(--mui-border-subtle);">
+                        <div class="p-4 rounded-2xl border flex flex-col gap-2.5" style="background: var(--mui-bg-subtle); border-color: var(--mui-border-subtle);">
+                          <div class="flex items-center gap-2 font-bold text-xs uppercase tracking-wider" style="color: var(--mui-text-primary);">
+                            <svg class="w-4 h-4" style="color: var(--mui-primary);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <span data-i18n="projects.privateRepository">Private repository</span>
+                          </div>
+                          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--mui-text-secondary);" data-i18n={`projects.${project.i18nKey}_privateNote`}>
+                            {project.i18nKey === "saip"
+                              ? "Source code protected as intellectual property. Because this solution includes sensitive business rules and specialized modeling, the repository is kept private. Technical evaluation is supported through architecture, SMART metrics, screenshots, modeling artifacts, and functional explanation. Technical walkthrough available for review during interviews."
+                              : "Source code protected as intellectual property. Private repository to protect intellectual property and product differentiation. The portfolio presents architecture, workflows, technical stack, and measurable impact for professional evaluation. Technical walkthrough available for review during interviews."}
+                          </p>
                         </div>
                       </div>
                     )}
