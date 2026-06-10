@@ -1402,4 +1402,60 @@ html.i18n-pending [data-lang-toggle] {
   transform: none;
 }
 
+/* ============================================
+   PROJECT MODAL KPI CARDS
+   ============================================ */
+
+.project-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.project-metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 18px 14px;
+  background: var(--mui-bg-subtle);
+  border: 1px solid var(--mui-border-subtle);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  cursor: default;
+  min-height: 110px;
+  justify-content: center;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.project-metric-card:hover {
+  border-color: var(--mui-border-subtle);
+  background: var(--mui-bg-subtle);
+}
+
+.project-metric-value {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--mui-primary);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  margin-bottom: 8px;
+}
+
+.project-metric-value.is-text {
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  line-height: 1.15;
+}
+
+.project-metric-desc {
+  font-size: clamp(0.75rem, 1vw, 0.8rem);
+  line-height: 1.35;
+  color: var(--mui-text-secondary);
+  text-wrap: balance;
+  max-width: 100%;
+}
+
+
 
