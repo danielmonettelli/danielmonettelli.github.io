@@ -125,9 +125,9 @@ export const translations: Translations = {
       "0_desc0":
         "Design and implement end-to-end software solutions using .NET and Spring Boot, integrating reactive frontends in Angular and React under strict dependency injection and modularity principles.",
       "0_desc1":
-        "Ensure code quality through automated execution of unit and integration tests with xUnit and JUnit, guaranteeing a minimum coverage of 80% and the correct application of SOLID principles.",
+        "Ensure code quality through static analysis and vulnerability testing (XSS, SQL Injection) with MobSF and OWASP ZAP, reducing critical vulnerabilities by 30% before production deployment.",
       "0_desc2":
-        "Optimize data management through logical and physical design of relational databases in SQL Server and PostgreSQL, reducing response times and preventing common vulnerabilities such as SQL injection.",
+        "Optimize frontend development efficiency by abstracting complex design systems from Figma into reusable native/multi-platform modular component libraries, accelerating UI construction times by 35%",
       "1_period": "Feb 2021 – Present",
       "1_title": "Content Creator & Microsoft MVP Nominee",
       "1_company": "Daniel Monettelli's Blog / WeAreDotnet.io",
@@ -544,9 +544,9 @@ export const translations: Translations = {
       "0_desc0":
         "Diseño e implemento soluciones de software de extremo a extremo utilizando .NET y Spring Boot, integrando frontends reactivos en Angular y React bajo estrictos principios de inyección de dependencias y modularidad.",
       "0_desc1":
-        "Aseguro la calidad del código mediante la ejecución automatizada de pruebas unitarias e integración con xUnit y JUnit, garantizando una cobertura mínima del 80% y la correcta aplicación de principios SOLID.",
+        "Aseguro la calidad del código mediante análisis estáticos y pruebas de vulnerabilidades (XSS, SQL Injection) con MobSF y OWASP ZAP, reduciendo en un 30% las vulnerabilidades críticas antes del despliegue en producción.",
       "0_desc2":
-        "Optimizo la gestión de datos mediante el diseño lógico y físico de bases de datos relacionales en SQL Server y PostgreSQL, reduciendo tiempos de respuesta y previniendo vulnerabilidades comunes como inyección SQL.",
+        "Optimizo la eficiencia del desarrollo frontend abstrayendo sistemas de diseño complejos desde Figma hacia librerías modulares de componentes reutilizables nativos/multiplataforma, acelerando los tiempos de construcción de UI en un 35%",
       "1_period": "Feb 2021 – Presente",
       "1_title": "Creador de Contenido & Nominado Microsoft MVP",
       "1_company": "Daniel Monettelli's Blog / WeAreDotnet.io",
