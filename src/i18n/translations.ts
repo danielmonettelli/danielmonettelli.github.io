@@ -123,11 +123,11 @@ export const translations: Translations = {
       "0_location": "Arequipa, Peru",
       "0_type": "Full Time",
       "0_desc0":
-        "Autonomous development of comprehensive technology solutions, building complex systems with .NET, Spring Boot, Angular, and React under industry standards.",
+        "Design and implement end-to-end software solutions using .NET and Spring Boot, integrating reactive frontends in Angular and React under strict dependency injection and modularity principles.",
       "0_desc1":
-        "Relational database design through normalization and NoSQL structure modeling, applying SOLID principles under RUP methodology.",
+        "Ensure code quality through automated execution of unit and integration tests with xUnit and JUnit, guaranteeing a minimum coverage of 80% and the correct application of SOLID principles.",
       "0_desc2":
-        "Full software lifecycle management on high-impact projects, demonstrating technical maturity in web, mobile, and backend architectures.",
+        "Optimize data management through logical and physical design of relational databases in SQL Server and PostgreSQL, reducing response times and preventing common vulnerabilities such as SQL injection.",
       "1_period": "Feb 2021 – Present",
       "1_title": "Content Creator & Microsoft MVP Nominee",
       "1_company": "Daniel Monettelli's Blog / WeAreDotnet.io",
@@ -542,11 +542,11 @@ export const translations: Translations = {
       "0_location": "Arequipa, Perú",
       "0_type": "Tiempo Completo",
       "0_desc0":
-        "Desarrollo autónomo de soluciones tecnológicas integrales, construyendo sistemas complejos con .NET, Spring Boot, Angular y React bajo estándares industriales.",
+        "Diseño e implemento soluciones de software de extremo a extremo utilizando .NET y Spring Boot, integrando frontends reactivos en Angular y React bajo estrictos principios de inyección de dependencias y modularidad.",
       "0_desc1":
-        "Diseño de bases de datos relacionales mediante normalización y modelado de estructuras NoSQL, aplicando principios SOLID bajo metodología RUP.",
+        "Aseguro la calidad del código mediante la ejecución automatizada de pruebas unitarias e integración con xUnit y JUnit, garantizando una cobertura mínima del 80% y la correcta aplicación de principios SOLID.",
       "0_desc2":
-        "Gestión del ciclo de vida completo del software en proyectos de alto impacto, demostrando madurez técnica en arquitecturas web, móviles y backend.",
+        "Optimizo la gestión de datos mediante el diseño lógico y físico de bases de datos relacionales en SQL Server y PostgreSQL, reduciendo tiempos de respuesta y previniendo vulnerabilidades comunes como inyección SQL.",
       "1_period": "Feb 2021 – Presente",
       "1_title": "Creador de Contenido & Nominado Microsoft MVP",
       "1_company": "Daniel Monettelli's Blog / WeAreDotnet.io",
