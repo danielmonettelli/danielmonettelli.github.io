@@ -125,7 +125,7 @@ export const translations: Translations = {
       "0_desc0":
         "Design and implement end-to-end software solutions using .NET and Spring Boot, integrating reactive frontends in Angular and React under strict dependency injection and modularity principles.",
       "0_desc1":
-        "Implement static code analysis and security testing with specialized tools to detect and remediate vulnerabilities such as XSS, SQL Injection, and other critical findings, achieving a 30% reduction in risks before production deployment.",
+        "Perform static code analysis and security testing with specialized tools to detect and remediate vulnerabilities such as XSS, SQL Injection, and other critical findings, achieving a 30% reduction in risks before production deployment.",
       "0_desc2":
         "Optimize frontend development efficiency by abstracting complex design systems from Figma into reusable native/multi-platform modular component libraries, accelerating UI construction times by 35%",
       "1_period": "Feb 2021 – Present",
@@ -544,7 +544,7 @@ export const translations: Translations = {
       "0_desc0":
         "Diseño e implemento soluciones de software de extremo a extremo utilizando .NET y Spring Boot, integrando frontends reactivos en Angular y React bajo estrictos principios de inyección de dependencias y modularidad.",
       "0_desc1":
-        "Implemento análisis estático de código y pruebas de seguridad con herramientas especializadas para detectar y corregir vulnerabilidades como XSS, SQL Injection y otros hallazgos críticos, logrando reducir en un 30% los riesgos antes del despliegue en producción.",
+        "Realizo análisis estático de código y pruebas de seguridad con herramientas especializadas para detectar y corregir vulnerabilidades como XSS, SQL Injection y otros hallazgos críticos, logrando reducir en un 30% los riesgos antes del despliegue en producción.",
       "0_desc2":
         "Optimizo la eficiencia del desarrollo frontend abstrayendo sistemas de diseño complejos desde Figma hacia librerías modulares de componentes reutilizables nativos/multiplataforma, acelerando los tiempos de construcción de UI en un 35%",
       "1_period": "Feb 2021 – Presente",
