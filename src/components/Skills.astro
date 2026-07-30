@@ -36,18 +36,6 @@ const customSkillIcons: Record<string, string> = {
 
 const categories: SkillCategory[] = [
   {
-    id: "mobile",
-    label: "Mobile",
-    i18nKey: "skills.cat_mobile",
-    icon: "mobile",
-    color: "brand",
-    skills: [
-      { name: ".NET MAUI", level: 95, tag: "Core Stack", devicon: "dotnetcore" },
-      { name: "Xamarin.Forms", level: 90, tag: "Legacy Experience", devicon: "xamarin" },
-      { name: "Android Native (Jetpack Compose)", level: 75, tag: "Applied in Projects", devicon: "kotlin" },
-    ],
-  },
-  {
     id: "backend",
     label: "Backend",
     i18nKey: "skills.cat_backend",
@@ -56,20 +44,6 @@ const categories: SkillCategory[] = [
     skills: [
       { name: "Java Spring Boot", level: 90, tag: "Core Stack", devicon: "spring" },
       { name: "ASP.NET Core Web API", level: 85, tag: "Applied in Projects", devicon: "dotnetcore" },
-    ],
-  },
-  {
-    id: "testing",
-    label: "Testing / QA",
-    i18nKey: "skills.cat_testing",
-    icon: "testing",
-    color: "brand",
-    skills: [
-      { name: "JUnit 5 & Mockito", level: 85, tag: "Applied in Projects", devicon: "spring" },
-      { name: "xUnit & Moq", level: 85, tag: "Applied in Projects", devicon: "dotnetcore" },
-      { name: "Jasmine & Karma (Angular)", level: 80, tag: "Applied in Projects", devicon: "angular" },
-      { name: "Jest & Testing Library (React)", level: 80, tag: "Applied in Projects", devicon: "jest" },
-      { name: "REST Assured & Postman", level: 80, tag: "Applied in Projects", devicon: "postman" },
     ],
   },
   {
@@ -85,6 +59,18 @@ const categories: SkillCategory[] = [
     ],
   },
   {
+    id: "mobile",
+    label: "Mobile",
+    i18nKey: "skills.cat_mobile",
+    icon: "mobile",
+    color: "brand",
+    skills: [
+      { name: ".NET MAUI", level: 95, tag: "Core Stack", devicon: "dotnetcore" },
+      { name: "Xamarin.Forms", level: 90, tag: "Legacy Experience", devicon: "xamarin" },
+      { name: "Android Native (Jetpack Compose)", level: 75, tag: "Applied in Projects", devicon: "kotlin" },
+    ],
+  },
+  {
     id: "databases",
     label: "Databases",
     i18nKey: "skills.cat_databases",
@@ -96,6 +82,20 @@ const categories: SkillCategory[] = [
       { name: "MySQL", level: 75, tag: "Applied in Projects", devicon: "mysql" },
       { name: "MongoDB", level: 70, tag: "Applied in Projects", devicon: "mongodb" },
       { name: "SQLite", level: 75, tag: "Applied in Projects", devicon: "sqlite" },
+    ],
+  },
+  {
+    id: "testing",
+    label: "Testing / QA",
+    i18nKey: "skills.cat_testing",
+    icon: "testing",
+    color: "brand",
+    skills: [
+      { name: "JUnit & Mockito", level: 85, tag: "Applied in Projects", devicon: "spring" },
+      { name: "xUnit & Moq", level: 85, tag: "Applied in Projects", devicon: "dotnetcore" },
+      { name: "Jasmine & Karma (Angular)", level: 80, tag: "Applied in Projects", devicon: "angular" },
+      { name: "Jest & Testing Library (React)", level: 80, tag: "Applied in Projects", devicon: "jest" },
+      { name: "REST Assured & Postman", level: 80, tag: "Applied in Projects", devicon: "postman" },
     ],
   },
   {
@@ -361,7 +361,7 @@ const iconSvgs: Record<string, string> = {
             { name: "MongoDB", slug: "mongodb" },
             { name: "SQLite", slug: "sqlite" },
             { name: "Supabase", slug: "supabase" },
-            { name: "JUnit 5 & Mockito", slug: "spring" },
+            { name: "JUnit & Mockito", slug: "spring" },
             { name: "xUnit & Moq", slug: "dotnetcore" },
             { name: "Jasmine & Karma", slug: "angular" },
             { name: "Jest & Testing Library", slug: "jest" },
