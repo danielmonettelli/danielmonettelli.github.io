@@ -61,7 +61,7 @@ const projects: Project[] = [
     description:
       "Comprehensive solution to modernize the right to Public Information Access, digitizing the complete cycle of requests and appeals.",
     image: "/assets/images/projects/saip/cover.webp",
-    tags: ["Spring Boot", "Angular", "Jetpack Compose", "IBM Rhapsody", "RUP-Scrum", "Agile", "Traceability"],
+    tags: ["Spring Boot", "Angular", "Jetpack Compose", "PostgreSQL", "Flyway", "Supabase S3", "IBM Rhapsody", "RUP-Scrum", "Agile", "Traceability"],
     links: [],
     featured: true,
     isPrivateRepository: true,
@@ -72,30 +72,30 @@ const projects: Project[] = [
     problemSolved:
       "In Peru, the Public Information Access (SAIP) process and TTAIP appeals were historically characterized by manual or fragmented workflows, making case tracking and document traceability extremely difficult. This lack of centralized institutional control often resulted in public transparency delays, missed legal deadlines, and unreliable notification or reprocessing mechanisms.",
     myContribution:
-      "As co-author within a two-person team, I contributed to functional analysis, process modeling, business rules definition, architecture design, and technical implementation. My contribution focused on transforming complex public transparency workflows into a structured digital platform, applying IBM Rhapsody for MCUN, MAN, MCU, and MA modeling, and supporting the implementation of the Spring Boot backend, Angular SPA, and native Android mobile extension under a hybrid RUP-Scrum approach.",
+      "As co-author within a two-person team, I contributed to functional analysis, process modeling, business rules definition, architecture design, and technical implementation. My contribution focused on transforming complex public transparency workflows into a structured digital platform, applying IBM Rhapsody for MCUN, MAN, MCU, and MA modeling, and supporting the implementation of the Spring Boot backend (with Flyway database migrations), Angular SPA, native Android mobile extension, PostgreSQL data layer, and Supabase S3 document storage under a hybrid RUP-Scrum approach.",
     fullDescription:
-      "Co-developed by a two-person team, this consolidated platform focuses on the digitalization and automation of processes related to Public Information Access Requests (SAIP) and appeals before the TTAIP. It supports the full management cycle of requests, appeals, notifications, reprocessing, document traceability, and legal deadline control, providing a solution aimed at improving operational efficiency, case tracking, and regulatory compliance in government transparency processes. The project combines complex systems analysis through IBM Rhapsody, including MCUN, MAN, MCU, and MA modeling, with a hybrid RUP-Scrum approach and a technical architecture based on Spring Boot, Angular, and Android native development.",
+      "Co-developed by a two-person team, this consolidated platform focuses on the digitalization and automation of processes related to Public Information Access Requests (SAIP) and appeals before the TTAIP. It supports the full management cycle of requests, appeals, notifications, reprocessing, document traceability, and legal deadline control, providing a solution aimed at improving operational efficiency, case tracking, and regulatory compliance in government transparency processes. The project combines complex systems analysis through IBM Rhapsody, including MCUN, MAN, MCU, and MA modeling, with a hybrid RUP-Scrum approach and a technical architecture based on Spring Boot, Angular, native Android development, PostgreSQL with Flyway migrations, and Supabase S3 object storage.",
     keyFeatures: [
       "Comprehensive management of SAIP requests, TTAIP appeals, and legal deadline control",
-      "Document traceability, secure notifications, and automated reprocessing workflows",
+      "Document traceability, digital case files, and document storage with Supabase S3",
       "Complex systems analysis and process modeling (MCUN, MAN, MCU, MA) using IBM Rhapsody",
-      "Robust backend built with Spring Boot, Java, and a decoupled Angular SPA frontend",
+      "Robust backend built with Spring Boot (Java), Flyway migration versioning, and decoupled Angular SPA frontend",
       "Native Android mobile module built with Kotlin and Jetpack Compose for case tracking",
       "Hybrid RUP-Scrum engineering approach combining structured planning with iterative agility",
     ],
     achievements: [
       "Complete digitization of a real constitutional government process",
       "Successful integration of 3 heterogeneous platforms (web + API + mobile)",
-      "Database normalized to 3NF with 20+ interrelated tables",
+      "Database normalized to 3NF in PostgreSQL with Flyway versioning and 20+ interrelated tables",
       "Exhaustive technical documentation following RUP standard with artifacts from each phase",
     ],
     architecture:
-      "Service architecture with central RESTful API, SPA frontend, and native mobile module.",
+      "Service architecture with central RESTful API, SPA frontend, native mobile module, PostgreSQL database with Flyway migrations, and Supabase S3 document storage.",
     architectureLayers: [
-      { layer: "Backend (Spring Boot)", detail: "REST API, JWT authentication, business logic, and data validation." },
+      { layer: "Backend (Spring Boot)", detail: "REST API, JWT authentication, business logic, Flyway migration execution, and data validation." },
       { layer: "Frontend (Angular)", detail: "SPA with reusable components, HTTP services, and route guards." },
       { layer: "Mobile (Android Native / Jetpack Compose)", detail: "Native Android module built with Kotlin, Jetpack Compose, Retrofit, and MVVM pattern." },
-      { layer: "Data (SQL Server)", detail: "3NF normalized schema, stored procedures, and triggers." },
+      { layer: "Data & Storage (PostgreSQL & Supabase S3)", detail: "3NF normalized PostgreSQL schema managed with Flyway migrations, paired with Supabase S3 for digital documentation management." },
     ],
     impact:
       "Integrated platform designed with SMART objectives to centralize SAIP requests, TTAIP appeals, notifications, traceability, and digital case files. Its measurable impact targets a 60% reduction in administrative operational time and a 60% reduction in institutional reporting preparation time, validated through comparative testing between manual/fragmented and automated workflows.",
