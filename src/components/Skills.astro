@@ -67,6 +67,8 @@ const categories: SkillCategory[] = [
     skills: [
       { name: "JUnit 5 & Mockito", level: 85, tag: "Applied in Projects", devicon: "spring" },
       { name: "xUnit & Moq", level: 85, tag: "Applied in Projects", devicon: "dotnetcore" },
+      { name: "Jasmine & Karma (Angular)", level: 80, tag: "Applied in Projects", devicon: "angular" },
+      { name: "Jest & Testing Library (React)", level: 80, tag: "Applied in Projects", devicon: "jest" },
       { name: "REST Assured & Postman", level: 80, tag: "Applied in Projects", devicon: "postman" },
     ],
   },
@@ -177,6 +179,7 @@ function getTagColor(tag: string): string {
 function getDeviconUrl(slug: string): string {
   const exceptions: Record<string, string> = {
     microsoftsqlserver: "plain",
+    jest: "plain",
   };
   const variant = exceptions[slug] || "original";
   return `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${slug}/${slug}-${variant}.svg`;
@@ -360,6 +363,8 @@ const iconSvgs: Record<string, string> = {
             { name: "Supabase", slug: "supabase" },
             { name: "JUnit 5 & Mockito", slug: "spring" },
             { name: "xUnit & Moq", slug: "dotnetcore" },
+            { name: "Jasmine & Karma", slug: "angular" },
+            { name: "Jest & Testing Library", slug: "jest" },
             { name: "Postman", slug: "postman" },
             { name: "OWASP ZAP", svg: customSkillIcons.owasp },
             { name: "MobSF", svg: customSkillIcons.mobsf },
