@@ -43,8 +43,8 @@ const categories: SkillCategory[] = [
     color: "brand",
     skills: [
       { name: ".NET MAUI", level: 95, tag: "Core Stack", devicon: "dotnetcore" },
-      { name: "Xamarin.Forms", level: 90, tag: "Professional Use", devicon: "xamarin" },
-      { name: "Android Native (Jetpack Compose)", level: 75, tag: "Specialized", devicon: "kotlin" },
+      { name: "Xamarin.Forms", level: 90, tag: "Legacy Experience", devicon: "xamarin" },
+      { name: "Android Native (Jetpack Compose)", level: 75, tag: "Applied in Projects", devicon: "kotlin" },
     ],
   },
   {
@@ -54,8 +54,8 @@ const categories: SkillCategory[] = [
     icon: "backend",
     color: "violet",
     skills: [
-      { name: "ASP.NET Core Web API", level: 85, tag: "Core Stack", devicon: "dotnetcore" },
-      { name: "Java Spring Boot", level: 75, tag: "Specialized", devicon: "spring" },
+      { name: "Java Spring Boot", level: 90, tag: "Core Stack", devicon: "spring" },
+      { name: "ASP.NET Core Web API", level: 85, tag: "Applied in Projects", devicon: "dotnetcore" },
     ],
   },
   {
@@ -67,7 +67,7 @@ const categories: SkillCategory[] = [
     skills: [
       { name: "Angular", level: 85, tag: "Core Stack", devicon: "angular" },
       { name: "React", level: 70, tag: "Applied in Projects", devicon: "react" },
-      { name: "ASP.NET Core MVC (Razor)", level: 75, tag: "Production Experience", devicon: "dotnetcore" },
+      { name: "ASP.NET Core MVC (Razor)", level: 75, tag: "Applied in Projects", devicon: "dotnetcore" },
     ],
   },
   {
@@ -77,9 +77,10 @@ const categories: SkillCategory[] = [
     icon: "databases",
     color: "brand",
     skills: [
-      { name: "SQL Server", level: 85, tag: "Core Stack", devicon: "microsoftsqlserver" },
+      { name: "PostgreSQL", level: 90, tag: "Core Stack", devicon: "postgresql" },
+      { name: "SQL Server", level: 85, tag: "Applied in Projects", devicon: "microsoftsqlserver" },
       { name: "MySQL", level: 75, tag: "Applied in Projects", devicon: "mysql" },
-      { name: "MongoDB", level: 70, tag: "Professional Use", devicon: "mongodb" },
+      { name: "MongoDB", level: 70, tag: "Applied in Projects", devicon: "mongodb" },
       { name: "SQLite", level: 75, tag: "Applied in Projects", devicon: "sqlite" },
     ],
   },
@@ -90,9 +91,9 @@ const categories: SkillCategory[] = [
     icon: "security",
     color: "violet",
     skills: [
-      { name: "OWASP ZAP", level: 80, tag: "Applied Security", customIcon: customSkillIcons.owasp },
-      { name: "MobSF", level: 75, tag: "Mobile Security", customIcon: customSkillIcons.mobsf },
-      { name: "Security Validation", level: 80, tag: "Secure Development", customIcon: customSkillIcons.securityValidation },
+      { name: "OWASP ZAP", level: 80, tag: "Applied in Projects", customIcon: customSkillIcons.owasp },
+      { name: "MobSF", level: 75, tag: "Applied in Projects", customIcon: customSkillIcons.mobsf },
+      { name: "Security Validation", level: 80, tag: "Applied in Projects", customIcon: customSkillIcons.securityValidation },
     ],
   },
   {
@@ -102,9 +103,9 @@ const categories: SkillCategory[] = [
     icon: "architecture",
     color: "violet",
     skills: [
-      { name: "SOLID Principles", level: 85, tag: "Architecture-Ready", customIcon: customSkillIcons.solid },
-      { name: "Clean Architecture", level: 85, tag: "Specialized", customIcon: customSkillIcons.cleanarch },
-      { name: "MVVM", level: 90, tag: "Specialized", customIcon: customSkillIcons.mvvm },
+      { name: "SOLID Principles", level: 85, tag: "Applied in Projects", customIcon: customSkillIcons.solid },
+      { name: "Clean Architecture", level: 85, tag: "Applied in Projects", customIcon: customSkillIcons.cleanarch },
+      { name: "MVVM", level: 90, tag: "Applied in Projects", customIcon: customSkillIcons.mvvm },
       { name: "Hybrid RUP-Scrum", level: 70, tag: "Applied in Projects", customIcon: customSkillIcons.rup },
     ],
   },
@@ -115,9 +116,10 @@ const categories: SkillCategory[] = [
     icon: "cloud",
     color: "accent",
     skills: [
-      { name: "Microsoft Azure", level: 70, tag: "Professional Use", devicon: "azure" },
+      { name: "Microsoft Azure", level: 70, tag: "Core Stack", devicon: "azure" },
+      { name: "Supabase", level: 75, tag: "Applied in Projects", devicon: "supabase" },
       { name: "GitHub Actions", level: 75, tag: "Applied in Projects", devicon: "githubactions" },
-      { name: "Git", level: 85, tag: "Core Stack", devicon: "git" },
+      { name: "Git", level: 85, tag: "Applied in Projects", devicon: "git" },
     ],
   },
   {
@@ -295,10 +297,10 @@ const iconSvgs: Record<string, string> = {
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" id="main-stack-grid">
           {[
             { name: ".NET MAUI", slug: "dotnetcore", role: "Mobile", color: "hsl(267, 56%, 53%)" },
-            { name: "ASP.NET Core", slug: "dotnetcore", role: "Backend", color: "hsl(210, 100%, 45%)" },
+            { name: "Spring Boot", slug: "spring", role: "Backend", color: "hsl(143, 62%, 45%)" },
             { name: "Angular", slug: "angular", role: "Frontend", color: "hsl(354, 85%, 44%)" },
             { name: "Azure", slug: "azure", role: "Cloud", color: "hsl(199, 91%, 49%)" },
-            { name: "SQL Server", slug: "microsoftsqlserver", role: "Database", color: "hsl(355, 82%, 52%)" },
+            { name: "PostgreSQL", slug: "postgresql", role: "Database", color: "hsl(207, 44%, 49%)" },
           ].map((tech) => (
             <div
               class="tech-card-primary"
@@ -338,10 +340,11 @@ const iconSvgs: Record<string, string> = {
             { name: "React", slug: "react" },
             { name: "ASP.NET Core Web API", slug: "dotnetcore" },
             { name: "ASP.NET Core MVC (Razor Views)", slug: "dotnetcore" },
-            { name: "Java Spring Boot", slug: "spring" },
+            { name: "SQL Server", slug: "microsoftsqlserver" },
             { name: "MySQL", slug: "mysql" },
             { name: "MongoDB", slug: "mongodb" },
             { name: "SQLite", slug: "sqlite" },
+            { name: "Supabase", slug: "supabase" },
             { name: "OWASP ZAP", svg: customSkillIcons.owasp },
             { name: "MobSF", svg: customSkillIcons.mobsf },
             { name: "Figma", slug: "figma" },
