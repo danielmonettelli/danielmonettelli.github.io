@@ -65,9 +65,10 @@ const categories: SkillCategory[] = [
     icon: "mobile",
     color: "brand",
     skills: [
-      { name: ".NET MAUI", level: 95, tag: "Core Stack", devicon: "dotnetcore" },
-      { name: "Xamarin.Forms", level: 90, tag: "Legacy Experience", devicon: "xamarin" },
+      { name: "Kotlin Multiplatform (KMP)", level: 90, tag: "Core Stack", devicon: "kotlin" },
+      { name: ".NET MAUI", level: 90, tag: "Applied in Projects", devicon: "dotnetcore" },
       { name: "Android Native (Jetpack Compose)", level: 75, tag: "Applied in Projects", devicon: "kotlin" },
+      { name: "Xamarin.Forms", level: 90, tag: "Legacy Experience", devicon: "xamarin" },
     ],
   },
   {
@@ -312,7 +313,7 @@ const iconSvgs: Record<string, string> = {
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" id="main-stack-grid">
           {[
-            { name: ".NET MAUI", slug: "dotnetcore", role: "Mobile", color: "hsl(267, 56%, 53%)" },
+            { name: "Kotlin Multiplatform", slug: "kotlin", role: "Mobile", color: "hsl(267, 75%, 58%)" },
             { name: "Spring Boot", slug: "spring", role: "Backend", color: "hsl(143, 62%, 45%)" },
             { name: "Angular", slug: "angular", role: "Frontend", color: "hsl(354, 85%, 44%)" },
             { name: "Azure", slug: "azure", role: "Cloud", color: "hsl(199, 91%, 49%)" },
@@ -351,6 +352,7 @@ const iconSvgs: Record<string, string> = {
         </div>
         <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2.5" id="complementary-grid">
           {[
+            { name: ".NET MAUI", slug: "dotnetcore" },
             { name: "Xamarin.Forms", slug: "xamarin" },
             { name: "Android Native (Jetpack Compose)", slug: "kotlin" },
             { name: "React", slug: "react" },
