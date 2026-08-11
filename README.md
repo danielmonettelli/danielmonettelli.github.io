@@ -4,10 +4,10 @@
   </a>
 </p>
 
-<h1 align="center">danielmonettelli.github.io</h1>
+<h1 align="center">Daniel Monettelli — Portfolio & Technical Blog</h1>
 
 <p align="center">
-  Professional portfolio and technical blog by <strong>Daniel Monettelli</strong> — Full Stack Developer specialized in .NET and cross-platform mobile development.
+  <strong>Full Stack Developer</strong> specialized in <strong>Java (Spring Boot)</strong>, <strong>Angular</strong>, and <strong>Mobile Development</strong> (Kotlin Multiplatform & Native Android).
 </p>
 
 <p align="center">
@@ -18,98 +18,125 @@
 
 <p align="center">
   <a href="https://danielmonettelli.github.io/">
-    <img src="https://img.shields.io/badge/Portfolio-danielmonettelli.github.io-0969da?style=flat-square" alt="Portfolio" />
+    <img src="https://img.shields.io/badge/Portfolio-danielmonettelli.github.io-0969da?style=flat-square&logo=astro&logoColor=white" alt="Portfolio" />
   </a>
   <a href="https://danielmonettelli.github.io/blog/">
-    <img src="https://img.shields.io/badge/Blog-.NET%20MAUI%20%26%20more-0969da?style=flat-square" alt="Blog" />
+    <img src="https://img.shields.io/badge/Blog-Chirpy%20v7.6.0-red?style=flat-square&logo=jekyll&logoColor=white" alt="Blog" />
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/Code-MIT-blue?style=flat-square" alt="MIT License" />
   </a>
-  <img src="https://img.shields.io/badge/Status-In%20Development-orange?style=flat-square" alt="In Development" />
+  <img src="https://img.shields.io/badge/Astro-v7.2.0-purple?style=flat-square&logo=astro&logoColor=white" alt="Astro Version" />
 </p>
 
 ---
 
-> **⚠️ This portfolio is currently under active development.** Some features may change or be added before the stable release.
+## ⚡ Core Tech Stack
 
-## About this repository
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openapi-initiative&logoColor=white" alt="Java" />
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot" />
+  <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular" />
+  <img src="https://img.shields.io/badge/Kotlin_Multiplatform-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin Multiplatform" />
+  <img src="https://img.shields.io/badge/Jetpack_Compose-4285F4?style=for-the-badge&logo=android&logoColor=white" alt="Jetpack Compose" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure" />
+</p>
 
-This repository hosts **two sites** deployed on GitHub Pages under a single domain:
+- **Backend:** Java, Spring Boot, Spring Security, RESTful APIs, Microservices Architecture, JPA/Hibernate.
+- **Frontend:** Angular, TypeScript, HTML5, CSS3, Modern Responsive UI Design.
+- **Mobile Development:** Kotlin Multiplatform (KMP) for cross-platform solutions (iOS/Android/Desktop) & Jetpack Compose for Native Android.
+- **Database & Cloud:** PostgreSQL, SQL Server, Docker, Azure Cloud Services, Git & CI/CD Pipelines.
 
-| Path     | Description                                                                                  | Stack                                    |
-| -------- | -------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| `/`      | **Portfolio** — Sections: Hero, About, Skills, Experience, Projects, Blog Preview, Contact   | Astro 5, Tailwind CSS v4, GSAP, anime.js |
-| `/blog/` | **Technical blog** — Articles about .NET MAUI, software architecture, and mobile development | Jekyll + Chirpy Theme                    |
+---
 
-## Tech Stack
+## 🌐 Dual-Site Architecture
 
-### Portfolio (root `/`)
+This repository hosts **two integrated applications** deployed on GitHub Pages under a single domain:
 
-| Layer         | Technology                                                                  |
-| ------------- | --------------------------------------------------------------------------- |
-| Framework     | Astro 5 (static output)                                                     |
-| Styles        | Tailwind CSS v4 (CSS-first, `@tailwindcss/vite`)                            |
-| Animations    | GSAP 3 + ScrollTrigger, anime.js                                            |
-| Design System | Tokens extracted from MUI brandingTheme (dark/light)                        |
-| Typography    | General Sans (headings), IBM Plex Sans (body)                               |
-| i18n          | Client-side EN/ES toggle with `data-i18n` attributes                        |
-| Accessibility | WCAG 2.2 — skip link, ARIA landmarks, focus-visible, prefers-reduced-motion |
+| Path | Site | Purpose & Specialization | Tech Stack |
+| :--- | :--- | :--- | :--- |
+| **`/`** | **Portfolio** | Single-page developer showcase featuring Hero, About, Tech Arsenal, Career Experience, Projects, Blog Previews, and Contact section. | Astro 7.2, Tailwind CSS v4, GSAP 3, anime.js |
+| **`/blog/`** | **Technical Blog** | Technical articles, engineering insights, software architecture guides, and mobile development tutorials. | Jekyll + Chirpy Theme v7.6.0 |
 
-### Blog (`/blog/`)
+---
 
-Full blog documentation, published articles, and configuration can be found in [`blog/README.md`](blog/README.md).
+## 🛠️ Local Development Setup
 
-## Local Development
+### 1. Portfolio (Astro 7.2)
 
 ```bash
-# Portfolio (Astro)
+# Install dependencies
 npm install
-npm run dev            # http://localhost:4321
 
-# Blog (Jekyll)
+# Start local dev server
+npm run dev
+
+# Open http://localhost:4321 in your browser
+```
+
+### 2. Technical Blog (Jekyll Chirpy)
+
+```bash
+# Navigate to blog directory
 cd blog
+
+# Install Ruby gems
 bundle install
-bundle exec jekyll serve --livereload --baseurl /blog   # http://localhost:4000/blog/
+
+# Start Jekyll server with livereload
+bundle exec jekyll serve --livereload --baseurl /blog
+
+# Open http://localhost:4000/blog/ in your browser
 ```
 
-## Deploy
+---
 
-A single GitHub Actions workflow (`.github/workflows/website.yml`) handles:
+## 🚀 CI/CD & Automated Deployment
 
-1. Generate blog data for the portfolio (`scripts/generate-blog-data.mjs`)
-2. Build Astro → `dist/`
-3. Build Jekyll → `blog/_site/`
-4. Merge into `deploy/` (portfolio at root, blog at `/blog/`)
-5. Deploy to GitHub Pages
+An automated GitHub Actions workflow (`.github/workflows/website.yml`) builds and deploys the unified site:
 
-Google AdSense is injected **exclusively in the blog** — the portfolio shows no ads.
+1. **Blog Data Sync:** Executes `scripts/generate-blog-data.mjs` to extract post metadata into `src/data/blog-posts.json` for live portfolio previews.
+2. **Astro Build:** Compiles the portfolio into high-performance static pages in `dist/`.
+3. **Jekyll Build:** Compiles the blog into static assets in `blog/_site/`.
+4. **Site Merger:** Merges root portfolio and `/blog/` paths into a unified `deploy/` distribution package.
+5. **Google AdSense:** Injected **exclusively in the technical blog** (`/blog/`) — the main portfolio remains 100% ad-free.
+6. **GitHub Pages Deploy:** Deploys artifact to edge CDN servers.
 
-## Repository Structure
+---
+
+## 📂 Repository Structure
 
 ```
-├── src/                 # Portfolio (Astro)
-│   ├── components/      # Hero, About, Skills, Experience, Projects, etc.
-│   ├── i18n/            # Translations (EN/ES) & i18n engine
-│   ├── layouts/         # Main layout
-│   ├── pages/           # index.astro
-│   ├── scripts/         # GSAP animations
-│   └── styles/          # Design system (global.css)
-├── blog/                # Blog (Jekyll + Chirpy)
-│   ├── _posts/          # Markdown articles
+danielmonettelli.github.io/
+├── src/                 # Portfolio (Astro 5 / 7)
+│   ├── components/      # Hero, About, Skills, Experience, Projects, Contact, etc.
+│   ├── data/            # Static JSON & generated blog data
+│   ├── i18n/            # Internationalization (EN/ES) engine
+│   ├── layouts/         # Base HTML & metadata layouts
+│   ├── pages/           # index.astro (Single Page App entry)
+│   ├── scripts/         # GSAP ScrollTrigger & anime.js logic
+│   └── styles/          # Global styles & MUI design system tokens
+├── blog/                # Technical Blog (Jekyll + Chirpy 7.6.0)
+│   ├── _posts/          # Markdown blog articles
+│   ├── assets/          # Blog images and assets
 │   └── README.md        # Blog documentation
-├── scripts/             # Blog → portfolio data generator
-└── .github/workflows/   # CI/CD
+├── scripts/             # Build utilities & blog data parser
+└── .github/workflows/   # CI/CD GitHub Actions workflow
 ```
 
-## Licenses
+---
 
-- **Blog articles** — [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
-- **Source code** — [MIT](LICENSE)
+## 📄 Licenses
 
-## Contact
+- **Blog Articles & Content:** [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+- **Source Code:** [MIT License](LICENSE)
 
-<p>
+---
+
+## 📬 Connect with Me
+
+<p align="left">
   <a href="https://github.com/danielmonettelli">
     <img src="https://img.shields.io/badge/GitHub-danielmonettelli-181717?style=flat-square&logo=github" alt="GitHub" />
   </a>
@@ -117,7 +144,7 @@ Google AdSense is injected **exclusively in the blog** — the portfolio shows n
     <img src="https://img.shields.io/badge/LinkedIn-danielmonettelli-0A66C2?style=flat-square&logo=linkedin" alt="LinkedIn" />
   </a>
   <a href="https://twitter.com/DaniMonettelli">
-    <img src="https://img.shields.io/badge/X-@DaniMonettelli-000?style=flat-square&logo=x" alt="X / Twitter" />
+    <img src="https://img.shields.io/badge/X-@DaniMonettelli-000000?style=flat-square&logo=x" alt="X / Twitter" />
   </a>
   <a href="mailto:danielmonetelli@hotmail.com">
     <img src="https://img.shields.io/badge/Email-danielmonetelli@hotmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="Email" />
