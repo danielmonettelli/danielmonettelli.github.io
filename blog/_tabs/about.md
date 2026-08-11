@@ -7,13 +7,13 @@ order: 4
 <!-- GOOGLE ADSENSE AUTO ADS -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596549899792751" crossorigin="anonymous"></script>
 
-## Welcome to Daniel Monettelli's Blog! 👋
+## Welcome to Daniel Monettelli's Blog!
 
 Hello! I am **Daniel Monettelli**, a passionate **Full Stack & Mobile Software Engineer** dedicated to building resilient enterprise systems, intuitive web applications, and high-performance cross-platform mobile solutions.
 
 ---
 
-### 🚀 What I Do & My Tech Arsenal
+### What I Do & My Tech Arsenal
 
 My software development journey spans full-stack web architectures, enterprise backend services, and multiplatform mobile applications:
 
@@ -23,7 +23,7 @@ My software development journey spans full-stack web architectures, enterprise b
 
 ---
 
-### 📝 About This Blog
+### About This Blog
 
 This technical blog is my dedicated space for sharing practical software engineering knowledge, architectural design patterns, framework migrations, and real-world project learnings. 
 
