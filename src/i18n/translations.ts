@@ -56,7 +56,7 @@ export const translations: Translations = {
       titleHtml:
         'Who I am and <span class="gradient-text">the value I deliver</span>',
       bio1Html:
-        "As a Full Stack Developer, I build end-to-end solutions from functional analysis to software architecture, integrating Spring Boot, .NET, Angular, React, and mobile technologies to turn complex processes into clear, traceable, and maintainable systems.",
+        "As a Full Stack Developer, I build end-to-end solutions from functional analysis to software architecture, integrating Java Spring Boot for backend, Angular for frontend, and Kotlin Multiplatform (KMP) for cross-platform development (iOS, Android, Desktop, and Web), turning complex processes into clear, traceable, and maintainable systems.",
       bio2Html:
         "I bring value by combining technical judgment, architecture best practices, documentation, and applied security, ensuring each solution can evolve with quality.",
       identityNote:
@@ -124,11 +124,13 @@ export const translations: Translations = {
       "0_location": "Arequipa, Peru",
       "0_type": "Full Time",
       "0_desc0":
-        "Design and implement end-to-end software solutions using .NET and Spring Boot, integrating reactive frontends in Angular and React under strict dependency injection and modularity principles.",
+        "Design and implement end-to-end software solutions using Spring Boot and .NET, integrating reactive frontends in Angular and React under strict dependency injection and modularity principles.",
       "0_desc1":
-        "Ensure code quality through static analysis and vulnerability testing, identifying and correcting XSS, SQL Injection, and other critical findings, reducing vulnerabilities by 30% before production deployment.",
+        "Design and execute unit and integration test suites using JUnit, Mockito, and xUnit, elevating code coverage above 80% and reducing production regressions by 40%.",
       "0_desc2":
-        "Optimize frontend development efficiency by abstracting complex design systems from Figma into reusable native/multi-platform modular component libraries, accelerating UI construction times by 35%",
+        "Ensure code quality through static analysis and vulnerability testing, identifying and correcting XSS, SQL Injection, and other critical findings, reducing vulnerabilities by 30% before production deployment.",
+      "0_desc3":
+        "Optimize frontend development efficiency by abstracting complex design systems from Figma into reusable native/multi-platform modular component libraries, accelerating UI construction times by 35%.",
       "1_period": "Feb 2021 – Present",
       "1_title": "Content Creator & Microsoft MVP Nominee",
       "1_company": "Daniel Monettelli's Blog / WeAreDotnet.io",
@@ -477,7 +479,7 @@ export const translations: Translations = {
       overline: "Sobre Mí",
       titleHtml: 'Quién soy y <span class="gradient-text">el valor que aporto</span>',
       bio1Html:
-        "Como Full Stack Developer, construyo soluciones completas desde el análisis funcional hasta la arquitectura de software, integrando Spring Boot, .NET, Angular, React y desarrollo móvil para convertir procesos complejos en sistemas claros, trazables y mantenibles.",
+        "Como Full Stack Developer, construyo soluciones completas desde el análisis funcional hasta la arquitectura de software, integrando Java Spring Boot en el backend, Angular en el frontend y Kotlin Multiplatform (KMP) para desarrollo multiplataforma (iOS, Android, Desktop y Web), convirtiendo procesos complejos en sistemas claros, trazables y mantenibles.",
       bio2Html:
         "Aporto valor uniendo criterio técnico, buenas prácticas de arquitectura, documentación y seguridad aplicada, cuidando que cada solución pueda evolucionar con calidad.",
       identityNote:
@@ -544,11 +546,13 @@ export const translations: Translations = {
       "0_location": "Arequipa, Perú",
       "0_type": "Tiempo Completo",
       "0_desc0":
-        "Diseño e implemento soluciones de software de extremo a extremo utilizando .NET y Spring Boot, integrando frontends reactivos en Angular y React bajo estrictos principios de inyección de dependencias y modularidad.",
+        "Diseño e implemento soluciones de software de extremo a extremo utilizando Spring Boot y .NET, integrando frontends reactivos en Angular y React bajo estrictos principios de inyección de dependencias y modularidad.",
       "0_desc1":
-        "Aseguro la calidad del código mediante análisis estáticos y pruebas de vulnerabilidades, identificando y corrigiendo XSS, SQL Injection y otros hallazgos críticos, reduciendo en un 30% las vulnerabilidades antes del despliegue en producción.",
+        "Diseño y ejecuto suites de pruebas unitarias e integración con JUnit, Mockito y xUnit, elevando la cobertura de código por encima del 80% y reduciendo en un 40% las regresiones en producción.",
       "0_desc2":
-        "Optimizo la eficiencia del desarrollo frontend abstrayendo sistemas de diseño complejos desde Figma hacia librerías modulares de componentes reutilizables nativos/multiplataforma, acelerando los tiempos de construcción de UI en un 35%",
+        "Aseguro la calidad del código mediante análisis estáticos y pruebas de vulnerabilidades, identificando y corrigiendo XSS, SQL Injection y otros hallazgos críticos, reduciendo en un 30% las vulnerabilidades antes del despliegue en producción.",
+      "0_desc3":
+        "Optimizo la eficiencia del desarrollo frontend abstrayendo sistemas de diseño complejos desde Figma hacia librerías modulares de componentes reutilizables nativos/multiplataforma, acelerando los tiempos de construcción de UI en un 35%.",
       "1_period": "Feb 2021 – Presente",
       "1_title": "Creador de Contenido & Nominado Microsoft MVP",
       "1_company": "Daniel Monettelli's Blog / WeAreDotnet.io",
