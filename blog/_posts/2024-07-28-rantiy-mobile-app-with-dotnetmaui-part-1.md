@@ -3,13 +3,13 @@ title: Rantiy, Mobile app with .NET MAUI - Part 1
 author: danielmonettelli
 date: 2024-07-28 23:00:00 -0500
 categories: [.NET MAUI, Retos]
-tags: [netmaui, mauijuly] 
+tags: [netmaui, mauijuly]
+media_subpath: /assets/images/
 image:
   path: 11_1_cover_publication.png
-  width: 1200
-  height: 630
   alt: Rantiy, Mobile app with .NET MAUI - Part 1
 ---
+
 
 <p style='font-size: 20px;
   color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'>In this post, I will briefly summarize some of the features of Rantiy, how certain design tools made it possible to reduce development time, and also show you some techniques I use to improve the UI.</p>

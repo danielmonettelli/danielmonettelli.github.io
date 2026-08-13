@@ -4,12 +4,12 @@ author: danielmonettelli
 date: 2023-02-27 10:35:00 -0500
 categories: [.NET MAUI, Maui Challenges]
 tags: [netmaui, openai, httpclient]
+media_subpath: /assets/images/
 image:
   path: 8_1_cover_publication.png
-  width: 1200
-  height: 630
   alt: Building a ChatGPT in .NET MAUI Part 1
 ---
+
 
 <p style='font-size: 20px;
   color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'>In this first part of my post, I will focus on how to use the OpenAI APIs through HTTP POST requests, both to get text responses (completions) and to generate images with OpenAI technology.</p>
@@ -189,7 +189,7 @@ public class OpenAIService : IOpenAIService
 
 The project is open source and you can see it by clicking on the following image. Don’t hesitate to take a look!
 
-[![8-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/8_x_github_repository.png)](https://github.com/danielmonettelli/dotnetmaui-chatgpt-oss){:target="_blank"}
+<a href="https://github.com/danielmonettelli/dotnetmaui-chatgpt-oss" target="_blank" rel="noopener"><img src="8_x_github_repository.png" alt="8-x-github-repository"></a>
 
 ---
 

@@ -4,12 +4,12 @@ author: danielmonettelli
 date: 2021-03-20 21:50:00 -0500
 categories: [Xamarin.Forms, Xamarin.Forms Challenges]
 tags: [xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, xamarincommunitytoolkit, materialdesign, pancakeview]
+media_subpath: /assets/images/
 image:
   path: 5_2_cover_publication.png
-  width: 1200
-  height: 630
   alt: Xamarin.Forms UI/UX Challenges - Micuna Food - Part2
 ---
+
 
 <p style='font-size: 20px;
   color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'>In this second part of the Challenge, the protagonist is the nuget package "Xamarin Community Toolkit", an all-in-one that provides abstractions that we commonly use.</p>
@@ -411,7 +411,7 @@ _Mix in Tablets in Action_
 
 All the code is open source, you can see it by clicking the following image:
 
-[![5-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/5_x_github_repository.png)](https://github.com/danielmonettelli/XF_MicunaFood/tree/XF_MicunaFood_Part2){:target="_blank"}
+<a href="https://github.com/danielmonettelli/XF_MicunaFood/tree/XF_MicunaFood_Part2" target="_blank" rel="noopener"><img src="5_x_github_repository.png" alt="5-x-github-repository"></a>
 
 ---
 

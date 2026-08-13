@@ -4,12 +4,12 @@ author: danielmonettelli
 date: 2022-12-29 14:35:00 -0500
 categories: [.NET MAUI, Maui Challenges]
 tags: [netmaui, xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, mauincommunitytoolkit, xamarincommunitytoolkit, materialdesign, border]
+media_subpath: /assets/images/
 image:
   path: 7_1_cover_publication.png
-  width: 1200
-  height: 630
   alt: Migrating Mitawi to .NET MAUI
 ---
+
 
 <p style='font-size: 20px;
   color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'>In this post I share my experience of migrating my Mitawi app to .NET MAUI and discover promising opportunities to improve the efficiency of my mobile projects.</p>
@@ -80,7 +80,7 @@ During the migration from Mitawi to .NET MAUI, I took steps to ensure that I hav
 
 The project is open source and you can see it by clicking on the following image. Don't hesitate to take a look!
 
-[![7-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/7_x_github_repository.png)](https://github.com/danielmonettelli/netmaui-mitawi-app-challenge){:target="_blank"}
+<a href="https://github.com/danielmonettelli/netmaui-mitawi-app-challenge" target="_blank" rel="noopener"><img src="7_x_github_repository.png" alt="7-x-github-repository"></a>
 
 ---
 

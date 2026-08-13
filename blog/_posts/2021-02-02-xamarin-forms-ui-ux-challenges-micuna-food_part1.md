@@ -4,15 +4,14 @@ author: danielmonettelli
 date: 2021-02-02 02:30:00 -0500
 categories: [Xamarin.Forms, Xamarin.Forms Challenges]
 tags: [xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, visualstatemanager, flexlayout, pancakeview]
+media_subpath: /assets/images/
 image:
   path: 5_1_cover_publication.png
-  width: 1200
-  height: 630
   alt: Xamarin.Forms UI/UX Challenges - Micuna Food - Part1
 ---
 
-<p style='font-size: 20px;
-  color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'>This first part of the challenge the protagonist is Visual State Manager, the easy use of changing one state to another through XAML and C# code-behind and combining with styles, makes it a powerful Xamarin.Forms feature.</p>
+
+<p style='font-size: 20px; color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'>This first part of the challenge the protagonist is Visual State Manager, the easy use of changing one state to another through XAML and C# code-behind and combining with styles, makes it a powerful Xamarin.Forms feature.</p>
 
 This publication is part of the Second Xamarin Advent Calendar in Spanish organized by Dr. Luis Beltrán, and of the third C# Advent Calendar in Spanish organized by Ing. Benjamín Camacho, thank you very much for being part of these great initiatives.
 
@@ -23,6 +22,8 @@ This publication is part of the Second Xamarin Advent Calendar in Spanish organi
 Ghulam Rasool's Delicious Food design is a cool light theme from Material Design, it has icons and labels at the top, a category section, with two horizontal lists, accompanied by a stylish TabView that highlights the design.
 
 ![5-1-design](5_1_design.png)
+
+
 *Design created by Ghulam Rasool (Experienced Product Designer)*
 
 ---
@@ -741,7 +742,7 @@ public class HomeViewModel : BaseViewModel
                       Image_VarietyFood=MonettelliFontIcons.icon_fast_food_line
                 },
                 Name_Food="Black ramen",
-                Image_Food="https://raw.githubusercontent.com/danielmonettelli/Area51/main/Foods/img_black_ramen.png",
+                Image_Food="Foods/img_black_ramen.png",
                 Price_Food=30.00,
                 Short_Description_Food="Thick and milky broth with an intense flavor.",
                 Long_Description_Food="Our Hakata Black Ramen is a rich and thick stock tonkotsu ramen typical of the Hakata area, in Fukuoka (south of the country), which is made by cooking pork bones for hours to obtain a thick and milky broth with an intense flavor that is It is accompanied by strong flavors such as garlic or ginger, resulting in a powerful umami."
@@ -819,7 +820,7 @@ To create this great floating button style TabView I used the Sharpnado.Tabs nug
 
 All the code is open source, you can see it by clicking the following image:
 
-[![5-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/5_x_github_repository.png)](https://github.com/danielmonettelli/XF_MicunaFood/tree/XF_MicunaFood_Part1){:target="_blank"}
+<a href="https://github.com/danielmonettelli/XF_MicunaFood/tree/XF_MicunaFood_Part1" target="_blank" rel="noopener"><img src="5_x_github_repository.png" alt="5-x-github-repository"></a>
 
 ---
 

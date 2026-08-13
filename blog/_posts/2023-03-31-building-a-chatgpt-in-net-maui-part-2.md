@@ -4,12 +4,12 @@ author: danielmonettelli
 date: 2023-03-31 11:10:00 -0500
 categories: [.NET MAUI, Maui Challenges]
 tags: [netmaui, openai, ui/ux, border, data templates]
+media_subpath: /assets/images/
 image:
   path: 8_2_cover_publication.png
-  width: 1200
-  height: 630
   alt: Building a ChatGPT in .NET MAUI Part 2
 ---
+
 
 <p style='font-size: 20px;
   color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'>In this second part of my post, the focus is on the application's user interface and its interaction with the ViewModel.</p>
@@ -125,7 +125,7 @@ private async Task SelectTheme()
 
 The project is open source and you can see it by clicking on the following image. Don't hesitate to take a look!
 
-[![8-x-github-repository](https://raw.githubusercontent.com/blogdedanielmonettelli/blogdedanielmonettelli.github.io/main/assets/img/images/8_x_github_repository.png)](https://github.com/danielmonettelli/dotnetmaui-chatgpt-oss){:target="_blank"}
+<a href="https://github.com/danielmonettelli/dotnetmaui-chatgpt-oss" target="_blank" rel="noopener"><img src="8_x_github_repository.png" alt="8-x-github-repository"></a>
 
 ---
 

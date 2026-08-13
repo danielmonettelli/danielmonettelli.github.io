@@ -4,12 +4,12 @@ author: danielmonettelli
 date: 2022-08-17 20:30:00 -0500
 categories: [Xamarin.Forms, Xamarin.Forms Challenges]
 tags: [xamarinforms, monettelliuikit, xaml, adobexd, ui, ux, visualstatemanager, flexlayout, pancakeview]
+media_subpath: /assets/images/
 image:
   path: 6_1_cover_publication.png
-  width: 1200
-  height: 630
   alt: Xamarin.Forms UI/UX Challenges - Mitawi Weather
 ---
+
 
 <p style='font-size: 20px;
   color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'>Can Xamarin.Forms and .NET MAUI build flexible apps for all physical devices? Of course it's a big YES, but it all depends on the method being applied and the design being worked on.</p>
@@ -969,7 +969,7 @@ _HomeDetailPage in mode landscape_
 
 All the code is open source, you can see it by clicking the following image:
 
-[![6-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/6_x_github_repository.png)](https://github.com/danielmonettelli/Mitawi){:target="_blank"}
+<a href="https://github.com/danielmonettelli/Mitawi" target="_blank" rel="noopener"><img src="6_x_github_repository.png" alt="6-x-github-repository"></a>
 
 ---
 

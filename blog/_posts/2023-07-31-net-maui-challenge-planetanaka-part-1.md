@@ -4,12 +4,12 @@ author: danielmonettelli
 date: 2023-07-31 16:30:00 -0500
 categories: [.NET MAUI, Maui Challenges]
 tags: [netmaui, animations]
+media_subpath: /assets/images/
 image:
   path: 9_1_cover_publication.png
-  width: 1200
-  height: 630
   alt: .NET MAUI UI/UX Challenge - Planetanaka - Part 1
 ---
+
 
 <p style='font-size: 20px;
   color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'>In this post, I'll focus on basic and intermediate animations that can be incorporated into .NET MAUI projects. </p>
@@ -135,7 +135,7 @@ partial void OnSelectedPlanetChanging(Planet oldValue, Planet newValue)
                       LblDescriptionPlanet.Opacity = 1 - v;
                   }, 0, 1, Easing.CubicIn, finished: ()=>
                   {
-                      ImgBigPlanet.Source = ImageSource.FromUri(new Uri($"https://raw.githubusercontent.com/danielmonettelli/MyResources/main/Planetakuna_Resources/{newValue.Image_Planet}@10x.png"));
+                      ImgBigPlanet.Source = ImageSource.FromUri(new Uri($"Planetakuna_Resources/{newValue.Image_Planet}@10x.png"));
                       LblNamePlanet.Text= newValue.Name_Planet;
                       LblDescriptionPlanet.Text = newValue.Description_Planet;
                   })
@@ -165,7 +165,7 @@ partial void OnSelectedPlanetChanging(Planet oldValue, Planet newValue)
                       LblDescriptionPlanet.Opacity = v;
                   }, 0, 1, Easing.CubicOut, finished: ()=>
                   {
-                      ImgBigPlanet.Source = ImageSource.FromUri(new Uri($"https://raw.githubusercontent.com/danielmonettelli/MyResources/main/Planetakuna_Resources/{newValue.Image_Planet}@10x.png"));
+                      ImgBigPlanet.Source = ImageSource.FromUri(new Uri($"Planetakuna_Resources/{newValue.Image_Planet}@10x.png"));
                       LblNamePlanet.Text= newValue.Name_Planet;
                       LblDescriptionPlanet.Text = newValue.Description_Planet;
                   })
@@ -189,7 +189,7 @@ partial void OnSelectedPlanetChanging(Planet oldValue, Planet newValue)
 
 The project is open source and you can see it by clicking on the following image. Don't hesitate to take a look!
 
-[![8-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/9_x_github_repository.png)](https://github.com/danielmonettelli/netmaui-planetanaka-app-challenge){:target="_blank"}
+<a href="https://github.com/danielmonettelli/netmaui-planetanaka-app-challenge" target="_blank" rel="noopener"><img src="9_x_github_repository.png" alt="8-x-github-repository"></a>
 
 ---
 

@@ -4,10 +4,12 @@ author: danielmonettelli
 date: 2025-07-24 00:12:40 -0500
 categories: [.NET MAUI, Experiences]
 tags: [netmaui, api, services, patterns, meow, thecatapi]
+media_subpath: /assets/images/
 image:
   path: 10_1_cover_publication.png
   alt: "Meow in .NET MAUI: The art of connecting with TheCatAPI (Part 1)"
 ---
+
 
 <p style='font-size: 20px;
   color: light-grey; margin: 0px 0px 20px; font-weight: bold; font-style: italic;'> Let me tell you how Meow was born, an app I created to satisfy my curiosity with .NET MAUI. At first I just wanted to see what it felt like to consume a real API... but things got out of hand (in a good way).
@@ -433,7 +435,7 @@ It can be whatever you want. The only thing I'd say is: make it clear, make it y
 
 The project is open source and you can see it by clicking on the image below. Take a look!
 
-[![10-x-github-repository](https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/10_x_github_repository.png)](https://github.com/danielmonettelli/dotnetmaui-meow-app-oss){:target="_blank"}
+<a href="https://github.com/danielmonettelli/dotnetmaui-meow-app-oss" target="_blank" rel="noopener"><img src="10_x_github_repository.png" alt="10-x-github-repository"></a>
 
 ---
 
