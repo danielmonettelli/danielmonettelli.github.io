@@ -9,8 +9,8 @@ export interface Props {
 }
 
 const {
-  title = "Daniel Monettelli — Full Stack Developer | .NET & Mobile Specialist",
-  description = "Full Stack Developer specialized in .NET and cross-platform mobile development. Microsoft MVP Nominee. Portfolio of projects, experience, and technical skills.",
+  title = "Daniel Monettelli — Full Stack & Mobile Developer",
+  description = "Full Stack Developer specialized in Java, Spring Boot, Angular, and Mobile Development (Kotlin Multiplatform, Jetpack Compose, .NET MAUI). Portfolio of projects, experience, and technical skills.",
   image = "https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png",
   maintenance = false,
 } = Astro.props;
@@ -51,16 +51,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:creator" content="@DaniMonettelli" />
 
     <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="https://raw.githubusercontent.com/danielmonettelli/danielmonettelli.github.io/main/assets/images/Daniel_Monettelli.png"
-    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Theme Color for browser chrome -->
     <meta name="theme-color" content="hsl(210, 14%, 7%)" media="(prefers-color-scheme: dark)" />
