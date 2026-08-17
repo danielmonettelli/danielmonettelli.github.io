@@ -45,7 +45,7 @@ export const translations: Translations = {
       greeting: "Hi, I'm",
       subtitle: "Full Stack Developer",
       description:
-        'Developer with solid experience in <span class="accent-text font-medium">Spring Boot</span> backend, <span class="accent-text font-medium">.NET</span>, and cross-platform mobile development. <span class="accent-text font-medium">Microsoft MVP</span> Nominee. I build clean, secure, and deeply functional software.',
+        'Full Stack Developer specialized in backend with <span class="accent-text font-medium">Java Spring Boot</span>, frontend with <span class="accent-text font-medium">Angular</span>, and mobile with <span class="accent-text font-medium">Kotlin Multiplatform (KMP)</span>. I build clean, secure, and deeply functional software.',
       ctaProjects: "View Projects",
       ctaContact: "Contact →",
       scrollLabel: "Scroll",
@@ -469,7 +469,7 @@ export const translations: Translations = {
       greeting: "Hola, soy",
       subtitle: "Full Stack Developer",
       description:
-        'Desarrollador con sólida experiencia en backend con <span class="accent-text font-medium">Spring Boot</span>, <span class="accent-text font-medium">.NET</span> y desarrollo móvil multiplataforma. Nominado <span class="accent-text font-medium">Microsoft MVP</span>. Construyo software ordenado, seguro y profundamente funcional.',
+        'Desarrollador Full Stack especializado en backend con <span class="accent-text font-medium">Java Spring Boot</span>, frontend con <span class="accent-text font-medium">Angular</span> y mobile con <span class="accent-text font-medium">Kotlin Multiplatform (KMP)</span>. Construyo software ordenado, seguro y profundamente funcional.',
       ctaProjects: "Ver Proyectos",
       ctaContact: "Contactar →",
       scrollLabel: "Scroll",
