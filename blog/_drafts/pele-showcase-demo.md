@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Pele Showcase Demo: High-Performance Themeable Diagrams"
-date: 2026-10-28 12:00:00 -0500
+date: 2026-10-20 12:00:00 -0500
+permalink: /posts/pele-showcase-demo/
 categories: [Engineering, Architecture]
 tags: [pele, mermaid, svg, dev-tools]
 description: "Interactive demo showcasing all diagram capabilities, responsive layouts, zoom controls, and theme adaptation powered by Pele."
@@ -68,7 +69,7 @@ flowchart TB
 
         subgraph DataBackbone["Distributed Data Backbone"]
             Order --> Redis[("Redis Distributed Cache")]
-            Order --> Kafka{{"Apache Kafka Cluster"}}
+            Order --> Kafka(["Apache Kafka Cluster"])
             Billing --> Kafka
             Kafka --> Consumer1["Analytics Consumer"]
             Kafka --> Consumer2["Audit Event Streamer"]

@@ -5,18 +5,23 @@
 <script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js" defer></script>
 
 <style>
-  /* CSS Variables Mapping: Chirpy Theme <-> Pele */
+  /* ========================================================
+     Pele Diagram Styles: Dual Theme Support (Light & Dark)
+     Fully synchronized with Jekyll Chirpy v7.6 (data-bs-theme)
+     ======================================================== */
+
+  /* 1. Base / Light Mode Defaults: Crisp, high-contrast borders and surfaces */
   .pele-wrapper,
   .pele {
     --pele-bg: var(--card-bg, #ffffff);
-    --pele-fg: var(--text-color, #1f1f1f);
-    --pele-fg-on-light: #1f1f1f;
+    --pele-fg: #1f2328;
+    --pele-fg-on-light: #1f2328;
     --pele-fg-on-dark: #ffffff;
-    --pele-muted: var(--text-muted-color, #757575);
-    --pele-line: var(--text-color, #1f1f1f);
-    --pele-surface: var(--main-bg, #f7f7f7);
-    --pele-surface-alt: var(--main-border-color, #e0e0e0);
-    --pele-border: var(--main-border-color, #d0d7de);
+    --pele-muted: #59636e;
+    --pele-line: #1f2328;
+    --pele-surface: #f8fafc;
+    --pele-surface-alt: #eef2f6;
+    --pele-border: #8c95a6;
     --pele-accent: var(--link-color, #0969da);
     --pele-critical: #cf222e;
     --pele-error: #cf222e;
@@ -24,7 +29,7 @@
     --pele-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --pele-radius: 6px;
 
-    /* Semantic color palette (Light mode defaults) */
+    /* Semantic color palette (Light mode) */
     --pele-red: #cf222e;
     --pele-orange: #bc4c00;
     --pele-yellow: #9a6700;
@@ -39,39 +44,12 @@
     --pele-zoom-right: 10px;
   }
 
-  /* Dark mode overrides aligned with Chirpy dark theme */
-  html[data-mode="dark"] .pele-wrapper,
-  html[data-mode="dark"] .pele {
-    --pele-bg: var(--card-bg, #1e1e1e);
-    --pele-fg: var(--text-color, #afb0b1);
-    --pele-fg-on-light: #1f1f1f;
-    --pele-fg-on-dark: #f0f6fc;
-    --pele-muted: var(--text-muted-color, #868686);
-    --pele-line: var(--text-color, #afb0b1);
-    --pele-surface: #25262a;
-    --pele-surface-alt: #2e3035;
-    --pele-border: #3d4148;
-    --pele-accent: var(--link-color, #8ab4f8);
-    --pele-critical: #ff7b72;
-    --pele-error: #ff7b72;
-
-    /* Semantic color palette (Dark mode defaults) */
-    --pele-red: #ff7b72;
-    --pele-orange: #ffa657;
-    --pele-yellow: #d29922;
-    --pele-green: #3fb950;
-    --pele-cyan: #58a6ff;
-    --pele-blue: #58a6ff;
-    --pele-purple: #bc8cff;
-    --pele-magenta: #f778ba;
-  }
-
   .pele-wrapper {
     position: relative;
     margin: 1.75rem 0;
     padding: 1.25rem;
     background-color: var(--card-bg, #ffffff);
-    border: 1px solid var(--main-border-color, #e9ecef);
+    border: 1px solid #d0d7de;
     border-radius: 8px;
     overflow-x: auto;
     display: flex;
@@ -88,10 +66,10 @@
     display: block;
   }
 
-  /* Zoom controls styling */
+  /* Zoom controls styling (Light mode) */
   .pele-zoom {
     background: var(--card-bg, #ffffff);
-    border: 1px solid var(--main-border-color, #d0d7de);
+    border: 1px solid #d0d7de;
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
     z-index: 5;
@@ -99,11 +77,137 @@
 
   .pele-zoom button {
     border-radius: 4px;
-    transition: background-color 0.15s ease;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    color: var(--pele-fg);
   }
 
   .pele-zoom button:hover {
     background-color: var(--pele-surface, #f3f3f3);
+    color: var(--pele-fg);
+  }
+
+  /* Explicit light mode overrides (Chirpy 7.6 + legacy) */
+  [data-bs-theme="light"] .pele-wrapper,
+  [data-bs-theme="light"] .pele,
+  [data-mode="light"] .pele-wrapper,
+  [data-mode="light"] .pele {
+    --pele-bg: var(--card-bg, #ffffff);
+    --pele-fg: #1f2328;
+    --pele-fg-on-light: #1f2328;
+    --pele-fg-on-dark: #ffffff;
+    --pele-muted: #59636e;
+    --pele-line: #1f2328;
+    --pele-surface: #f8fafc;
+    --pele-surface-alt: #eef2f6;
+    --pele-border: #8c95a6;
+    --pele-accent: var(--link-color, #0969da);
+    --pele-critical: #cf222e;
+    --pele-error: #cf222e;
+
+    --pele-red: #cf222e;
+    --pele-orange: #bc4c00;
+    --pele-yellow: #9a6700;
+    --pele-green: #1a7f37;
+    --pele-cyan: #0969da;
+    --pele-blue: #0969da;
+    --pele-purple: #8250df;
+    --pele-magenta: #bf3989;
+  }
+
+  [data-bs-theme="light"] .pele-wrapper,
+  [data-mode="light"] .pele-wrapper {
+    background-color: var(--card-bg, #ffffff);
+    border: 1px solid #d0d7de;
+    box-shadow: var(--card-shadow, 0 1px 3px rgba(0, 0, 0, 0.05));
+  }
+
+  [data-bs-theme="light"] .pele-zoom,
+  [data-mode="light"] .pele-zoom {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid #d0d7de;
+  }
+
+  /* 2. Dark mode overrides (Restores the exact dark palette Daniel loved) */
+  [data-bs-theme="dark"] .pele-wrapper,
+  [data-bs-theme="dark"] .pele,
+  [data-mode="dark"] .pele-wrapper,
+  [data-mode="dark"] .pele {
+    --pele-bg: var(--card-bg, #1e1e1e);
+    --pele-fg: var(--text-color, #afb0b1);
+    --pele-fg-on-light: #1f1f1f;
+    --pele-fg-on-dark: #f0f6fc;
+    --pele-muted: var(--text-muted-color, #868686);
+    --pele-line: var(--text-color, #afb0b1);
+    --pele-surface: #25262a;
+    --pele-surface-alt: #2e3035;
+    --pele-border: #3d4148;
+    --pele-accent: var(--link-color, #8ab4f8);
+    --pele-critical: #ff7b72;
+    --pele-error: #ff7b72;
+
+    /* Semantic color palette (Dark mode) */
+    --pele-red: #ff7b72;
+    --pele-orange: #ffa657;
+    --pele-yellow: #d29922;
+    --pele-green: #3fb950;
+    --pele-cyan: #58a6ff;
+    --pele-blue: #58a6ff;
+    --pele-purple: #bc8cff;
+    --pele-magenta: #f778ba;
+  }
+
+  [data-bs-theme="dark"] .pele-wrapper,
+  [data-mode="dark"] .pele-wrapper {
+    background-color: var(--card-bg, #1e1e1e);
+    border: 1px solid var(--main-border-color, #3d4148);
+    box-shadow: var(--card-shadow, 0 6px 18px 0 rgba(21, 21, 21, 0.72));
+  }
+
+  [data-bs-theme="dark"] .pele-zoom,
+  [data-mode="dark"] .pele-zoom {
+    background: var(--card-bg, #1e1e1e);
+    border: 1px solid var(--main-border-color, #3d4148);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  /* 3. Automatic system dark mode preference */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-bs-theme="light"]):not([data-mode="light"]) .pele-wrapper,
+    :root:not([data-bs-theme="light"]):not([data-mode="light"]) .pele {
+      --pele-bg: var(--card-bg, #1e1e1e);
+      --pele-fg: var(--text-color, #afb0b1);
+      --pele-fg-on-light: #1f1f1f;
+      --pele-fg-on-dark: #f0f6fc;
+      --pele-muted: var(--text-muted-color, #868686);
+      --pele-line: var(--text-color, #afb0b1);
+      --pele-surface: #25262a;
+      --pele-surface-alt: #2e3035;
+      --pele-border: #3d4148;
+      --pele-accent: var(--link-color, #8ab4f8);
+      --pele-critical: #ff7b72;
+      --pele-error: #ff7b72;
+
+      --pele-red: #ff7b72;
+      --pele-orange: #ffa657;
+      --pele-yellow: #d29922;
+      --pele-green: #3fb950;
+      --pele-cyan: #58a6ff;
+      --pele-blue: #58a6ff;
+      --pele-purple: #bc8cff;
+      --pele-magenta: #f778ba;
+    }
+
+    :root:not([data-bs-theme="light"]):not([data-mode="light"]) .pele-wrapper {
+      background-color: var(--card-bg, #1e1e1e);
+      border: 1px solid var(--main-border-color, #3d4148);
+      box-shadow: var(--card-shadow, 0 6px 18px 0 rgba(21, 21, 21, 0.72));
+    }
+
+    :root:not([data-bs-theme="light"]):not([data-mode="light"]) .pele-zoom {
+      background: var(--card-bg, #1e1e1e);
+      border: 1px solid var(--main-border-color, #3d4148);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
   }
 
   /* Error banner styling */
