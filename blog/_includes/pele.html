@@ -1,0 +1,197 @@
+<!-- ============================================
+     Pele: Themeable Mermaid Diagrams as SVG
+     https://pele.run/
+     ============================================ -->
+<script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js" defer></script>
+
+<style>
+  /* CSS Variables Mapping: Chirpy Theme <-> Pele */
+  .pele-wrapper,
+  .pele {
+    --pele-bg: var(--card-bg, #ffffff);
+    --pele-fg: var(--text-color, #1f1f1f);
+    --pele-fg-on-light: #1f1f1f;
+    --pele-fg-on-dark: #ffffff;
+    --pele-muted: var(--text-muted-color, #757575);
+    --pele-line: var(--text-color, #1f1f1f);
+    --pele-surface: var(--main-bg, #f7f7f7);
+    --pele-surface-alt: var(--main-border-color, #e0e0e0);
+    --pele-border: var(--main-border-color, #d0d7de);
+    --pele-accent: var(--link-color, #0969da);
+    --pele-critical: #cf222e;
+    --pele-error: #cf222e;
+    --pele-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    --pele-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --pele-radius: 6px;
+
+    /* Semantic color palette (Light mode defaults) */
+    --pele-red: #cf222e;
+    --pele-orange: #bc4c00;
+    --pele-yellow: #9a6700;
+    --pele-green: #1a7f37;
+    --pele-cyan: #0969da;
+    --pele-blue: #0969da;
+    --pele-purple: #8250df;
+    --pele-magenta: #bf3989;
+
+    /* Zoom control placement */
+    --pele-zoom-top: 10px;
+    --pele-zoom-right: 10px;
+  }
+
+  /* Dark mode overrides aligned with Chirpy dark theme */
+  html[data-mode="dark"] .pele-wrapper,
+  html[data-mode="dark"] .pele {
+    --pele-bg: var(--card-bg, #1e1e1e);
+    --pele-fg: var(--text-color, #afb0b1);
+    --pele-fg-on-light: #1f1f1f;
+    --pele-fg-on-dark: #f0f6fc;
+    --pele-muted: var(--text-muted-color, #868686);
+    --pele-line: var(--text-color, #afb0b1);
+    --pele-surface: #25262a;
+    --pele-surface-alt: #2e3035;
+    --pele-border: #3d4148;
+    --pele-accent: var(--link-color, #8ab4f8);
+    --pele-critical: #ff7b72;
+    --pele-error: #ff7b72;
+
+    /* Semantic color palette (Dark mode defaults) */
+    --pele-red: #ff7b72;
+    --pele-orange: #ffa657;
+    --pele-yellow: #d29922;
+    --pele-green: #3fb950;
+    --pele-cyan: #58a6ff;
+    --pele-blue: #58a6ff;
+    --pele-purple: #bc8cff;
+    --pele-magenta: #f778ba;
+  }
+
+  .pele-wrapper {
+    position: relative;
+    margin: 1.75rem 0;
+    padding: 1.25rem;
+    background-color: var(--card-bg, #ffffff);
+    border: 1px solid var(--main-border-color, #e9ecef);
+    border-radius: 8px;
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--card-shadow, 0 1px 3px rgba(0, 0, 0, 0.05));
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+    min-height: 80px;
+  }
+
+  .pele-wrapper svg.pele {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Zoom controls styling */
+  .pele-zoom {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--main-border-color, #d0d7de);
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    z-index: 5;
+  }
+
+  .pele-zoom button {
+    border-radius: 4px;
+    transition: background-color 0.15s ease;
+  }
+
+  .pele-zoom button:hover {
+    background-color: var(--pele-surface, #f3f3f3);
+  }
+
+  /* Error banner styling */
+  .pele.pele-error {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    background: rgba(207, 34, 46, 0.1);
+    color: var(--pele-error);
+    border: 1px solid var(--pele-error);
+  }
+
+  /* Responsive styling */
+  @media (max-width: 576px) {
+    .pele-wrapper {
+      padding: 0.75rem;
+      margin: 1.25rem 0;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    "use strict";
+
+    // Neutralize any accidental Mermaid.js loading to guarantee Pele exclusivity
+    if (typeof window !== "undefined") {
+      window.mermaid = {
+        initialize: function () {},
+        render: function () {},
+        run: function () {}
+      };
+    }
+
+    function renderPele() {
+      if (typeof pele === "undefined" || !pele.mount) {
+        setTimeout(renderPele, 40);
+        return;
+      }
+
+      // Target Chirpy & Kramdown code blocks for mermaid diagrams
+      var targets = document.querySelectorAll(
+        "code.language-mermaid, pre.language-mermaid, pre.mermaid, div.language-mermaid"
+      );
+
+      targets.forEach(function (block) {
+        if (block.dataset.peleRendered) return;
+
+        var codeEl = block.tagName === "CODE" ? block : (block.querySelector("code") || block);
+        var code = codeEl.textContent.trim();
+        if (!code) return;
+
+        var wrapper = document.createElement("div");
+        wrapper.className = "pele-wrapper";
+        wrapper.setAttribute("role", "figure");
+        wrapper.setAttribute("aria-label", "Diagram rendered with Pele");
+        wrapper.dataset.peleRendered = "true";
+
+        // Find outermost container (Kramdown/Rouge container or <pre>)
+        var containerToReplace =
+          block.closest(".highlighter-rouge") ||
+          block.closest("pre") ||
+          block;
+
+        containerToReplace.replaceWith(wrapper);
+
+        try {
+          // Mount with full Pele features: adaptive layout, zoom, and pan controls
+          pele.mount(wrapper, code, { zoom: "auto" });
+        } catch (err) {
+          console.warn("Pele mount error, attempting direct render:", err);
+          try {
+            var res = pele.render(code);
+            if (res && res.svg) {
+              wrapper.innerHTML = res.svg;
+            }
+          } catch (renderErr) {
+            console.error("Pele render error:", renderErr);
+            wrapper.innerHTML = '<div class="pele pele-error">Error rendering diagram: ' + renderErr.message + '</div>';
+          }
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", renderPele);
+    } else {
+      renderPele();
+    }
+  })();
+</script>

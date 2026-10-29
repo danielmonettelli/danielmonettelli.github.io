@@ -33,3 +33,8 @@ blog/assets/js/dist
 .github/copilot-instructions.md
 
 .github/skills/
+.agents/
+skills-lock.json
+
+# Local blog drafting workspace
+_trabajo-local/
